@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TetrisPlay extends JFrame implements KeyListener {
 
-    private static final int SQUARE_SIZE = 30;
+    private int SQUARE_SIZE = 30;
     private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
     private static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
     private int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
@@ -24,8 +24,11 @@ public class TetrisPlay extends JFrame implements KeyListener {
     };//색상들을 16진수로 저장. 후에 new Color(colorHex[isColorBlindness][i]) 형식으로 이용
     int isColorBlindness = 0;
 
-    public TetrisPlay() {
-
+    public void setSquareSize(int squareSize) {
+        SQUARE_SIZE = squareSize;
+    }
+    public TetrisPlay(int squareSize) {
+        setSquareSize(squareSize);
         setTitle("Tetris Test"); // 창 제목 설정
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 창 닫힘 동작 설정
@@ -35,11 +38,13 @@ public class TetrisPlay extends JFrame implements KeyListener {
 
         createNewShape(); // 새 도형 생성
     }
-
+/*
     public TetrisPlay(int isColorBlindness) {
         this();
         this.isColorBlindness = isColorBlindness;
     }
+
+ */
 
     private void createNewShape() {
         currentShape = blocks.getRandomBlock();
@@ -194,16 +199,8 @@ public class TetrisPlay extends JFrame implements KeyListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Scanner sc = new Scanner(System.in);
-                int t = sc.nextInt();
-                TetrisPlay tetris;
-                if(t == 1) {
-                    tetris = new TetrisPlay(1);
-                }
-                else {
-                    tetris = new TetrisPlay();
-                }
-                tetris.setVisible(true); // 게임 창을 보이게 함
+                SettingScreen settings = new SettingScreen();
+                settings.setVisible(true);
             }
         });
     }

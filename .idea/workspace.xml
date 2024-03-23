@@ -36,6 +36,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true",
     "애플리케이션.Tetris.executor": "Run"
   }
@@ -73,6 +74,7 @@
       <workItem from="1710923271454" duration="93000" />
       <workItem from="1710923369568" duration="646000" />
       <workItem from="1710924188786" duration="271000" />
+      <workItem from="1711096216031" duration="820000" />
     </task>
     <servers />
   </component>
