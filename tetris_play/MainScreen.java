@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+// 그냥 구현해볼려고 만들어놓은거임
 public class MainScreen extends JFrame implements ActionListener {
 
     private JButton startButton, settingButton;
