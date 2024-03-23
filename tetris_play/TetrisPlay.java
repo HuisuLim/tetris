@@ -29,8 +29,14 @@ public class TetrisPlay extends JFrame implements KeyListener {
         SQUARE_SIZE = squareSize;
     }
 
-    public TetrisPlay(int squareSize) {
-        setSquareSize(squareSize);
+    public void setColorBlindnessMode(boolean checkColorBlindness) {
+        isColorBlindness = checkColorBlindness ? 1 : 0;
+    }
+
+    public TetrisPlay(int squareSize, boolean ColorBlindness) {
+        setSquareSize(squareSize); // 화면 크기 조절용
+        setColorBlindnessMode(ColorBlindness); //색맹모드
+        System.out.println(isColorBlindness);
         setTitle("Tetris Test"); // 창 제목 설정
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 창 닫힘 동작 설정
@@ -45,8 +51,8 @@ public class TetrisPlay extends JFrame implements KeyListener {
         this();
         this.isColorBlindness = isColorBlindness;
     }
+*/
 
- */
 
     private void createNewShape() {
         currentShape = blocks.getRandomBlock();
@@ -195,16 +201,6 @@ public class TetrisPlay extends JFrame implements KeyListener {
     //아래 메서드는 구현되지 않았지만 KeyListener 인터페이스를 구현하기 위해 필요함
     @Override
     public void keyReleased(KeyEvent e) {
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                SettingScreen settings = new SettingScreen();
-                settings.setVisible(true);
-            }
-        });
     }
 
 

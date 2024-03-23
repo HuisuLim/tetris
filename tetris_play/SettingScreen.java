@@ -6,8 +6,8 @@ import java.io.*;
 import java.util.Properties;
 
 public class SettingScreen extends JFrame implements ActionListener {
-
     private JRadioButton smallButton, mediumButton, largeButton;
+    private JRadioButton normalModeButton, colorBlindModeButton;
     private JButton checkButton;
     private static final int SMALL_SIZE = 20;
     private static final int MEDIUM_SIZE = 30;
@@ -16,6 +16,7 @@ public class SettingScreen extends JFrame implements ActionListener {
 
     private static final String SETTINGS_FILE = "settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
+    private static final String COLOR_MODE_KEY = "ColorMode";
 
     public SettingScreen() {
         setTitle("Tetris Settings");
@@ -25,7 +26,7 @@ public class SettingScreen extends JFrame implements ActionListener {
         setResizable(false);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 3));
+        panel.setLayout(new GridLayout(2, 3));
 
         JLabel label = new JLabel("Screen Size:");
         panel.add(label);
@@ -42,11 +43,30 @@ public class SettingScreen extends JFrame implements ActionListener {
         largeButton = new JRadioButton("Large");
         largeButton.addActionListener(this);
         panel.add(largeButton);
+
         // 라디오 버튼 그룹 생성
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(smallButton);
         buttonGroup.add(mediumButton);
         buttonGroup.add(largeButton);
+
+        // 두 번째 행 추가 - 색맹 모드 라디오 버튼
+        JLabel modeLabel = new JLabel("Color Mode:");
+        panel.add(modeLabel);
+
+        normalModeButton = new JRadioButton("Normal");
+        normalModeButton.addActionListener(this);
+        panel.add(normalModeButton);
+
+        colorBlindModeButton = new JRadioButton("Color Blind");
+        colorBlindModeButton.addActionListener(this);
+        panel.add(colorBlindModeButton);
+
+        // 라디오 버튼 그룹 생성 및 추가
+        ButtonGroup modeButtonGroup = new ButtonGroup();
+        modeButtonGroup.add(normalModeButton);
+        modeButtonGroup.add(colorBlindModeButton);
+
         // 버튼 생성
         checkButton = new JButton("check");
         checkButton.addActionListener(this);
@@ -68,7 +88,8 @@ public class SettingScreen extends JFrame implements ActionListener {
             } else {
                 squareSize = MEDIUM_SIZE;
             }
-            saveSettings(squareSize); // 설정 저장
+            boolean isColorBlindMode = colorBlindModeButton.isSelected();
+            saveSettings(squareSize, isColorBlindMode); // 설정 저장
             dispose(); // 설정 화면 종료
             MainScreen mainScreen = new MainScreen();
             mainScreen.setVisible(true);
@@ -76,9 +97,10 @@ public class SettingScreen extends JFrame implements ActionListener {
     }
 
     // 설정을 파일에 저장하는 메서드
-    private void saveSettings(int squareSize) {
+    private void saveSettings(int squareSize, boolean isColorBlindMode) {
         Properties properties = new Properties();
         properties.setProperty(SQUARE_SIZE_KEY, String.valueOf(squareSize));
+        properties.setProperty(COLOR_MODE_KEY, String.valueOf(isColorBlindMode));
         try (OutputStream outputStream = new FileOutputStream(SETTINGS_FILE)) {
             properties.store(outputStream, null);
         } catch (IOException e) {
