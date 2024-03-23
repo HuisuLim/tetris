@@ -24,9 +24,11 @@ public class TetrisPlay extends JFrame implements KeyListener {
     };//색상들을 16진수로 저장. 후에 new Color(colorHex[isColorBlindness][i]) 형식으로 이용
     int isColorBlindness = 0;
 
+    // 화면 크기 조절을 위해 SquareSize의 조절
     public void setSquareSize(int squareSize) {
         SQUARE_SIZE = squareSize;
     }
+
     public TetrisPlay(int squareSize) {
         setSquareSize(squareSize);
         setTitle("Tetris Test"); // 창 제목 설정
