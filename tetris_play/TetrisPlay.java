@@ -1,10 +1,8 @@
-package seoultech.se.tetris.component;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.Scanner;
 
 public class TetrisPlay extends JFrame implements KeyListener {
@@ -27,6 +25,7 @@ public class TetrisPlay extends JFrame implements KeyListener {
     int isColorBlindness = 0;
 
     public TetrisPlay() {
+
         setTitle("Tetris Test"); // 창 제목 설정
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 창 닫힘 동작 설정
@@ -113,26 +112,41 @@ public class TetrisPlay extends JFrame implements KeyListener {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+        // 오프스크린 이미지 생성
+        BufferedImage offScreenImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics offScreenGraphics = offScreenImage.getGraphics();
 
-        // 게임 보드 그리기
+        // 기본 배경을 그립니다 (선택적)
+        offScreenGraphics.setColor(getBackground());
+        offScreenGraphics.fillRect(0, 0, getWidth(), getHeight());
+
+        super.paint(offScreenGraphics); // JFrame의 기본 페인트 메커니즘을 사용하여 구성요소를 그림
+
+        // 게임 보드 및 현재 도형을 오프스크린 그래픽 객체에 그립니다
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
                 int color = colorHex[isColorBlindness][board[row][col]];
-                g.setColor(new Color(color));
-                g.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                offScreenGraphics.setColor(new Color(color));
+                offScreenGraphics.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
             }
         }
+
         // 현재 도형 그리기
         for (int row = 0; row < shapeLen; row++) {
             for (int col = 0; col < shapeLen; col++) {
                 if (currentShape[currentRotate][row][col] != 0) {
                     int color = colorHex[isColorBlindness][currentShape[currentRotate][row][col]];
-                    g.setColor(new Color(color));
-                    g.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    offScreenGraphics.setColor(new Color(color));
+                    offScreenGraphics.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                 }
             }
         }
+
+        // 화면에 오프스크린 이미지를 복사
+        g.drawImage(offScreenImage, 0, 0, this);
+
+        // 자원 정리
+        offScreenGraphics.dispose();
     }
 
     @Override
