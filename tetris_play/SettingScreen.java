@@ -107,4 +107,10 @@ public class SettingScreen extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            SettingScreen setting = new SettingScreen();
+            setting.setVisible(true);
+        });
+    }
 }

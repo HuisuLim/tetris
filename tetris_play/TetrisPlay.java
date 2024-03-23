@@ -203,5 +203,11 @@ public class TetrisPlay extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            TetrisPlay tetris = new TetrisPlay(30, true);
+            tetris.setVisible(true);
+        });
+    }
 
 }
