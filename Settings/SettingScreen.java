@@ -1,3 +1,5 @@
+package Settings;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +16,7 @@ public class SettingScreen extends JFrame implements ActionListener {
     private static final int LARGE_SIZE = 50;
     private int squareSize;
 
-    private static final String SETTINGS_FILE = "settings.properties";
+    private static final String SETTINGS_FILE = "Settings/settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
 
@@ -25,8 +27,8 @@ public class SettingScreen extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2, 3));
+        
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10)); // 간격 조절
 
         JLabel label = new JLabel("Screen Size:");
         panel.add(label);

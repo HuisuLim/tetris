@@ -1,15 +1,18 @@
+package Settings;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import tetrisPlay.*;
 
 // 그냥 구현해볼려고 만들어놓은거임
 public class MainScreen extends JFrame implements ActionListener {
 
     private JButton startButton, settingButton;
-    private static final String SETTINGS_FILE = "settings.properties";
+    private static final String SETTINGS_FILE = "Settings/settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final int MEDIUM_SIZE = 30;
