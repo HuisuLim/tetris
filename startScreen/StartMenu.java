@@ -1,14 +1,28 @@
 package startScreen;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
-import java.awt.Color; // 색상 변경을 위해 추가
+import java.awt.Color;
+import Settings.LoadData;
+
 
 public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
+    public static int screenRatio = 2; //화면 비율 조절
+    public static boolean isColorblindness = false; //색맹모드
+    public static void setScreenRatio(){
+        LoadData loadData = new LoadData();
+        screenRatio = loadData.loadScreenSize();
+    }
 
+    public static void setColorBlindness(){
+        LoadData loadData = new LoadData();
+        isColorblindness = loadData.loadColorBlindMode();
+    }
     public StartMenu() {
-        setSize(1000, 800);
+        setScreenRatio();//화면 비율 조절
+        setSize(500*screenRatio, 400*screenRatio);
         setTitle("테트리스 게임");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -17,13 +31,13 @@ public class StartMenu extends JFrame {
         // 패널 생성
         JPanel panel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 수동으로 위치 및 크기 지정
 
-        // 제목 라벨 생성 및 추가
-        JLabel titleLabel = new JLabel("SE Team9 Tetris", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24)); // 폰트 설정
-        titleLabel.setBounds(300, 50, 400, 50); // 위치 및 크기 지정
+        // 제목 라벨 생성
+        JLabel titleLabel = new JLabel("SE Team9 Tetris", SwingConstants.CENTER); // 중앙 정렬
+        titleLabel.setBounds(150*screenRatio, 50*screenRatio, 200*screenRatio, 25*screenRatio); // 제목 라벨 위치 및 크기 지정
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 12*screenRatio)); // 폰트 설정
         panel.add(titleLabel); // 패널에 제목 라벨 추가
 
-        // 버튼 생성 및 스타일 설정
+        // 버튼 생성
         JButton startButton = new JButton("게임 시작");
         JButton settingsButton = new JButton("설정");
         JButton exitButton = new JButton("게임 종료");
@@ -34,18 +48,19 @@ public class StartMenu extends JFrame {
         configureButton(exitButton);
         configureButton(scoreButton);
 
-        // 패널에 버튼 추가 및 버튼 위치 설정
+        // 패널에 버튼 추가 및 위치 설정
         panel.add(startButton);
-        startButton.setBounds(400, 450, 200, 50);
+        startButton.setBounds(200*screenRatio, 225*screenRatio, 100*screenRatio, 25*screenRatio); // 버튼 위치 및 크기 지정 (x, y, width, height)
 
         panel.add(settingsButton);
-        settingsButton.setBounds(400, 520, 200, 50);
+        settingsButton.setBounds(200*screenRatio, 260*screenRatio, 100*screenRatio, 25*screenRatio);
 
         panel.add(exitButton);
-        exitButton.setBounds(400, 590, 200, 50);
+        exitButton.setBounds(200*screenRatio, 295*screenRatio, 100*screenRatio, 25*screenRatio);
 
         panel.add(scoreButton);
-        scoreButton.setBounds(400, 660, 200, 50);
+        scoreButton.setBounds(200*screenRatio, 330*screenRatio, 100*screenRatio, 25*screenRatio);
+
 
         // 프레임에 패널 추가
         add(panel);
@@ -104,3 +119,4 @@ public class StartMenu extends JFrame {
         });
     }
 }
+

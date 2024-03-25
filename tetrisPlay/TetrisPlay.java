@@ -5,11 +5,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.util.Scanner;
 
 public class TetrisPlay extends JFrame implements KeyListener {
 
-    private int SQUARE_SIZE = 30;
+    private int SQUARE_SIZE = 20;
     private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
     private static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
     private int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
@@ -27,16 +26,16 @@ public class TetrisPlay extends JFrame implements KeyListener {
     int isColorBlindness = 0;
 
     // 화면 크기 조절을 위해 SquareSize의 조절
-    public void setSquareSize(int squareSize) {
-        SQUARE_SIZE = squareSize;
+    public void setSquareSize(int screenRatio) {
+        SQUARE_SIZE = 20 * screenRatio;
     }
 
     public void setColorBlindnessMode(boolean checkColorBlindness) {
         isColorBlindness = checkColorBlindness ? 1 : 0;
     }
 
-    public TetrisPlay(int squareSize, boolean ColorBlindness) {
-        setSquareSize(squareSize); // 화면 크기 조절용
+    public TetrisPlay(int screenRatio, boolean ColorBlindness) {
+        setSquareSize(screenRatio); // 화면 크기 조절용
         setColorBlindnessMode(ColorBlindness); //색맹모드
         System.out.println(isColorBlindness);
         setTitle("Tetris Test"); // 창 제목 설정
@@ -48,13 +47,6 @@ public class TetrisPlay extends JFrame implements KeyListener {
 
         createNewShape(); // 새 도형 생성
     }
-/*
-    public TetrisPlay(int isColorBlindness) {
-        this();
-        this.isColorBlindness = isColorBlindness;
-    }
-*/
-
 
     private void createNewShape() {
         currentShape = blocks.getRandomBlock();
@@ -207,7 +199,7 @@ public class TetrisPlay extends JFrame implements KeyListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            TetrisPlay tetris = new TetrisPlay(30, true);
+            TetrisPlay tetris = new TetrisPlay(1, true);
             tetris.setVisible(true);
         });
     }

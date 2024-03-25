@@ -2,12 +2,21 @@ package startScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import tetrisPlay.TetrisPlayPanel;
+
 
 class GameStart extends JFrame {
+
+    private int screenRatio = 2; //화면 비율 조절
+    private boolean isColorBlindness = false;
+
+
     public GameStart() {
+        screenRatio = StartMenu.screenRatio;
+        isColorBlindness = StartMenu.isColorblindness;
         setTitle("테트리스 게임");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 800);
+        setSize(500*screenRatio, 400*screenRatio);
         setLocationRelativeTo(null); // 화면 중앙에 표시
 
         // 테트리스 게임 화면 패널
@@ -43,3 +52,4 @@ class GameStart extends JFrame {
         getContentPane().add(splitPane, BorderLayout.CENTER);
     }
 }
+

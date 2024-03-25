@@ -8,52 +8,43 @@ import java.io.*;
 import java.util.Properties;
 import startScreen.Setting;
 
-public class SettingScreen extends JFrame implements ActionListener {
-    private JRadioButton smallButton, mediumButton, largeButton;
+public class SettingColorBlindness extends JFrame implements ActionListener {
+    private JRadioButton normalModeButton, colorBlindModeButton;
     private JButton checkButton;
-    private static final int SMALL_SIZE = 1;
-    private static final int MEDIUM_SIZE = 2;
-    private static final int LARGE_SIZE = 3;
 
     private static final String SETTINGS_FILE = "Settings/settings.properties";
-    private static final String SCREEN_RATIO_KEY = "ScreenSize";
-
+    private static final String COLOR_MODE_KEY = "ColorMode";
 
     private int setScreenRatio(){
         LoadData loadData = new LoadData();
         return loadData.loadScreenSize();
     }
-    public SettingScreen() {
-        setTitle("Screen Setting");
+    public SettingColorBlindness() {
+        setTitle("색맹모드");
         setSize(400, 100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        
+
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10)); // 간격 조절
 
-        JLabel label = new JLabel("Screen Size:");
-        panel.add(label);
+        // 색맹 모드 라디오 버튼
+        JLabel modeLabel = new JLabel("Color Mode:");
+        panel.add(modeLabel);
 
-        // 라디오 버튼 생성
-        smallButton = new JRadioButton("Small");
-        smallButton.addActionListener(this);
-        panel.add(smallButton);
+        normalModeButton = new JRadioButton("Normal");
+        normalModeButton.addActionListener(this);
+        panel.add(normalModeButton);
 
-        mediumButton = new JRadioButton("Medium");
-        mediumButton.addActionListener(this);
-        panel.add(mediumButton);
+        colorBlindModeButton = new JRadioButton("Color Blind");
+        colorBlindModeButton.addActionListener(this);
+        panel.add(colorBlindModeButton);
 
-        largeButton = new JRadioButton("Large");
-        largeButton.addActionListener(this);
-        panel.add(largeButton);
-
-        // 라디오 버튼 그룹 생성
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(smallButton);
-        buttonGroup.add(mediumButton);
-        buttonGroup.add(largeButton);
+        // 라디오 버튼 그룹 생성 및 추가
+        ButtonGroup modeButtonGroup = new ButtonGroup();
+        modeButtonGroup.add(normalModeButton);
+        modeButtonGroup.add(colorBlindModeButton);
 
         // 버튼 생성
         checkButton = new JButton("check");
@@ -66,22 +57,12 @@ public class SettingScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == checkButton) {
-            int screenRatio;
-            if (smallButton.isSelected()) {
-                screenRatio = SMALL_SIZE;
-            } else if (mediumButton.isSelected()) {
-                screenRatio = MEDIUM_SIZE;
-            } else if (largeButton.isSelected()) {
-                screenRatio = LARGE_SIZE;
-            } else {
-                screenRatio = MEDIUM_SIZE;
-            }
-            saveSettings(SCREEN_RATIO_KEY, String.valueOf(screenRatio)); // 동일한 설정 파일 사용
+            boolean isColorBlindMode = colorBlindModeButton.isSelected();
+            saveSettings(COLOR_MODE_KEY, String.valueOf(isColorBlindMode)); // 동일한 설정 파일 사용
             dispose(); // 설정 화면 종료
             Setting test = new Setting();
         }
     }
-
 
     // 설정을 파일에 저장하는 메서드
     private void saveSettings(String key, String value) {
@@ -99,12 +80,10 @@ public class SettingScreen extends JFrame implements ActionListener {
         }
     }
 
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            SettingScreen setting = new SettingScreen();
+            SettingColorBlindness setting = new SettingColorBlindness();
             setting.setVisible(true);
         });
     }
-
 }

@@ -7,9 +7,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import tetrisPlay.*;
+import startScreen.*;
 
 // 그냥 구현해볼려고 만들어놓은거임
-public class MainScreen extends JFrame implements ActionListener {
+public class LoadData extends JFrame implements ActionListener {
 
     private JButton startButton, settingButton;
     private static final String SETTINGS_FILE = "Settings/settings.properties";
@@ -18,7 +19,7 @@ public class MainScreen extends JFrame implements ActionListener {
     private static final int MEDIUM_SIZE = 30;
 
 
-    public MainScreen() {
+    public LoadData() {
         setTitle("Tetris");
         setSize(300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,7 +55,7 @@ public class MainScreen extends JFrame implements ActionListener {
         }
     }
 
-    private int loadScreenSize() {
+    public int loadScreenSize() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
             properties.load(input);
@@ -66,7 +67,7 @@ public class MainScreen extends JFrame implements ActionListener {
             return MEDIUM_SIZE;
         }
     }
-    private boolean loadColorBlindMode() {
+    public boolean loadColorBlindMode() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
             properties.load(input);
@@ -79,10 +80,9 @@ public class MainScreen extends JFrame implements ActionListener {
         }
     }
 
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            MainScreen mainScreen = new MainScreen();
+            LoadData mainScreen = new LoadData();
             mainScreen.setVisible(true);
         });
     }

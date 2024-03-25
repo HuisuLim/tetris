@@ -1,14 +1,17 @@
 package startScreen;
 
+import Settings.LoadData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
 public class ScoreBoard extends JFrame {
+    private int screenRatio = StartMenu.screenRatio; //화면 비율 조절
     public ScoreBoard() {
         setTitle("스코어보드");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 800);
+        setSize(500*screenRatio, 800*screenRatio);
         setLocationRelativeTo(null); // 화면 중앙에 표시
 
         // 스코어보드 파일을 읽어서 텍스트 영역에 표시
