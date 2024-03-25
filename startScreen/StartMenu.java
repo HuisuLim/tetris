@@ -2,6 +2,7 @@ package startScreen;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
+import java.awt.Color; // 색상 변경을 위해 추가
 
 public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
@@ -22,24 +23,29 @@ public class StartMenu extends JFrame {
         titleLabel.setBounds(300, 50, 400, 50); // 위치 및 크기 지정
         panel.add(titleLabel); // 패널에 제목 라벨 추가
 
-        // 버튼 생성
+        // 버튼 생성 및 스타일 설정
         JButton startButton = new JButton("게임 시작");
-        startButton.setBounds(400, 450, 200, 50); // 버튼 위치 및 크기 지정
-
         JButton settingsButton = new JButton("설정");
+        JButton exitButton = new JButton("게임 종료");
+        JButton scoreButton = new JButton("스코어보드");
+
+        configureButton(startButton);
+        configureButton(settingsButton);
+        configureButton(exitButton);
+        configureButton(scoreButton);
+
+        // 패널에 버튼 추가 및 버튼 위치 설정
+        panel.add(startButton);
+        startButton.setBounds(400, 450, 200, 50);
+
+        panel.add(settingsButton);
         settingsButton.setBounds(400, 520, 200, 50);
 
-        JButton exitButton = new JButton("게임 종료");
+        panel.add(exitButton);
         exitButton.setBounds(400, 590, 200, 50);
 
-        JButton scoreButton = new JButton("스코어보드");
-        scoreButton.setBounds(400, 660, 200, 50);
-
-        // 패널에 버튼 추가
-        panel.add(startButton);
-        panel.add(settingsButton);
-        panel.add(exitButton);
         panel.add(scoreButton);
+        scoreButton.setBounds(400, 660, 200, 50);
 
         // 프레임에 패널 추가
         add(panel);
@@ -77,6 +83,23 @@ public class StartMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // 프로그램 종료
                 System.exit(0);
+            }
+        });
+    }
+    private void configureButton(JButton button) {
+        // 초기 색상 설정
+        button.setBackground(new Color(200, 200, 200)); // 예시 색상
+        button.setFocusPainted(false);
+        button.setBorderPainted(false);
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(button.getBackground().darker()); // 마우스가 올라갔을 때 색상을 진하게
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(200, 200, 200)); // 마우스가 내려갔을 때 원래 색상으로 복원
             }
         });
     }
