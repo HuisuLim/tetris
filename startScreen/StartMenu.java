@@ -1,52 +1,83 @@
 package startScreen;
-
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.*;
+import java.awt.Font; // 폰트 설정을 위해 추가
 
-class GameStart extends JFrame {
-    public GameStart() {
-        // 게임 시작 시 사용자 이름 입력받기
-        String playerName = JOptionPane.showInputDialog(this, "플레이어 이름을 입력하세요:", "플레이어 이름", JOptionPane.PLAIN_MESSAGE);
-        if (playerName == null || playerName.trim().isEmpty()) {
-            playerName = "익명의 플레이어";
-        }
+public class StartMenu extends JFrame {
+    private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
 
-        setTitle(playerName + "의 테트리스 게임");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public StartMenu() {
         setSize(1000, 800);
+        setTitle("테트리스 게임");
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 중앙에 표시
 
-        // 테트리스 게임 화면 패널
-        JPanel gamePanel = new JPanel(new BorderLayout());
-        JLabel gameLabel = new JLabel(playerName + "의 테트리스 게임 화면", SwingConstants.CENTER);
-        gamePanel.add(gameLabel, BorderLayout.CENTER);
+        // 패널 생성
+        JPanel panel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 수동으로 위치 및 크기 지정
 
-        // 점수 화면 패널
-        JPanel scorePanel = new JPanel(new BorderLayout());
-        JLabel scoreLabel = new JLabel("현재 점수 및 다음 블록 송출", SwingConstants.CENTER);
-        scorePanel.add(scoreLabel, BorderLayout.CENTER);
+        // 제목 라벨 생성 및 추가
+        JLabel titleLabel = new JLabel("SE Team9 Tetris", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24)); // 폰트 설정
+        titleLabel.setBounds(300, 50, 400, 50); // 위치 및 크기 지정
+        panel.add(titleLabel); // 패널에 제목 라벨 추가
 
-        // JSplitPane 생성
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, gamePanel, scorePanel);
-        splitPane.setDividerLocation(500); // 화면의 중앙에 분리선 설정
-        splitPane.setDividerSize(2); // 분리선의 크기 설정
-        splitPane.setBackground(Color.BLACK); // 분리선의 색상 설정
+        // 버튼 생성
+        JButton startButton = new JButton("게임 시작");
+        startButton.setBounds(400, 450, 200, 50); // 버튼 위치 및 크기 지정
 
-        // 뒤로가기 버튼 추가
-        JButton backButton = new JButton("뒤로가기");
-        backButton.addActionListener(e -> {
-            this.setVisible(false); // 현재 창 숨기기
-            this.dispose(); // 현재 창 자원 해제
-            new StartMenu().setVisible(true); // StartMenu 인스턴스 생성 및 보이기
+        JButton settingsButton = new JButton("설정");
+        settingsButton.setBounds(400, 520, 200, 50);
+
+        JButton exitButton = new JButton("게임 종료");
+        exitButton.setBounds(400, 590, 200, 50);
+
+        JButton scoreButton = new JButton("스코어보드");
+        scoreButton.setBounds(400, 660, 200, 50);
+
+        // 패널에 버튼 추가
+        panel.add(startButton);
+        panel.add(settingsButton);
+        panel.add(exitButton);
+        panel.add(scoreButton);
+
+        // 프레임에 패널 추가
+        add(panel);
+        // 게임 시작 버튼 이벤트 처리
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+                nextFrame = new GameStart();
+                nextFrame.setVisible(true);
+                setVisible(false); // 현재 화면 숨기기
+            }
         });
 
-        // 뒤로가기 버튼을 위한 패널 생성 및 레이아웃 설정
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        topPanel.add(backButton);
+        // 설정 버튼 이벤트 처리
+        settingsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+                nextFrame = new Setting();
+                nextFrame.setVisible(true);
+                setVisible(false); // 현재 화면 숨기기
+            }
+        });
+        // 스코어보드 버튼 이벤트 처리
+        scoreButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+                nextFrame = new ScoreBoard();
+                nextFrame.setVisible(true);
+                setVisible(false); // 현재 화면 숨기기
+            }
+        });
 
-        // 최상위 컨테이너에 패널 추가
-        getContentPane().add(topPanel, BorderLayout.NORTH);
-        getContentPane().add(splitPane, BorderLayout.CENTER);
+        // 게임 종료 버튼 이벤트 처리
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // 프로그램 종료
+                System.exit(0);
+            }
+        });
     }
 }
-
