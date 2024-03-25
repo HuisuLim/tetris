@@ -1,83 +1,52 @@
 package startScreen;
 
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Font; // 폰트 설정을 위해 추가
-import java.awt.Color;
+import java.awt.*;
 
+class GameStart extends JFrame {
+    public GameStart() {
+        // 게임 시작 시 사용자 이름 입력받기
+        String playerName = JOptionPane.showInputDialog(this, "플레이어 이름을 입력하세요:", "플레이어 이름", JOptionPane.PLAIN_MESSAGE);
+        if (playerName == null || playerName.trim().isEmpty()) {
+            playerName = "익명의 플레이어";
+        }
 
-public class StartMenu extends JFrame {
-    private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
-
-    public StartMenu() {
-        setSize(1000, 800);
-        setTitle("테트리스 게임");
-        getContentPane().setBackground(Color.LIGHT_GRAY); // 배경색을 밝은 회색으로 설정
-        setVisible(true);
+        setTitle(playerName + "의 테트리스 게임");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1000, 800);
         setLocationRelativeTo(null); // 화면 중앙에 표시
 
-        // 패널 생성
-        JPanel panel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 수동으로 위치 및 크기 지정
+        // 테트리스 게임 화면 패널
+        JPanel gamePanel = new JPanel(new BorderLayout());
+        JLabel gameLabel = new JLabel(playerName + "의 테트리스 게임 화면", SwingConstants.CENTER);
+        gamePanel.add(gameLabel, BorderLayout.CENTER);
 
-        // 제목 라벨 생성
-        JLabel titleLabel = new JLabel("SE Team9 Tetris", SwingConstants.CENTER); // 중앙 정렬
-        titleLabel.setBounds(300, 100, 400, 50); // 제목 라벨 위치 및 크기 지정
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24)); // 폰트 설정
-        panel.add(titleLabel); // 패널에 제목 라벨 추가
+        // 점수 화면 패널
+        JPanel scorePanel = new JPanel(new BorderLayout());
+        JLabel scoreLabel = new JLabel("현재 점수 및 다음 블록 송출", SwingConstants.CENTER);
+        scorePanel.add(scoreLabel, BorderLayout.CENTER);
 
-        // 버튼 생성
-        JButton startButton = new JButton("게임 시작");
-        startButton.setBounds(400, 450, 200, 50); // 버튼 위치 및 크기 지정 (x, y, width, height)
+        // JSplitPane 생성
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, gamePanel, scorePanel);
+        splitPane.setDividerLocation(500); // 화면의 중앙에 분리선 설정
+        splitPane.setDividerSize(2); // 분리선의 크기 설정
+        splitPane.setBackground(Color.BLACK); // 분리선의 색상 설정
 
-        JButton settingsButton = new JButton("설정");
-        settingsButton.setBounds(400, 520, 200, 50);
-
-        JButton exitButton = new JButton("게임 종료");
-        exitButton.setBounds(400, 590, 200, 50);
-
-        JButton scoreButton = new JButton("스코어보드");
-        scoreButton.setBounds(400, 660, 200, 50);
-
-        // 패널에 버튼 추가
-        panel.add(startButton);
-        panel.add(settingsButton);
-        panel.add(exitButton);
-        panel.add(scoreButton);
-
-        // 프레임에 패널 추가
-        add(panel);
-
-        // 각 버튼의 이벤트 처리는 이전과 동일합니다.
-        startButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                nextFrame = new GameStart();
-                nextFrame.setVisible(true);
-                setVisible(false);
-            }
+        // 뒤로가기 버튼 추가
+        JButton backButton = new JButton("뒤로가기");
+        backButton.addActionListener(e -> {
+            this.setVisible(false); // 현재 창 숨기기
+            this.dispose(); // 현재 창 자원 해제
+            new StartMenu().setVisible(true); // StartMenu 인스턴스 생성 및 보이기
         });
 
-        settingsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                nextFrame = new Setting();
-                nextFrame.setVisible(true);
-                setVisible(false);
-            }
-        });
+        // 뒤로가기 버튼을 위한 패널 생성 및 레이아웃 설정
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        topPanel.add(backButton);
 
-        scoreButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                nextFrame = new ScoreBoard();
-                nextFrame.setVisible(true);
-                setVisible(false);
-            }
-        });
-
-        exitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        // 최상위 컨테이너에 패널 추가
+        getContentPane().add(topPanel, BorderLayout.NORTH);
+        getContentPane().add(splitPane, BorderLayout.CENTER);
     }
 }
 
