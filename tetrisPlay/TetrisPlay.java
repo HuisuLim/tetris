@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-public class TetrisPlay extends JFrame implements KeyListener {
+public class TetrisPlay extends JPanel {
 
     private int SQUARE_SIZE = 20;
     private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
@@ -38,12 +38,7 @@ public class TetrisPlay extends JFrame implements KeyListener {
         setSquareSize(screenRatio); // 화면 크기 조절용
         setColorBlindnessMode(ColorBlindness); //색맹모드
         System.out.println(isColorBlindness);
-        setTitle("Tetris Test"); // 창 제목 설정
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // 창 닫힘 동작 설정
-        setLocationRelativeTo(null); // 창 위치를 화면 중앙에 배치
-        setResizable(false); // 창 크기 조절 불가능하게 설정
-        addKeyListener(this); // 키 이벤트 리스너 추가
 
         createNewShape(); // 새 도형 생성
     }
@@ -56,7 +51,6 @@ public class TetrisPlay extends JFrame implements KeyListener {
         currentCol = temp[1];
         shapeLen = currentShape[currentRotate].length;
         if(!canMoveTo(currentRow, currentCol)){
-            dispose();
             System.out.println("게임종료");
         }
     }
@@ -156,52 +150,54 @@ public class TetrisPlay extends JFrame implements KeyListener {
         offScreenGraphics.dispose();
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
+    public void goLeft() {
+        if (canMoveTo(currentRow, currentCol - 1)) {
+            currentCol--;
+            repaint(); // 화면 갱신
+        }
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
+    public void goRight() {
+        if (canMoveTo(currentRow, currentCol + 1)) {
+            currentCol++;
+            repaint(); // 화면 갱신
+        }
+    }
 
-        if (keyCode == KeyEvent.VK_LEFT) {// 왼쪽 화살표 키 처리
-            if (canMoveTo(currentRow, currentCol - 1)) {
-                currentCol--;
-            }
+    public void goDown() {
+        if (canMoveTo(currentRow + 1, currentCol)) {
+            currentRow++;
+        } else {
+            mergeShapeToBoard();
+            checkAndClearLines();
+            createNewShape();
         }
-        else if (keyCode == KeyEvent.VK_RIGHT) {// 오른쪽 화살표 키 처리
-            if (canMoveTo(currentRow, currentCol + 1)) {
-                currentCol++;
-            }
-        }
-        else if (keyCode == KeyEvent.VK_UP) {
-            if (canRotate()) {
-                currentRotate = (currentRotate + 1) % currentShape.length;
-            }
-        }
-        else if (keyCode == KeyEvent.VK_DOWN) {// 아래 화살표 키 처리
-            if (canMoveTo(currentRow + 1, currentCol)) {
-                currentRow++;
-            } else {
-                mergeShapeToBoard();
-                checkAndClearLines();
-                createNewShape();
-            }
-        }
-
         repaint(); // 화면 갱신
     }
 
-    //아래 메서드는 구현되지 않았지만 KeyListener 인터페이스를 구현하기 위해 필요함
-    @Override
-    public void keyReleased(KeyEvent e) {
+    public void doRotate() {
+        if (canRotate()) {
+            currentRotate = (currentRotate + 1) % currentShape.length;
+            repaint(); // 화면 갱신
+        }
     }
 
+    public void getScore(){
+        System.out.println(10000);
+    }
+
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            TetrisPlay tetris = new TetrisPlay(1, true);
-            tetris.setVisible(true);
-        });
+        JFrame frame = new JFrame("Simple Frame with Panel");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프로그램 종료 조건 설정
+        frame.setSize(1000, 1000); // 창 크기 설정
+        TetrisPlay tetris = new TetrisPlay(3,false);
+        frame.add(tetris);
+        frame.setVisible(true);
+        tetris.goDown();
+        tetris.goDown();
+        tetris.goRight();
+
     }
 
 }
