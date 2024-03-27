@@ -59,14 +59,6 @@ class GameStart extends JFrame {
         getContentPane().add(topPanel, BorderLayout.NORTH);
         getContentPane().add(splitPane, BorderLayout.CENTER);
     }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                GameStart menu = new GameStart();
-                menu.setVisible(true);
-            }
-        });
-    }
 }
 
 

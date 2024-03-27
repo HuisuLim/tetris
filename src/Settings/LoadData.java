@@ -134,11 +134,4 @@ public class LoadData extends JFrame implements ActionListener {
         return KeyEvent.VK_DOWN; // 기본적으로는 화살표 키를 반환하도록 설정
     }
 
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            LoadData mainScreen = new LoadData();
-            mainScreen.setVisible(true);
-        });
-    }
 }

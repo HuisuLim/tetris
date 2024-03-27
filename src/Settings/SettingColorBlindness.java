@@ -79,11 +79,4 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            SettingColorBlindness setting = new SettingColorBlindness();
-            setting.setVisible(true);
-        });
-    }
 }

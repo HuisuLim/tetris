@@ -14,6 +14,7 @@ public class SettingReset extends JFrame implements ActionListener {
     private static final String SETTINGS_FILE = "Settings/settings.properties";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String SCREEN_RATIO_KEY = "ScreenSize";
+    private static final String CONTROL_KEY = "MOVEMENT";
 
     private int setScreenRatio(){
         LoadData loadData = new LoadData();
@@ -28,7 +29,7 @@ public class SettingReset extends JFrame implements ActionListener {
         // 버튼 생성
         checkButton = new JButton("Reset");
         checkButton.addActionListener(this);
-        add(checkButton, BorderLayout.SOUTH); // 아래쪽에 배치
+        add(checkButton);
 
     }
 
@@ -37,8 +38,10 @@ public class SettingReset extends JFrame implements ActionListener {
         if (e.getSource() == checkButton) {
             int screenRatio = 2;
             boolean isColorBlindMode = false;
+            String keySetting = "ArrowKeys";
             saveSettings(SCREEN_RATIO_KEY, String.valueOf(screenRatio));
             saveSettings(COLOR_MODE_KEY, String.valueOf(isColorBlindMode));
+            saveSettings(CONTROL_KEY, String.valueOf(keySetting));
             dispose(); // 설정 화면 종료
             Setting test = new Setting();
             test.setVisible(true);
@@ -61,10 +64,4 @@ public class SettingReset extends JFrame implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            SettingReset setting = new SettingReset();
-            setting.setVisible(true);
-        });
-    }
 }

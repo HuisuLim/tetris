@@ -61,6 +61,7 @@ public class Setting extends JFrame {
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingReset settingReset = new SettingReset();
+                settingReset.setVisible(true);
                 settingReset.addWindowListener(new WindowAdapter() {
                     public void windowClosed(WindowEvent e) {
                         StartMenu.setScreenRatio();
