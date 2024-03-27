@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f46fd15-51a3-4bcb-a891-a193c8ee5b21" name="Changes" comment="" />
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/LoadData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/SettingColorBlindness.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/SettingScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/settings.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startScreen/GameStart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startScreen/ScoreBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startScreen/Setting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startScreen/StartMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startScreen/StartMenu_main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/Blocks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlayPanel.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,69 +30,75 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2dwdqvdQQADBCsMzUPZRm0t0iSq" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2eGykyftxfiK5mgj90xTiu5yfPO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.TetrisPlay.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/limhuisu/Documents/GitHub/tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Tetris.executor": "Run"
+    "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
+    "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="tetris" />
+    <configuration name="TetrisPlay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.TetrisPlay" />
+      <module name="test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetrisPlay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="tetris" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TetrisPlay" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f46fd15-51a3-4bcb-a891-a193c8ee5b21" name="Changes" comment="" />
-      <created>1710923269264</created>
+      <changelist id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="" />
+      <created>1711545358806</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710923269264</updated>
-      <workItem from="1710923271454" duration="93000" />
-      <workItem from="1710923369568" duration="646000" />
-      <workItem from="1710924188786" duration="271000" />
-      <workItem from="1711096216031" duration="820000" />
+      <updated>1711545358806</updated>
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <option name="closed" value="true" />
+      <created>1711546028343</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711546028343</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
