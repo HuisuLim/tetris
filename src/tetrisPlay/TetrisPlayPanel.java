@@ -1,5 +1,7 @@
 package tetrisPlay;
 
+import Settings.LoadData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -24,6 +26,8 @@ public class TetrisPlayPanel extends JPanel implements KeyListener {
     };
     int isColorBlindness = 0;
 
+    String keySetting = "WASD";
+
     public void setSquareSize(int screenRatio) {
         SQUARE_SIZE = 15 * screenRatio;
     }
@@ -32,9 +36,14 @@ public class TetrisPlayPanel extends JPanel implements KeyListener {
         isColorBlindness = checkColorBlindness ? 1 : 0;
     }
 
-    public TetrisPlayPanel(int screenRatio, boolean ColorBlindness) {
+    public void setKeySetting(String keySet){
+        keySetting = keySet;
+    }
+    public TetrisPlayPanel(int screenRatio, boolean ColorBlindness, String keySet) {
         setSquareSize(screenRatio);
         setColorBlindnessMode(ColorBlindness);
+        setKeySetting(keySet);
+        setLayout(new BorderLayout());
         setPreferredSize(new Dimension(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE));
         addKeyListener(this);
         setFocusable(true);
@@ -156,20 +165,21 @@ public class TetrisPlayPanel extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
+        LoadData key = new LoadData();
         ((JComponent) e.getSource()).requestFocus();
-        if (keyCode == KeyEvent.VK_LEFT) {// 왼쪽 화살표 키 처리
+        if (keyCode == key.getLeftKey()) {// 왼쪽 화살표 키 처리
             if (canMoveTo(currentRow, currentCol - 1)) {
                 currentCol--;
             }
-        } else if (keyCode == KeyEvent.VK_RIGHT) {// 오른쪽 화살표 키 처리
+        } else if (keyCode == key.getRightKey()) {// 오른쪽 화살표 키 처리
             if (canMoveTo(currentRow, currentCol + 1)) {
                 currentCol++;
             }
-        } else if (keyCode == KeyEvent.VK_UP) {
+        } else if (keyCode == key.getUpKey()) {
             if (canRotate()) {
                 currentRotate = (currentRotate + 1) % currentShape.length;
             }
-        } else if (keyCode == KeyEvent.VK_DOWN) {// 아래 화살표 키 처리
+        } else if (keyCode == key.getDownKey()) {// 아래 화살표 키 처리
             if (canMoveTo(currentRow + 1, currentCol)) {
                 currentRow++;
             } else {
@@ -186,20 +196,14 @@ public class TetrisPlayPanel extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("테트리스 게임");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(600, 800);
-            frame.setLocationRelativeTo(null);
-
-            TetrisPlayPanel tetris = new TetrisPlayPanel(1, true);
-            frame.add(tetris);
-
-            frame.setVisible(true);
-        });
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(() -> {
+                JFrame frame = new JFrame();
+                frame.setSize(1000, 1000);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                TetrisPlayPanel tetris = new TetrisPlayPanel(2, true, "ArrowKeys");
+                frame.add(tetris);
+                frame.setVisible(true);
+            });
+        }
     }
-}
-
-

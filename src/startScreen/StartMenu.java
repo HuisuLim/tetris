@@ -11,6 +11,8 @@ public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
     public static int screenRatio = 2; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
+    public static String keySetting="ArrowKeys";//키설정
+
     public static void setScreenRatio(){
         LoadData loadData = new LoadData();
         screenRatio = loadData.loadScreenSize();
@@ -20,8 +22,15 @@ public class StartMenu extends JFrame {
         LoadData loadData = new LoadData();
         isColorblindness = loadData.loadColorBlindMode();
     }
+    public static void setControlKey(){
+        LoadData loadData = new LoadData();
+        keySetting = loadData.loadKeySettings();
+    }
     public StartMenu() {
         setScreenRatio();//화면 비율 조절
+        setColorBlindness();
+        setControlKey();
+
         setSize(500*screenRatio, 400*screenRatio);
         setTitle("테트리스 게임");
         setVisible(true);

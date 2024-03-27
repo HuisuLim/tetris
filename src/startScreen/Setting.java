@@ -1,7 +1,6 @@
 package startScreen;
 
-import Settings.SettingColorBlindness;
-import Settings.SettingScreen;
+import Settings.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -41,7 +40,8 @@ public class Setting extends JFrame {
         button1.setBackground(Color.RED); // 첫 번째 버튼의 색상을 빨간색으로 설정
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "조작키 설정 기능 수행");
+                SettingKey setting = new SettingKey();
+                setting.setVisible(true);
             }
         });
 
@@ -60,7 +60,16 @@ public class Setting extends JFrame {
         button3.setBackground(Color.BLUE); // 세 번째 버튼의 색상을 파란색으로 설정
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "설정 초기화 기능 수행");
+                SettingReset settingReset = new SettingReset();
+                settingReset.addWindowListener(new WindowAdapter() {
+                    public void windowClosed(WindowEvent e) {
+                        StartMenu.setScreenRatio();
+                        // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
+                        // 새로운 비율로 설정 창 새로고침
+                        dispose();
+                        new Setting().setVisible(true);
+                    }
+                });
             }
         });
 

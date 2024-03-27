@@ -10,10 +10,14 @@ class GameStart extends JFrame {
     private int screenRatio = 2; //화면 비율 조절
     private boolean isColorBlindness = false;
 
+    private String keySetting = "ArrowKeys";
+
 
     public GameStart() {
         screenRatio = StartMenu.screenRatio;
         isColorBlindness = StartMenu.isColorblindness;
+        keySetting = StartMenu.keySetting;
+
         setTitle("테트리스 게임");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500*screenRatio, 400*screenRatio);
@@ -22,12 +26,16 @@ class GameStart extends JFrame {
         // 테트리스 게임 화면 패널
         JPanel gamePanel = new JPanel(new BorderLayout());
         JLabel gameLabel = new JLabel("테트리스 게임 화면", SwingConstants.CENTER);
-        gamePanel.add(gameLabel, BorderLayout.CENTER);
+        TetrisPlayPanel tetris = new TetrisPlayPanel(screenRatio, isColorBlindness, keySetting);
+        add(tetris);
+        setVisible(true);
+
 
         // 점수 화면 패널
         JPanel scorePanel = new JPanel(new BorderLayout());
         JLabel scoreLabel = new JLabel("현재 점수 및 다음 블록 송출", SwingConstants.CENTER);
         scorePanel.add(scoreLabel, BorderLayout.CENTER);
+        add(scorePanel);
 
         // JSplitPane 생성
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, gamePanel, scorePanel);
@@ -51,5 +59,14 @@ class GameStart extends JFrame {
         getContentPane().add(topPanel, BorderLayout.NORTH);
         getContentPane().add(splitPane, BorderLayout.CENTER);
     }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                GameStart menu = new GameStart();
+                menu.setVisible(true);
+            }
+        });
+    }
 }
+
 
