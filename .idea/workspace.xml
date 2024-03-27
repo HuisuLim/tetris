@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/LoadData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/SettingColorBlindness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/SettingScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/settings.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/GameStart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/ScoreBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/Setting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/StartMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/StartMenu_main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/Blocks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlayPanel.java" beforeDir="false" />
-    </list>
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,9 +23,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2eGykyftxfiK5mgj90xTiu5yfPO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,10 +37,10 @@
     "Application.TetrisPlay.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
-    "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java"
+    "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RunManager">
