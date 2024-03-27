@@ -31,7 +31,7 @@ class GameStart extends JFrame {
 
         // JSplitPane 생성
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, gamePanel, scorePanel);
-        splitPane.setDividerLocation(500); // 화면의 중앙에 분리선 설정
+        splitPane.setDividerLocation(250*screenRatio); // 화면의 중앙에 분리선 설정
         splitPane.setDividerSize(2); // 분리선의 크기 설정
         splitPane.setBackground(Color.BLACK); // 분리선의 색상 설정
 
