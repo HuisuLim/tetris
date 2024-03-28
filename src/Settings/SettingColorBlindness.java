@@ -12,7 +12,7 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
     private JRadioButton normalModeButton, colorBlindModeButton;
     private JButton checkButton;
 
-    private static final String SETTINGS_FILE = "Settings/settings.properties";
+    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
     private static final String COLOR_MODE_KEY = "ColorMode";
 
     private int setScreenRatio(){
