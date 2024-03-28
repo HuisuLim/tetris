@@ -96,7 +96,7 @@ public class StartMenu extends JFrame {
         scoreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new ScoreBoard();
+                nextFrame = new ScoreInput(); // ScoreBoard ->ScoreInput으로 이름 변경
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
