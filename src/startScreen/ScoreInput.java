@@ -31,7 +31,7 @@ public class ScoreInput extends JFrame {
 
         // JTable 생성 및 모델 설정
         scoreboard = new JTable(model);
-        scoreboard.getColumnModel().getColumn(0).setPreferredWidth(50); // 랭킹 열의 너비를 설정
+        scoreboard.getColumnModel().getColumn(0).setPreferredWidth(30); // 랭킹 열의 너비를 설정
         scoreboard.getColumnModel().getColumn(1).setPreferredWidth(150); // 이름 열의 너비를 설정
         scoreboard.getColumnModel().getColumn(2).setPreferredWidth(50); // Score 열의 너비를 설정
 
