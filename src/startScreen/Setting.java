@@ -129,6 +129,49 @@ public class Setting extends JFrame {
         // 방향키에 의한 포커스 이동 설정
         setupDirectionalFocusTraversal(backButton, button1, button2, button3, button4, button5);
 
+        // 버튼의 배경색과 인터랙션에 따른 색상 변경 설정
+        configureButton(backButton);
+        configureButton(button1);
+        configureButton(button2);
+        configureButton(button3);
+        configureButton(button4);
+        configureButton(button5);
+
+    }
+    private void configureButton(JButton button) {
+        Color defaultColor = Color.LIGHT_GRAY; // 기본 배경색 설정
+        Color focusColor = defaultColor.darker(); // 포커스나 마우스 오버 시 사용할 색상
+        button.setBackground(defaultColor); // 버튼의 배경색 설정
+        button.setFocusPainted(false);
+        button.setBorderPainted(true); // 버튼의 테두리를 보이도록 설정
+
+        // 마우스 리스너
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(focusColor); // 마우스가 올라갔을 때 색상을 진하게
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (!button.isFocusOwner()) { // 마우스가 내려갔을 때, 버튼이 포커스를 가지고 있지 않다면 원래 색상으로 복원
+                    button.setBackground(defaultColor);
+                }
+            }
+        });
+
+        // 포커스 리스너
+        button.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                button.setBackground(focusColor); // 포커스를 얻으면 색상을 진하게 변경
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                button.setBackground(defaultColor); // 포커스를 잃으면 원래 색상으로 복원
+            }
+        });
     }
 
     private void setupKeyBindings(JButton button) {
