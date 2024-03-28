@@ -47,6 +47,14 @@ public class SettingKey extends JFrame {
                 dispose(); // 설정 화면 종료
             }
         });
+        // "Save" 버튼에 대한 키 바인딩 설정
+        checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "Save");
+        checkButton.getActionMap().put("Save", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkButton.doClick();
+            }
+        });
     }
 
     private void loadSettings() {
