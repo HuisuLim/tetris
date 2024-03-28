@@ -114,37 +114,39 @@ public class StartMenu extends JFrame {
         setupDirectionalFocusTraversal(startButton, settingsButton, exitButton, scoreButton);
     }
     private void configureButton(JButton button) {
-        // 초기 색상 설정
-        Color defaultColor = new Color(200, 200, 200); // 예시 색상
-        Color focusedColor = new Color(225, 225, 225); // 포커스가 있을 때의 색상
-        button.setBackground(defaultColor); // 기본 배경색 설정
+        Color defaultColor = new Color(230, 230, 230); // 기본 배경색을 밝은 GRAY로 설정
+        Color focusedColor = new Color(210, 210, 210); // 포커스가 있을 때의 배경색
+        Color hoverColor = defaultColor.brighter(); // 마우스 오버 시 색상, 기본 색상보다 약간 밝게
+
+        button.setBackground(defaultColor); // 버튼의 기본 배경색 설정
         button.setFocusPainted(false);
-        button.setBorderPainted(false);
+        button.setBorderPainted(false); // 버튼의 테두리를 그리지 않음
 
         // 마우스 리스너
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                button.setBackground(button.getBackground().darker()); // 마우스가 올라갔을 때 색상을 진하게
+                button.setBackground(hoverColor); // 마우스가 버튼 위에 있을 때
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                if (!button.isFocusOwner()) { // 마우스가 내려갔을 때, 버튼이 포커스를 가지고 있지 않다면 원래 색상으로 복원
-                    button.setBackground(defaultColor);
+                if (!button.isFocusOwner()) {
+                    button.setBackground(defaultColor); // 마우스가 떠나면 기본 색상으로 복원
                 }
             }
         });
+
         // 포커스 리스너
         button.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                button.setBackground(focusedColor); // 포커스를 얻으면 색상을 밝게 변경
+                button.setBackground(focusedColor); // 포커스를 얻으면 색상을 변경
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                button.setBackground(defaultColor); // 포커스를 잃으면 원래 색상으로 복원
+                button.setBackground(defaultColor); // 포커스를 잃으면 기본 색상으로 복원
             }
         });
     }
