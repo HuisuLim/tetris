@@ -149,6 +149,10 @@ public class TetrisPlay extends JPanel{
         }
     }
 
+    public int[][] getNextBlock(){
+        return nextBlock.getCurrShape();
+    }
+
     @Override
     public void paint(Graphics g) {
         // 오프스크린 이미지 생성
@@ -167,6 +171,8 @@ public class TetrisPlay extends JPanel{
                 int color = colorHex[isColorBlindness][board[row][col]];
                 offScreenGraphics.setColor(new Color(color));
                 offScreenGraphics.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
+                offScreenGraphics.drawRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
             }
         }
 
@@ -178,6 +184,8 @@ public class TetrisPlay extends JPanel{
                     int color = colorHex[isColorBlindness][shape[row][col]];
                     offScreenGraphics.setColor(new Color(color));
                     offScreenGraphics.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
+                    offScreenGraphics.drawRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                 }
             }
         }

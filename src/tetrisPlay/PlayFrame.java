@@ -15,7 +15,6 @@ public class PlayFrame extends JFrame {
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
     private Timer timer;
-    private int score;
 
     public PlayFrame(int screenRatio) {
         //JFrame 설정.
@@ -32,10 +31,21 @@ public class PlayFrame extends JFrame {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    // 스페이스바를 누를 때 점수 업데이트
-                    score +=10;
-                    updateScore(score);
+                // switch 문을 사용해 키 코드에 따라 분기 처리
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP: // 위쪽 화살표 키
+                        gamePanel.rotate90();
+                        break;
+                    case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
+                        gamePanel.goDown();
+                        break;
+                    case KeyEvent.VK_LEFT: // 왼쪽 화살표 키
+                        gamePanel.goLeft();
+                        break;
+                    case KeyEvent.VK_RIGHT: // 오른쪽 화살표 키
+                        gamePanel.goRight();
+                        updateGame();
+                        break;
                 }
             }
         });
@@ -46,19 +56,19 @@ public class PlayFrame extends JFrame {
     }
 
     private void initUI() {
-        // 왼쪽 패널 (빨간색 배경)
-        JPanel redPanel = new JPanel();
-        redPanel.setBackground(Color.RED);
-        add(redPanel);
+        // 왼쪽 패널 : 테트리스 패널
+        gamePanel = new TetrisPlay(screenRatio, false);
+        add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)
         JPanel rightPanel = new JPanel(new GridLayout(4, 1));
+
         // ScorePanel 추가
         scorePanel = new ScorePanel(screenRatio, 0);
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
-        nextBlockPanel = new NextBlockPanel(screenRatio, new int[][]{{1, 1}, {1, 1}}); // 임시 배열
+        nextBlockPanel = new NextBlockPanel(screenRatio, gamePanel.getNextBlock());
         rightPanel.add(nextBlockPanel);
 
         // 나머지 두 개의 패널은 비워둡니다.
@@ -68,25 +78,26 @@ public class PlayFrame extends JFrame {
         add(rightPanel);
     }
 
-    private void updateScore(int newScore) {
-        scorePanel.updateScore(newScore);
-    }
     private void createTimer() {
         // ActionListener 정의: 점수를 업데이트하고 타이머의 지연 시간 조정
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                score +=1;
-                updateScore(score);
+                gamePanel.goDown();
+                updateGame();
                 // 타이머의 지연 시간 조정
-                timer.setDelay(1000 - score);
+                //timer.setDelay(50); //디버그용 딜레이
+                timer.setDelay(1000 - (int)(0.01 * gamePanel.getScore()));
             }
         };
 
         // 타이머 생성: 초기 지연 시간은 1000ms
         timer = new Timer(1000, actionListener);
     }
-
+    private void updateGame() {
+        scorePanel.updateScore(gamePanel.getScore());
+        nextBlockPanel.updateBlock(gamePanel.getNextBlock());
+    }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
