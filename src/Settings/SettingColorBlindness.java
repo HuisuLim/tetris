@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Properties;
 import startScreen.Setting;
+import java.awt.event.KeyEvent;
 
 public class SettingColorBlindness extends JFrame implements ActionListener {
     private JRadioButton normalModeButton, colorBlindModeButton;
@@ -52,6 +53,15 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
         add(checkButton, BorderLayout.SOUTH); // 아래쪽에 배치
 
         add(panel);
+
+        // "check" 버튼에 엔터키 액션 바인딩
+        checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
+        checkButton.getActionMap().put("checkPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkButton.doClick();
+            }
+        });
     }
 
     @Override
