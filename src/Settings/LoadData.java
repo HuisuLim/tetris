@@ -11,11 +11,11 @@ import startScreen.*;
 import java.awt.event.KeyEvent;
 
 
-// 그냥 구현해볼려고 만들어놓은거임
+// test
 public class LoadData extends JFrame implements ActionListener {
 
     private JButton startButton, settingButton;
-    private static final String SETTINGS_FILE = "Settings/settings.properties";
+    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";
