@@ -109,12 +109,19 @@ public class StartMenu extends JFrame {
                 System.exit(0);
             }
         });
+
+        // 방향키 및 엔터키 처리를 위한 설정
+        setupDirectionalFocusTraversal(startButton, settingsButton, exitButton, scoreButton);
     }
     private void configureButton(JButton button) {
         // 초기 색상 설정
-        button.setBackground(new Color(200, 200, 200)); // 예시 색상
+        Color defaultColor = new Color(200, 200, 200); // 예시 색상
+        Color focusedColor = new Color(225, 225, 225); // 포커스가 있을 때의 색상
+        button.setBackground(defaultColor); // 기본 배경색 설정
         button.setFocusPainted(false);
         button.setBorderPainted(false);
+
+        // 마우스 리스너
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -123,9 +130,53 @@ public class StartMenu extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(200, 200, 200)); // 마우스가 내려갔을 때 원래 색상으로 복원
+                if (!button.isFocusOwner()) { // 마우스가 내려갔을 때, 버튼이 포커스를 가지고 있지 않다면 원래 색상으로 복원
+                    button.setBackground(defaultColor);
+                }
+            }
+        });
+        // 포커스 리스너
+        button.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                button.setBackground(focusedColor); // 포커스를 얻으면 색상을 밝게 변경
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                button.setBackground(defaultColor); // 포커스를 잃으면 원래 색상으로 복원
             }
         });
     }
-}
 
+    private void setupDirectionalFocusTraversal(JButton... buttons) {
+        for (int i = 0; i < buttons.length; i++) {
+            final int index = i;
+            buttons[i].addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP:
+                        case KeyEvent.VK_LEFT:
+                            // 위쪽 또는 왼쪽 방향키
+                            int prevIndex = (index - 1 + buttons.length) % buttons.length;
+                            buttons[prevIndex].requestFocus();
+                            break;
+                        case KeyEvent.VK_DOWN:
+                        case KeyEvent.VK_RIGHT:
+                            // 아래쪽 또는 오른쪽 방향키
+                            int nextIndex = (index + 1) % buttons.length;
+                            buttons[nextIndex].requestFocus();
+                            break;
+                        case KeyEvent.VK_ENTER:
+                            // 엔터키
+                            buttons[index].doClick();
+                            break;
+                    }
+                }
+            });
+        }
+    }
+
+
+}
