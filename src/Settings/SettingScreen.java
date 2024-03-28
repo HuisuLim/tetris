@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
 import startScreen.Setting;
@@ -61,6 +62,15 @@ public class SettingScreen extends JFrame implements ActionListener {
         add(checkButton, BorderLayout.SOUTH); // 아래쪽에 배치
 
         add(panel);
+
+        // "check" 버튼에 대한 키 바인딩 설정
+        checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
+        checkButton.getActionMap().put("checkPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkButton.doClick();
+            }
+        });
     }
 
     @Override
