@@ -50,12 +50,28 @@ public class ScoreInput extends JFrame {
 
         // 텍스트 파일로부터 데이터를 불러와 스코어보드에 추가
         addDataFromFile("scoreboard.txt");
+
+        // 이름을 입력하는 다이얼로그 띄우기
+        String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
+        if (name != null && !name.isEmpty()) {
+            addData(name, 0); // 테이블에 이름과 초기 점수 0 추가
+            saveNameToFile(name, 0, "scoreboard.txt"); // 이름과 점수를 파일에 저장
+        } else {
+            System.exit(0); // 이름이 없으면 프로그램 종료
+        }
     }
 
     // 데이터를 테이블에 추가하는 메서드
     private void addData(String name, int score) {
-        int rank = model.getRowCount() + 1; // 순위 계산
+        // 테이블의 마지막 행의 순위를 가져와서 그보다 1 높은 순위를 계산
+        int rank = 1;
+        if (model.getRowCount() > 0) {
+            rank = (int) model.getValueAt(model.getRowCount() - 1, 0) + 1;
+        }
+
+        // 테이블에 새로운 행 추가
         model.addRow(new Object[]{rank, name, score});
+        System.out.println("Added to model: " + rank + ", " + name + ", " + score); // 모델에 데이터가 추가되었는지 확인하기 위해 추가
     }
 
     // 텍스트 파일로부터 데이터를 불러와 스코어보드에 추가하는 메서드
@@ -73,8 +89,7 @@ public class ScoreInput extends JFrame {
                     String name = parts[0].trim();
                     int score = Integer.parseInt(parts[1].trim());
                     data[index++] = new Object[]{name, score};
-                } else {
-                    System.out.println("Invalid data format: " + Arrays.toString(parts));
+
                 }
             }
 
@@ -88,18 +103,19 @@ public class ScoreInput extends JFrame {
         }
     }
 
+    // 이름과 점수를 파일에 저장하는 메서드
+    private void saveNameToFile(String name, int score, String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(name + "," + score);
+            writer.newLine(); // 다음 데이터를 위해 개행 추가
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             ScoreInput scoreboard = new ScoreInput();
-
-            // 이름을 입력하는 다이얼로그 띄우기
-            String name = JOptionPane.showInputDialog(scoreboard, "Enter your name:");
-            if (name != null && !name.isEmpty()) {
-                scoreboard.addData(name, 0); // 테이블에 이름과 초기 점수 0 추가
-            } else {
-                System.exit(0); // 이름이 없으면 프로그램 종료
-            }
-
             scoreboard.setVisible(true);
         });
     }
