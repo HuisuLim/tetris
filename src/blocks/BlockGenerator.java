@@ -3,9 +3,8 @@ package blocks;
 import java.util.Random;
 
 public class BlockGenerator {
-    private Random random = new Random();
-
     public Block getRandomBlock() {
+        Random random = new Random();
         int blockType = random.nextInt(7) + 1; // 1부터 7까지의 랜덤 수 생성
         return switch (blockType) {
             case 1 -> new IBlock(blockType);
