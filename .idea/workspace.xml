@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="Blocks 클래스 분할">
-      <change beforePath="$PROJECT_DIR$/src/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/BlockGenerator.java" afterDir="false" />
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="블럭 제너레이터 수정">
+      <change afterPath="$PROJECT_DIR$/src/tetrisPlay/DynamicTimerExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tetrisPlay/NextBlockPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tetrisPlay/PlayFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tetrisPlay/ScorePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tetrisPlay/SplitFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +51,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.BlockGenerator.executor": "Run",
+    "Application.DynamicTimerExample.executor": "Run",
+    "Application.NextBlockPanel.executor": "Run",
+    "Application.PlayFrame.executor": "Run",
+    "Application.ScorePanel.executor": "Run",
+    "Application.SplitFrame.executor": "Run",
+    "Application.StartMenu_main.executor": "Run",
+    "Application.TetrisGame.executor": "Run",
     "Application.TetrisPlay.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "blocks",
+    "git-widget-placeholder": "playScreen",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
     "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java",
@@ -57,13 +71,13 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.BlockGenerator">
-    <configuration name="BlockGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="blocks.BlockGenerator" />
+  <component name="RunManager" selected="Application.PlayFrame">
+    <configuration name="DynamicTimerExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.DynamicTimerExample" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="blocks.*" />
+          <option name="PATTERN" value="tetrisPlay.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,8 +85,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TetrisPlay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tetrisPlay.TetrisPlay" />
+    <configuration name="NextBlockPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.NextBlockPanel" />
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetrisPlay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.PlayFrame" />
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetrisPlay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScorePanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.ScorePanel" />
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tetrisPlay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SplitFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tetrisPlay.SplitFrame" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -86,8 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BlockGenerator" />
-        <item itemvalue="Application.TetrisPlay" />
+        <item itemvalue="Application.PlayFrame" />
+        <item itemvalue="Application.DynamicTimerExample" />
+        <item itemvalue="Application.ScorePanel" />
+        <item itemvalue="Application.NextBlockPanel" />
+        <item itemvalue="Application.SplitFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711607044653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="블럭 제너레이터 수정">
+      <option name="closed" value="true" />
+      <created>1711607104614</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711607104614</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -155,6 +219,7 @@
     <MESSAGE value="GitTest" />
     <MESSAGE value="프로젝트이름 test -&gt; tetris로" />
     <MESSAGE value="Blocks 클래스 분할" />
-    <option name="LAST_COMMIT_MESSAGE" value="Blocks 클래스 분할" />
+    <MESSAGE value="블럭 제너레이터 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="블럭 제너레이터 수정" />
   </component>
 </project>

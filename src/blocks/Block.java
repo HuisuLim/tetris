@@ -30,7 +30,7 @@ public abstract class Block {
     }
 
     public int[][] getRotateShape() {
-        return copy2DArr((shape[currRotate%maxRotate]));
+        return copy2DArr((shape[(currRotate+1)%maxRotate]));
     }
 
 
@@ -41,6 +41,7 @@ public abstract class Block {
     public int getCurrRotate() {
         return currRotate;
     }
+
 
     public int[][] copy2DArr(int[][] arr) {
         if (arr == null) return null; // 입력 배열이 null인 경우, null 반환
