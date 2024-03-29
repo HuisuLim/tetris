@@ -14,7 +14,7 @@ public class PlayFrame extends JFrame {
     private NextBlockPanel nextBlockPanel;
     private Timer timer;
     private boolean isGameOver = false;
-    private boolean pause = false;
+    private boolean isPause = false;
 
     public PlayFrame(int screenRatio) {
         //JFrame 설정.
@@ -48,6 +48,8 @@ public class PlayFrame extends JFrame {
                         case KeyEvent.VK_RIGHT: // 오른쪽 화살표 키
                             gamePanel.goRight();
                             break;
+                        case KeyEvent.VK_ESCAPE: // esc키
+                            isPause = !isPause;
                     }
                 }
             }
