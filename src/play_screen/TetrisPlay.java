@@ -25,6 +25,7 @@ public class TetrisPlay extends JPanel{
     };//색상들을 16진수로 저장. 후에 new Color(colorHex[isColorBlindness][i]) 형식으로 이용
     private int isColorBlindness = 0;
     private int score = 0;
+    private boolean isGameOver = false;
 
     // 화면 크기 조절을 위해 SquareSize의 조절
     public void setSquareSize(int screenRatio) {
@@ -45,8 +46,8 @@ public class TetrisPlay extends JPanel{
         createNewShape(); // 새 도형 생성
     }
 
-    public void gameOver() {
-
+    public boolean getIsGameOver() {
+        return isGameOver;
     }
 
     private void createNewShape() {
@@ -58,7 +59,7 @@ public class TetrisPlay extends JPanel{
         currentRow = temp[0];
         currentCol = temp[1];
         if(!canMoveTo(currentRow, currentCol, currBlock.getCurrShape())){
-            gameOver();
+            isGameOver = true;
             System.out.println("게임종료");
         }
     }

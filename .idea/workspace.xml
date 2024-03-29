@@ -4,32 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="Blocks 클래스 분할">
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="패키지이름 리팩토링">
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/PausePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/LoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/LoadData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/BlockGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/IBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/JBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/LBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/OBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/SBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/TBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/blocks/ZBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startScreen/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startScreen/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startScreen/StartMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Temp/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Temp/Blocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/DynamicTimerExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Temp/DynamicTimerExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/NextBlockPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/NextBlockPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/ScorePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/SplitFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Temp/SplitFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayScreen/TetrisPlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetrisPlay/TetrisPlayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Temp/TetrisPlayPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/TetrisPlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/TetrisPlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +53,7 @@
     "Application.TetrisPlay.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
@@ -83,13 +64,13 @@
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.StartMenu_main">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BlockGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PlayScreen.blocks.BlockGenerator" />
+      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.BlockGenerator" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="PlayScreen.blocks.*" />
+          <option name="PATTERN" value="play_screen.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,11 +86,11 @@
       </method>
     </configuration>
     <configuration name="StartMenu_main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="startScreen.StartMenu_main" />
+      <option name="MAIN_CLASS_NAME" value="startscreen.StartMenu_main" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="startScreen.*" />
+          <option name="PATTERN" value="startscreen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,11 +99,11 @@
       </method>
     </configuration>
     <configuration name="TetrisPlay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PlayScreen.TetrisPlay" />
+      <option name="MAIN_CLASS_NAME" value="play_screen.TetrisPlay" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Temp.*" />
+          <option name="PATTERN" value="temp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,8 +113,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.StartMenu_main" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.StartMenu_main" />
         <item itemvalue="Application.BlockGenerator" />
         <item itemvalue="Application.TetrisPlay" />
       </list>
@@ -195,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711607044653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="패키지이름 리팩토링">
+      <option name="closed" value="true" />
+      <created>1711641292009</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711641292009</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -203,6 +192,7 @@
     <MESSAGE value="GitTest" />
     <MESSAGE value="프로젝트이름 test -&gt; tetris로" />
     <MESSAGE value="Blocks 클래스 분할" />
-    <option name="LAST_COMMIT_MESSAGE" value="Blocks 클래스 분할" />
+    <MESSAGE value="패키지이름 리팩토링" />
+    <option name="LAST_COMMIT_MESSAGE" value="패키지이름 리팩토링" />
   </component>
 </project>

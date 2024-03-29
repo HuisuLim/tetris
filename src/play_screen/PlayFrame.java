@@ -13,6 +13,8 @@ public class PlayFrame extends JFrame {
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
     private Timer timer;
+    private boolean isGameOver = false;
+    private boolean pause = false;
 
     public PlayFrame(int screenRatio) {
         //JFrame 설정.
@@ -30,20 +32,23 @@ public class PlayFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 // switch 문을 사용해 키 코드에 따라 분기 처리
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_UP: // 위쪽 화살표 키
-                        gamePanel.rotate90();
-                        break;
-                    case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
-                        gamePanel.goDown();
-                        break;
-                    case KeyEvent.VK_LEFT: // 왼쪽 화살표 키
-                        gamePanel.goLeft();
-                        break;
-                    case KeyEvent.VK_RIGHT: // 오른쪽 화살표 키
-                        gamePanel.goRight();
-                        updateGame();
-                        break;
+                if(!gamePanel.getIsGameOver())
+                {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP: // 위쪽 화살표 키
+                            gamePanel.rotate90();
+                            break;
+                        case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
+                            gamePanel.goDown();
+                            updateGame();
+                            break;
+                        case KeyEvent.VK_LEFT: // 왼쪽 화살표 키
+                            gamePanel.goLeft();
+                            break;
+                        case KeyEvent.VK_RIGHT: // 오른쪽 화살표 키
+                            gamePanel.goRight();
+                            break;
+                    }
                 }
             }
         });
@@ -81,11 +86,16 @@ public class PlayFrame extends JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gamePanel.goDown();
-                updateGame();
-                // 타이머의 지연 시간 조정
-                //timer.setDelay(50); //디버그용 딜레이
-                timer.setDelay(1000 - (int)(0.01 * gamePanel.getScore()));
+                if(isGameOver) {
+                    timer.stop();
+                }
+                else {
+                    gamePanel.goDown();
+                    updateGame();
+                    // 타이머의 지연 시간 조정
+                    //timer.setDelay(50); //디버그용 딜레이
+                    timer.setDelay(1000 - (int)(0.01 * gamePanel.getScore()));
+                }
             }
         };
 
@@ -93,6 +103,7 @@ public class PlayFrame extends JFrame {
         timer = new Timer(1000, actionListener);
     }
     private void updateGame() {
+        isGameOver = gamePanel.getIsGameOver();
         scorePanel.updateScore(gamePanel.getScore());
         nextBlockPanel.updateBlock(gamePanel.getNextBlock());
     }
