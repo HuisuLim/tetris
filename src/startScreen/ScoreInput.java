@@ -1,9 +1,12 @@
+
 package startScreen;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -25,26 +28,28 @@ public class ScoreInput extends JFrame {
                 return false;
             }
         };
-        model.addColumn("Rank");
-        model.addColumn("Name");
-        model.addColumn("Score");
+        //랭킹, 이름, 점수 컬럼 추가
 
-        // JTable 생성 및 모델 설정
+        String[] columnNames = {"Rank", "Name", "Score"};
+        for (String columnName : columnNames) {
+            model.addColumn(columnName);
+        }
+
+        // JTable 생성 및 각 컬럼 너비 설정
         scoreboard = new JTable(model);
-        scoreboard.getColumnModel().getColumn(0).setPreferredWidth(30); // 랭킹 열의 너비를 설정
+        scoreboard.getColumnModel().getColumn(0).setPreferredWidth(10); // 랭킹 열의 너비를 설정
         scoreboard.getColumnModel().getColumn(1).setPreferredWidth(150); // 이름 열의 너비를 설정
         scoreboard.getColumnModel().getColumn(2).setPreferredWidth(50); // Score 열의 너비를 설정
 
         // 가운데 정렬을 위한 셀 렌더러 설정
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // 셀 내용을 가운데 정렬로 설정
-        scoreboard.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // 랭킹 열 셀 렌더러 설정
-        scoreboard.getColumnModel().getColumn(1).setCellRenderer(centerRenderer); // 이름 열 셀 렌더러 설정
-        scoreboard.getColumnModel().getColumn(2).setCellRenderer(centerRenderer); // Score 열 셀 렌더러 설정
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            scoreboard.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
+        //스코어보드를 패널에 넣고, 프레임 가운데 배치
         JScrollPane scrollPane = new JScrollPane(scoreboard);
-
-        // 레이아웃 설정
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
 
@@ -53,8 +58,12 @@ public class ScoreInput extends JFrame {
 
         // 이름을 입력하는 다이얼로그 띄우기
         String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
+
         if (name != null && !name.isEmpty()) {
             addData(name, 0); // 테이블에 이름과 초기 점수 0 추가
+            // 방금 입력한 이름과 점수 강조 표시
+            highlightNameAndScore(name,0);
+
             saveNameToFile(name, 0, "scoreboard.txt"); // 이름과 점수를 파일에 저장
         } else {
             System.exit(0); // 이름이 없으면 프로그램 종료
@@ -63,15 +72,13 @@ public class ScoreInput extends JFrame {
 
     // 데이터를 테이블에 추가하는 메서드
     private void addData(String name, int score) {
+        int rank = 1; //테이블 데이터 없을 때는 1등으로 들어감
         // 테이블의 마지막 행의 순위를 가져와서 그보다 1 높은 순위를 계산
-        int rank = 1;
         if (model.getRowCount() > 0) {
             rank = (int) model.getValueAt(model.getRowCount() - 1, 0) + 1;
         }
-
         // 테이블에 새로운 행 추가
         model.addRow(new Object[]{rank, name, score});
-        System.out.println("Added to model: " + rank + ", " + name + ", " + score); // 모델에 데이터가 추가되었는지 확인하기 위해 추가
     }
 
     // 텍스트 파일로부터 데이터를 불러와 스코어보드에 추가하는 메서드
@@ -110,6 +117,33 @@ public class ScoreInput extends JFrame {
             writer.newLine(); // 다음 데이터를 위해 개행 추가
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // 이름과 점수를 파란색으로 강조하는 메서드
+    private void highlightNameAndScore(String name, int score) {
+        //500밀리초(0.5초)마다 텍스트 깜빡거림
+        Timer timer = new Timer(500, new ActionListener() {
+            boolean flag = false;
+            //flag true일 때는 파란색, false일때는 원래 색깔
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (flag) {
+                    scoreboard.setSelectionForeground(Color.BLUE);
+                } else {
+                    scoreboard.setSelectionForeground(scoreboard.getForeground());
+                }
+                flag = !flag;
+            }
+        });
+        timer.setRepeats(true);
+        timer.start();
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (model.getValueAt(i, 1).equals(name) && (int) model.getValueAt(i, 2) == score) {
+                scoreboard.setRowSelectionInterval(i, i);
+                break;
+            }
         }
     }
 
