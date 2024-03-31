@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class PlayFrame extends JFrame {
     private int screenRatio;
+    private boolean isColorBlindness;
     private TetrisPanel gamePanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
@@ -17,9 +18,10 @@ public class PlayFrame extends JFrame {
     private boolean isGameOver = false;
     private boolean isPause = false;
 
-    public PlayFrame(int screenRatio) {
+    public PlayFrame(int screenRatio, boolean isColorBlindness) {
         //JFrame 설정.
         this.screenRatio = screenRatio;
+        this.isColorBlindness = isColorBlindness;
         setTitle("Play Frame");
         setSize(screenRatio * 20 * 20, screenRatio * 20 * 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -97,7 +99,7 @@ public class PlayFrame extends JFrame {
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        gamePanel = new TetrisPanel(screenRatio, false);
+        gamePanel = new TetrisPanel(screenRatio, isColorBlindness);
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)
@@ -108,7 +110,7 @@ public class PlayFrame extends JFrame {
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
-        nextBlockPanel = new NextBlockPanel(screenRatio, gamePanel.getNextBlock());
+        nextBlockPanel = new NextBlockPanel(screenRatio, gamePanel.getNextBlock(), isColorBlindness);
         rightPanel.add(nextBlockPanel);
 
         // 나머지 두 개의 패널은 비워둡니다.
@@ -154,7 +156,7 @@ public class PlayFrame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PlayFrame(2).setVisible(true);
+                new PlayFrame(2, true).setVisible(true);
             }
         });
     }

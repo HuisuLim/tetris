@@ -11,12 +11,19 @@ public class NextBlockPanel extends JPanel {
             {0xffffff,0x00ffff,0x0000ff,0xffa500,0xffff00,0x00ff00,0x800080,0xff0000},//TTC World Standard 색상표 (참고 : https://ko.wikipedia.org/wiki/%ED%85%8C%ED%8A%B8%EB%A6%AC%EC%8A%A4)
             {0xffffff,0xe1a102,0x56b4e8,0x009f73,0xf0e442,0x0072b1,0xd45d00,0xcc79a6} //색약용 색상표 (참고 : https://nuli.navercorp.com/community/article/1132656)
     };//색상들을 16진수로 저장. 후에 new Color(colorHex[isColorBlindness][i]) 형식으로 이용
+    private boolean ColorBlindness;
     private int isColorBlindness = 0;
 
+    public void setColorBlindnessMode(boolean checkColorBlindness) {
+        isColorBlindness = checkColorBlindness ? 1 : 0;
+    }
+
     // Constructor
-    public NextBlockPanel(int screenRatio, int[][] arr) {
+    public NextBlockPanel(int screenRatio, int[][] arr, boolean ColorBlindness) {
         this.screenRatio = screenRatio;
         this.arr = arr;
+        this.ColorBlindness = ColorBlindness;
+        setColorBlindnessMode(ColorBlindness);
         this.setPreferredSize(new java.awt.Dimension(10 * 20 * screenRatio, 5 * 20 * screenRatio));
     }
 
@@ -56,7 +63,7 @@ public class NextBlockPanel extends JPanel {
                 {1, 1}
         };
 
-        NextBlockPanel panel = new NextBlockPanel(2, testArr);
+        NextBlockPanel panel = new NextBlockPanel(2, testArr, true);
         frame.add(panel);
         frame.pack(); // 패널의 선호 사이즈에 맞게 프레임 크기 조정
         frame.setVisible(true); // 프레임 보이게 설정
