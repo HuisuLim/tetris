@@ -3,6 +3,7 @@ package settings;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
 import startscreen.Setting;
@@ -30,6 +31,13 @@ public class SettingReset extends JFrame implements ActionListener {
         checkButton.addActionListener(this);
         add(checkButton);
 
+        checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
+        checkButton.getActionMap().put("checkPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkButton.doClick();
+            }
+        });
     }
 
     @Override
@@ -42,8 +50,6 @@ public class SettingReset extends JFrame implements ActionListener {
             saveSettings(COLOR_MODE_KEY, String.valueOf(isColorBlindMode));
             saveSettings(CONTROL_KEY, String.valueOf(keySetting));
             dispose(); // 설정 화면 종료
-            Setting test = new Setting();
-            test.setVisible(true);
         }
     }
 

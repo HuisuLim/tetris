@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
@@ -20,9 +21,24 @@ public class SettingScreen extends JFrame implements ActionListener {
     private static final String SCREEN_RATIO_KEY = "ScreenSize";
 
 
-    private int setScreenRatio(){
+    private void setRadioButton(){
         LoadData loadData = new LoadData();
-        return loadData.loadScreenSize();
+        int screenSize = loadData.loadScreenSize();
+        switch (screenSize) {
+            case SMALL_SIZE:
+                smallButton.setSelected(true);
+                break;
+            case MEDIUM_SIZE:
+                mediumButton.setSelected(true);
+                break;
+            case LARGE_SIZE:
+                largeButton.setSelected(true);
+                break;
+            default:
+                // Default to medium size if no valid setting found
+                mediumButton.setSelected(true);
+                break;
+        }
     }
     public SettingScreen() {
         setTitle("Screen Setting");
@@ -55,6 +71,7 @@ public class SettingScreen extends JFrame implements ActionListener {
         buttonGroup.add(smallButton);
         buttonGroup.add(mediumButton);
         buttonGroup.add(largeButton);
+        setRadioButton();
 
         // 버튼 생성
         checkButton = new JButton("check");
@@ -62,6 +79,39 @@ public class SettingScreen extends JFrame implements ActionListener {
         add(checkButton, BorderLayout.SOUTH); // 아래쪽에 배치
 
         add(panel);
+        panel.setFocusable(true);
+        panel.requestFocusInWindow();
+        panel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                LoadData key = new LoadData();
+                if (keyCode == key.getLeftKey() || keyCode == key.getRightKey()) {
+                    if (smallButton.isSelected()) {
+                        if (keyCode == key.getRightKey()) {
+                            mediumButton.setSelected(true);
+                        }
+                        else if (keyCode == key.getLeftKey()) {
+                            largeButton.setSelected(true);
+                        }
+                    } else if (mediumButton.isSelected()) {
+                        if (keyCode == key.getLeftKey()) {
+                            smallButton.setSelected(true);
+                        }
+                        else if (keyCode == key.getRightKey()) {
+                            largeButton.setSelected(true);
+                        }
+                    } else if (largeButton.isSelected()) {
+                        if (keyCode == key.getLeftKey()) {
+                            mediumButton.setSelected(true);
+                        }
+                        else if (keyCode == key.getRightKey()) {
+                            smallButton.setSelected(true);
+                        }
+                    }
+                }
+            }
+        });
 
         // "check" 버튼에 대한 키 바인딩 설정
         checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
@@ -88,7 +138,7 @@ public class SettingScreen extends JFrame implements ActionListener {
             }
             saveSettings(SCREEN_RATIO_KEY, String.valueOf(screenRatio)); // 동일한 설정 파일 사용
             dispose(); // 설정 화면 종료
-            Setting test = new Setting();
+
         }
     }
 
@@ -108,5 +158,7 @@ public class SettingScreen extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
+
+
 
 }
