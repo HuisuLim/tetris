@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class TetrisPlay extends JPanel{
+public class TetrisPanel extends JPanel{
 
     private int SQUARE_SIZE;
     private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
@@ -36,7 +36,7 @@ public class TetrisPlay extends JPanel{
         isColorBlindness = checkColorBlindness ? 1 : 0;
     }
 
-    public TetrisPlay(int screenRatio, boolean ColorBlindness) {
+    public TetrisPanel(int screenRatio, boolean ColorBlindness) {
         setSquareSize(screenRatio); // 화면 크기 조절용
         setColorBlindnessMode(ColorBlindness); //색맹모드
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정

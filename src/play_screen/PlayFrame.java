@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class PlayFrame extends JFrame {
     private int screenRatio;
-    private TetrisPlay gamePanel;
+    private TetrisPanel gamePanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
     private PausePanel pausePanel;
@@ -97,7 +97,7 @@ public class PlayFrame extends JFrame {
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        gamePanel = new TetrisPlay(screenRatio, false);
+        gamePanel = new TetrisPanel(screenRatio, false);
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)
