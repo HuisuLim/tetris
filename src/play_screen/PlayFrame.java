@@ -12,6 +12,7 @@ public class PlayFrame extends JFrame {
     private TetrisPlay gamePanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
+    private PausePanel pausePanel;
     private Timer timer;
     private boolean isGameOver = false;
     private boolean isPause = false;
@@ -22,7 +23,7 @@ public class PlayFrame extends JFrame {
         setTitle("Play Frame");
         setSize(screenRatio * 20 * 20, screenRatio * 20 * 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
+
 
         initUI();
         createTimer();
@@ -32,9 +33,39 @@ public class PlayFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 // switch 문을 사용해 키 코드에 따라 분기 처리
-                if(!gamePanel.getIsGameOver())
+                if(isGameOver) {
+
+                }
+                else if(isPause) {
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_UP: // 위쪽 화살표 키
+                            pausePanel.changePoint();
+                            break;
+                        case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
+                            pausePanel.changePoint();
+                            updateGame();
+                            break;
+                        case KeyEvent.VK_ENTER:
+                            if(pausePanel.getCurrPoint() == 0) {
+                                isPause = !isPause;
+                                pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                                timer.start();
+                                break;
+                            }
+                            else if(pausePanel.getCurrPoint() == 1) {
+                                //게임종료?
+                            }
+                        case KeyEvent.VK_ESCAPE: // esc키
+                            isPause = !isPause;
+                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                            timer.start();
+                            break;
+                    }
+                }
+                else
                 {
                     switch (e.getKeyCode()) {
+
                         case KeyEvent.VK_UP: // 위쪽 화살표 키
                             gamePanel.rotate90();
                             break;
@@ -50,6 +81,9 @@ public class PlayFrame extends JFrame {
                             break;
                         case KeyEvent.VK_ESCAPE: // esc키
                             isPause = !isPause;
+                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                            timer.stop();
+                            break;
                     }
                 }
             }
@@ -61,6 +95,7 @@ public class PlayFrame extends JFrame {
     }
 
     private void initUI() {
+        setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
         gamePanel = new TetrisPlay(screenRatio, false);
         add(gamePanel);
@@ -81,6 +116,12 @@ public class PlayFrame extends JFrame {
         rightPanel.add(new JPanel());
 
         add(rightPanel);
+        pausePanel = new PausePanel(screenRatio); // PausePanel 인스턴스 생성
+        pausePanel.setSize(200, 100); // 적당한 크기 설정
+        pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
+        pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
+
+        getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
     }
 
     private void createTimer() {

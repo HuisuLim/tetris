@@ -2,47 +2,70 @@ package play_screen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class PausePanel extends JPanel {
-    public PausePanel() {
-        setLayout(new GridLayout(2, 1)); // 버튼 2개를 위한 그리드 레이아웃
-        setPreferredSize(new Dimension(200, 100));
-        JButton btnResume = new JButton("Resume");
-        JButton btnClose = new JButton("Close");
+    private int screenRatio;
+    private int currPoint = 0; // 현재 포인터 위치 (0: RESUME, 1: EXIT)
+    private JLabel resumeLabel;
+    private JLabel exitLabel;
 
-        // 버튼 이벤트 리스너 추가
-        btnResume.addActionListener(e -> setVisible(false)); // Resume 버튼 클릭 시 패널 숨김
-        btnClose.addActionListener(e -> System.exit(0)); // Close 버튼 클릭 시 프로그램 종료
+    public PausePanel(int screenRatio) {
+        this.screenRatio = screenRatio;
+        setSize(150 * screenRatio, 100 * screenRatio);
+        setBackground(Color.BLACK);
+        setLayout(new GridLayout(3, 1));
 
-        add(btnResume);
-        add(btnClose);
+        // PAUSE 라벨 추가
+        JLabel pauseLabel = new JLabel("PAUSE", SwingConstants.CENTER);
+        pauseLabel.setForeground(Color.WHITE);
+        pauseLabel.setFont(new Font("Serif", Font.BOLD, 12 * screenRatio));
+        add(pauseLabel);
 
-        // 키보드 포커스 설정
-        setFocusable(true);
-        requestFocusInWindow();
-        btnResume.setFocusable(true);
-        btnClose.setFocusable(true);
+        // 파란색 박스 패널 추가
+        JPanel blueBoxPanel = new JPanel();
+        blueBoxPanel.setLayout(new GridLayout(2, 1));
+        blueBoxPanel.setBackground(Color.BLUE);
 
-        // 키보드 리스너로 버튼 간 포커스 이동 및 선택 처리
-        addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    if (btnResume.hasFocus()) {
-                        btnClose.requestFocus();
-                    }
-                } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    if (btnClose.hasFocus()) {
-                        btnResume.requestFocus();
-                    }
-                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (btnResume.hasFocus()) {
-                        setVisible(false);
-                    } else if (btnClose.hasFocus()) {
-                        System.exit(0);
-                    }
-                }
-            }
-        });
+        // RESUME 라벨 추가
+        resumeLabel = new JLabel("RESUME", SwingConstants.CENTER);
+        resumeLabel.setForeground(Color.WHITE);
+        resumeLabel.setFont(new Font("Serif", Font.BOLD, 10 * screenRatio));
+        blueBoxPanel.add(resumeLabel);
+
+        // EXIT 라벨 추가
+        exitLabel = new JLabel("EXIT", SwingConstants.CENTER);
+        exitLabel.setForeground(Color.WHITE);
+        exitLabel.setFont(new Font("Serif", Font.BOLD, 10 * screenRatio));
+        blueBoxPanel.add(exitLabel);
+
+        add(blueBoxPanel);
+
+        updateLabels(); // 레이블 업데이트 메소드 호출
     }
+
+    private void updateLabels() {
+        if (currPoint == 0) {
+            resumeLabel.setText("RESUME←");
+            resumeLabel.setForeground(Color.RED);
+            exitLabel.setText("EXIT");
+            exitLabel.setForeground(Color.WHITE);
+        } else {
+            resumeLabel.setText("RESUME");
+            resumeLabel.setForeground(Color.WHITE);
+            exitLabel.setText("EXIT←");
+            exitLabel.setForeground(Color.RED);
+        }
+    }
+
+    public void changePoint() {
+        currPoint = (currPoint == 0) ? 1 : 0; // currPoint 값 토글
+        updateLabels(); // 레이블 상태 업데이트
+    }
+
+    public int getCurrPoint() {
+        return currPoint;
+    }
+
 }
