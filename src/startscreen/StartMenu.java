@@ -8,6 +8,7 @@ import settings.LoadData;
 import play_screen.PlayFrame;
 
 
+
 public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
     public static int screenRatio = 2; //화면 비율 조절

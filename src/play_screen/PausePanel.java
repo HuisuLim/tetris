@@ -1,7 +1,11 @@
 package play_screen;
 
+import startscreen.StartMenu;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -10,12 +14,21 @@ public class PausePanel extends JPanel {
     private int currPoint = 0; // 현재 포인터 위치 (0: RESUME, 1: EXIT)
     private JLabel resumeLabel;
     private JLabel exitLabel;
+    private JFrame parentFrame; // 현재 창의 참조
 
-    public PausePanel(int screenRatio) {
+    public PausePanel(JFrame parentFrame, int screenRatio) {
+        this.parentFrame = parentFrame;
         this.screenRatio = screenRatio;
-        setSize(150 * screenRatio, 100 * screenRatio);
+        setFocusable(true);
+        setPreferredSize(new Dimension(150 * screenRatio, 100 * screenRatio));
         setBackground(Color.BLACK);
         setLayout(new GridLayout(3, 1));
+
+
+        requestFocusInWindow();
+
+        // 키 바인딩 설정
+        setupKeyBindings();
 
         // PAUSE 라벨 추가
         JLabel pauseLabel = new JLabel("PAUSE", SwingConstants.CENTER);
@@ -43,6 +56,52 @@ public class PausePanel extends JPanel {
         add(blueBoxPanel);
 
         updateLabels(); // 레이블 업데이트 메소드 호출
+        // "EXIT" 라벨에 대한 키 이벤트 리스너 추가 (가정)
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && currPoint == 1) { // "EXIT" 선택
+                    exitToMainMenu();
+                }
+            }
+        });
+    }
+
+    private void setupKeyBindings() {
+        // RESUME 선택
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "RESUME");
+        this.getActionMap().put("RESUME", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currPoint = 0;
+                updateLabels();
+            }
+        });
+        // EXIT 선택
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "EXIT");
+        this.getActionMap().put("EXIT", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currPoint = 1;
+                updateLabels();
+            }
+        });
+        // 엔터키로 선택 실행
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SELECT");
+        this.getActionMap().put("SELECT", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (currPoint == 1) { // EXIT가 선택된 경우
+                    exitToMainMenu();
+                }
+            }
+        });
+    }
+    private void exitToMainMenu2() {
+        EventQueue.invokeLater(() -> {
+            parentFrame.dispose(); // 현재 창 닫기
+            new StartMenu().setVisible(true); // 메인 메뉴 창 열기
+        });
     }
 
     private void updateLabels() {
@@ -66,6 +125,13 @@ public class PausePanel extends JPanel {
 
     public int getCurrPoint() {
         return currPoint;
+    }
+
+    private void exitToMainMenu() {
+        EventQueue.invokeLater(() -> {
+            parentFrame.dispose(); // 현재 창 닫기
+            new StartMenu().setVisible(true); // 메인 메뉴 창 열기
+        });
     }
 
 }
