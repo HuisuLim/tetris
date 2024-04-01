@@ -210,6 +210,8 @@ public class Setting extends JFrame {
                         buttons[targetIndex].requestFocus();
                     } else if(keyCode == key.getLeftKey()) {
                         backButton.requestFocus();
+                    } else if(keyCode == key.getRightKey()) {
+                        buttons[1].requestFocus();
                     }
                 }
             });

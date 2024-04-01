@@ -121,6 +121,15 @@ public class SettingScreen extends JFrame implements ActionListener {
                 checkButton.doClick();
             }
         });
+
+        // "ESC" 키에 대한 이벤트 처리
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapePressed");
+        getRootPane().getActionMap().put("escapePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // 창 닫기
+            }
+        });
     }
 
     @Override

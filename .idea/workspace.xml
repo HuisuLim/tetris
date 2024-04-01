@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="nextBlockPanel에 색맹모드 추가">
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="WASD키세팅 적용 + 기존 내용 주석처리">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/SettingColorBlindness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/SettingColorBlindness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/SettingKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/SettingKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/SettingReset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/SettingReset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/SettingScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/SettingScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/startscreen/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/Setting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startscreen/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/StartMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +166,7 @@
       <updated>1711545358806</updated>
       <workItem from="1711906464580" duration="2316000" />
       <workItem from="1711933199373" duration="795000" />
-      <workItem from="1711939595425" duration="4731000" />
+      <workItem from="1711939595425" duration="5624000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -238,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711908751951</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="WASD키세팅 적용 + 기존 내용 주석처리">
+      <option name="closed" value="true" />
+      <created>1711952998237</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711952998237</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +263,7 @@
     <MESSAGE value="PausePanel 완성, PlayFrame에 적용" />
     <MESSAGE value="설정내부 라디오 버튼 키보드 동작 기능 구현" />
     <MESSAGE value="nextBlockPanel에 색맹모드 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="nextBlockPanel에 색맹모드 추가" />
+    <MESSAGE value="WASD키세팅 적용 + 기존 내용 주석처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="WASD키세팅 적용 + 기존 내용 주석처리" />
   </component>
 </project>
