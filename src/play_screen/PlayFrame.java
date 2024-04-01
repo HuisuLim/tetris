@@ -1,5 +1,7 @@
 package play_screen;
 
+import settings.LoadData;
+
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -35,6 +37,8 @@ public class PlayFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 // switch 문을 사용해 키 코드에 따라 분기 처리
+                /*
+                LoadData key = new LoadData();
                 if(isGameOver) {
 
                 }
@@ -86,6 +90,49 @@ public class PlayFrame extends JFrame {
                             pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
                             timer.stop();
                             break;
+                    }
+                }
+                */
+
+                //if 문으로 교체했을 경우
+                LoadData key = new LoadData();
+                if (isGameOver) {
+                    // 게임 오버 상황에서의 키 처리
+                } else if (isPause) {
+                    int keyCode = e.getKeyCode();
+                    if (keyCode == key.getUpKey() || keyCode == key.getDownKey()) {
+                        pausePanel.changePoint();
+                        if (keyCode == key.getDownKey()) {
+                            updateGame();
+                        }
+                    } else if (keyCode == KeyEvent.VK_ENTER) {
+                        if (pausePanel.getCurrPoint() == 0) {
+                            isPause = !isPause;
+                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                            timer.start();
+                        } else if (pausePanel.getCurrPoint() == 1) {
+                            //게임종료?
+                        }
+                    } else if (keyCode == KeyEvent.VK_ESCAPE) {
+                        isPause = !isPause;
+                        pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                        timer.start();
+                    }
+                } else {
+                    int keyCode = e.getKeyCode();
+                    if (keyCode == key.getUpKey()) {
+                        gamePanel.rotate90();
+                    } else if (keyCode == key.getDownKey()) {
+                        gamePanel.goDown();
+                        updateGame();
+                    } else if (keyCode == key.getLeftKey()) {
+                        gamePanel.goLeft();
+                    } else if (keyCode == key.getRightKey()) {
+                        gamePanel.goRight();
+                    } else if (keyCode == KeyEvent.VK_ESCAPE) {
+                        isPause = !isPause;
+                        pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
+                        timer.stop();
                     }
                 }
             }

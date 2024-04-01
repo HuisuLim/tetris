@@ -152,6 +152,7 @@ public class StartMenu extends JFrame {
         });
     }
 
+/* switch문으로 키 적용
     private void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
@@ -181,5 +182,30 @@ public class StartMenu extends JFrame {
         }
     }
 
+ */
+    // if문으로 키 적용
+    private void setupDirectionalFocusTraversal(JButton... buttons) {
+        for (int i = 0; i < buttons.length; i++) {
+            final int index = i;
+            LoadData key = new LoadData();
+            buttons[i].addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    int keyCode = e.getKeyCode();
+                    if (keyCode == key.getUpKey() || keyCode == key.getLeftKey()) {
+                        // 위쪽 방향키
+                        int targetIndex = (index - 1 + buttons.length) % buttons.length;
+                        buttons[targetIndex].requestFocus();
+                    } else if (keyCode == key.getDownKey() || keyCode == key.getRightKey()) {
+                        // 아래쪽 방향키
+                        int targetIndex = (index + 1) % buttons.length;
+                        buttons[targetIndex].requestFocus();
+                    } else if (keyCode == KeyEvent.VK_ENTER){
+                        buttons[index].doClick();
+                    }
+                }
+            });
+        }
+    }
 
 }
