@@ -21,7 +21,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
 
     private void setRadioButton(){
         LoadData loadData = new LoadData();
-        String gameMode = loadData.loadDifficulty();
+        String gameMode = loadData.loadGameMode();
         switch (gameMode) {
             case NORMAL_MODE:
                 normalModeButton.setSelected(true);
