@@ -43,6 +43,27 @@ public class StartMenu extends JFrame {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 12*screenRatio)); // 폰트 설정
         panel.add(titleLabel); // 패널에 제목 라벨 추가
 
+        // 설정값 표현
+        JLabel variableLabel = new JLabel();
+        int fontSize = 10*screenRatio;
+        Font font = new Font("Arial", Font.PLAIN, fontSize);
+        variableLabel.setFont(font);
+        if(keySetting.equals("ArrowKeys")) {
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br>&uarr;: 90도 회전<br>&larr;: 좌로이동<br>&darr;: 아래로이동<br>&rarr;: 우로이동</html>");
+        } else {
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br>w: 90도 회전<br>A: 좌로이동<br>S: 아래로이동<br>D: 우로이동</html>");
+        }
+        variableLabel.setBounds(350*screenRatio, 220*screenRatio, 100*screenRatio, 150*screenRatio);
+
+        // 라벨에 테두리 추가
+        variableLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        // 내용을 가운데 정렬
+        variableLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        variableLabel.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(variableLabel);
+        add(panel);
+
+
         // 버튼 생성
         JButton startButton = new JButton("게임 시작");
         JButton settingsButton = new JButton("설정");
