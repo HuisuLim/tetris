@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="패키지이름 리팩토링">
-      <change afterPath="$PROJECT_DIR$/src/play_screen/CustomFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/play_screen/FocusPanelExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/play_screen/PanelFocusExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/PausePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PausePanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="살짝 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,35 +39,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BlockGenerator.executor": "Run",
-    "Application.CustomFrame.executor": "Run",
-    "Application.FocusPanelExample.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.PanelFocusExample.executor": "Run",
-    "Application.StartMenu_main.executor": "Run",
-    "Application.TetrisPlay.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BlockGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ColorPanelExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CustomFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CustomLabel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.KeyConfigFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NextBlockPanel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PanelFocusExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PausePanel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PlayFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StartMenu_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TetrisPlay.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wgdcw/Desktop/소공팀플/tetris&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.PanelFocusExample">
+}</component>
+  <component name="RunManager" selected="Application.ColorPanelExample">
+    <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="play_screen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="play_screen.CustomFrame" />
       <module name="tetris" />
@@ -88,12 +99,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FocusPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.FocusPanelExample" />
+    <configuration name="KeyConfigFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="keytest.KeyConfigFrame" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="keytest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,15 +112,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="tetris" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PanelFocusExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.PanelFocusExample" />
+    <configuration name="PlayFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.PlayFrame" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -136,20 +140,13 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PanelFocusExample" />
-        <item itemvalue="Application.FocusPanelExample" />
-        <item itemvalue="Application.CustomFrame" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.KeyConfigFrame" />
         <item itemvalue="Application.StartMenu_main" />
+        <item itemvalue="Application.PlayFrame" />
+        <item itemvalue="Application.CustomFrame" />
+        <item itemvalue="Application.ColorPanelExample" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -159,7 +156,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711545358806</updated>
-      <workItem from="1711688691197" duration="6690000" />
+      <workItem from="1711906464580" duration="2316000" />
+      <workItem from="1711933199373" duration="795000" />
+      <workItem from="1711939595425" duration="6578000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -209,7 +208,55 @@
       <option name="project" value="LOCAL" />
       <updated>1711641292009</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="PausePanel 완성, PlayFrame에 적용">
+      <option name="closed" value="true" />
+      <created>1711902675996</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711902675996</updated>
+    </task>
+    <task id="LOCAL-00008" summary="설정내부 라디오 버튼 키보드 동작 기능 구현">
+      <option name="closed" value="true" />
+      <created>1711906578879</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711906578879</updated>
+    </task>
+    <task id="LOCAL-00009" summary="nextBlockPanel에 색맹모드 추가">
+      <option name="closed" value="true" />
+      <created>1711908751951</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711908751951</updated>
+    </task>
+    <task id="LOCAL-00010" summary="WASD키세팅 적용 + 기존 내용 주석처리">
+      <option name="closed" value="true" />
+      <created>1711952998237</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711952998237</updated>
+    </task>
+    <task id="LOCAL-00011" summary="esc로 설정 닫기 기능 추가">
+      <option name="closed" value="true" />
+      <created>1711953834334</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711953834334</updated>
+    </task>
+    <task id="LOCAL-00012" summary="살짝 수정">
+      <option name="closed" value="true" />
+      <created>1711954580185</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711954580185</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +268,12 @@
     <MESSAGE value="프로젝트이름 test -&gt; tetris로" />
     <MESSAGE value="Blocks 클래스 분할" />
     <MESSAGE value="패키지이름 리팩토링" />
-    <option name="LAST_COMMIT_MESSAGE" value="패키지이름 리팩토링" />
+    <MESSAGE value="PausePanel 완성, PlayFrame에 적용" />
+    <MESSAGE value="설정내부 라디오 버튼 키보드 동작 기능 구현" />
+    <MESSAGE value="nextBlockPanel에 색맹모드 추가" />
+    <MESSAGE value="WASD키세팅 적용 + 기존 내용 주석처리" />
+    <MESSAGE value="esc로 설정 닫기 기능 추가" />
+    <MESSAGE value="살짝 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="살짝 수정" />
   </component>
 </project>
