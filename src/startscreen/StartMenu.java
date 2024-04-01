@@ -49,9 +49,43 @@ public class StartMenu extends JFrame {
         Font font = new Font("Arial", Font.PLAIN, fontSize);
         variableLabel.setFont(font);
         if(keySetting.equals("ArrowKeys")) {
-            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br>&uarr;: 90도 회전<br>&larr;: 좌로이동<br>&darr;: 아래로이동<br>&rarr;: 우로이동</html>");
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+                    "  <tr>\n" +
+                    "    <td>↑</td>\n" +
+                    "    <td>90도 회전</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>←</td>\n" +
+                    "    <td>좌로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>↓</td>\n" +
+                    "    <td>아래로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>→</td>\n" +
+                    "    <td>우로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "</table></html>");
         } else {
-            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br>w: 90도 회전<br>A: 좌로이동<br>S: 아래로이동<br>D: 우로이동</html>");
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+                    "  <tr>\n" +
+                    "    <td>W</td>\n" +
+                    "    <td>90도 회전</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>A</td>\n" +
+                    "    <td>좌로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>S</td>\n" +
+                    "    <td>아래로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>D</td>\n" +
+                    "    <td>우로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "</table>\n</html>");
         }
         variableLabel.setBounds(350*screenRatio, 220*screenRatio, 100*screenRatio, 150*screenRatio);
 
