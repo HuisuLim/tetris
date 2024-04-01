@@ -14,12 +14,20 @@ public class StartMenu extends JFrame {
     public static int screenRatio = 2; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
+    public static String gameMode="normalMode";
+    public static String difficulty="normal";
     public static LoadData loadData = new LoadData();
     public static void setScreenRatio(){
         screenRatio = loadData.loadScreenSize();
     }
     public static void setColorBlindness(){
         isColorblindness = loadData.loadColorBlindMode();
+    }
+    public static void setGameMode(){
+        gameMode = loadData.loadGameMode();
+    }
+    public static void setDifficutly(){
+        difficulty = loadData.loadDifficulty();
     }
     public static void setControlKey(){
         keySetting = loadData.loadKeySettings();
@@ -28,6 +36,8 @@ public class StartMenu extends JFrame {
         setScreenRatio();//화면 비율 조절
         setColorBlindness();
         setControlKey();
+        setGameMode();
+        setDifficutly();
 
         setSize(500*screenRatio, 400*screenRatio);
         setTitle("테트리스 게임");
@@ -49,8 +59,16 @@ public class StartMenu extends JFrame {
         int fontSize = 10*screenRatio;
         Font font = new Font("Arial", Font.PLAIN, fontSize);
         variableLabel.setFont(font);
+
+        String htmlText = "<html>" +
+                "<tr><td><strong>화면 비율:</strong></td><td>" + screenRatio + "</td></tr>" +
+                "<tr><td><strong>색맹 모드:</strong></td><td>" + isColorblindness + "</td></tr>" +
+                "<tr><td><strong>게임 모드:</strong></td><td>" + gameMode + "</td></tr>" +
+                "<tr><td><strong>난이도:</strong></td><td>" + difficulty + "</td></tr>" +
+                "<tr><td><strong>키 설정:</strong></td><td>" + keySetting + "</td></tr>" +
+                "</table>";
         if(keySetting.equals("ArrowKeys")) {
-            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+            variableLabel.setText(htmlText+"<table>\n"+
                     "  <tr>\n" +
                     "    <td>↑</td>\n" +
                     "    <td>90도 회전</td>\n" +
@@ -69,7 +87,7 @@ public class StartMenu extends JFrame {
                     "  </tr>\n" +
                     "</table></html>");
         } else {
-            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+            variableLabel.setText(htmlText+"<table>\n" +
                     "  <tr>\n" +
                     "    <td>W</td>\n" +
                     "    <td>90도 회전</td>\n" +
@@ -88,7 +106,7 @@ public class StartMenu extends JFrame {
                     "  </tr>\n" +
                     "</table>\n</html>");
         }
-        variableLabel.setBounds(350*screenRatio, 220*screenRatio, 100*screenRatio, 150*screenRatio);
+        variableLabel.setBounds(350*screenRatio, 150*screenRatio, 130*screenRatio, 200*screenRatio);
 
         // 라벨에 테두리 추가
         variableLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));

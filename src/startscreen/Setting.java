@@ -43,6 +43,7 @@ public class Setting extends JFrame {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingKey setting = new SettingKey();
+                StartMenu.setControlKey();
                 setting.setVisible(true);
             }
         });
@@ -53,6 +54,7 @@ public class Setting extends JFrame {
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingColorBlindness setting = new SettingColorBlindness();
+                StartMenu.setColorBlindness();
                 setting.setVisible(true);
             }
         });
@@ -110,6 +112,7 @@ public class Setting extends JFrame {
         itemModeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // SettingGameMode 인스턴스를 생성하고 보이게 하는 코드 추가
+                StartMenu.setGameMode();
                 SettingGameMode gameModeSetting = new SettingGameMode();
                 gameModeSetting.setVisible(true);
             }
@@ -123,6 +126,7 @@ public class Setting extends JFrame {
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                StartMenu.setDifficutly();
                 SettingDifficulty settingDifficulty = new SettingDifficulty();
                 settingDifficulty.setVisible(true);
             }
