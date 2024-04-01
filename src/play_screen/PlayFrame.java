@@ -36,65 +36,7 @@ public class PlayFrame extends JFrame {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                // switch 문을 사용해 키 코드에 따라 분기 처리
-                /*
-                LoadData key = new LoadData();
-                if(isGameOver) {
 
-                }
-                else if(isPause) {
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_UP: // 위쪽 화살표 키
-                            pausePanel.changePoint();
-                            break;
-                        case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
-                            pausePanel.changePoint();
-                            updateGame();
-                            break;
-                        case KeyEvent.VK_ENTER:
-                            if(pausePanel.getCurrPoint() == 0) {
-                                isPause = !isPause;
-                                pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-                                timer.start();
-                                break;
-                            }
-                            else if(pausePanel.getCurrPoint() == 1) {
-                                //게임종료?
-                            }
-                        case KeyEvent.VK_ESCAPE: // esc키
-                            isPause = !isPause;
-                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-                            timer.start();
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (e.getKeyCode()) {
-
-                        case KeyEvent.VK_UP: // 위쪽 화살표 키
-                            gamePanel.rotate90();
-                            break;
-                        case KeyEvent.VK_DOWN: // 아래쪽 화살표 키
-                            gamePanel.goDown();
-                            updateGame();
-                            break;
-                        case KeyEvent.VK_LEFT: // 왼쪽 화살표 키
-                            gamePanel.goLeft();
-                            break;
-                        case KeyEvent.VK_RIGHT: // 오른쪽 화살표 키
-                            gamePanel.goRight();
-                            break;
-                        case KeyEvent.VK_ESCAPE: // esc키
-                            isPause = !isPause;
-                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-                            timer.stop();
-                            break;
-                    }
-                }
-                */
-
-                //if 문으로 교체했을 경우
                 LoadData key = new LoadData();
                 if (isGameOver) {
                     // 게임 오버 상황에서의 키 처리

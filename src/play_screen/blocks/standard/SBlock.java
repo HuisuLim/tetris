@@ -1,33 +1,35 @@
-package play_screen.blocks;
+package play_screen.blocks.standard;
 
-public class TBlock extends Block{
+import play_screen.blocks.Block;
 
-    public TBlock() {
+public class SBlock extends Block {
+
+    public SBlock() {
         this(1);
     }
-    public TBlock(int colorNum) {
+    public SBlock(int colorNum) {
         super(colorNum);
     }
     protected void setShape() {
         int c = colorNum;
         shape = new int[][][] {
                 {
-                        {0,c,0},
-                        {c,c,c},
+                        {0,c,c},
+                        {c,c,0},
                         {0,0,0}
                 },
                 {
                         {0,c,0},
                         {0,c,c},
-                        {0,c,0}
+                        {0,0,c}
                 },
                 {
                         {0,0,0},
-                        {c,c,c},
-                        {0,c,0}
+                        {0,c,c},
+                        {c,c,0}
                 },
                 {
-                        {0,c,0},
+                        {c,0,0},
                         {c,c,0},
                         {0,c,0}
                 },
