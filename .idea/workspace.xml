@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="TimerDelay 생성">
+      <change afterPath="$PROJECT_DIR$/src/play_screen/ColorTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/NextBlockPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/NextBlockPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/TetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/IBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/JBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/LBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/OBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/SBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/TBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/ZBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/IBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/JBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/LBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/OBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/SBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/TBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/ZBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/LoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/LoadData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startscreen/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/StartMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="playScreen" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +59,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Block.executor": "Run",
     "Application.BlockGenerator.executor": "Run",
     "Application.ColorPanelExample.executor": "Run",
     "Application.CustomFrame.executor": "Run",
@@ -71,7 +77,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "item-block",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
     "node.js.detected.package.eslint": "true",
@@ -88,12 +94,12 @@
   }
 }]]></component>
   <component name="RunManager" selected="Application.StartMenu_main">
-    <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
+    <configuration name="Block" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.Block" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="play_screen.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,12 +107,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.CustomFrame" />
+    <configuration name="BlockGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.BlockGenerator" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="play_screen.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,10 +162,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartMenu_main" />
+        <item itemvalue="Application.BlockGenerator" />
         <item itemvalue="Application.PlayFrame" />
+        <item itemvalue="Application.Block" />
         <item itemvalue="Application.KeyConfigFrame" />
-        <item itemvalue="Application.CustomFrame" />
-        <item itemvalue="Application.ColorPanelExample" />
       </list>
     </recent_temporary>
   </component>

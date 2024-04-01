@@ -29,4 +29,17 @@ public class BlockGenerator {
         };
         return item;
     }
+
+    public static void main(String[] args) {
+        BlockGenerator generator = new BlockGenerator();
+        Block b = generator.getRandomStandardBlock();
+        int len = b.getLen();
+        int[][] shape = b.getShape();
+        for(int i = 0; i< len; i++){
+            for(int j = 0; j < len; j++) {
+                System.out.print(shape[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }
