@@ -3,6 +3,7 @@ package settings;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
 import startscreen.Setting;
@@ -22,7 +23,7 @@ public class SettingReset extends JFrame implements ActionListener {
     public SettingReset() {
         setTitle("세팅 리셋");
         setSize(200, 70);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         // 버튼 생성
@@ -30,6 +31,22 @@ public class SettingReset extends JFrame implements ActionListener {
         checkButton.addActionListener(this);
         add(checkButton);
 
+        checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
+        checkButton.getActionMap().put("checkPressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkButton.doClick();
+            }
+        });
+
+        // ESC 키에 대한 이벤트 처리
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapePressed");
+        getRootPane().getActionMap().put("escapePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // 창 닫기
+            }
+        });
     }
 
     @Override
@@ -42,8 +59,6 @@ public class SettingReset extends JFrame implements ActionListener {
             saveSettings(COLOR_MODE_KEY, String.valueOf(isColorBlindMode));
             saveSettings(CONTROL_KEY, String.valueOf(keySetting));
             dispose(); // 설정 화면 종료
-            Setting test = new Setting();
-            test.setVisible(true);
         }
     }
 

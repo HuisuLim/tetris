@@ -16,7 +16,7 @@ public class SettingKey extends JFrame {
     public SettingKey() {
         setTitle("Key Settings");
         setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         key1RadioButton = new JRadioButton("Arrow Keys");
@@ -32,8 +32,25 @@ public class SettingKey extends JFrame {
         panel.add(key1RadioButton);
         panel.add(key2RadioButton);
         panel.add(checkButton);
-
         add(panel, BorderLayout.CENTER);
+        setRadioButton();
+        panel.setFocusable(true);
+        panel.requestFocusInWindow();
+        panel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                LoadData key = new LoadData();
+                if (keyCode == key.getUpKey() || keyCode == key.getDownKey()) {
+                    if (key1RadioButton.isSelected()) {
+                        key2RadioButton.setSelected(true);
+                    } else if (key2RadioButton.isSelected()) {
+                        key1RadioButton.setSelected(true);
+                    }
+                }
+            }
+        });
+
         checkButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String movement;
@@ -54,22 +71,34 @@ public class SettingKey extends JFrame {
                 checkButton.doClick();
             }
         });
+
+        // "ESC" 키에 대한 이벤트 처리
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapePressed");
+        getRootPane().getActionMap().put("escapePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // 창 닫기
+            }
+        });
     }
 
-    private void loadSettings() {
-        settings = new Properties();
-        try (InputStream input = new FileInputStream("settings.properties")) {
-            settings.load(input);
-            String movement = settings.getProperty("movement", "Arrow Keys");
-            if (movement.equals("Arrow Keys")) {
+    private void setRadioButton(){
+        LoadData loadData = new LoadData();
+        String keySettings = loadData.loadKeySettings();
+        switch (keySettings) {
+            case "ArrowKeys":
                 key1RadioButton.setSelected(true);
-            } else {
+                break;
+            case "WASD":
                 key2RadioButton.setSelected(true);
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                break;
+            default:
+                // Default to medium size if no valid setting found
+                key1RadioButton.setSelected(true);
+                break;
         }
     }
+
 
     private void saveSettings(String key, String value) {
         Properties properties = new Properties();
