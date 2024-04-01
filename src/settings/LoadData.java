@@ -82,6 +82,7 @@ public class LoadData extends JFrame implements ActionListener {
             return false;
         }
     }
+    // ddd
     public String loadKeySettings() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
