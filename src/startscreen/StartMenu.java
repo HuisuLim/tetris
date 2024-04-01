@@ -13,18 +13,14 @@ public class StartMenu extends JFrame {
     public static int screenRatio = 2; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
-
+    public static LoadData loadData = new LoadData();
     public static void setScreenRatio(){
-        LoadData loadData = new LoadData();
         screenRatio = loadData.loadScreenSize();
     }
-
     public static void setColorBlindness(){
-        LoadData loadData = new LoadData();
         isColorblindness = loadData.loadColorBlindMode();
     }
     public static void setControlKey(){
-        LoadData loadData = new LoadData();
         keySetting = loadData.loadKeySettings();
     }
     public StartMenu() {
