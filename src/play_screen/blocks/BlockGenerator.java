@@ -1,9 +1,11 @@
 package play_screen.blocks;
 
+import play_screen.blocks.standard.*;
+
 import java.util.Random;
 
 public class BlockGenerator {
-    public Block getRandomBlock() {
+    public Block getRandomStandardBlock() {
         Random random = new Random();
         int blockType = random.nextInt(7) + 1; // 1부터 7까지의 랜덤 수 생성
         return switch (blockType) {
@@ -16,5 +18,15 @@ public class BlockGenerator {
             case 7 -> new ZBlock(blockType);
             default -> null;
         };
+    }
+
+    public Block getRandomItemBlock() {
+        Block item = new Block() {
+            @Override
+            protected void setShape() {
+
+            }
+        };
+        return item;
     }
 }
