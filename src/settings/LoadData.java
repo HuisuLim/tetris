@@ -19,6 +19,8 @@ public class LoadData extends JFrame implements ActionListener {
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";
+    private static final String DIFFICULTY_KEY = "Difficulty";
+    private static final String GAME_MODE_KEY = "GameMode";
     private static final int MEDIUM_SIZE = 30;
 
 
@@ -67,7 +69,7 @@ public class LoadData extends JFrame implements ActionListener {
         } catch (IOException | NumberFormatException ex) {
             ex.printStackTrace();
             // 기본값인 MEDIUM_SIZE를 반환하거나 적절한 기본값을 선택합니다.
-            return MEDIUM_SIZE;
+            return 2;
         }
     }
     public boolean loadColorBlindMode() {
@@ -91,6 +93,38 @@ public class LoadData extends JFrame implements ActionListener {
         } catch (IOException ex) {
             ex.printStackTrace();
             return "ArrowKeys";
+        }
+    }
+
+    public String loadDifficulty() {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
+            properties.load(input);
+            String difficulty = properties.getProperty(DIFFICULTY_KEY);
+            if (difficulty != null) {
+                return difficulty;
+            } else {
+                return "normal";
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return "normal";
+        }
+    }
+
+    public String loadGameMode() {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
+            properties.load(input);
+            String gameMode = properties.getProperty(GAME_MODE_KEY);
+            if (gameMode != null) {
+                return gameMode;
+            } else {
+                return "normalMode";
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return "normalMode";
         }
     }
 
