@@ -43,7 +43,7 @@ public class SettingScreen extends JFrame implements ActionListener {
     public SettingScreen() {
         setTitle("Screen Setting");
         setSize(400, 100);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 

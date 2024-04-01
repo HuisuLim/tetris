@@ -31,7 +31,7 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
     public SettingColorBlindness() {
         setTitle("색맹모드");
         setSize(400, 100);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 

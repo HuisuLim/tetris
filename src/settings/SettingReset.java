@@ -23,7 +23,7 @@ public class SettingReset extends JFrame implements ActionListener {
     public SettingReset() {
         setTitle("세팅 리셋");
         setSize(200, 70);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         // 버튼 생성

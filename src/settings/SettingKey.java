@@ -16,7 +16,7 @@ public class SettingKey extends JFrame {
     public SettingKey() {
         setTitle("Key Settings");
         setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         key1RadioButton = new JRadioButton("Arrow Keys");
