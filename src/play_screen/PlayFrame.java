@@ -10,92 +10,31 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class PlayFrame extends JFrame {
-    private int screenSize;
-    private TetrisPanel gamePanel;
-    private ScorePanel scorePanel;
-    private NextBlockPanel nextBlockPanel;
-    private PausePanel pausePanel;
+    private LoadData data = new LoadData();
+    private int screenSize = data.loadScreenSize();
+    public TetrisPanel gamePanel;
+    public ScorePanel scorePanel;
+    public NextBlockPanel nextBlockPanel;
+    public PausePanel pausePanel;
     private Timer timer;
     private boolean isGameOver = false;
-    private boolean isPause = false;
-    private LoadData data = new LoadData();
-    private final int upKey = data.getUpKey();
-    private final int downKey = data.getDownKey();
-    private final int leftKey = data.getLeftKey();
-    private final int rightKey = data.getRightKey();
+    private boolean isPaused = false;
 
-    public void setProps() {
-        LoadData data = new LoadData();
-        this.screenSize = data.loadScreenSize();
-        this.upKey = data.getUpKey();
-        this.downKey = data.getDownKey();
-        this.leftKey = data.getLeftKey();
-        this.rightKey = data.getRightKey();
-    }
+    private TetrisKeyListener listener = new TetrisKeyListener(this);
+
+
     public PlayFrame() {
         //JFrame 설정.
-        setProps();
         setTitle("Play Frame");
         setSize(screenSize * 20 * 20, screenSize * 20 * 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
+        this.addKeyListener(listener);
         initUI();
         createTimer();
         timer.start();
 
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int keyCode = e.getKeyCode();
-                int upkey = this.upkey;
-                if (isGameOver) {
-                    // 게임 오버 상황에서의 키 처리
-                }
-                else if (isPause) {
-                    switch (keyCode) {
-                        case
-                    }
-//                    if (keyCode == key.getUpKey() || keyCode == key.getDownKey()) {
-//                        pausePanel.changePoint();
-//                        if (keyCode == key.getDownKey()) {
-//                            updateGame();
-//                        }
-//                    }
-//                    else if (keyCode == KeyEvent.VK_ENTER) {
-//                        if (pausePanel.getCurrPoint() == 0) {
-//                            isPause = !isPause;
-//                            pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-//                            timer.start();
-//                        }
-//                        else if (pausePanel.getCurrPoint() == 1) {
-//                            //게임종료?
-//                        }
-//                    }
-//                    else if (keyCode == KeyEvent.VK_ESCAPE) {
-//                        isPause = !isPause;
-//                        pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-//                        timer.start();
-//                    }
-                }
-                else {
-                    if (keyCode == key.getUpKey()) {
-                        gamePanel.rotate90();
-                    } else if (keyCode == key.getDownKey()) {
-                        gamePanel.goDown();
-                        updateGame();
-                    } else if (keyCode == key.getLeftKey()) {
-                        gamePanel.goLeft();
-                    } else if (keyCode == key.getRightKey()) {
-                        gamePanel.goRight();
-                    } else if (keyCode == KeyEvent.VK_ESCAPE) {
-                        isPause = !isPause;
-                        pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
-                        timer.stop();
-                    }
-                }
-            }
-        });
 
         pack();
         setLocationRelativeTo(null); // 화면 가운데에 위치
@@ -133,7 +72,7 @@ public class PlayFrame extends JFrame {
         getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
     }
 
-    private void createTimer() {
+    public void createTimer() {
         // ActionListener 정의: 점수를 업데이트하고 타이머의 지연 시간 조정
         ActionListener actionListener = new ActionListener() {
             @Override
@@ -154,11 +93,31 @@ public class PlayFrame extends JFrame {
         // 타이머 생성: 초기 지연 시간은 1000ms
         timer = new Timer(1000, actionListener);
     }
-    private void updateGame() {
+    public void updateGame() {
         isGameOver = gamePanel.getIsGameOver();
         scorePanel.updateScore(gamePanel.getScore());
         nextBlockPanel.updateBlock(gamePanel.getNextBlock());
     }
+
+    public boolean getIsPause() {
+        return isPaused;
+    }
+
+    public void toggleIsPause() {
+        isPaused = !isPaused;
+        pausePanel.setVisible(isPaused); // isPause 값에 따라 PausePanel 표시 또는 숨김
+        if (isPaused) {
+            timer.stop();
+        }
+        else {
+            timer.start();
+        }
+    }
+
+    public boolean getIsGameOver() {
+        return isGameOver;
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
