@@ -48,7 +48,7 @@ public class LoadData extends JFrame implements ActionListener {
         if (e.getSource() == startButton) {
             int squareSize = loadScreenSize();
             boolean colorBlindMode = loadColorBlindMode();
-            TetrisPlay tetris = new TetrisPlay(squareSize, colorBlindMode);
+            TetrisPanel tetris = new TetrisPanel(squareSize, colorBlindMode);
             tetris.setVisible(true);
             dispose();
         } else if (e.getSource() == settingButton) {

@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class Setting extends JFrame {
     private int screenRatio = StartMenu.screenRatio; //화면 비율 조절
+    private JButton backButton = new JButton();
 
     public Setting() {
         setTitle("게임 설정");
@@ -24,7 +25,7 @@ public class Setting extends JFrame {
         int frameHeight = getHeight();
 
         // 뒤로가기 버튼 생성 및 설정
-        JButton backButton = new JButton("뒤로가기");
+        backButton = new JButton("뒤로가기");
         backButton.setBounds(5 * screenRatio, 5 * screenRatio, buttonWidth, buttonHeight); // 화면 상단 왼쪽에 배치
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -194,18 +195,23 @@ public class Setting extends JFrame {
     private void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
+            LoadData key = new LoadData();
             buttons[i].addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     int keyCode = e.getKeyCode();
-                    if (keyCode == KeyEvent.VK_UP) {
+                    if (keyCode == key.getUpKey()) {
                         // 위쪽 방향키
                         int targetIndex = (index - 1 + buttons.length) % buttons.length;
                         buttons[targetIndex].requestFocus();
-                    } else if (keyCode == KeyEvent.VK_DOWN) {
+                    } else if (keyCode == key.getDownKey()) {
                         // 아래쪽 방향키
                         int targetIndex = (index + 1) % buttons.length;
                         buttons[targetIndex].requestFocus();
+                    } else if(keyCode == key.getLeftKey()) {
+                        backButton.requestFocus();
+                    } else if(keyCode == key.getRightKey()) {
+                        buttons[1].requestFocus();
                     }
                 }
             });

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.io.*;
 import java.util.Properties;
 import startscreen.Setting;
@@ -16,14 +17,21 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
     private static final String SETTINGS_FILE = "src/Settings/settings.properties";
     private static final String COLOR_MODE_KEY = "ColorMode";
 
-    private int setScreenRatio(){
+    private void setRadioButton(){
         LoadData loadData = new LoadData();
-        return loadData.loadScreenSize();
+        boolean isColorBlind = loadData.loadColorBlindMode();
+        if(isColorBlind) {
+            colorBlindModeButton.setSelected(true);
+        }
+        else {
+            normalModeButton.setSelected(true);
+        }
     }
+
     public SettingColorBlindness() {
         setTitle("색맹모드");
         setSize(400, 100);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -46,7 +54,23 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
         ButtonGroup modeButtonGroup = new ButtonGroup();
         modeButtonGroup.add(normalModeButton);
         modeButtonGroup.add(colorBlindModeButton);
-
+        setRadioButton();
+        panel.setFocusable(true);
+        panel.requestFocusInWindow();
+        panel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                LoadData key = new LoadData();
+                if (keyCode == key.getRightKey() || keyCode == key.getLeftKey()) {
+                    if (normalModeButton.isSelected()) {
+                        colorBlindModeButton.setSelected(true);
+                    } else if (colorBlindModeButton.isSelected()) {
+                        normalModeButton.setSelected(true);
+                    }
+                }
+            }
+        });
         // 버튼 생성
         checkButton = new JButton("check");
         checkButton.addActionListener(this);
@@ -54,12 +78,21 @@ public class SettingColorBlindness extends JFrame implements ActionListener {
 
         add(panel);
 
+
         // "check" 버튼에 엔터키 액션 바인딩
         checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
         checkButton.getActionMap().put("checkPressed", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 checkButton.doClick();
+            }
+        });
+
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapePressed");
+        getRootPane().getActionMap().put("escapePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // 창 닫기
             }
         });
     }

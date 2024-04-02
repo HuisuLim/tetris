@@ -13,18 +13,14 @@ public class StartMenu extends JFrame {
     public static int screenRatio = 2; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
-
+    public static LoadData loadData = new LoadData();
     public static void setScreenRatio(){
-        LoadData loadData = new LoadData();
         screenRatio = loadData.loadScreenSize();
     }
-
     public static void setColorBlindness(){
-        LoadData loadData = new LoadData();
         isColorblindness = loadData.loadColorBlindMode();
     }
     public static void setControlKey(){
-        LoadData loadData = new LoadData();
         keySetting = loadData.loadKeySettings();
     }
     public StartMenu() {
@@ -46,6 +42,61 @@ public class StartMenu extends JFrame {
         titleLabel.setBounds(150*screenRatio, 50*screenRatio, 200*screenRatio, 25*screenRatio); // 제목 라벨 위치 및 크기 지정
         titleLabel.setFont(new Font("Arial", Font.BOLD, 12*screenRatio)); // 폰트 설정
         panel.add(titleLabel); // 패널에 제목 라벨 추가
+
+        // 설정값 표현
+        JLabel variableLabel = new JLabel();
+        int fontSize = 10*screenRatio;
+        Font font = new Font("Arial", Font.PLAIN, fontSize);
+        variableLabel.setFont(font);
+        if(keySetting.equals("ArrowKeys")) {
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+                    "  <tr>\n" +
+                    "    <td>↑</td>\n" +
+                    "    <td>90도 회전</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>←</td>\n" +
+                    "    <td>좌로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>↓</td>\n" +
+                    "    <td>아래로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>→</td>\n" +
+                    "    <td>우로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "</table></html>");
+        } else {
+            variableLabel.setText("<html><strong>화면 비율:</strong> " + screenRatio + "<br><br><strong>색맹 모드:</strong> " + isColorblindness + "<br><br><strong>키 설정: </strong>"+keySetting+"<br><table>\n" +
+                    "  <tr>\n" +
+                    "    <td>W</td>\n" +
+                    "    <td>90도 회전</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>A</td>\n" +
+                    "    <td>좌로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>S</td>\n" +
+                    "    <td>아래로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "  <tr>\n" +
+                    "    <td>D</td>\n" +
+                    "    <td>우로 이동</td>\n" +
+                    "  </tr>\n" +
+                    "</table>\n</html>");
+        }
+        variableLabel.setBounds(350*screenRatio, 220*screenRatio, 100*screenRatio, 150*screenRatio);
+
+        // 라벨에 테두리 추가
+        variableLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        // 내용을 가운데 정렬
+        variableLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        variableLabel.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(variableLabel);
+        add(panel);
+
 
         // 버튼 생성
         JButton startButton = new JButton("게임 시작");
@@ -78,7 +129,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame(screenRatio);
+                nextFrame = new PlayFrame(screenRatio, isColorblindness);
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -152,6 +203,7 @@ public class StartMenu extends JFrame {
         });
     }
 
+/* switch문으로 키 적용
     private void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
@@ -181,5 +233,30 @@ public class StartMenu extends JFrame {
         }
     }
 
+ */
+    // if문으로 키 적용
+    private void setupDirectionalFocusTraversal(JButton... buttons) {
+        for (int i = 0; i < buttons.length; i++) {
+            final int index = i;
+            LoadData key = new LoadData();
+            buttons[i].addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    int keyCode = e.getKeyCode();
+                    if (keyCode == key.getUpKey() || keyCode == key.getLeftKey()) {
+                        // 위쪽 방향키
+                        int targetIndex = (index - 1 + buttons.length) % buttons.length;
+                        buttons[targetIndex].requestFocus();
+                    } else if (keyCode == key.getDownKey() || keyCode == key.getRightKey()) {
+                        // 아래쪽 방향키
+                        int targetIndex = (index + 1) % buttons.length;
+                        buttons[targetIndex].requestFocus();
+                    } else if (keyCode == KeyEvent.VK_ENTER){
+                        buttons[index].doClick();
+                    }
+                }
+            });
+        }
+    }
 
 }
