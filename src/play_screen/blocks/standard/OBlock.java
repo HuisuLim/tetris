@@ -12,11 +12,9 @@ public class OBlock extends Block {
     }
     protected void setShape() {
         int c = colorNum;
-        shape = new int[][][] {
-                {
-                        {c,c},
-                        {c,c}
-                }
+        shape = new int[][] {
+                {c,c},
+                {c,c}
         };
     }
 

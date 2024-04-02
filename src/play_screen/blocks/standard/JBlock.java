@@ -12,27 +12,10 @@ public class JBlock extends Block {
     }
     protected void setShape() {
         int c = colorNum;
-        shape = new int[][][] {
-                {
-                        {c,0,0},
-                        {c,c,c},
-                        {0,0,0}
-                },
-                {
-                        {0,c,c},
-                        {0,c,0},
-                        {0,c,0}
-                },
-                {
-                        {0,0,0},
-                        {c,c,c},
-                        {0,0,c}
-                },
-                {
-                        {0,c,0},
-                        {0,c,0},
-                        {c,c,0}
-                },
+        shape = new int[][] {
+                {c,0,0},
+                {c,c,c},
+                {0,0,0}
         };
     }
 

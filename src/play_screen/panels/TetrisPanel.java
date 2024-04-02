@@ -1,7 +1,9 @@
-package play_screen;
+package play_screen.panels;
 
+import play_screen.ColorTable;
 import play_screen.blocks.Block;
 import play_screen.blocks.BlockGenerator;
+import settings.LoadData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,38 +14,41 @@ public class TetrisPanel extends JPanel{
     private int SQUARE_SIZE;
     private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
     private static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
-    private int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
-    private BlockGenerator generator = new BlockGenerator();
+    private final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
+    private final BlockGenerator generator = new BlockGenerator();
     //게임보드의 가장 왼쪽 위가 board[0][0]
     private Block currBlock;
-    private Block nextBlock;
+    private Block[] nextBlocks;
     private int currentRow;
     private int currentCol;
-    int[][] colorHex = {
-            {0xffffff,0x00ffff,0x0000ff,0xffa500,0xffff00,0x00ff00,0x800080,0xff0000},//TTC World Standard 색상표 (참고 : https://ko.wikipedia.org/wiki/%ED%85%8C%ED%8A%B8%EB%A6%AC%EC%8A%A4)
-            {0xffffff,0xe1a102,0x56b4e8,0x009f73,0xf0e442,0x0072b1,0xd45d00,0xcc79a6} //색약용 색상표 (참고 : https://nuli.navercorp.com/community/article/1132656)
-    };//색상들을 16진수로 저장. 후에 new Color(colorHex[isColorBlindness][i]) 형식으로 이용
-    private int isColorBlindness = 0;
+    int[] colorTable;
     private int score = 0;
+    private int screenSize;
+    private boolean colorBlindMode;
+    private String gameMode;
+    private String difficulty;
     private boolean isGameOver = false;
 
     // 화면 크기 조절을 위해 SquareSize의 조절
-    public void setSquareSize(int screenRatio) {
-        SQUARE_SIZE = 20 * screenRatio;
+    public void setProps() {
+        LoadData data = new LoadData();
+        this.screenSize = data.loadScreenSize();
+        SQUARE_SIZE = 20 * screenSize;
+        this.colorBlindMode = data.loadColorBlindMode();
+        this.colorTable = ColorTable.getTable(this.colorBlindMode);
+        this.gameMode = data.loadGameMode();
     }
 
-    public void setColorBlindnessMode(boolean checkColorBlindness) {
-        isColorBlindness = checkColorBlindness ? 1 : 0;
-    }
-
-    public TetrisPanel(int screenRatio, boolean ColorBlindness) {
-        setSquareSize(screenRatio); // 화면 크기 조절용
-        setColorBlindnessMode(ColorBlindness); //색맹모드
+    public TetrisPanel() {
+        setProps();
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
-
         currBlock = null;
-        nextBlock = generator.getRandomStandardBlock();
+        nextBlocks = new Block[5];
+        for(int i = 0; i < 5; i++) {
+            nextBlocks[i] = generator.getRandomStandardBlock();
+        }
         createNewShape(); // 새 도형 생성
+        repaint();
     }
 
     public boolean getIsGameOver() {
@@ -52,17 +57,21 @@ public class TetrisPanel extends JPanel{
 
     private void createNewShape() {
         score +=100;
-        currBlock = nextBlock;
-        nextBlock = generator.getRandomStandardBlock();
+        currBlock = nextBlocks[0];
+        for(int i = 1; i < 5; i++) {
+            nextBlocks[i-1] = nextBlocks[i];
+        }
+        nextBlocks[4] = generator.getRandomStandardBlock();
 
-        int[] temp = (currBlock.getLen() == 4) ? new int[] {-1,3} : new int[] {0,4};
+        int[] temp = currBlock.getStartPos();
         currentRow = temp[0];
         currentCol = temp[1];
-        if(!canMoveTo(currentRow, currentCol, currBlock.getCurrShape())){
+        if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
             isGameOver = true;
             System.out.println("게임종료");
         }
     }
+
     private boolean canMoveTo(int targetRow, int targetCol, int[][] shape) {
         for(int row = 0; row < shape.length; row++) {
             for(int col = 0; col < shape.length; col++) {
@@ -76,11 +85,11 @@ public class TetrisPanel extends JPanel{
     }
 
     private boolean canRotate() {
-        return canMoveTo(currentRow, currentCol, currBlock.getRotateShape());
+        return canMoveTo(currentRow, currentCol, currBlock.getRotatedShape());
     }
 
     private void mergeShapeToBoard() {
-        int[][] shape = currBlock.getCurrShape();
+        int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
                 if (shape[row][col] != 0) {
@@ -119,19 +128,19 @@ public class TetrisPanel extends JPanel{
     }
 
     public void goLeft() {
-        if(canMoveTo(currentRow, currentCol-1, currBlock.getCurrShape())){
+        if(canMoveTo(currentRow, currentCol-1, currBlock.getShape())){
             currentCol--;
             repaint();
         }
     }
     public void goRight() {
-        if(canMoveTo(currentRow, currentCol+1, currBlock.getCurrShape())){
+        if(canMoveTo(currentRow, currentCol+1, currBlock.getShape())){
             currentCol++;
             repaint();
         }
     }
     public void goDown() {
-        if(canMoveTo(currentRow+1, currentCol, currBlock.getCurrShape())){
+        if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
         }
         else {
@@ -149,7 +158,7 @@ public class TetrisPanel extends JPanel{
     }
 
     public int[][] getNextBlock(){
-        return nextBlock.getCurrShape();
+        return nextBlocks[0].getShape();
     }
 
     @Override
@@ -167,7 +176,7 @@ public class TetrisPanel extends JPanel{
         // 게임 보드 및 현재 도형을 오프스크린 그래픽 객체에 그립니다
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
-                int color = colorHex[isColorBlindness][board[row][col]];
+                int color = colorTable[board[row][col]];
                 offScreenGraphics.setColor(new Color(color));
                 offScreenGraphics.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                 offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
@@ -176,11 +185,11 @@ public class TetrisPanel extends JPanel{
         }
 
         // 현재 도형 그리기
-        int[][] shape = currBlock.getCurrShape();
+        int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
                 if (shape[row][col] != 0) {
-                    int color = colorHex[isColorBlindness][shape[row][col]];
+                    int color = colorTable[shape[row][col]];
                     offScreenGraphics.setColor(new Color(color));
                     offScreenGraphics.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                     offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
