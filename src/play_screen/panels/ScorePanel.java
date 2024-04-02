@@ -1,4 +1,4 @@
-package play_screen;
+package play_screen.panels;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

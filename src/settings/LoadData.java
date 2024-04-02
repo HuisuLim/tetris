@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import play_screen.*;
+
+import play_screen.panels.TetrisPanel;
 
 import java.awt.event.KeyEvent;
 

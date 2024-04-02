@@ -51,6 +51,7 @@ public class TetrisKeyListener implements KeyListener {
         }
         else if (keyCode == downKey) {
             tetris.gamePanel.goDown();
+            tetris.updateGame();
         }
     }
 

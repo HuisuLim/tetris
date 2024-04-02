@@ -1,5 +1,6 @@
-package play_screen;
+package play_screen.panels;
 
+import play_screen.ColorTable;
 import settings.LoadData;
 
 import javax.swing.JPanel;

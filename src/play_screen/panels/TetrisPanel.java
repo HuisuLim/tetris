@@ -1,5 +1,6 @@
-package play_screen;
+package play_screen.panels;
 
+import play_screen.ColorTable;
 import play_screen.blocks.Block;
 import play_screen.blocks.BlockGenerator;
 import settings.LoadData;

@@ -1,13 +1,15 @@
 package play_screen;
 
+import play_screen.panels.NextBlockPanel;
+import play_screen.panels.PausePanel;
+import play_screen.panels.ScorePanel;
+import play_screen.panels.TetrisPanel;
 import settings.LoadData;
 
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();

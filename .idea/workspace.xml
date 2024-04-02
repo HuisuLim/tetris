@@ -124,7 +124,7 @@
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="play_screen.panels.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
