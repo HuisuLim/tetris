@@ -1,5 +1,6 @@
 package play_screen.blocks;
 
+import play_screen.blocks.item.*;
 import play_screen.blocks.standard.*;
 
 import java.util.Random;
@@ -21,13 +22,17 @@ public class BlockGenerator {
     }
 
     public Block getRandomItemBlock() {
-        Block item = new Block() {
-            @Override
-            protected void setShape() {
-
-            }
+        Random random = new Random();
+        int blockType = random.nextInt(6) + 11; // 11부터 16까지의 랜덤 수 생성
+        return switch (blockType) {
+            case 11 -> new WeightBlock(blockType);
+            case 12 -> new BoxClearBlock(blockType);
+            case 13 -> new RowClearBlock(blockType);
+            case 14 -> new ColClearBlock(blockType);
+            case 15 -> new CrossClearBlock(blockType);
+            case 16 -> new AllClearBlock(blockType);
+            default -> null;
         };
-        return item;
     }
 
     public static void main(String[] args) {

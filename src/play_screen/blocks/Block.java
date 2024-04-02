@@ -54,6 +54,10 @@ public abstract class Block {
         return startPos;
     }
 
+    public int getBlockNum() {
+        return blockNum;
+    }
+
     public int[][] copy2DArr(int[][] arr) {
         if (arr == null) return null; // 입력 배열이 null인 경우, null 반환
 
