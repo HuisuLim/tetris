@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="blocks 패키지 수정&#10;tetrisPanel, playFrame 수정중">
-      <change afterPath="$PROJECT_DIR$/src/play_screen/TetrisKeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="코드 살짝 수정">
+      <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,10 +76,10 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}</component>
-  <component name="RunManager" selected="Application.StartMenu_main">
-    <configuration name="Block" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.Block" />
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -154,13 +152,6 @@
         <item itemvalue="Application.KeyConfigFrame" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -295,13 +286,13 @@
       <option name="project" value="LOCAL" />
       <updated>1711969577716</updated>
     </task>
-    <task id="LOCAL-00016" summary="TimerDelay 생성">
+    <task id="LOCAL-00016" summary="코드 살짝 수정">
       <option name="closed" value="true" />
-      <created>1711971015737</created>
+      <created>1711982725005</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1711971015737</updated>
+      <updated>1711982725005</updated>
     </task>
     <task id="LOCAL-00017" summary="blocks 패키지 수정&#10;tetrisPanel, playFrame 수정중">
       <option name="closed" value="true" />
@@ -332,8 +323,7 @@
     <MESSAGE value="설정중 x버튼 눌러도 게임 안꺼지게 수정" />
     <MESSAGE value="메인 화면에 설정값 출력" />
     <MESSAGE value="난이도, 게임 모드 설정 기능 및 설정 화면 추가" />
-    <MESSAGE value="TimerDelay 생성" />
-    <MESSAGE value="blocks 패키지 수정&#10;tetrisPanel, playFrame 수정중" />
-    <option name="LAST_COMMIT_MESSAGE" value="blocks 패키지 수정&#10;tetrisPanel, playFrame 수정중" />
+    <MESSAGE value="코드 살짝 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="코드 살짝 수정" />
   </component>
 </project>
