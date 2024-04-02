@@ -17,6 +17,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
     private static final String GAME_MODE_KEY = "GameMode";
     private static final String NORMAL_MODE = "normalMode";
     private static final String ITEM_MODE = "itemMode";
+    /////dfdsfdaksnfjkdanfklanfkl
 
 
     private void setRadioButton(){

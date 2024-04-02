@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="코드 살짝 수정">
-      <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/src/startscreen/StartMenu_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/StartMenu_main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="playScreen" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,42 +41,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BlockGenerator.executor": "Run",
-    "Application.ColorPanelExample.executor": "Run",
-    "Application.CustomFrame.executor": "Run",
-    "Application.CustomLabel.executor": "Run",
-    "Application.KeyConfigFrame.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.NextBlockPanel.executor": "Run",
-    "Application.PanelFocusExample.executor": "Run",
-    "Application.PausePanel.executor": "Run",
-    "Application.PlayFrame.executor": "Run",
-    "Application.SettingDifficulty.executor": "Run",
-    "Application.SettingGameMode.executor": "Run",
-    "Application.StartMenu_main.executor": "Run",
-    "Application.TetrisPlay.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BlockGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ColorPanelExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CustomFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CustomLabel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.KeyConfigFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NextBlockPanel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PanelFocusExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PausePanel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PlayFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SettingDifficulty.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SettingGameMode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StartMenu_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TetrisPlay.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2.blockPercentage&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wgdcw/Desktop/소공팀플/tetris&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.ColorPanelExample">
     <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
       <module name="tetris" />
@@ -293,7 +293,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711982725005</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=".">
+      <option name="closed" value="true" />
+      <created>1711983357657</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711983357657</updated>
+    </task>
+    <task id="LOCAL-00018" summary=".">
+      <option name="closed" value="true" />
+      <created>1711983491877</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1711983491877</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +331,7 @@
     <MESSAGE value="메인 화면에 설정값 출력" />
     <MESSAGE value="난이도, 게임 모드 설정 기능 및 설정 화면 추가" />
     <MESSAGE value="코드 살짝 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="코드 살짝 수정" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
