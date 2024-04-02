@@ -1,6 +1,8 @@
-package play_screen.blocks;
+package play_screen.blocks.standard;
 
-public class OBlock extends Block{
+import play_screen.blocks.Block;
+
+public class OBlock extends Block {
 
     public OBlock() {
         this(1);

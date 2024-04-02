@@ -1,35 +1,37 @@
-package play_screen.blocks;
+package play_screen.blocks.standard;
 
-public class ZBlock extends Block{
+import play_screen.blocks.Block;
 
-    public ZBlock() {
+public class JBlock extends Block {
+
+    public JBlock() {
         this(1);
     }
-    public ZBlock(int colorNum) {
+    public JBlock(int colorNum) {
         super(colorNum);
     }
     protected void setShape() {
         int c = colorNum;
         shape = new int[][][] {
                 {
-                        {c,c,0},
-                        {0,c,c},
+                        {c,0,0},
+                        {c,c,c},
                         {0,0,0}
                 },
                 {
-                        {0,0,c},
                         {0,c,c},
+                        {0,c,0},
                         {0,c,0}
                 },
                 {
                         {0,0,0},
-                        {c,c,0},
-                        {0,c,c}
+                        {c,c,c},
+                        {0,0,c}
                 },
                 {
                         {0,c,0},
-                        {c,c,0},
-                        {c,0,0}
+                        {0,c,0},
+                        {c,c,0}
                 },
         };
     }

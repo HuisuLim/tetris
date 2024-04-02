@@ -15,6 +15,8 @@ public class SettingReset extends JFrame implements ActionListener {
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String SCREEN_RATIO_KEY = "ScreenSize";
     private static final String CONTROL_KEY = "MOVEMENT";
+    private static final String GAME_MODE_KEY = "GameMode";
+    private static final String DIFFICULTY_KEY = "Difficulty";
 
     private int setScreenRatio(){
         LoadData loadData = new LoadData();
@@ -55,9 +57,13 @@ public class SettingReset extends JFrame implements ActionListener {
             int screenRatio = 2;
             boolean isColorBlindMode = false;
             String keySetting = "ArrowKeys";
+            String gameMode = "normalMode";
+            String difficulty = "normal";
             saveSettings(SCREEN_RATIO_KEY, String.valueOf(screenRatio));
             saveSettings(COLOR_MODE_KEY, String.valueOf(isColorBlindMode));
-            saveSettings(CONTROL_KEY, String.valueOf(keySetting));
+            saveSettings(CONTROL_KEY, keySetting);
+            saveSettings(GAME_MODE_KEY, gameMode);
+            saveSettings(DIFFICULTY_KEY, difficulty);
             dispose(); // 설정 화면 종료
         }
     }
