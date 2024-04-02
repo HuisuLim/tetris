@@ -42,7 +42,7 @@ public class TetrisPanel extends JPanel{
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
 
         currBlock = null;
-        nextBlock = generator.getRandomBlock();
+        nextBlock = generator.getRandomStandardBlock();
         createNewShape(); // 새 도형 생성
     }
 
@@ -53,7 +53,7 @@ public class TetrisPanel extends JPanel{
     private void createNewShape() {
         score +=100;
         currBlock = nextBlock;
-        nextBlock = generator.getRandomBlock();
+        nextBlock = generator.getRandomStandardBlock();
 
         int[] temp = (currBlock.getLen() == 4) ? new int[] {-1,3} : new int[] {0,4};
         currentRow = temp[0];
