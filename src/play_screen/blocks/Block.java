@@ -2,13 +2,13 @@ package play_screen.blocks;
 
 public abstract class Block {
 
-    protected int colorNum;
+    protected int blockNum;
     protected int[][] shape;
     protected int len;
     protected int[] startPos =new int[] {0, 4};
 
-    public Block(int colorNum) {
-        this.colorNum = colorNum;
+    public Block(int blockNum) {
+        this.blockNum = blockNum;
         this.setShape();
         len = shape.length;
     }

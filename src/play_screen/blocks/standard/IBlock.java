@@ -13,7 +13,7 @@ public class IBlock extends Block {
         super.startPos[1] = 2;
     }
     protected void setShape() {
-        int c = colorNum;
+        int c = blockNum;
         shape = new int[][] {
                 {0,0,0,0,0},
                 {0,0,0,0,0},
