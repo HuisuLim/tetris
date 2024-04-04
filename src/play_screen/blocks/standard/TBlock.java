@@ -11,7 +11,7 @@ public class TBlock extends Block {
         super(colorNum);
     }
     protected void setShape() {
-        int c = colorNum;
+        int c = blockNum;
         shape = new int[][] {
                 {0,c,0},
                 {c,c,c},

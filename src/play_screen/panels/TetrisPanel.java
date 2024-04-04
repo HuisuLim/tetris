@@ -11,57 +11,54 @@ import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
 
-    private int SQUARE_SIZE;
-    private static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
-    private static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
-    private final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
-    private final BlockGenerator generator = new BlockGenerator();
-    //게임보드의 가장 왼쪽 위가 board[0][0]
-    private Block currBlock;
-    private Block[] nextBlocks;
-    private int currentRow;
-    private int currentCol;
-    int[] colorTable;
-    private int score = 0;
-    private int screenSize;
-    private boolean colorBlindMode;
-    private String gameMode;
-    private String difficulty;
-    private boolean isGameOver = false;
+    //load properties
+    protected final LoadData data = new LoadData();
+    protected final int screenSize = data.loadScreenSize();
+    protected String gameMode = data.loadGameMode();
+    protected String difficulty;
+    protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
 
-    // 화면 크기 조절을 위해 SquareSize의 조절
-    public void setProps() {
-        LoadData data = new LoadData();
-        this.screenSize = data.loadScreenSize();
-        SQUARE_SIZE = 20 * screenSize;
-        this.colorBlindMode = data.loadColorBlindMode();
-        this.colorTable = ColorTable.getTable(this.colorBlindMode);
-        this.gameMode = data.loadGameMode();
-    }
+    //보드 초기설정    게임보드의 가장 왼쪽 위가 board[0][0]
+    protected final int SQUARE_SIZE = 20 * screenSize;
+    protected static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
+    protected static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
+    protected final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
 
-    public TetrisPanel() {
-        setProps();
-        setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
-        currBlock = null;
-        nextBlocks = new Block[5];
-        for(int i = 0; i < 5; i++) {
-            nextBlocks[i] = generator.getRandomStandardBlock();
-        }
-        createNewShape(); // 새 도형 생성
-        repaint();
-    }
+    //블럭 정보
+    protected final BlockGenerator generator = new BlockGenerator();
+    protected Block currBlock;
+    protected Block nextBlock;
+    protected int currentRow;
+    protected int currentCol;
+
+    //게임정보
+    protected int score = 0;
+    protected boolean isGameOver = false;
+    protected int lineRemoveCount = 0;
 
     public boolean getIsGameOver() {
         return isGameOver;
     }
+    public int getScore() {
+        return score;
+    }
+    public int[][] getNextBlock(){
+        return nextBlock.getShape();
+    }
 
-    private void createNewShape() {
+    public TetrisPanel() {
+        setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
+        currBlock = null;
+        nextBlock = generator.getRandomStandardBlock();
+        createNewShape(); // 새 도형 생성
+        repaint();
+    }
+
+
+    protected void createNewShape() {
         score +=100;
-        currBlock = nextBlocks[0];
-        for(int i = 1; i < 5; i++) {
-            nextBlocks[i-1] = nextBlocks[i];
-        }
-        nextBlocks[4] = generator.getRandomStandardBlock();
+        currBlock = nextBlock;
+        nextBlock = generator.getRandomStandardBlock();
 
         int[] temp = currBlock.getStartPos();
         currentRow = temp[0];
@@ -72,7 +69,7 @@ public class TetrisPanel extends JPanel{
         }
     }
 
-    private boolean canMoveTo(int targetRow, int targetCol, int[][] shape) {
+    protected boolean canMoveTo(int targetRow, int targetCol, int[][] shape) {
         for(int row = 0; row < shape.length; row++) {
             for(int col = 0; col < shape.length; col++) {
                 if (shape[row][col] == 0) continue;
@@ -84,11 +81,11 @@ public class TetrisPanel extends JPanel{
         return true;
     }
 
-    private boolean canRotate() {
+    protected boolean canRotate() {
         return canMoveTo(currentRow, currentCol, currBlock.getRotatedShape());
     }
 
-    private void mergeShapeToBoard() {
+    protected void mergeShapeToBoard() {
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
@@ -99,7 +96,7 @@ public class TetrisPanel extends JPanel{
         }
     }
 
-    private void checkAndClearLines() {
+    protected void checkAndClearLines() {
         for (int row = BOARD_HEIGHT - 1; row >= 0; ) {
             boolean isLineComplete = true;
             for (int col = 0; col < BOARD_WIDTH; col++) {
@@ -111,6 +108,7 @@ public class TetrisPanel extends JPanel{
 
             // 완성된 라인이 있으면 제거하고 위쪽 라인들을 아래로 이동
             if (isLineComplete) {
+                lineRemoveCount++;
                 score+= 1000;
                 for (int r = row; r > 0; r--) {
                     for (int col = 0; col < BOARD_WIDTH; col++) {
@@ -123,10 +121,8 @@ public class TetrisPanel extends JPanel{
         }
     }
 
-    public int getScore() {
-        return score;
-    }
 
+    //테트리스 동작관련 메서드들
     public void goLeft() {
         if(canMoveTo(currentRow, currentCol-1, currBlock.getShape())){
             currentCol--;
@@ -157,9 +153,7 @@ public class TetrisPanel extends JPanel{
         }
     }
 
-    public int[][] getNextBlock(){
-        return nextBlocks[0].getShape();
-    }
+
 
     @Override
     public void paint(Graphics g) {
@@ -173,27 +167,21 @@ public class TetrisPanel extends JPanel{
 
         super.paint(offScreenGraphics); // JFrame의 기본 페인트 메커니즘을 사용하여 구성요소를 그림
 
-        // 게임 보드 및 현재 도형을 오프스크린 그래픽 객체에 그립니다
+        // 게임 보드 및 현재 도형을 그리는 부분
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
-                int color = colorTable[board[row][col]];
-                offScreenGraphics.setColor(new Color(color));
-                offScreenGraphics.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
-                offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
-                offScreenGraphics.drawRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
+                drawSquare(offScreenGraphics, col, row, board[row][col]);
             }
         }
 
-        // 현재 도형 그리기
+        // 현재 도형 그리기 부분
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
                 if (shape[row][col] != 0) {
-                    int color = colorTable[shape[row][col]];
-                    offScreenGraphics.setColor(new Color(color));
-                    offScreenGraphics.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
-                    offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
-                    offScreenGraphics.drawRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
+                    drawSquare(offScreenGraphics, currentCol + col, currentRow + row, shape[row][col]);
                 }
             }
         }
@@ -204,7 +192,16 @@ public class TetrisPanel extends JPanel{
         // 자원 정리
         offScreenGraphics.dispose();
     }
+    protected void drawSquare(Graphics g, int x, int y, int blockNum) {
+        // 색상 테이블에서 색상 코드를 가져옴
+        int colorCode = colorTable[blockNum];
+        Color color = new Color(colorCode);
+        g.setColor(color);
+        g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
 
+        g.setColor(Color.BLACK); // 테두리 색상 설정
+        g.drawRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 테두리 그리기
+    }
 
 
 }
