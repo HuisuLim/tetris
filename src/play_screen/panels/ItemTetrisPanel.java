@@ -1,7 +1,9 @@
 package play_screen.panels;
 
+import java.awt.*;
+
 public class ItemTetrisPanel extends TetrisPanel{
-    protected int itemGenerateCount = 0;
+    protected int itemGenerateCount = -1000;
     protected boolean weightBlockCanMove;
     @Override
     protected void createNewShape() {
@@ -54,9 +56,25 @@ public class ItemTetrisPanel extends TetrisPanel{
     @Override
     protected void checkAndClearLines() {
         if (currBlock.getBlockNum() > 11) {
-            //아이템블럭효과
+            return;
         }
         super.checkAndClearLines();
+    }
+
+    @Override
+    protected void drawSquare(Graphics g, int x, int y, int blockNum) {
+        if (blockNum < 10) {
+            super.drawSquare(g, x, y, blockNum);
+            return;
+        }
+        int colorCode = colorTable[blockNum - 10];
+        Color color = new Color(colorCode);
+        g.setColor(color);
+        g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
+
+        g.setColor(Color.BLACK); // 테두리 색상 설정
+        g.drawRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 테두리 그리기
+
     }
 
 }

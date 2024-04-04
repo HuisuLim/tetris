@@ -167,27 +167,21 @@ public class TetrisPanel extends JPanel{
 
         super.paint(offScreenGraphics); // JFrame의 기본 페인트 메커니즘을 사용하여 구성요소를 그림
 
-        // 게임 보드 및 현재 도형을 오프스크린 그래픽 객체에 그립니다
+        // 게임 보드 및 현재 도형을 그리는 부분
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
-                int color = colorTable[board[row][col]];
-                offScreenGraphics.setColor(new Color(color));
-                offScreenGraphics.fillRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
-                offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
-                offScreenGraphics.drawRect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
+                drawSquare(offScreenGraphics, col, row, board[row][col]);
             }
         }
 
-        // 현재 도형 그리기
+        // 현재 도형 그리기 부분
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
                 if (shape[row][col] != 0) {
-                    int color = colorTable[shape[row][col]];
-                    offScreenGraphics.setColor(new Color(color));
-                    offScreenGraphics.fillRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
-                    offScreenGraphics.setColor(Color.BLACK); // 테두리는 검은색
-                    offScreenGraphics.drawRect((currentCol + col) * SQUARE_SIZE, (currentRow + row) * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
+                    drawSquare(offScreenGraphics, currentCol + col, currentRow + row, shape[row][col]);
                 }
             }
         }
@@ -198,7 +192,16 @@ public class TetrisPanel extends JPanel{
         // 자원 정리
         offScreenGraphics.dispose();
     }
+    protected void drawSquare(Graphics g, int x, int y, int blockNum) {
+        // 색상 테이블에서 색상 코드를 가져옴
+        int colorCode = colorTable[blockNum];
+        Color color = new Color(colorCode);
+        g.setColor(color);
+        g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
 
+        g.setColor(Color.BLACK); // 테두리 색상 설정
+        g.drawRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 테두리 그리기
+    }
 
 
 }
