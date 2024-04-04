@@ -24,6 +24,7 @@ public class BlockGenerator {
     public Block getRandomItemBlock() {
         Random random = new Random();
         int blockType = random.nextInt(6) + 11; // 11부터 16까지의 랜덤 수 생성
+        System.out.println(blockType);
         return switch (blockType) {
             case 11 -> new WeightBlock(blockType);
             case 12 -> new BoxClearBlock(blockType);

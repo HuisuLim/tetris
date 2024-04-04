@@ -7,11 +7,12 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
     private int screenSize = data.loadScreenSize();
-    public ItemTetrisPanel gamePanel;
+    public TetrisPanel gamePanel;
     public ScorePanel scorePanel;
     public NextBlockPanel nextBlockPanel;
     public PausePanel pausePanel;
@@ -43,7 +44,12 @@ public class PlayFrame extends JFrame {
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        gamePanel = new ItemTetrisPanel();
+        if (Objects.equals(data.loadGameMode(), "itemMode")) {
+            gamePanel = new ItemTetrisPanel();
+        }
+        else {
+            gamePanel = new TetrisPanel();
+        }
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)

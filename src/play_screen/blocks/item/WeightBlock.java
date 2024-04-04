@@ -13,9 +13,12 @@ public class WeightBlock extends Block {
     protected void setShape() {
         int c = blockNum;
         shape = new int[][] {
+                {0,0,0,0},
+                {0,0,0,0},
                 {0,c,c,0},
                 {c,c,c,c}
         };
+        len = 4;
     }
 
     @Override

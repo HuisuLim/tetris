@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f95bee-fe14-4150-b50b-9de16fc4ee6e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/play_screen/panels/TetrisRanderer.java" afterDir="false" />
+    <list default="true" id="78e95418-10cb-41f5-9411-13be900a07f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/item/WeightBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/WeightBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/panels/ItemTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/panels/ItemTetrisPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/panels/TetrisPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,16 +49,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.StartMenu_main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "item-block",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "git-widget-placeholder": "item-block"
   }
 }]]></component>
   <component name="RunManager" selected="Application.StartMenu_main">
@@ -135,13 +126,6 @@
         <item itemvalue="Application.KeyConfigFrame" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
