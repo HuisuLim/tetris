@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="코드 살짝 수정">
+    <list default="true" id="78e95418-10cb-41f5-9411-13be900a07f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/item/WeightBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/WeightBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/panels/ItemTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/panels/ItemTetrisPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,45 +46,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Block.executor&quot;: &quot;Run&quot;,
-    &quot;Application.BlockGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ColorPanelExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CustomFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CustomLabel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.KeyConfigFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.NextBlockPanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PanelFocusExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PausePanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PlayFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SettingDifficulty.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SettingGameMode.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StartMenu_main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TetrisPlay.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;item-block&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wgdcw/Desktop/소공팀플/tetris&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.StartMenu_main.executor": "Run",
+    "git-widget-placeholder": "item-block"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
+  <component name="RunManager" selected="Application.StartMenu_main">
+    <configuration name="BlockGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.BlockGenerator" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -91,8 +66,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlockGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.blocks.BlockGenerator" />
+    <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -148,7 +123,6 @@
         <item itemvalue="Application.StartMenu_main" />
         <item itemvalue="Application.BlockGenerator" />
         <item itemvalue="Application.PlayFrame" />
-        <item itemvalue="Application.Block" />
         <item itemvalue="Application.KeyConfigFrame" />
       </list>
     </recent_temporary>

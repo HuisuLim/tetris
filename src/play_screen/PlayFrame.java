@@ -1,15 +1,13 @@
 package play_screen;
 
-import play_screen.panels.NextBlockPanel;
-import play_screen.panels.PausePanel;
-import play_screen.panels.ScorePanel;
-import play_screen.panels.TetrisPanel;
+import play_screen.panels.*;
 import settings.LoadData;
 
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
@@ -46,7 +44,12 @@ public class PlayFrame extends JFrame {
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        gamePanel = new TetrisPanel();
+        if (Objects.equals(data.loadGameMode(), "itemMode")) {
+            gamePanel = new ItemTetrisPanel();
+        }
+        else {
+            gamePanel = new TetrisPanel();
+        }
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)

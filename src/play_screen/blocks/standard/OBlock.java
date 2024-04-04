@@ -11,7 +11,7 @@ public class OBlock extends Block {
         super(colorNum);
     }
     protected void setShape() {
-        int c = colorNum;
+        int c = blockNum;
         shape = new int[][] {
                 {c,c},
                 {c,c}
