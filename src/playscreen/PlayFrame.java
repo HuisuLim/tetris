@@ -1,9 +1,6 @@
 package playscreen;
 
-import playscreen.panels.NextBlockPanel;
-import playscreen.panels.PausePanel;
-import playscreen.panels.ScorePanel;
-import playscreen.panels.TetrisPanel;
+import playscreen.panels.*;
 import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
 import settings.LoadData;
@@ -14,10 +11,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static startscreen.StartMenu.*;
-
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
+    private String gameMode = data.loadGameMode();
     private String difficulty = data.loadDifficulty(); // 난이도 로드
     private int screenSize = data.loadScreenSize();
     public TetrisPanel gamePanel;
@@ -49,7 +45,12 @@ public class PlayFrame extends JFrame {
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        gamePanel = new TetrisPanel();
+        if (gameMode.equals("itemMode")) {
+            gamePanel = new ItemTetrisPanel();
+        }
+        else {
+            gamePanel = new TetrisPanel();
+        }
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)
@@ -69,7 +70,7 @@ public class PlayFrame extends JFrame {
 
         add(rightPanel);
 
-        pausePanel = new PausePanel(this, screenRatio); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel(this, screenSize); // PausePanel 인스턴스 생성
         pausePanel.setSize(200, 100); // 적당한 크기 설정
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
@@ -105,11 +106,9 @@ public class PlayFrame extends JFrame {
 
             if (name != null && !name.isEmpty()) {
                 // 게임의 난이도와 모드를 설정합니다.
-                String difficulty = loadData.loadDifficulty();
-                String mode = gameMode;
 
                 // 테이블에 이름과 현재 점수, 난이도, 모드 추가
-                new ScoreInput(name, gamePanel.getScore(), difficulty, mode).setVisible(true);
+                new ScoreInput(name, gamePanel.getScore(), difficulty, gameMode).setVisible(true);
             }
             return;
         }
