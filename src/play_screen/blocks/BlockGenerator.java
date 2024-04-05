@@ -7,13 +7,18 @@ import java.util.Random;
 
 public class BlockGenerator {
     private int[] weights; // 각 블록 유형의 가중치를 저장할 배열
+
+    private int[] itemWeights; // 각 블록 유형의 가중치를 저장할 배열
     private final Random random = new Random();
     LoadData load = new LoadData();
     String difficulty = load.loadDifficulty();
     private int maxWeight; // 최대 가중치
+    private int maxItemWeight; // 최대 가중치
 
     public BlockGenerator() {
         setDifficulty();
+        setItemPercent();
+        maxItemWeight = calculateItemMaxWeight();
         // 최대 가중치 계산
         maxWeight = calculateMaxWeight();
     }
@@ -39,6 +44,7 @@ public class BlockGenerator {
         return max;
     }
 
+
     public Block getRandomStandardBlock() {
         while (true) {
             int index = random.nextInt(weights.length);
@@ -48,7 +54,6 @@ public class BlockGenerator {
             }
         }
     }
-
     private Block createBlock(int blockType) {
         return switch (blockType) {
             case 1 -> new IBlock(blockType);
@@ -63,16 +68,33 @@ public class BlockGenerator {
     }
 
 
+    //---------------여기부터 item
 
-public Block getRandomItemBlock() {
-        Block item = new Block() {
-            @Override
-            protected void setShape() {
-=======
+    private void setItemPercent() {
+        // 가중치 설정
+        this.itemWeights = new int[]{10, 10, 10, 10, 10, 10};
+    }
+
+    private int calculateItemMaxWeight() {
+        int max = itemWeights[0];
+        for (int weight : itemWeights) {
+            if (weight > max) max = weight;
+        }
+        return max;
+    }
+
+
     public Block getRandomItemBlock() {
-        Random random = new Random();
-        int blockType = random.nextInt(6) + 11; // 11부터 16까지의 랜덤 수 생성
-        System.out.println(blockType);
+        while (true) {
+            int index = random.nextInt(itemWeights.length);
+            int selectedWeight = itemWeights[index];
+            if (random.nextDouble() < (double) selectedWeight / maxItemWeight) {
+                return createItemBlock(index+11);
+            }
+        }
+    }
+
+    private Block createItemBlock(int blockType) {
         return switch (blockType) {
             case 11 -> new WeightBlock(blockType);
             case 12 -> new BoxClearBlock(blockType);
@@ -85,9 +107,10 @@ public Block getRandomItemBlock() {
     }
 
 
+
     public static void main(String[] args) {
         BlockGenerator generator = new BlockGenerator();
-        Block b = generator.getRandomStandardBlock();
+        Block b = generator.getRandomItemBlock();
         int len = b.getLen();
         int[][] shape = b.getShape();
         for(int i = 0; i< len; i++){
