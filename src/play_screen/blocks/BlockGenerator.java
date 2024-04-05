@@ -2,13 +2,13 @@ package play_screen.blocks;
 
 import play_screen.blocks.standard.*;
 import settings.LoadData;
-
 import java.util.Random;
 
 public class BlockGenerator {
     private int[] weights; // 각 블록 유형의 가중치를 저장할 배열
     private final Random random = new Random();
     LoadData load = new LoadData();
+    String difficulty = load.loadDifficulty();
     private int maxWeight; // 최대 가중치
 
     public BlockGenerator() {
@@ -18,8 +18,7 @@ public class BlockGenerator {
     }
 
     private void setDifficulty() {
-        String difficulty = load.loadDifficulty();
-        // 기본 가중치 설정 (J, L, O, S, T, Z, I 블록)
+        // 기본 가중치 설정 (I, J, L, O, S, T, Z 블록)
         this.weights = new int[]{10, 10, 10, 10, 10, 10, 10};
         // 난이도에 따라 I형 블록의 가중치 조정
         if (difficulty.equals("easy")) {
@@ -44,20 +43,20 @@ public class BlockGenerator {
             int index = random.nextInt(weights.length);
             int selectedWeight = weights[index];
             if (random.nextDouble() < (double) selectedWeight / maxWeight) {
-                return createBlock(index);
+                return createBlock(index+1);
             }
         }
     }
 
     private Block createBlock(int blockType) {
         return switch (blockType) {
-            case 0 -> new IBlock(blockType);
-            case 1 -> new JBlock(blockType);
-            case 2 -> new LBlock(blockType);
-            case 3 -> new OBlock(blockType);
-            case 4 -> new SBlock(blockType);
-            case 5 -> new TBlock(blockType);
-            case 6 -> new ZBlock(blockType);
+            case 1 -> new IBlock(blockType);
+            case 2 -> new JBlock(blockType);
+            case 3 -> new LBlock(blockType);
+            case 4 -> new OBlock(blockType);
+            case 5 -> new SBlock(blockType);
+            case 6 -> new TBlock(blockType);
+            case 7 -> new ZBlock(blockType);
             default -> null;
         };
     }
