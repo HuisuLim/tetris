@@ -2,6 +2,7 @@ package play_screen;
 
 import settings.LoadData;
 import startscreen.ScoreInput;
+import startscreen.StartMenu;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -69,7 +70,8 @@ public class TetrisKeyListener implements KeyListener {
                 tetris.toggleIsPause();
             }
             else {
-
+                tetris.dispose();
+                new StartMenu().setVisible(true);
             }
         }
         else if (keyCode == KeyEvent.VK_ESCAPE) {
