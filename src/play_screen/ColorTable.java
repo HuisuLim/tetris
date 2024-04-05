@@ -8,18 +8,10 @@ public class ColorTable {
 
     public static int[] getTable(boolean colorMode) {
         if(colorMode) {
-            return copyArr(colorHex[1]);
+            return colorHex[1];
         }
         else {
-            return copyArr(colorHex[0]);
+            return colorHex[0];
         }
     };
-
-    public static int[] copyArr(int[] arr) {
-        int[] copy = new int[arr.length];
-        for(int i = 0; i < arr.length; i++) {
-            copy[i] = arr[i];
-        }
-        return copy;
-    }
 }
