@@ -39,7 +39,6 @@ public class Setting extends JFrame {
         // 버튼 생성 및 설정
         JButton button1 = new JButton("조작키 설정");
         button1.setBounds((frameWidth - buttonWidth) / 2, 25 * screenRatio, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
-        button1.setBackground(Color.RED); // 첫 번째 버튼의 색상을 빨간색으로 설정
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingKey setting = new SettingKey();
@@ -50,7 +49,6 @@ public class Setting extends JFrame {
 
         JButton button2 = new JButton("색맹 모드");
         button2.setBounds((frameWidth - buttonWidth) / 2, 60 * screenRatio, buttonWidth, buttonHeight);
-        button2.setBackground(Color.GREEN); // 두 번째 버튼의 색상을 초록색으로 설정
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingColorBlindness setting = new SettingColorBlindness();
@@ -61,7 +59,6 @@ public class Setting extends JFrame {
 
         JButton button3 = new JButton("설정 초기화");
         button3.setBounds((frameWidth - buttonWidth) / 2, 95 * screenRatio, buttonWidth, buttonHeight);
-        button3.setBackground(Color.BLUE); // 세 번째 버튼의 색상을 파란색으로 설정
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingReset settingReset = new SettingReset();
@@ -80,7 +77,6 @@ public class Setting extends JFrame {
 
         JButton button4 = new JButton("화면 크기 조절");
         button4.setBounds((frameWidth - buttonWidth) / 2, 130 * screenRatio, buttonWidth, buttonHeight);
-        button4.setBackground(Color.YELLOW); // 네 번째 버튼의 색상을 노란색으로 설정
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingScreen setting = new SettingScreen();
@@ -99,22 +95,15 @@ public class Setting extends JFrame {
 
         JButton button5 = new JButton("스코어보드 초기화");
         button5.setBounds((frameWidth - buttonWidth) / 2, 165 * screenRatio, buttonWidth, buttonHeight);
-        button5.setBackground(Color.ORANGE); // 다섯 번째 버튼의 색상을 주황색으로 설정
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                int option = JOptionPane.showConfirmDialog(null, "스코어보드를 초기화 하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION);
-                if (option == JOptionPane.YES_OPTION) {
-                    // 스코어보드 초기화 작업 수행
-                    ShowScoreboard.ClearScoreboard.clear("scoreboard.txt");
-                    JOptionPane.showMessageDialog(null, "스코어보드가 초기화되었습니다.", "완료", JOptionPane.INFORMATION_MESSAGE);
-                }
+                // 새로운 ScoreboardReset 화면을 여는 로직
+                new ScoreboardReset().setVisible(true);
             }
         });
 
         JButton itemModeButton = new JButton("아이템 모드 ON/OFF");
         itemModeButton.setBounds((frameWidth - buttonWidth) / 2, 200 * screenRatio, buttonWidth, buttonHeight);
-        itemModeButton.setBackground(Color.MAGENTA); // 버튼의 색상을 자홍색으로 설정
         itemModeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // SettingGameMode 인스턴스를 생성하고 보이게 하는 코드 추가
@@ -127,7 +116,6 @@ public class Setting extends JFrame {
         // 난이도 설정 버튼 생성 및 설정
         JButton difficultyButton = new JButton("난이도 설정");
         difficultyButton.setBounds((frameWidth - buttonWidth) / 2, 235 * screenRatio, buttonWidth, buttonHeight);
-        difficultyButton.setBackground(Color.CYAN); // 버튼의 색상을 청록색으로 설정
 
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
