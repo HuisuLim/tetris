@@ -72,7 +72,7 @@ public class BlockGenerator {
 
     private void setItemPercent() {
         // 가중치 설정
-        this.itemWeights = new int[]{10, 10, 10, 10, 10, 10};
+        this.itemWeights = new int[]{10, 10, 10, 10, 10, 5};
     }
 
     private int calculateItemMaxWeight() {
