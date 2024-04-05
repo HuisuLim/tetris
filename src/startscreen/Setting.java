@@ -102,7 +102,13 @@ public class Setting extends JFrame {
         button5.setBackground(Color.ORANGE); // 다섯 번째 버튼의 색상을 주황색으로 설정
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "스코어보드 초기화 기능 수행");
+
+                int option = JOptionPane.showConfirmDialog(null, "스코어보드를 초기화 하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    // 스코어보드 초기화 작업 수행
+                    ShowScoreboard.ClearScoreboard.clear("scoreboard.txt");
+                    JOptionPane.showMessageDialog(null, "스코어보드가 초기화되었습니다.", "완료", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
