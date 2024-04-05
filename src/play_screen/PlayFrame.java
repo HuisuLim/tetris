@@ -1,16 +1,21 @@
 package play_screen;
 
-import play_screen.panels.*;
+import play_screen.panels.NextBlockPanel;
+import play_screen.panels.PausePanel;
+import play_screen.panels.ScorePanel;
+import play_screen.panels.TetrisPanel;
 import settings.LoadData;
 
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+
+import static startscreen.StartMenu.screenRatio;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
+    private String difficulty = data.loadDifficulty(); // 난이도 로드
     private int screenSize = data.loadScreenSize();
     public TetrisPanel gamePanel;
     public ScorePanel scorePanel;
@@ -24,32 +29,24 @@ public class PlayFrame extends JFrame {
 
 
     public PlayFrame() {
-        //JFrame 설정.
         setTitle("Play Frame");
         setSize(screenSize * 20 * 20, screenSize * 20 * 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
         this.addKeyListener(listener);
         initUI();
         createTimer();
         timer.start();
 
-
         pack();
-        setLocationRelativeTo(null); // 화면 가운데에 위치
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
     private void initUI() {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        if (Objects.equals(data.loadGameMode(), "itemMode")) {
-            gamePanel = new ItemTetrisPanel();
-        }
-        else {
-            gamePanel = new TetrisPanel();
-        }
+        gamePanel = new TetrisPanel();
         add(gamePanel);
 
         // 오른쪽 패널 (세로로 4등분)
@@ -69,7 +66,7 @@ public class PlayFrame extends JFrame {
 
         add(rightPanel);
 
-        pausePanel = new PausePanel(screenSize); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel(this, screenRatio); // PausePanel 인스턴스 생성
         pausePanel.setSize(200, 100); // 적당한 크기 설정
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
@@ -77,26 +74,26 @@ public class PlayFrame extends JFrame {
         getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
     }
 
-    public void createTimer() {
-        // ActionListener 정의: 점수를 업데이트하고 타이머의 지연 시간 조정
+    private void createTimer() {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(isGameOver) {
+                if (isGameOver) {
                     timer.stop();
-                }
-                else {
+                } else {
                     gamePanel.goDown();
                     updateGame();
-                    // 타이머의 지연 시간 조정
-                    //timer.setDelay(50); //디버그용 딜레이
-                    timer.setDelay(1000 - (int)(0.01 * gamePanel.getScore()));
+
+                    // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
+                    int delay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
+                    timer.setDelay(delay);
                 }
             }
         };
 
-        // 타이머 생성: 초기 지연 시간은 1000ms
-        timer = new Timer(1000, actionListener);
+        // 타이머 생성: 초기 지연 시간은 난이도에 따라 조정됨
+        int initialDelay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
+        timer = new Timer(initialDelay, actionListener);
     }
     public void updateGame() {
         isGameOver = gamePanel.getIsGameOver();
