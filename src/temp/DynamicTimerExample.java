@@ -8,51 +8,51 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import play_screen.TimerDelay; // 난이도에 따른 타이머 지연 시간 계산을 위해 추가
+import settings.LoadData; // 설정 정보를 가져오기 위해 추가
+
 public class DynamicTimerExample extends JFrame {
     private int score = 0;
     private JLabel label;
     private Timer timer;
+    private LoadData loadData; // 설정 정보를 로드하기 위한 인스턴스
 
     public DynamicTimerExample() {
-        // JFrame 설정
+        loadData = new LoadData();
+        String difficulty = loadData.loadDifficulty(); // 난이도 로드
+
         setTitle("Dynamic Timer Example");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // 점수를 표시할 JLabel 설정
         label = new JLabel("0", JLabel.CENTER);
         label.setFont(new Font("Serif", Font.BOLD, 40));
         add(label);
 
-        // 타이머 생성 및 시작
-        createTimer();
+        createTimer(difficulty); // 난이도에 따라 타이머 생성
         timer.start();
     }
 
-    private void createTimer() {
-        // ActionListener 정의: 점수를 업데이트하고 타이머의 지연 시간 조정
+    private void createTimer(String difficulty) {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                score += 10; // 점수 10 증가
+                score += 10; // 점수 증가
                 label.setText(String.valueOf(score)); // 레이블 업데이트
 
-                // 타이머의 지연 시간 조정
-                timer.setDelay(1000 - score);
+                // 타이머의 지연 시간을 난이도와 점수에 따라 조정
+                int delay = TimerDelay.calDelay(difficulty, score);
+                timer.setDelay(delay);
             }
         };
 
-        // 타이머 생성: 초기 지연 시간은 1000ms
-        timer = new Timer(1000, actionListener);
+        // 난이도와 초기 점수를 기반으로 초기 지연 시간 설정
+        int initialDelay = TimerDelay.calDelay(difficulty, score);
+        timer = new Timer(initialDelay, actionListener);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new DynamicTimerExample().setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(() -> new DynamicTimerExample().setVisible(true));
     }
 }
