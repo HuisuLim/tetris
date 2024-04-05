@@ -4,15 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="TimerDelay 생성">
+    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="아이템 블록 제네레이터 추가">
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/AllClearBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/BoxClearBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/ColClearBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/CrossClearBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/ItemBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/RowClearBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/blocks/item/WeightBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/panels/ItemTetrisPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/play_screen/panels/TetrisRanderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/settings/ScoreboardReset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/startscreen/ShowScoreboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/temp/MyPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/temp/SettingItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/temp/SettingsWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/temp/TetrisProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uni_test/blockGeneratingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/uni_test/itemBlockGeneratingTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/TimerDelay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/TimerDelay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/IBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/JBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/LBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/OBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/SBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/TBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/standard/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/standard/ZBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/play_screen/panels/PausePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/panels/PausePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/play_screen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/panels/TetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/ScoreboardReset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/SettingGameMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/SettingGameMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/DynamicTimerExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/DynamicTimerExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/SplitFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/SplitFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/TetrisPlayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/TetrisPlayPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startscreen/ScoreInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/ScoreInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startscreen/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/Setting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/startscreen/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/StartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/scoreboard.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,29 +63,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "yongzooda"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="2f6cab30-ba1d-45dc-87b6-e409bd2af965" />
-        <option name="url" value="https://github.com/HuisuLim/tetris.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
+    &quot;associatedIndex&quot;: 1
+    }</component>
   <component name="ProjectId" id="2eGykyftxfiK5mgj90xTiu5yfPO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -81,12 +93,13 @@
     "Application.SettingGameMode.executor": "Run",
     "Application.StartMenu_main.executor": "Run",
     "Application.TetrisPlay.executor": "Run",
+    "Application.blockGeneratingTest.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "yongzooda.v2",
+    "git-widget-placeholder": "Merging yongzooda.v2",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/wgdcw/Desktop/소공팀플/tetris",
+    "last_opened_file_path": "C:/Users/이용주/Desktop/소웨공팀풀/tetris",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -100,6 +113,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\이용주\Desktop\소웨공팀풀\tetris" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.StartMenu_main">
     <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
@@ -176,13 +194,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -195,6 +206,9 @@
       <workItem from="1711933199373" duration="795000" />
       <workItem from="1711939595425" duration="6712000" />
       <workItem from="1711956588521" duration="2738000" />
+      <workItem from="1712030026492" duration="5760000" />
+      <workItem from="1712278640595" duration="2663000" />
+      <workItem from="1712284519047" duration="2138000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -316,30 +330,59 @@
       <option name="project" value="LOCAL" />
       <updated>1711969577716</updated>
     </task>
-    <task id="LOCAL-00016" summary="TimerDelay 생성">
+    <task id="LOCAL-00016" summary="코드 살짝 수정">
       <option name="closed" value="true" />
-      <created>1711971015737</created>
+      <created>1711982725005</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1711971015737</updated>
+      <updated>1711982725005</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=".">
+      <option name="closed" value="true" />
+      <created>1711983357657</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711983357657</updated>
+    </task>
+    <task id="LOCAL-00018" summary=".">
+      <option name="closed" value="true" />
+      <created>1711983491877</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1711983491877</updated>
+    </task>
+    <task id="LOCAL-00019" summary=".">
+      <option name="closed" value="true" />
+      <created>1712030130715</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712030130715</updated>
+    </task>
+    <task id="LOCAL-00020" summary="난이도 별 확률적 블록 생성">
+      <option name="closed" value="true" />
+      <created>1712052918753</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712052918753</updated>
+    </task>
+    <task id="LOCAL-00021" summary="아이템 블록 제네레이터 추가">
+      <option name="closed" value="true" />
+      <created>1712306958582</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712306958582</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
@@ -356,17 +399,19 @@
     <MESSAGE value="설정중 x버튼 눌러도 게임 안꺼지게 수정" />
     <MESSAGE value="메인 화면에 설정값 출력" />
     <MESSAGE value="난이도, 게임 모드 설정 기능 및 설정 화면 추가" />
-    <MESSAGE value="TimerDelay 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="TimerDelay 생성" />
+    <MESSAGE value="코드 살짝 수정" />
+    <MESSAGE value="." />
+    <MESSAGE value="난이도 별 확률적 블록 생성" />
+    <MESSAGE value="아이템 블록 제네레이터 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="아이템 블록 제네레이터 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/play_screen/TimerDelay.java</url>
-          <line>27</line>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
