@@ -148,7 +148,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame(screenRatio, isColorblindness);
+                nextFrame = new PlayFrame();
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -179,6 +179,9 @@ public class StartMenu extends JFrame {
                 }
                 // 스코어보드 데이터 읽어오기
                 ShowScoreboard.readScoreboard(model, "scoreboard.txt");
+                // 가운데 정렬 적용
+                ShowScoreboard.applyCenterAlignment(scoreboardTable);
+
                 // 스코어보드 테이블을 스크롤 가능하도록 패널에 추가
                 JScrollPane scrollPane = new JScrollPane(scoreboardTable);
                 scoreboardFrame.add(scrollPane);
