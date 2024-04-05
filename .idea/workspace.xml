@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5a288d-8bd3-4409-8b11-47641a385b97" name="변경" comment="설정값 관련 테스트">
-      <change afterPath="$PROJECT_DIR$/src/temp/SettingItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/temp/SettingsWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/temp/TetrisProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uni_test/blockGeneratingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uni_test/blockGeneratingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,17 +36,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "애플리케이션.SettingsWindow.executor": "Run",
-    "애플리케이션.StartMenu_main.executor": "Run"
-  }
-}]]></component>
-  <component name="RunManager" selected="애플리케이션.SettingsWindow">
     <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
       <module name="tetris" />
@@ -142,6 +127,9 @@
       <workItem from="1711933199373" duration="795000" />
       <workItem from="1711939595425" duration="6712000" />
       <workItem from="1711956588521" duration="2738000" />
+      <workItem from="1712030026492" duration="5760000" />
+      <workItem from="1712278640595" duration="2663000" />
+      <workItem from="1712284519047" duration="2138000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -271,23 +259,6 @@
       <option name="project" value="LOCAL" />
       <updated>1711982725005</updated>
     </task>
-    <task id="LOCAL-00017" summary="blocks 패키지 수정&#10;tetrisPanel, playFrame 수정중">
-      <option name="closed" value="true" />
-      <created>1711994331767</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1711994331768</updated>
-    </task>
-    <task id="LOCAL-00018" summary="wirspace.xml 오류 수정">
-      <option name="closed" value="true" />
-      <created>1712250465753</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1712250465753</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +291,5 @@
     <MESSAGE value="메인 화면에 설정값 출력" />
     <MESSAGE value="난이도, 게임 모드 설정 기능 및 설정 화면 추가" />
     <MESSAGE value="코드 살짝 수정" />
-    <MESSAGE value="wirspace.xml 오류 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="wirspace.xml 오류 수정" />
   </component>
 </project>
