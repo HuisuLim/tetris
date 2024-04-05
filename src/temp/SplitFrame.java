@@ -2,14 +2,20 @@ package temp;
 
 import javax.swing.*;
 import java.awt.*;
+import play_screen.TimerDelay;
+import settings.LoadData; // 설정 정보를 가져오기 위해 추가
 
 public class SplitFrame extends JFrame {
     private int count = 0; // 숫자를 증가시키기 위한 변수
     private JLabel numberLabel; // 숫자를 표시할 레이블
     private Timer timer;
-    private int delay = 1000; // 초기 딜레이는 1000ms (1초)
+    private LoadData loadData; // 설정 정보를 로드하기 위한 인스턴스
+    private String difficulty; // 난이도를 저장하기 위한 변수
 
     public SplitFrame() {
+        loadData = new LoadData();
+        String difficulty = loadData.loadDifficulty(); // 난이도 로드
+
         setTitle("Accelerating Timer Example");
         setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,8 +38,9 @@ public class SplitFrame extends JFrame {
 
         add(rightPanel);
 
-        // 타이머 설정
-        timer = new Timer(delay, e -> updateCounter());
+        // 타이머 설정 및 시작 부분 수정
+        int initialDelay = TimerDelay.calDelay(difficulty, count); // 초기 지연 시간 설정
+        timer = new Timer(initialDelay, e -> updateCounter());
         timer.start();
 
         setVisible(true);
@@ -43,10 +50,11 @@ public class SplitFrame extends JFrame {
         count++;
         numberLabel.setText(String.valueOf(count));
 
-        // 딜레이 감소 로직 (예: 현재 딜레이의 95%를 적용)
-        delay = (int)(delay * 0.95);
-        timer.setDelay(delay);
+        // 딜레이 재계산 및 적용
+        int newDelay = TimerDelay.calDelay(difficulty, count); // 난이도와 현재 점수를 기반으로 새 딜레이 계산
+        timer.setDelay(newDelay);
     }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(SplitFrame::new);
