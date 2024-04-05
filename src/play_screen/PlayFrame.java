@@ -5,13 +5,14 @@ import play_screen.panels.PausePanel;
 import play_screen.panels.ScorePanel;
 import play_screen.panels.TetrisPanel;
 import settings.LoadData;
+import startscreen.ScoreInput;
 
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static startscreen.StartMenu.screenRatio;
+import static startscreen.StartMenu.*;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
@@ -97,6 +98,19 @@ public class PlayFrame extends JFrame {
     }
     public void updateGame() {
         isGameOver = gamePanel.getIsGameOver();
+        if (isGameOver) {
+            String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
+
+            if (name != null && !name.isEmpty()) {
+                // 게임의 난이도와 모드를 설정합니다.
+                String difficulty = loadData.loadDifficulty();
+                String mode = gameMode;
+
+                // 테이블에 이름과 현재 점수, 난이도, 모드 추가
+                new ScoreInput(name, gamePanel.getScore(), difficulty, mode).setVisible(true);
+            }
+            return;
+        }
         scorePanel.updateScore(gamePanel.getScore());
         nextBlockPanel.updateBlock(gamePanel.getNextBlock());
     }
