@@ -8,7 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import play_screen.TimerDelay; // 난이도에 따른 타이머 지연 시간 계산을 위해 추가
+import playscreen.utils.TimerDelay; // 난이도에 따른 타이머 지연 시간 계산을 위해 추가
 import settings.LoadData; // 설정 정보를 가져오기 위해 추가
 
 public class DynamicTimerExample extends JFrame {

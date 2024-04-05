@@ -1,9 +1,11 @@
-package play_screen;
+package playscreen;
 
-import play_screen.panels.NextBlockPanel;
-import play_screen.panels.PausePanel;
-import play_screen.panels.ScorePanel;
-import play_screen.panels.TetrisPanel;
+import playscreen.panels.NextBlockPanel;
+import playscreen.panels.PausePanel;
+import playscreen.panels.ScorePanel;
+import playscreen.panels.TetrisPanel;
+import playscreen.utils.TetrisKeyListener;
+import playscreen.utils.TimerDelay;
 import settings.LoadData;
 import startscreen.ScoreInput;
 

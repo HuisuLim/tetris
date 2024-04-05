@@ -1,13 +1,7 @@
-package play_screen.panels;
-
-import startscreen.StartMenu;
+package playscreen.panels;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 
 public class PausePanel extends JPanel {

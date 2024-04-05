@@ -1,8 +1,8 @@
-package play_screen.panels;
+package playscreen.panels;
 
-import play_screen.ColorTable;
-import play_screen.blocks.Block;
-import play_screen.blocks.BlockGenerator;
+import playscreen.utils.ColorTable;
+import playscreen.blocks.Block;
+import playscreen.blocks.BlockGenerator;
 import settings.LoadData;
 
 import javax.swing.*;

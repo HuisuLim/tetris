@@ -1,7 +1,7 @@
-package play_screen.blocks;
+package playscreen.blocks;
 
-import play_screen.blocks.item.*;
-import play_screen.blocks.standard.*;
+import playscreen.blocks.item.*;
+import playscreen.blocks.standard.*;
 import settings.LoadData;
 import java.util.Random;
 

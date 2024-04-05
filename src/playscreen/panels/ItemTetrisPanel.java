@@ -1,4 +1,4 @@
-package play_screen.panels;
+package playscreen.panels;
 
 import java.awt.*;
 

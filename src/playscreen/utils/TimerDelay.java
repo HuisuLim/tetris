@@ -1,4 +1,4 @@
-package play_screen;
+package playscreen.utils;
 
 public class TimerDelay {
     private static final int BASE_DELAY = 1000; // "normal" 난이도 기준 지연 시간

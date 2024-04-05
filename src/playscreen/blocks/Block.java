@@ -1,4 +1,4 @@
-package play_screen.blocks;
+package playscreen.blocks;
 
 public abstract class Block {
 

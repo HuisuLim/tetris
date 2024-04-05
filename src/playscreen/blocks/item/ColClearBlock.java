@@ -1,6 +1,4 @@
-package play_screen.blocks.item;
-
-import play_screen.blocks.Block;
+package playscreen.blocks.item;
 
 public class ColClearBlock extends ItemBlock {
     public ColClearBlock() {

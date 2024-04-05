@@ -1,4 +1,4 @@
-package play_screen;
+package playscreen.utils;
 
 public class ColorTable {
     private static final int[][] colorHex = {

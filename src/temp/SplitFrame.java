@@ -2,7 +2,7 @@ package temp;
 
 import javax.swing.*;
 import java.awt.*;
-import play_screen.TimerDelay;
+import playscreen.utils.TimerDelay;
 import settings.LoadData; // 설정 정보를 가져오기 위해 추가
 
 public class SplitFrame extends JFrame {

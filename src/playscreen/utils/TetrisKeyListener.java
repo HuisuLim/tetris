@@ -1,14 +1,11 @@
-package play_screen;
+package playscreen.utils;
 
+import playscreen.PlayFrame;
 import settings.LoadData;
-import startscreen.ScoreInput;
 import startscreen.StartMenu;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import static startscreen.StartMenu.*;
 
 public class TetrisKeyListener implements KeyListener {
     private PlayFrame tetris;
@@ -82,12 +79,6 @@ public class TetrisKeyListener implements KeyListener {
     private void handleGameOverState(int keyCode) {
 
     }
-
-
-
-
-
-
 
 
     //KeyListner implements할때 필수구성.

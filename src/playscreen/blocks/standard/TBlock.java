@@ -1,19 +1,19 @@
-package play_screen.blocks.standard;
+package playscreen.blocks.standard;
 
-import play_screen.blocks.Block;
+import playscreen.blocks.Block;
 
-public class LBlock extends Block {
+public class TBlock extends Block {
 
-    public LBlock() {
+    public TBlock() {
         this(1);
     }
-    public LBlock(int colorNum) {
+    public TBlock(int colorNum) {
         super(colorNum);
     }
     protected void setShape() {
         int c = blockNum;
         shape = new int[][] {
-                {0,0,c},
+                {0,c,0},
                 {c,c,c},
                 {0,0,0}
         };

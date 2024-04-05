@@ -1,6 +1,6 @@
-package play_screen.blocks.standard;
+package playscreen.blocks.standard;
 
-import play_screen.blocks.Block;
+import playscreen.blocks.Block;
 
 public class SBlock extends Block {
 

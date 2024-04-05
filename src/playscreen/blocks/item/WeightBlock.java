@@ -1,6 +1,6 @@
-package play_screen.blocks.item;
+package playscreen.blocks.item;
 
-import play_screen.blocks.Block;
+import playscreen.blocks.Block;
 
 public class WeightBlock extends Block {
     public WeightBlock() {
