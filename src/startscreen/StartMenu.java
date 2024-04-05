@@ -1,6 +1,7 @@
 package startscreen;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
 import java.awt.Color;
@@ -165,10 +166,25 @@ public class StartMenu extends JFrame {
         // 스코어보드 버튼 이벤트 처리
         scoreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new ScoreInput(); // ScoreBoard ->ScoreInput으로 이름 변경
-                nextFrame.setVisible(true);
-                setVisible(false); // 현재 화면 숨기기
+                JFrame scoreboardFrame = new JFrame("Scoreboard");
+                scoreboardFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 창을 닫으면 종료되지 않고 창만 닫힘
+                scoreboardFrame.setSize(500, 300);
+                scoreboardFrame.setLocationRelativeTo(null); // 중앙에 위치
+                DefaultTableModel model = new DefaultTableModel(); // 모델 생성
+                JTable scoreboardTable = new JTable(model); // 테이블 생성
+                // 컬럼 추가
+                String[] columnNames = {"Rank", "Name", "Score", "Difficulty", "Mode"};
+                for (String columnName : columnNames) {
+                    model.addColumn(columnName);
+                }
+                // 스코어보드 데이터 읽어오기
+                ShowScoreboard.readScoreboard(model, "scoreboard.txt");
+                // 스코어보드 테이블을 스크롤 가능하도록 패널에 추가
+                JScrollPane scrollPane = new JScrollPane(scoreboardTable);
+                scoreboardFrame.add(scrollPane);
+                scoreboardFrame.setVisible(true); // 스코어보드 창 보이기
+
+
             }
         });
 
@@ -179,6 +195,8 @@ public class StartMenu extends JFrame {
                 System.exit(0);
             }
         });
+
+
 
         // 방향키 및 엔터키 처리를 위한 설정
         setupDirectionalFocusTraversal(startButton, settingsButton, exitButton, scoreButton);
@@ -221,37 +239,37 @@ public class StartMenu extends JFrame {
         });
     }
 
-/* switch문으로 키 적용
-    private void setupDirectionalFocusTraversal(JButton... buttons) {
-        for (int i = 0; i < buttons.length; i++) {
-            final int index = i;
-            buttons[i].addKeyListener(new KeyAdapter() {
-                @Override
-                public void keyPressed(KeyEvent e) {
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_UP:
-                        case KeyEvent.VK_LEFT:
-                            // 위쪽 또는 왼쪽 방향키
-                            int prevIndex = (index - 1 + buttons.length) % buttons.length;
-                            buttons[prevIndex].requestFocus();
-                            break;
-                        case KeyEvent.VK_DOWN:
-                        case KeyEvent.VK_RIGHT:
-                            // 아래쪽 또는 오른쪽 방향키
-                            int nextIndex = (index + 1) % buttons.length;
-                            buttons[nextIndex].requestFocus();
-                            break;
-                        case KeyEvent.VK_ENTER:
-                            // 엔터키
-                            buttons[index].doClick();
-                            break;
+    /* switch문으로 키 적용
+        private void setupDirectionalFocusTraversal(JButton... buttons) {
+            for (int i = 0; i < buttons.length; i++) {
+                final int index = i;
+                buttons[i].addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        switch (e.getKeyCode()) {
+                            case KeyEvent.VK_UP:
+                            case KeyEvent.VK_LEFT:
+                                // 위쪽 또는 왼쪽 방향키
+                                int prevIndex = (index - 1 + buttons.length) % buttons.length;
+                                buttons[prevIndex].requestFocus();
+                                break;
+                            case KeyEvent.VK_DOWN:
+                            case KeyEvent.VK_RIGHT:
+                                // 아래쪽 또는 오른쪽 방향키
+                                int nextIndex = (index + 1) % buttons.length;
+                                buttons[nextIndex].requestFocus();
+                                break;
+                            case KeyEvent.VK_ENTER:
+                                // 엔터키
+                                buttons[index].doClick();
+                                break;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-    }
 
- */
+     */
     // if문으로 키 적용
     private void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {

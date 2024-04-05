@@ -1,6 +1,7 @@
 package play_screen;
 
 import settings.LoadData;
+import startscreen.ScoreInput;
 
 import javax.swing.*;
 import java.awt.GridLayout;
@@ -9,9 +10,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 public class PlayFrame extends JFrame {
     private int screenRatio;
     private boolean isColorBlindness;
+    private String gameMode;
+    private String difficulty;
     private TetrisPanel gamePanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
@@ -24,6 +28,8 @@ public class PlayFrame extends JFrame {
         //JFrame 설정.
         this.screenRatio = screenRatio;
         this.isColorBlindness = isColorBlindness;
+        this.gameMode = LoadData.loadGameMode();
+        this.difficulty = LoadData.loadDifficulty();
         setTitle("Play Frame");
         setSize(screenRatio * 20 * 20, screenRatio * 20 * 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,6 +46,7 @@ public class PlayFrame extends JFrame {
                 LoadData key = new LoadData();
                 if (isGameOver) {
                     // 게임 오버 상황에서의 키 처리
+                    endGame();
                 } else if (isPause) {
                     int keyCode = e.getKeyCode();
                     if (keyCode == key.getUpKey() || keyCode == key.getDownKey()) {
@@ -53,7 +60,7 @@ public class PlayFrame extends JFrame {
                             pausePanel.setVisible(isPause); // isPause 값에 따라 PausePanel 표시 또는 숨김
                             timer.start();
                         } else if (pausePanel.getCurrPoint() == 1) {
-                            //게임종료?
+                            endGame();
                         }
                     } else if (keyCode == KeyEvent.VK_ESCAPE) {
                         isPause = !isPause;
@@ -141,6 +148,24 @@ public class PlayFrame extends JFrame {
         scorePanel.updateScore(gamePanel.getScore());
         nextBlockPanel.updateBlock(gamePanel.getNextBlock());
     }
+
+    // 게임 종료 시 호출되는 메서드
+    private void endGame() {
+        // ScoreInput 창을 띄우고 사용자로부터 이름을 입력받음
+        String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
+
+        if (name != null && !name.isEmpty()) {
+            // 게임의 난이도와 모드를 설정합니다.
+            String difficulty = this.difficulty;
+            String mode =gameMode;
+
+            // 테이블에 이름과 현재 점수, 난이도, 모드 추가
+            new ScoreInput(name, gamePanel.getScore(), difficulty, mode).setVisible(true);
+        }
+    }
+
+
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

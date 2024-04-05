@@ -19,7 +19,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
     private static final String ITEM_MODE = "itemMode";
 
 
-    private void setRadioButton(){
+    private void setRadioButton() {
         LoadData loadData = new LoadData();
         String gameMode = loadData.loadGameMode();
         switch (gameMode) {
@@ -65,7 +65,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
         setRadioButton();
         panel.setFocusable(true);
         panel.requestFocusInWindow();
-        panel.addKeyListener(new KeyAdapter() {
+        panel.addKeyListener(new KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
@@ -73,7 +73,8 @@ public class SettingGameMode extends JFrame implements ActionListener {
                 if (keyCode == key.getRightKey() || keyCode == key.getLeftKey()) {
                     if (normalModeButton.isSelected()) {
                         itemModeButton.setSelected(true);
-                    } else if (itemModeButton.isSelected()) {
+                    }
+                    else if (itemModeButton.isSelected()) {
                         normalModeButton.setSelected(true);
                     }
                 }
@@ -89,7 +90,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
 
         // "check" 버튼에 엔터키 액션 바인딩
         checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
-        checkButton.getActionMap().put("checkPressed", new AbstractAction() {
+        checkButton.getActionMap().put("checkPressed", new AbstractAction(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 checkButton.doClick();
@@ -97,7 +98,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
         });
 
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "escapePressed");
-        getRootPane().getActionMap().put("escapePressed", new AbstractAction() {
+        getRootPane().getActionMap().put("escapePressed", new AbstractAction(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); // 창 닫기
@@ -111,9 +112,11 @@ public class SettingGameMode extends JFrame implements ActionListener {
             String gameMode;
             if (normalModeButton.isSelected()) {
                 gameMode = NORMAL_MODE;
-            } else if (itemModeButton.isSelected()) {
+            }
+            else if (itemModeButton.isSelected()) {
                 gameMode = ITEM_MODE;
-            } else {
+            }
+            else {
                 gameMode = NORMAL_MODE;
             }
             saveSettings(GAME_MODE_KEY, gameMode); // 동일한 설정 파일 사용
@@ -126,20 +129,22 @@ public class SettingGameMode extends JFrame implements ActionListener {
         Properties properties = new Properties();
         try (InputStream inputStream = new FileInputStream(SETTINGS_FILE)) {
             properties.load(inputStream);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         properties.setProperty(key, value);
         try (OutputStream outputStream = new FileOutputStream(SETTINGS_FILE)) {
             properties.store(outputStream, null);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     // 테스트용
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable(){
             public void run() {
                 SettingGameMode menu = new SettingGameMode();
                 menu.setVisible(true);
@@ -147,4 +152,3 @@ public class SettingGameMode extends JFrame implements ActionListener {
         });
     }
 }
-

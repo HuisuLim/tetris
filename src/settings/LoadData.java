@@ -96,7 +96,7 @@ public class LoadData extends JFrame implements ActionListener {
         }
     }
 
-    public String loadDifficulty() {
+    public static String loadDifficulty() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
             properties.load(input);
@@ -112,7 +112,7 @@ public class LoadData extends JFrame implements ActionListener {
         }
     }
 
-    public String loadGameMode() {
+    public static String loadGameMode() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
             properties.load(input);
