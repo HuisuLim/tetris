@@ -45,30 +45,7 @@ public class ShowScoreboard {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
     }
-
-    /*
-    public static void main(String[] args) {
-        DefaultTableModel model = new DefaultTableModel();
-        JTable table = new JTable(model);
-        applyCenterAlignment(table);
-
-        // 데이터 파일 경로
-        String filePath = "scoreboard.txt";
-
-        // 스코어보드 파일 읽기
-        readScoreboard(model, filePath);
-
-        // JFrame 생성 및 테이블 추가
-        JFrame frame = new JFrame("Scoreboard");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JScrollPane scrollPane = new JScrollPane(table);
-        frame.getContentPane().add(scrollPane);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-     */
-
+    
     public static class ClearScoreboard {
         public static void clear(String filePath) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
