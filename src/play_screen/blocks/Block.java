@@ -2,18 +2,15 @@ package play_screen.blocks;
 
 public abstract class Block {
 
-    protected int colorNum;
-    protected int[][][] shape;
-    protected  int maxRotate;
-    protected int currRotate;
+    protected int blockNum;
+    protected int[][] shape;
     protected int len;
+    protected int[] startPos =new int[] {0, 4};
 
-    public Block(int colorNum) {
-        this.colorNum = colorNum;
-        setShape();
-        maxRotate = shape.length;
-        currRotate = 0;
-        len = shape[currRotate].length;
+    public Block(int blockNum) {
+        this.blockNum = blockNum;
+        this.setShape();
+        len = shape.length;
     }
     public Block() {
         this(1);
@@ -21,16 +18,31 @@ public abstract class Block {
 
     protected abstract void setShape();
 
-    public void rotate90(){
-        currRotate = (currRotate + 1) % maxRotate;
+    public int[][] getShape() {
+        return copy2DArr(shape);
     }
 
-    public int[][] getCurrShape() {
-        return copy2DArr(shape[currRotate]);
+    public int[][] getRotatedShape() {
+        if (shape == null || shape.length == 0 || shape[0].length == 0) {
+            // shape 배열이 비었거나 정의되지 않은 경우, 빈 배열을 반환
+            return new int[0][0];
+        }
+
+        int row = shape.length;
+        int col = shape[0].length;
+        int[][] rotatedShape = new int[col][row]; // 회전된 배열의 크기 조정
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                rotatedShape[j][row - 1 - i] = shape[i][j];
+            }
+        }
+
+        return rotatedShape;
     }
 
-    public int[][] getRotateShape() {
-        return copy2DArr((shape[(currRotate+1)%maxRotate]));
+    public void rotate90() {
+        shape = getRotatedShape();
     }
 
 
@@ -38,10 +50,13 @@ public abstract class Block {
         return len;
     }
 
-    public int getCurrRotate() {
-        return currRotate;
+    public int[] getStartPos() {
+        return startPos;
     }
 
+    public int getBlockNum() {
+        return blockNum;
+    }
 
     public int[][] copy2DArr(int[][] arr) {
         if (arr == null) return null; // 입력 배열이 null인 경우, null 반환

@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import play_screen.*;
+
+import play_screen.panels.TetrisPanel;
 
 import java.awt.event.KeyEvent;
 
@@ -50,7 +51,7 @@ public class LoadData extends JFrame implements ActionListener {
         if (e.getSource() == startButton) {
             int squareSize = loadScreenSize();
             boolean colorBlindMode = loadColorBlindMode();
-            TetrisPanel tetris = new TetrisPanel(squareSize, colorBlindMode);
+            TetrisPanel tetris = new TetrisPanel();
             tetris.setVisible(true);
             dispose();
         } else if (e.getSource() == settingButton) {

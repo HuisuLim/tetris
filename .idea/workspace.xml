@@ -4,9 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d36a0617-994e-4d3c-a4d4-910db1739929" name="Changes" comment="난이도 별 확률적 블록 생성">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/play_screen/blocks/BlockGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uni_test/blockGeneratingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uni_test/blockGeneratingTest.java" afterDir="false" />
     </list>
@@ -23,11 +20,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -44,62 +36,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.BlockGenerator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ColorPanelExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CustomFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CustomLabel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.KeyConfigFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.NextBlockPanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PanelFocusExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PausePanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PlayFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SettingDifficulty.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SettingGameMode.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StartMenu_main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TetrisPlay.executor&quot;: &quot;Run&quot;,
-    &quot;Application.blockGeneratingTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2.blockPercentage&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wgdcw/Desktop/소공팀플/tetris&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/wgdcw/Desktop/인텔리테스트/test/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RunManager">
     <configuration name="ColorPanelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="play_screen.ColorPanelExample" />
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="play_screen.CustomFrame" />
-      <module name="tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="play_screen.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,7 +67,20 @@
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="play_screen.*" />
+          <option name="PATTERN" value="play_screen.panels.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SettingsWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="temp.SettingsWindow" />
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="temp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -148,13 +103,17 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.StartMenu_main" />
-        <item itemvalue="Application.PlayFrame" />
-        <item itemvalue="Application.KeyConfigFrame" />
-        <item itemvalue="Application.CustomFrame" />
-        <item itemvalue="Application.ColorPanelExample" />
+        <item itemvalue="애플리케이션.SettingsWindow" />
+        <item itemvalue="애플리케이션.StartMenu_main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -300,43 +259,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711982725005</updated>
     </task>
-    <task id="LOCAL-00017" summary=".">
-      <option name="closed" value="true" />
-      <created>1711983357657</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1711983357657</updated>
-    </task>
-    <task id="LOCAL-00018" summary=".">
-      <option name="closed" value="true" />
-      <created>1711983491877</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1711983491877</updated>
-    </task>
-    <task id="LOCAL-00019" summary=".">
-      <option name="closed" value="true" />
-      <created>1712030130715</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1712030130715</updated>
-    </task>
-    <task id="LOCAL-00020" summary="난이도 별 확률적 블록 생성">
-      <option name="closed" value="true" />
-      <created>1712052918753</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1712052918753</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
@@ -354,8 +291,5 @@
     <MESSAGE value="메인 화면에 설정값 출력" />
     <MESSAGE value="난이도, 게임 모드 설정 기능 및 설정 화면 추가" />
     <MESSAGE value="코드 살짝 수정" />
-    <MESSAGE value="." />
-    <MESSAGE value="난이도 별 확률적 블록 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="난이도 별 확률적 블록 생성" />
   </component>
 </project>
