@@ -1,65 +1,24 @@
 package settings;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import playscreen.panels.TetrisPanel;
-
-import java.awt.event.KeyEvent;
 
 
 // test
-public class LoadData extends JFrame implements ActionListener {
+public class LoadData {
 
-    private JButton startButton, settingButton;
     private static final String SETTINGS_FILE = "src/Settings/settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";
     private static final String DIFFICULTY_KEY = "Difficulty";
     private static final String GAME_MODE_KEY = "GameMode";
-    private static final int MEDIUM_SIZE = 30;
 
 
-    public LoadData() {
-        setTitle("Tetris");
-        setSize(300, 200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        startButton = new JButton("Start");
-        startButton.addActionListener(this);
-        panel.add(startButton);
-
-        settingButton = new JButton("settings");
-        settingButton.addActionListener(this);
-        panel.add(settingButton);
-
-        add(panel);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == startButton) {
-            int squareSize = loadScreenSize();
-            boolean colorBlindMode = loadColorBlindMode();
-            TetrisPanel tetris = new TetrisPanel();
-            tetris.setVisible(true);
-            dispose();
-        } else if (e.getSource() == settingButton) {
-            SettingScreen settingScreen = new SettingScreen();
-            settingScreen.setVisible(true);
-            dispose();
-        }
-    }
 
     public int loadScreenSize() {
         Properties properties = new Properties();
