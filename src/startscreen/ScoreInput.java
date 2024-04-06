@@ -223,11 +223,4 @@ public class ScoreInput extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        // 예시로 창을 띄우는 코드
-        SwingUtilities.invokeLater(() -> {
-            ScoreInput scoreInput = new ScoreInput("Player1", 100, "Easy", "Classic");
-            scoreInput.setVisible(true);
-        });
-    }
 }
