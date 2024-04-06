@@ -5,11 +5,14 @@ import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
 import settings.LoadData;
 import startscreen.ScoreInput;
+import startscreen.StartMenu;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
@@ -40,6 +43,30 @@ public class PlayFrame extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
+        // ESC 키를 처리하는 KeyListener 추가
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // keyTyped 이벤트는 사용하지 않음
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // ESC 키를 눌렀을 때 동작 정의
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    // 현재 창을 닫고 StartMenu 창을 엽니다.
+                    dispose(); // 현재 창을 닫음
+                    new StartMenu().setVisible(true); // StartMenu 창을 엶
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // keyReleased 이벤트는 사용하지 않음
+            }
+        });
+
     }
 
     private void initUI() {
@@ -102,7 +129,6 @@ public class PlayFrame extends JFrame {
     public void updateGame() {
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
-            scorePanel.updateScore(gamePanel.getScore());
             String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
 
             if (name != null && !name.isEmpty()) {
@@ -135,6 +161,8 @@ public class PlayFrame extends JFrame {
     public boolean getIsGameOver() {
         return isGameOver;
     }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
