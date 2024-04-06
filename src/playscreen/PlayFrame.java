@@ -102,6 +102,7 @@ public class PlayFrame extends JFrame {
     public void updateGame() {
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
+            scorePanel.updateScore(gamePanel.getScore());
             String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
 
             if (name != null && !name.isEmpty()) {

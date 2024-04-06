@@ -1,5 +1,6 @@
 package playscreen.panels;
 
+import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
@@ -56,7 +57,7 @@ public class TetrisPanel extends JPanel{
 
 
     protected void createNewShape() {
-        score +=100;
+
         currBlock = nextBlock;
         nextBlock = generator.getRandomStandardBlock();
 
@@ -64,6 +65,7 @@ public class TetrisPanel extends JPanel{
         currentRow = temp[0];
         currentCol = temp[1];
         if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
+            currBlock = new BlankBlock();
             isGameOver = true;
             System.out.println("게임종료");
         }
@@ -94,6 +96,7 @@ public class TetrisPanel extends JPanel{
                 }
             }
         }
+        score +=100;
     }
 
     protected void checkAndClearLines() {
