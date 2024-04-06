@@ -44,29 +44,6 @@ public class PlayFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // ESC 키를 처리하는 KeyListener 추가
-        addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                // keyTyped 이벤트는 사용하지 않음
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                // ESC 키를 눌렀을 때 동작 정의
-                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    // 현재 창을 닫고 StartMenu 창을 엽니다.
-                    dispose(); // 현재 창을 닫음
-                    new StartMenu().setVisible(true); // StartMenu 창을 엶
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                // keyReleased 이벤트는 사용하지 않음
-            }
-        });
-
     }
 
     private void initUI() {

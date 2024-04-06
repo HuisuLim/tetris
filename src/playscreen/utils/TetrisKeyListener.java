@@ -25,17 +25,17 @@ public class TetrisKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int keykode = e.getKeyCode();
+        int keyCode = e.getKeyCode();
 
         //상태에 따른 키입력 처리
         if (tetris.getIsPause()) {
-            handlePauseState(keykode);
+            handlePauseState(keyCode);
         }
         else if (tetris.getIsGameOver()) {
-            handleGameOverState(keykode);
+            handleGameOverState(keyCode);
         }
         else {
-            handleGameState(keykode);
+            handleGameState(keyCode);
         }
     }
 
@@ -77,7 +77,12 @@ public class TetrisKeyListener implements KeyListener {
     }
 
     private void handleGameOverState(int keyCode) {
+        if (keyCode == KeyEvent.VK_ESCAPE) {
+            // 현재 창을 닫고 StartMenu 창을 엽니다.
+            tetris.dispose(); // 현재 창을 닫음
+            new StartMenu().setVisible(true); // StartMenu 창을 엶
 
+        }
     }
 
 
