@@ -20,12 +20,12 @@ public class LoadData {
 
 
 
-    public int loadScreenSize() {
+    public double loadScreenSize() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
             properties.load(input);
             String screenSizeStr = properties.getProperty(SQUARE_SIZE_KEY);
-            return Integer.parseInt(screenSizeStr);
+            return Double.parseDouble(screenSizeStr);
         } catch (IOException | NumberFormatException ex) {
             ex.printStackTrace();
             // 기본값인 MEDIUM_SIZE를 반환하거나 적절한 기본값을 선택합니다.

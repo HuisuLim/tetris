@@ -13,9 +13,9 @@ import startscreen.Setting;
 public class SettingScreen extends JFrame implements ActionListener {
     private JRadioButton smallButton, mediumButton, largeButton;
     private JButton checkButton;
-    private static final int SMALL_SIZE = 1;
-    private static final int MEDIUM_SIZE = 2;
-    private static final int LARGE_SIZE = 3;
+    private static final double SMALL_SIZE = 1;
+    private static final double MEDIUM_SIZE = 1.5;
+    private static final double LARGE_SIZE = 2.3;
 
     private static final String SETTINGS_FILE = "src/Settings/settings.properties";
     private static final String SCREEN_RATIO_KEY = "ScreenSize";
@@ -23,21 +23,18 @@ public class SettingScreen extends JFrame implements ActionListener {
 
     private void setRadioButton(){
         LoadData loadData = new LoadData();
-        int screenSize = loadData.loadScreenSize();
-        switch (screenSize) {
-            case SMALL_SIZE:
-                smallButton.setSelected(true);
-                break;
-            case MEDIUM_SIZE:
-                mediumButton.setSelected(true);
-                break;
-            case LARGE_SIZE:
-                largeButton.setSelected(true);
-                break;
-            default:
-                // Default to medium size if no valid setting found
-                mediumButton.setSelected(true);
-                break;
+        double screenSize = loadData.loadScreenSize();
+        if(screenSize == SMALL_SIZE){
+            smallButton.setSelected(true);
+        }
+        else if(screenSize == MEDIUM_SIZE){
+            mediumButton.setSelected(true);
+        }
+        else if(screenSize == LARGE_SIZE){
+            largeButton.setSelected(true);
+        }
+        else{
+            mediumButton.setSelected(true);
         }
     }
     public SettingScreen() {
@@ -135,7 +132,7 @@ public class SettingScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == checkButton) {
-            int screenRatio;
+            double screenRatio;
             if (smallButton.isSelected()) {
                 screenRatio = SMALL_SIZE;
             } else if (mediumButton.isSelected()) {

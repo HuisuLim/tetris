@@ -14,13 +14,13 @@ public class TetrisPanel extends JPanel{
 
     //load properties
     protected final LoadData data = new LoadData();
-    protected final int screenSize = data.loadScreenSize();
+    protected final double screenSize = data.loadScreenSize();
     protected String gameMode = data.loadGameMode();
     protected String difficulty;
     protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
 
     //보드 초기설정    게임보드의 가장 왼쪽 위가 board[0][0]
-    protected final int SQUARE_SIZE = 20 * screenSize;
+    protected final int SQUARE_SIZE = (int)(20 * screenSize);
     protected static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
     protected static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
     protected final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열

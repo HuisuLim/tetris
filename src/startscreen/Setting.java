@@ -6,19 +6,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Setting extends JFrame {
-    private int screenRatio = StartMenu.screenRatio; //화면 비율 조절
+    private double screenRatio = StartMenu.screenRatio; //화면 비율 조절
     private JButton backButton = new JButton();
 
     public Setting() {
         setTitle("게임 설정");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500 * screenRatio, 400 * screenRatio);
+        setSize((int)(500 * screenRatio), (int)(400 * screenRatio));
         setLocationRelativeTo(null); // 화면 중앙에 표시
         setLayout(null); // Layout Manager를 사용하지 않음
 
         // 버튼 너비 및 높이 설정
-        int buttonWidth = 100 * screenRatio;
-        int buttonHeight = 25 * screenRatio;
+        int buttonWidth = (int)(100 * screenRatio);
+        int buttonHeight = (int)(25 * screenRatio);
 
         // 화면 크기
         int frameWidth = getWidth();
@@ -26,7 +26,7 @@ public class Setting extends JFrame {
 
         // 뒤로가기 버튼 생성 및 설정
         backButton = new JButton("뒤로가기");
-        backButton.setBounds(5 * screenRatio, 5 * screenRatio, buttonWidth, buttonHeight); // 화면 상단 왼쪽에 배치
+        backButton.setBounds((int)(5 * screenRatio), (int)(5 * screenRatio), buttonWidth, buttonHeight); // 화면 상단 왼쪽에 배치
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false); // 현재 창 숨기기
@@ -38,7 +38,7 @@ public class Setting extends JFrame {
 
         // 버튼 생성 및 설정
         JButton button1 = new JButton("조작키 설정");
-        button1.setBounds((frameWidth - buttonWidth) / 2, 25 * screenRatio, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
+        button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio), buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingKey setting = new SettingKey();
@@ -48,7 +48,7 @@ public class Setting extends JFrame {
         });
 
         JButton button2 = new JButton("색맹 모드");
-        button2.setBounds((frameWidth - buttonWidth) / 2, 60 * screenRatio, buttonWidth, buttonHeight);
+        button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio), buttonWidth, buttonHeight);
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingColorBlindness setting = new SettingColorBlindness();
@@ -58,7 +58,7 @@ public class Setting extends JFrame {
         });
 
         JButton button3 = new JButton("설정 초기화");
-        button3.setBounds((frameWidth - buttonWidth) / 2, 95 * screenRatio, buttonWidth, buttonHeight);
+        button3.setBounds((frameWidth - buttonWidth) / 2, (int)(95 * screenRatio), buttonWidth, buttonHeight);
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingReset settingReset = new SettingReset();
@@ -76,7 +76,7 @@ public class Setting extends JFrame {
         });
 
         JButton button4 = new JButton("화면 크기 조절");
-        button4.setBounds((frameWidth - buttonWidth) / 2, 130 * screenRatio, buttonWidth, buttonHeight);
+        button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio), buttonWidth, buttonHeight);
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingScreen setting = new SettingScreen();
@@ -94,7 +94,7 @@ public class Setting extends JFrame {
         });
 
         JButton button5 = new JButton("스코어보드 초기화");
-        button5.setBounds((frameWidth - buttonWidth) / 2, 165 * screenRatio, buttonWidth, buttonHeight);
+        button5.setBounds((frameWidth - buttonWidth) / 2, (int)(165 * screenRatio), buttonWidth, buttonHeight);
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 새로운 ScoreboardReset 화면을 여는 로직
@@ -103,7 +103,7 @@ public class Setting extends JFrame {
         });
 
         JButton itemModeButton = new JButton("아이템 모드 ON/OFF");
-        itemModeButton.setBounds((frameWidth - buttonWidth) / 2, 200 * screenRatio, buttonWidth, buttonHeight);
+        itemModeButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio), buttonWidth, buttonHeight);
         itemModeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // SettingGameMode 인스턴스를 생성하고 보이게 하는 코드 추가
@@ -115,7 +115,7 @@ public class Setting extends JFrame {
 
         // 난이도 설정 버튼 생성 및 설정
         JButton difficultyButton = new JButton("난이도 설정");
-        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, 235 * screenRatio, buttonWidth, buttonHeight);
+        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(235 * screenRatio), buttonWidth, buttonHeight);
 
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {

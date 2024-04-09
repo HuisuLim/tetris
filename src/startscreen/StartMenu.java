@@ -11,7 +11,7 @@ import playscreen.PlayFrame;
 
 public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
-    public static int screenRatio = 2; //화면 비율 조절
+    public static double screenRatio = 2; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
     public static String gameMode="normalMode";
@@ -39,7 +39,7 @@ public class StartMenu extends JFrame {
         setGameMode();
         setDifficutly();
 
-        setSize(500*screenRatio, 400*screenRatio);
+        setSize((int)(500*screenRatio), (int)(400*screenRatio));
         setTitle("테트리스 게임");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,13 +50,13 @@ public class StartMenu extends JFrame {
 
         // 제목 라벨 생성
         JLabel titleLabel = new JLabel("SE Team9 Tetris", SwingConstants.CENTER); // 중앙 정렬
-        titleLabel.setBounds(150*screenRatio, 50*screenRatio, 200*screenRatio, 25*screenRatio); // 제목 라벨 위치 및 크기 지정
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 12*screenRatio)); // 폰트 설정
+        titleLabel.setBounds((int)(150*screenRatio), (int)(50*screenRatio), (int)(200*screenRatio), (int)(25*screenRatio)); // 제목 라벨 위치 및 크기 지정
+        titleLabel.setFont(new Font("Arial", Font.BOLD, (int)(12*screenRatio))); // 폰트 설정
         panel.add(titleLabel); // 패널에 제목 라벨 추가
 
         // 설정값 표현
         JLabel variableLabel = new JLabel();
-        int fontSize = 10*screenRatio;
+        int fontSize = (int)(10*screenRatio);
         Font font = new Font("Arial", Font.PLAIN, fontSize);
         variableLabel.setFont(font);
 
@@ -106,7 +106,7 @@ public class StartMenu extends JFrame {
                     "  </tr>\n" +
                     "</table>\n</html>");
         }
-        variableLabel.setBounds(350*screenRatio, 150*screenRatio, 130*screenRatio, 200*screenRatio);
+        variableLabel.setBounds((int)(350*screenRatio), (int)(150*screenRatio), (int)(130*screenRatio), (int)(200*screenRatio));
 
         // 라벨에 테두리 추가
         variableLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -130,16 +130,16 @@ public class StartMenu extends JFrame {
 
         // 패널에 버튼 추가 및 위치 설정
         panel.add(startButton);
-        startButton.setBounds(200*screenRatio, 225*screenRatio, 100*screenRatio, 25*screenRatio); // 버튼 위치 및 크기 지정 (x, y, width, height)
+        startButton.setBounds((int)(200*screenRatio), (int)(225*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
 
         panel.add(settingsButton);
-        settingsButton.setBounds(200*screenRatio, 260*screenRatio, 100*screenRatio, 25*screenRatio);
+        settingsButton.setBounds((int)(200*screenRatio), (int)(260*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(exitButton);
-        exitButton.setBounds(200*screenRatio, 295*screenRatio, 100*screenRatio, 25*screenRatio);
+        exitButton.setBounds((int)(200*screenRatio), (int)(295*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(scoreButton);
-        scoreButton.setBounds(200*screenRatio, 330*screenRatio, 100*screenRatio, 25*screenRatio);
+        scoreButton.setBounds((int)(200*screenRatio), (int)(330*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
 
         // 프레임에 패널 추가

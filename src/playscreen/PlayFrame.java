@@ -18,7 +18,7 @@ public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
     private String gameMode = data.loadGameMode();
     private String difficulty = data.loadDifficulty(); // 난이도 로드
-    private int screenSize = data.loadScreenSize();
+    private double screenSize = data.loadScreenSize();
     public TetrisPanel gamePanel;
     public ScorePanel scorePanel;
     public NextBlockPanel nextBlockPanel;
@@ -32,7 +32,7 @@ public class PlayFrame extends JFrame {
 
     public PlayFrame() {
         setTitle("Play Frame");
-        setSize(screenSize * 20 * 20, screenSize * 20 * 20);
+        setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.addKeyListener(listener);
@@ -61,7 +61,7 @@ public class PlayFrame extends JFrame {
         JPanel rightPanel = new JPanel(new GridLayout(4, 1));
 
         // ScorePanel 추가
-        scorePanel = new ScorePanel(screenSize, 0);
+        scorePanel = new ScorePanel((int)(screenSize), 0);
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
@@ -74,7 +74,7 @@ public class PlayFrame extends JFrame {
 
         add(rightPanel);
 
-        pausePanel = new PausePanel(this, screenSize); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel(this, (int)(screenSize)); // PausePanel 인스턴스 생성
         pausePanel.setSize(200, 100); // 적당한 크기 설정
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
