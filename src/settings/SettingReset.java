@@ -18,10 +18,6 @@ public class SettingReset extends JFrame implements ActionListener {
     private static final String GAME_MODE_KEY = "GameMode";
     private static final String DIFFICULTY_KEY = "Difficulty";
 
-    private int setScreenRatio(){
-        LoadData loadData = new LoadData();
-        return loadData.loadScreenSize();
-    }
     public SettingReset() {
         setTitle("세팅 리셋");
         setSize(200, 70);
@@ -54,7 +50,7 @@ public class SettingReset extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == checkButton) {
-            int screenRatio = 2;
+            double screenRatio = 1.5;
             boolean isColorBlindMode = false;
             String keySetting = "ArrowKeys";
             String gameMode = "normalMode";

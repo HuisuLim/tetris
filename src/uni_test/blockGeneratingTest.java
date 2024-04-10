@@ -1,7 +1,7 @@
 package uni_test;
 
-import play_screen.blocks.Block;
-import play_screen.blocks.BlockGenerator;
+import playscreen.blocks.Block;
+import playscreen.blocks.BlockGenerator;
 import settings.LoadData;
 import java.io.*;
 import java.util.HashMap;

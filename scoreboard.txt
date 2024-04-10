@@ -1,5 +1,0 @@
-고양이,5300,easy,itemMode
-문정,1900,hard,itemMode
-강아지,1800,easy,itemMode
-문정,1100,normal,normalMode
-돼지,1100,easy,itemMode
