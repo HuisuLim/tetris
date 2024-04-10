@@ -23,6 +23,7 @@ public class PlayFrame extends JFrame {
     public ScorePanel scorePanel;
     public NextBlockPanel nextBlockPanel;
     public PausePanel pausePanel;
+    public ItemShowPanel itemShowPanel;
     private Timer timer;
     private boolean isGameOver = false;
     private boolean isPaused = false;
@@ -57,23 +58,29 @@ public class PlayFrame extends JFrame {
         }
         add(gamePanel);
 
-        // 오른쪽 패널 (세로로 4등분)
-        JPanel rightPanel = new JPanel(new GridLayout(4, 1));
+        // 오른쪽 패널 (세로로 3등분)
+        JPanel rightPanel = new JPanel(new GridLayout(3, 1));
+        rightPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * screenSize), (int)(20 * 20 * screenSize)));
 
         // ScorePanel 추가
-        scorePanel = new ScorePanel((int)(screenSize), 0);
+        scorePanel = new ScorePanel(screenSize, 0);
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
         nextBlockPanel = new NextBlockPanel(gamePanel.getNextBlock());
         rightPanel.add(nextBlockPanel);
 
-        // 나머지 두 개의 패널은 비워둡니다.
-        rightPanel.add(new JPanel());
-        rightPanel.add(new JPanel());
-
+        // 나머지 1 개의 패널은 비워둡니다.
+        if (gameMode.equals("itemMode")) {
+            itemShowPanel = new ItemShowPanel();
+            itemShowPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * screenSize), (int)(6 * 20 * screenSize)));
+            rightPanel.add(itemShowPanel);
+        }
+        else{
+            rightPanel.add(new JPanel());
+        }
+        //rightPanel.add(new JPanel());
         add(rightPanel);
-
         pausePanel = new PausePanel(this, (int)(screenSize)); // PausePanel 인스턴스 생성
         pausePanel.setSize(200, 100); // 적당한 크기 설정
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
