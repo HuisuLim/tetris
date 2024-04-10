@@ -3,9 +3,36 @@ package startscreen;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.*;
 
-public class ShowScoreboard {
+public class ShowScoreboard extends JFrame {
+    public ShowScoreboard() {
+        setTitle("Scoreboard");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(500, 300);
+        setLocationRelativeTo(null);
+
+        DefaultTableModel model = new DefaultTableModel();
+        JTable scoreboardTable = new JTable(model);
+
+        String[] columnNames = {"Rank", "Name", "Score", "Difficulty", "Mode"};
+        for (String columnName : columnNames) {
+            model.addColumn(columnName);
+        }
+
+        readScoreboard(model, "scoreboard.txt");
+        applyCenterAlignment(scoreboardTable);
+
+        JScrollPane scrollPane = new JScrollPane(scoreboardTable);
+        add(scrollPane);
+
+        addKeyListenerToHideScoreboard(this);
+
+        setVisible(true);
+    }
+
     public static void readScoreboard(DefaultTableModel model, String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -30,30 +57,46 @@ public class ShowScoreboard {
             rank = (int) model.getValueAt(model.getRowCount() - 1, 0) + 1;
         }
 
-        // 데이터 추가
         Object[] rowData = {rank, name, score, difficulty, mode};
         model.addRow(rowData);
     }
 
     public static void applyCenterAlignment(JTable table) {
-        // 가운데 정렬을 위한 셀 렌더러 설정
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // 셀 내용을 가운데 정렬로 설정
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // 각 열에 셀 렌더러 설정하여 가운데 정렬 적용
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
     }
-    
+
+    public static void addKeyListenerToHideScoreboard(JFrame frame) {
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    frame.setVisible(false);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+    }
+
     public static class ClearScoreboard {
         public static void clear(String filePath) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                // 파일 내용을 모두 지움
                 writer.write("");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 }
