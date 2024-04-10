@@ -166,27 +166,10 @@ public class StartMenu extends JFrame {
         // 스코어보드 버튼 이벤트 처리
         scoreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JFrame scoreboardFrame = new JFrame("Scoreboard");
-                scoreboardFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 창을 닫으면 종료되지 않고 창만 닫힘
-                scoreboardFrame.setSize(500, 300);
-                scoreboardFrame.setLocationRelativeTo(null); // 중앙에 위치
-                DefaultTableModel model = new DefaultTableModel(); // 모델 생성
-                JTable scoreboardTable = new JTable(model); // 테이블 생성
-                // 컬럼 추가
-                String[] columnNames = {"Rank", "Name", "Score", "Difficulty", "Mode"};
-                for (String columnName : columnNames) {
-                    model.addColumn(columnName);
-                }
-                // 스코어보드 데이터 읽어오기
-                ShowScoreboard.readScoreboard(model, "scoreboard.txt");
-                // 가운데 정렬 적용
-                ShowScoreboard.applyCenterAlignment(scoreboardTable);
 
-                // 스코어보드 테이블을 스크롤 가능하도록 패널에 추가
-                JScrollPane scrollPane = new JScrollPane(scoreboardTable);
-                scoreboardFrame.add(scrollPane);
-                scoreboardFrame.setVisible(true); // 스코어보드 창 보이기
-
+                nextFrame = new ShowScoreboard();
+                nextFrame.setVisible(true);
+               // setVisible(false);
 
             }
         });
