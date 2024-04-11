@@ -10,7 +10,7 @@ import java.util.Properties;
 // test
 public class LoadData {
 
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String SQUARE_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";

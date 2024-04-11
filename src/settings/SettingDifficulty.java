@@ -18,7 +18,7 @@ public class SettingDifficulty extends JFrame implements ActionListener {
     private static final String NORMAL = "normal";
     private static final String HARD = "hard";
 
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String DIFFICULTY = "Difficulty";
 
 

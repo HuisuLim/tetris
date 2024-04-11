@@ -13,7 +13,7 @@ public class SettingGameMode extends JFrame implements ActionListener {
     private JRadioButton normalModeButton, itemModeButton;
     private JButton checkButton;
 
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String GAME_MODE_KEY = "GameMode";
     private static final String NORMAL_MODE = "normalMode";
     private static final String ITEM_MODE = "itemMode";
