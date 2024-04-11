@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -55,8 +56,13 @@ public class ScoreboardReset extends JFrame {
     }
 
     private void setupKeyBindings() {
-        // noButton에 대한 UP 키 처리 - "UP"을 누르면 yesButton에 포커스 이동
-        noButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"), "focusUp");
+        LoadData loadData = new LoadData();
+        // 사용자 설정 키 로드
+        int upKey = loadData.getUpKey();
+        int downKey = loadData.getDownKey();
+
+        // 위로 이동 (W)
+        noButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(upKey, 0), "focusUp");
         noButton.getActionMap().put("focusUp", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,8 +70,8 @@ public class ScoreboardReset extends JFrame {
             }
         });
 
-        // yesButton에 대한 DOWN 키 처리 - "DOWN"을 누르면 noButton에 포커스 이동
-        yesButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "focusDown");
+        // 아래로 이동 (S)
+        yesButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(downKey, 0), "focusDown");
         yesButton.getActionMap().put("focusDown", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,7 +79,6 @@ public class ScoreboardReset extends JFrame {
             }
         });
 
-        // 엔터키에 대한 액션 바인딩
         yesButton.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke("ENTER"), "yesPressed");
         yesButton.getActionMap().put("yesPressed", new AbstractAction() {
             @Override
@@ -87,6 +92,14 @@ public class ScoreboardReset extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+        // 프레임 전체에 대한 ESC 키 처리 - "ESC"를 누르면 창 닫기
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "closeWindow");
+        getRootPane().getActionMap().put("closeWindow", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // 현재 창 닫기
             }
         });
     }
