@@ -10,7 +10,7 @@ public class SettingKey extends JFrame {
     private JRadioButton key1RadioButton, key2RadioButton;
     private JButton checkButton;
     private Properties settings;
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String CONTROL_KEY = "MOVEMENT";
 
     public SettingKey() {
