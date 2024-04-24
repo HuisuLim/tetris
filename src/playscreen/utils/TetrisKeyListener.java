@@ -14,12 +14,10 @@ public class TetrisKeyListener implements KeyListener {
     private final int rightKey = key.getRightKey();
     private final int upKey = key.getUpKey();
     private final int downKey = key.getDownKey();
-    private String difficulty;
 
-    public  TetrisKeyListener(PlayFrame tetris) {
+    public TetrisKeyListener(PlayFrame tetris) {
         this.tetris = tetris;
     }
-
 
 
 
@@ -30,13 +28,11 @@ public class TetrisKeyListener implements KeyListener {
         //상태에 따른 키입력 처리
         if (tetris.getIsPause()) {
             handlePauseState(keyCode);
-        }
-        else if (tetris.getIsCleaningTime()) {
-        }
-        else if (tetris.getIsGameOver()) {
+        } else if (tetris.getIsCleaningTime()) {
+            // 청소 시간 동안 키 입력을 무시
+        } else if (tetris.getIsGameOver()) {
             handleGameOverState(keyCode);
-        }
-        else {
+        } else {
             handleGameState(keyCode);
         }
     }
@@ -44,20 +40,15 @@ public class TetrisKeyListener implements KeyListener {
     private void handleGameState(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             tetris.toggleIsPause();
-        }
-        else if (keyCode == leftKey) {
+        } else if (keyCode == leftKey) {
             tetris.gamePanel.goLeft();
-        }
-        else if (keyCode == rightKey) {
+        } else if (keyCode == rightKey) {
             tetris.gamePanel.goRight();
-        }
-        else if (keyCode == upKey) {
+        } else if (keyCode == upKey) {
             tetris.gamePanel.rotate90();
-        }
-        else if (keyCode == downKey) {
-            while(true) {
-                if(!tetris.gamePanel.goDown()) break;
-
+        } else if (keyCode == downKey) {
+            while (tetris.gamePanel.goDown()) { // 블록을 가장 아래로 이동
+                // 이동이 완료되면 반복 중지
             }
             tetris.updateGame(true);
         }
@@ -66,27 +57,29 @@ public class TetrisKeyListener implements KeyListener {
     private void handlePauseState(int keyCode) {
         if (keyCode == upKey || keyCode == downKey) {
             tetris.pausePanel.changePoint();
-        }
-        else if (keyCode == KeyEvent.VK_ENTER) {
-            if (tetris.pausePanel.getCurrPoint() == 0) {
-                tetris.toggleIsPause();
+        } else if (keyCode == KeyEvent.VK_ENTER) {
+            switch (tetris.pausePanel.getCurrPoint()) {
+                case 0: // RESUME
+                    tetris.toggleIsPause();
+                    break;
+                case 1: // Go to StartMenu
+                    tetris.dispose();
+                    new StartMenu().setVisible(true);
+                    break;
+                case 2: // EXIT
+                    System.exit(0); // 프로그램 종료
+                    break;
             }
-            else {
-                tetris.dispose();
-                new StartMenu().setVisible(true);
-            }
-        }
-        else if (keyCode == KeyEvent.VK_ESCAPE) {
+        } else if (keyCode == KeyEvent.VK_ESCAPE) {
             tetris.toggleIsPause();
         }
     }
 
     private void handleGameOverState(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-            // 현재 창을 닫고 StartMenu 창을 엽니다.
-            tetris.dispose(); // 현재 창을 닫음
-            new StartMenu().setVisible(true); // StartMenu 창을 엶
-
+            // 게임 오버 상태에서 ESC를 누르면 StartMenu로 돌아감
+            tetris.dispose();
+            new StartMenu().setVisible(true);
         }
     }
 
