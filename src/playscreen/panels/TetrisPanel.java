@@ -155,7 +155,6 @@ public class TetrisPanel extends JPanel{
     public boolean goDown() {
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
-            repaint();
             return true;
         }
         return false;

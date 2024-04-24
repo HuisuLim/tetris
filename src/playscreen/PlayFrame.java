@@ -96,6 +96,7 @@ public class PlayFrame extends JFrame {
                     timer.stop();
                 } else {
                     updateGame(gamePanel.goDown());
+                    repaint();
 
                     // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
                     int delay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
@@ -136,7 +137,6 @@ public class PlayFrame extends JFrame {
                 Timer clearTimer = new Timer(700, new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         gamePanel.clearLines();
-                        System.out.println("Clear");
                         gamePanel.createNewShape();
                         gamePanel.repaint();
                         isCleaningTime = false;
