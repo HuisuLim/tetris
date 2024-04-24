@@ -110,7 +110,7 @@ public class TetrisPanel extends JPanel{
                 }
             }
 
-            // 완성된 라인이 있으면 제거할 곳에 8을 넣음. ColorTable에서 검은색을 담당. 예전부분 : 제거하고 위쪽 라인들을 아래로 이동
+            // 완성된 라인이 있으면 제거할 곳에 8을 넣음. ColorTable에서 검은색을 담당.
             if (isLineComplete) {
                 doClear = true;
                 lineRemoveCount++;
@@ -118,17 +118,6 @@ public class TetrisPanel extends JPanel{
                 for (int col = 0; col < BOARD_WIDTH; col++) {
                     board[row][col] = 8;
                 }
-//                for (int r = row; r > 0; r--) {
-//                    for (int col = 0; col < BOARD_WIDTH; col++) {
-//                        board[r][col] = board[r - 1][col];
-//                    }
-//                }
-            }
-            for(int r = 0; r < BOARD_HEIGHT; r++) {
-                for(int c = 0; c < BOARD_WIDTH; c++) {
-                    System.out.print(board[r][c]);
-                }
-                System.out.println();
             }
         }
         return doClear;
@@ -166,7 +155,6 @@ public class TetrisPanel extends JPanel{
     public boolean goDown() {
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
-            repaint();
             return true;
         }
         return false;
@@ -196,7 +184,6 @@ public class TetrisPanel extends JPanel{
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
                 // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
-                if(board[row][col] == 8) System.out.println(8);
                 drawSquare(offScreenGraphics, col, row, board[row][col]);
             }
         }

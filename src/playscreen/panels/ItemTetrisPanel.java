@@ -3,12 +3,12 @@ package playscreen.panels;
 import java.awt.*;
 
 public class ItemTetrisPanel extends TetrisPanel{
-    protected int itemGenerateCount = 0; // 디버깅용
+    protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
     @Override
     public void createNewShape() {
         score +=100;
-        if(lineRemoveCount/10 > itemGenerateCount) {
+        if(lineRemoveCount/10 >= itemGenerateCount) {
             itemGenerateCount++;
             currBlock = generator.getRandomItemBlock();
             if (currBlock.getBlockNum() == 11) weightBlockCanMove = true;

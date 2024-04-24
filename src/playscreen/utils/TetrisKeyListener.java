@@ -32,7 +32,6 @@ public class TetrisKeyListener implements KeyListener {
             handlePauseState(keyCode);
         }
         else if (tetris.getIsCleaningTime()) {
-            return;
         }
         else if (tetris.getIsGameOver()) {
             handleGameOverState(keyCode);
@@ -56,8 +55,11 @@ public class TetrisKeyListener implements KeyListener {
             tetris.gamePanel.rotate90();
         }
         else if (keyCode == downKey) {
+            while(true) {
+                if(!tetris.gamePanel.goDown()) break;
 
-            tetris.updateGame(tetris.gamePanel.goDown());
+            }
+            tetris.updateGame(true);
         }
     }
 
