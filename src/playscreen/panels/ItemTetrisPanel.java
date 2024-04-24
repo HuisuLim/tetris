@@ -103,26 +103,171 @@ public class ItemTetrisPanel extends TetrisPanel{
     @Override
     protected void drawSquare(Graphics g, int x, int y, int blockNum) {
         super.drawSquare(g, x, y, blockNum % 10);
+
         if (blockNum > 10) {
-            g.setColor(Color.WHITE);
-            g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
-            g.setColor(Color.BLACK);
+            int colorCode = colorTable[blockNum % 10];
+            Color color = new Color(colorCode);
+            g.setColor(color);
             switch (blockNum) {
+                case 11 -> {
+                    g.setColor(Color.white);
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(color);
+                    g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
+                }
                 case 12 -> {
+
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(Color.black);
                     g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE / 2, SQUARE_SIZE / 2);
                 }
                 case 13 -> {
-                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE, SQUARE_SIZE / 2);
+
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(Color.black);
+                    // 화살표의 몸통을 그립니다. (가운데 부분)
+                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE / 2, SQUARE_SIZE / 2);
+
+                    // 위쪽 화살표 머리의 좌표 배열
+                    int[] xPointsLeft = {
+                            x * SQUARE_SIZE,
+                            x * SQUARE_SIZE + SQUARE_SIZE / 4,
+                            x * SQUARE_SIZE + SQUARE_SIZE / 4
+                    };
+                    int[] yPointsLeft = {
+                            y* SQUARE_SIZE + SQUARE_SIZE / 2,
+                            y * SQUARE_SIZE,
+                            y * SQUARE_SIZE + SQUARE_SIZE
+                    };
+
+                    // 아래쪽 화살표 머리의 좌표 배열
+                    int[] xPointsRight = {
+                            x * SQUARE_SIZE + SQUARE_SIZE ,
+                            x * SQUARE_SIZE + SQUARE_SIZE*3/4,
+                            x * SQUARE_SIZE + SQUARE_SIZE*3/4
+                    };
+                    int[] yPointsRight = {
+                            y * SQUARE_SIZE + SQUARE_SIZE / 2,
+                            y * SQUARE_SIZE,
+                            y * SQUARE_SIZE + SQUARE_SIZE
+                    };
+
+                    // 위쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsLeft, yPointsLeft, 3);
+
+                    // 아래쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsRight, yPointsRight, 3);
                 }
                 case 14 -> {
-                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE, SQUARE_SIZE / 2, SQUARE_SIZE);
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(Color.black);
+                    // 화살표의 몸통을 그립니다. (가운데 부분)
+                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE / 2, SQUARE_SIZE / 2);
+
+                    // 위쪽 화살표 머리의 좌표 배열
+                    int[] xPointsUp = {
+                            x * SQUARE_SIZE + SQUARE_SIZE / 2,
+                            x * SQUARE_SIZE,
+                            x * SQUARE_SIZE + SQUARE_SIZE
+                    };
+                    int[] yPointsUp = {
+                            y * SQUARE_SIZE,
+                            y * SQUARE_SIZE + SQUARE_SIZE / 4,
+                            y * SQUARE_SIZE + SQUARE_SIZE / 4
+                    };
+
+                    // 아래쪽 화살표 머리의 좌표 배열
+                    int[] xPointsDown = {
+                            x * SQUARE_SIZE + SQUARE_SIZE / 2,
+                            x * SQUARE_SIZE,
+                            x * SQUARE_SIZE + SQUARE_SIZE
+                    };
+                    int[] yPointsDown = {
+                            y * SQUARE_SIZE + SQUARE_SIZE ,
+                            y * SQUARE_SIZE + SQUARE_SIZE*3/4,
+                            y * SQUARE_SIZE + SQUARE_SIZE*3/4
+                    };
+
+                    // 위쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsUp, yPointsUp, 3);
+
+                    // 아래쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsDown, yPointsDown, 3);
                 }
                 case 15 -> {
-                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE, SQUARE_SIZE / 2);
-                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE, SQUARE_SIZE / 2, SQUARE_SIZE);
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(Color.black);
+                    // 화살표의 몸통을 그립니다. (가운데 부분)
+                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE/8, y * SQUARE_SIZE + SQUARE_SIZE *7/ 16, SQUARE_SIZE * 3 / 4, SQUARE_SIZE / 8);
+
+                    // 위쪽 화살표 머리의 좌표 배열
+                    int[] xPointsLeft = {
+                            x * SQUARE_SIZE,
+                            x * SQUARE_SIZE + SQUARE_SIZE / 8,
+                            x * SQUARE_SIZE + SQUARE_SIZE / 8
+                    };
+                    int[] yPointsLeft = {
+                            y* SQUARE_SIZE + SQUARE_SIZE / 2,
+                            y * SQUARE_SIZE + SQUARE_SIZE /4,
+                            y * SQUARE_SIZE + SQUARE_SIZE *3/4
+                    };
+
+                    // 아래쪽 화살표 머리의 좌표 배열
+                    int[] xPointsRight = {
+                            x * SQUARE_SIZE + SQUARE_SIZE ,
+                            x * SQUARE_SIZE + SQUARE_SIZE*7/8,
+                            x * SQUARE_SIZE + SQUARE_SIZE*7/8
+                    };
+                    int[] yPointsRight = {
+                            y* SQUARE_SIZE + SQUARE_SIZE / 2,
+                            y * SQUARE_SIZE + SQUARE_SIZE /4,
+                            y * SQUARE_SIZE + SQUARE_SIZE *3/4
+                    };
+
+                    // 위쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsLeft, yPointsLeft, 3);
+
+                    // 아래쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsRight, yPointsRight, 3);
+
+                    // 화살표의 몸통을 그립니다. (가운데 부분)
+                    g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE * 7 / 16, y * SQUARE_SIZE + SQUARE_SIZE / 8, SQUARE_SIZE / 8, SQUARE_SIZE * 3 / 4);
+
+                    // 위쪽 화살표 머리의 좌표 배열
+                    int[] xPointsUp = {
+                            x * SQUARE_SIZE + SQUARE_SIZE / 2,
+                            x * SQUARE_SIZE + SQUARE_SIZE /4,
+                            x * SQUARE_SIZE + SQUARE_SIZE *3 /4
+                    };
+                    int[] yPointsUp = {
+                            y * SQUARE_SIZE,
+                            y * SQUARE_SIZE + SQUARE_SIZE / 8,
+                            y * SQUARE_SIZE + SQUARE_SIZE / 8
+                    };
+
+                    // 아래쪽 화살표 머리의 좌표 배열
+                    int[] xPointsDown = {
+                            x * SQUARE_SIZE + SQUARE_SIZE / 2,
+                            x * SQUARE_SIZE + SQUARE_SIZE /4,
+                            x * SQUARE_SIZE + SQUARE_SIZE *3/4
+                    };
+                    int[] yPointsDown = {
+                            y * SQUARE_SIZE + SQUARE_SIZE ,
+                            y * SQUARE_SIZE + SQUARE_SIZE*7/8,
+                            y * SQUARE_SIZE + SQUARE_SIZE*7/8
+                    };
+
+                    // 위쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsUp, yPointsUp, 3);
+
+                    // 아래쪽 화살표 머리를 그립니다.
+                    g.fillPolygon(xPointsDown, yPointsDown, 3);
                 }
                 case 16 -> {
-
+                    g.setColor(Color.BLACK);
+                    g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+                    g.setColor(color);
+                    g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
                 }
             }
         }
