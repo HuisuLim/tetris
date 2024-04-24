@@ -157,6 +157,7 @@ public class TetrisPanel extends JPanel{
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
             score += (int) (5*scoreMultiplier);
+            repaint();
             return true;
         }
         return false;
@@ -170,7 +171,6 @@ public class TetrisPanel extends JPanel{
 
     public void setScoreMultiplier(double d) {
         scoreMultiplier = d;
-        System.out.println(d);
     }
 
 

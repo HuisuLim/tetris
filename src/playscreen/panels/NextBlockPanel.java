@@ -42,7 +42,7 @@ public class NextBlockPanel extends JPanel {
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[i].length; j++) {
                 if (shape[i][j] != 0) {
-                    int color = colorTable[shape[i][j]];
+                    int color = colorTable[shape[i][j]%10];
                     g.setColor(new Color(color)); // 속이 빨간색인 사각형
                     g.fillRect((int)(startX + j * 20 * screenSize), (int)(startY + i * 20 * screenSize), (int)(20 * screenSize),(int)(20 * screenSize));
                     g.setColor(Color.BLACK); // 테두리는 검은색

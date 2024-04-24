@@ -4,6 +4,7 @@ import playscreen.PlayFrame;
 import settings.LoadData;
 import startscreen.StartMenu;
 
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -14,6 +15,7 @@ public class TetrisKeyListener implements KeyListener {
     private final int rightKey = key.getRightKey();
     private final int upKey = key.getUpKey();
     private final int downKey = key.getDownKey();
+    private boolean canPushSpaceBar = true;
 
     public TetrisKeyListener(PlayFrame tetris) {
         this.tetris = tetris;
@@ -46,11 +48,17 @@ public class TetrisKeyListener implements KeyListener {
             tetris.gamePanel.goRight();
         } else if (keyCode == upKey) {
             tetris.gamePanel.rotate90();
-        } else if (keyCode == downKey) {
+        } else if (keyCode == KeyEvent.VK_SPACE) {
+            canPushSpaceBar = false;
             while (tetris.gamePanel.goDown()) { // 블록을 가장 아래로 이동
-                // 이동이 완료되면 반복 중지
+                if(tetris.gamePanel.getIsGameOver()) break;
             }
             tetris.updateGame(true);
+            canPushSpaceBar = true;
+        } else if (keyCode == downKey) {
+            tetris.updateGame(tetris.gamePanel.goDown());
+            tetris.timer.stop();
+            tetris.timer.start();
         }
     }
 

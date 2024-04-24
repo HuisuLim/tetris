@@ -21,8 +21,7 @@ public class PlayFrame extends JFrame {
     public NextBlockPanel nextBlockPanel;
     public PausePanel pausePanel;
     public ItemShowPanel itemShowPanel;
-    private Timer timer;
-    private Timer clearTimer;
+    public Timer timer;
     private boolean isGameOver = false;
     private boolean isPaused = false;
     private boolean isCleaningTime = false;
@@ -129,7 +128,6 @@ public class PlayFrame extends JFrame {
         //테트리스 goDown했을때 움직여지지 않는다면
         if (!doDown) {
             gamePanel.mergeShapeToBoard();
-            gamePanel.createNewShape();
             if(gamePanel.checkLines()){
                 isCleaningTime = true;
                 timer.stop();
@@ -137,7 +135,6 @@ public class PlayFrame extends JFrame {
                 Timer clearTimer = new Timer(700, new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         gamePanel.clearLines();
-                        gamePanel.createNewShape();
                         gamePanel.repaint();
                         isCleaningTime = false;
                         timer.start();
@@ -146,9 +143,7 @@ public class PlayFrame extends JFrame {
                 clearTimer.setRepeats(false); // 타이머가 한 번만 실행되도록 설정
                 clearTimer.start(); // 타이머 시작
             }
-
-
-
+            gamePanel.createNewShape();
         }
 
 
