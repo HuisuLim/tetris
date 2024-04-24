@@ -6,23 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="75a25d33-aab1-4e1f-acbb-899e63d2d9e6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemTetrisPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/utils/ColorTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/utils/ColorTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/utils/TetrisKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/utils/TetrisKeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settings.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)",
     "애플리케이션.Main.executor": "Run"
   }
 }]]></component>
@@ -36,11 +34,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="아이템 블록 디자인" />
+    <option name="LAST_COMMIT_MESSAGE" value="아이템 블록 디자인" />
   </component>
 </project>
