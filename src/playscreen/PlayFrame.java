@@ -5,14 +5,11 @@ import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
 import settings.LoadData;
 import startscreen.ScoreInput;
-import startscreen.StartMenu;
 
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
@@ -25,8 +22,10 @@ public class PlayFrame extends JFrame {
     public PausePanel pausePanel;
     public ItemShowPanel itemShowPanel;
     private Timer timer;
+    private Timer clearTimer;
     private boolean isGameOver = false;
     private boolean isPaused = false;
+    private boolean isCleaningTime = false;
 
     private TetrisKeyListener listener = new TetrisKeyListener(this);
 
@@ -96,8 +95,8 @@ public class PlayFrame extends JFrame {
                 if (isGameOver) {
                     timer.stop();
                 } else {
-                    gamePanel.goDown();
-                    updateGame();
+                    updateGame(gamePanel.goDown());
+                    repaint();
 
                     // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
                     int delay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
@@ -106,11 +105,14 @@ public class PlayFrame extends JFrame {
             }
         };
 
+
         // 타이머 생성: 초기 지연 시간은 난이도에 따라 조정됨
         int initialDelay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
         timer = new Timer(initialDelay, actionListener);
     }
-    public void updateGame() {
+
+
+    public void updateGame(boolean doDown) {
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
             scorePanel.updateScore(gamePanel.getScore());
@@ -124,6 +126,32 @@ public class PlayFrame extends JFrame {
             }
             return;
         }
+        //테트리스 goDown했을때 움직여지지 않는다면
+        if (!doDown) {
+            gamePanel.mergeShapeToBoard();
+            gamePanel.createNewShape();
+            if(gamePanel.checkLines()){
+                isCleaningTime = true;
+                timer.stop();
+                gamePanel.repaint();
+                Timer clearTimer = new Timer(700, new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        gamePanel.clearLines();
+                        gamePanel.createNewShape();
+                        gamePanel.repaint();
+                        isCleaningTime = false;
+                        timer.start();
+                    }
+                });
+                clearTimer.setRepeats(false); // 타이머가 한 번만 실행되도록 설정
+                clearTimer.start(); // 타이머 시작
+            }
+
+
+
+        }
+
+
         scorePanel.updateScore(gamePanel.getScore());
         nextBlockPanel.updateBlock(gamePanel.getNextBlock());
     }
@@ -146,6 +174,12 @@ public class PlayFrame extends JFrame {
     public boolean getIsGameOver() {
         return isGameOver;
     }
+
+    public boolean getIsCleaningTime() {
+        return isCleaningTime;
+    }
+
+
 
 
 

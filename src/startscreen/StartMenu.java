@@ -12,7 +12,7 @@ import playscreen.PlayFrame;
 
 public class StartMenu extends JFrame {
     private JFrame nextFrame; // 다음 화면에 해당하는 JFrame
-    public static double screenRatio = 2; //화면 비율 조절
+    public static double screenRatio = 1.6; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
     public static String gameMode="normalMode";

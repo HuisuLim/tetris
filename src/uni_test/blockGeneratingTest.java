@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.Map;
 
 public class blockGeneratingTest {
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String DIFFICULTY_KEY = "Difficulty";
 
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class blockGeneratingTest {
         String difficulty = load.loadDifficulty();
         System.out.println(difficulty + " mode");
         // 사용자가 원하는 횟수, 예를 들어 10000번을 입력하면 됩니다.
-        int numberOfBlocksToGenerate = 10000;
+        int numberOfBlocksToGenerate = 100000;
         testBlockGeneration(numberOfBlocksToGenerate);
     }
 

@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Properties;
 
 public class itemBlockGeneratingTest {
-    private static final String SETTINGS_FILE = "src/Settings/settings.properties";
+    private static final String SETTINGS_FILE = "settings.properties";
     private static final String DIFFICULTY_KEY = "Difficulty";
 
     public static void main(String[] args) {
