@@ -50,7 +50,7 @@ public class SettingReset extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == checkButton) {
-            double screenRatio = 1.5;
+            double screenRatio = 1.6;
             boolean isColorBlindMode = false;
             String keySetting = "ArrowKeys";
             String gameMode = "normalMode";
