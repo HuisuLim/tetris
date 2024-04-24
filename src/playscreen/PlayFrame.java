@@ -22,6 +22,7 @@ public class PlayFrame extends JFrame {
     public PausePanel pausePanel;
     public ItemShowPanel itemShowPanel;
     private Timer timer;
+    private Timer clearTimer;
     private boolean isGameOver = false;
     private boolean isPaused = false;
     private boolean isCleaningTime = false;
@@ -103,10 +104,13 @@ public class PlayFrame extends JFrame {
             }
         };
 
+
         // 타이머 생성: 초기 지연 시간은 난이도에 따라 조정됨
         int initialDelay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
         timer = new Timer(initialDelay, actionListener);
     }
+
+
     public void updateGame(boolean doDown) {
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
@@ -123,23 +127,28 @@ public class PlayFrame extends JFrame {
         }
         //테트리스 goDown했을때 움직여지지 않는다면
         if (!doDown) {
-            System.out.println("cant down");
-            toggleIsCleaningTime();
             gamePanel.mergeShapeToBoard();
+            gamePanel.createNewShape();
             if(gamePanel.checkLines()){
+                isCleaningTime = true;
+                timer.stop();
                 gamePanel.repaint();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                gamePanel.clearLines();
+                Timer clearTimer = new Timer(700, new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        gamePanel.clearLines();
+                        System.out.println("Clear");
+                        gamePanel.createNewShape();
+                        gamePanel.repaint();
+                        isCleaningTime = false;
+                        timer.start();
+                    }
+                });
+                clearTimer.setRepeats(false); // 타이머가 한 번만 실행되도록 설정
+                clearTimer.start(); // 타이머 시작
             }
 
 
-            gamePanel.createNewShape();
-            gamePanel.repaint();
-            toggleIsCleaningTime();
+
         }
 
 
@@ -170,15 +179,7 @@ public class PlayFrame extends JFrame {
         return isCleaningTime;
     }
 
-    public void toggleIsCleaningTime() {
-        isCleaningTime = !isCleaningTime;
-        if (isCleaningTime) {
-            timer.stop();
-        }
-        else {
-            timer.start();
-        }
-    }
+
 
 
 

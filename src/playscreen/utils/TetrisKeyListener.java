@@ -32,7 +32,7 @@ public class TetrisKeyListener implements KeyListener {
             handlePauseState(keyCode);
         }
         else if (tetris.getIsCleaningTime()) {
-            return;
+            System.out.println("cantmove");
         }
         else if (tetris.getIsGameOver()) {
             handleGameOverState(keyCode);
