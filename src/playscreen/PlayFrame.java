@@ -81,7 +81,6 @@ public class PlayFrame extends JFrame {
         //rightPanel.add(new JPanel());
         add(rightPanel);
         pausePanel = new PausePanel(this, (int)(screenSize)); // PausePanel 인스턴스 생성
-        pausePanel.setSize(200, 100); // 적당한 크기 설정
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
 

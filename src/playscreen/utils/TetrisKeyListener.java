@@ -55,9 +55,15 @@ public class TetrisKeyListener implements KeyListener {
     }
 
     private void handlePauseState(int keyCode) {
-        if (keyCode == upKey || keyCode == downKey) {
-            tetris.pausePanel.changePoint();
-        } else if (keyCode == KeyEvent.VK_ENTER) {
+        //옵션이 위에서부터 인덱스가 0 1 2기때문에 반대.
+        if (keyCode == upKey) {
+            tetris.pausePanel.upPoint();;
+        }
+        else if (keyCode == downKey) {
+            tetris.pausePanel.downPoint();
+        }
+
+        else if (keyCode == KeyEvent.VK_ENTER) {
             switch (tetris.pausePanel.getCurrPoint()) {
                 case 0: // RESUME
                     tetris.toggleIsPause();
