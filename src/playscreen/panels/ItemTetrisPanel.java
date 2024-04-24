@@ -6,7 +6,7 @@ public class ItemTetrisPanel extends TetrisPanel{
     protected int itemGenerateCount = -1000; // 디버깅용
     protected boolean weightBlockCanMove;
     @Override
-    protected void createNewShape() {
+    public void createNewShape() {
         score +=100;
         if(lineRemoveCount > itemGenerateCount) {
             itemGenerateCount++;
@@ -51,13 +51,13 @@ public class ItemTetrisPanel extends TetrisPanel{
     }
 
     @Override
-    protected void mergeShapeToBoard() {
+    public void mergeShapeToBoard() {
         if (currBlock.getBlockNum() == 11) return;
         super.mergeShapeToBoard();
     }
 
     @Override
-    protected void checkAndClearLines() {
+    public boolean checkLines() {
         if (currBlock.getBlockNum() > 11) {
             int[] itemIndex = findIndex(board, currBlock.getBlockNum());
             switch (currBlock.getBlockNum()) {
@@ -97,7 +97,7 @@ public class ItemTetrisPanel extends TetrisPanel{
                 }
             };
         }
-        super.checkAndClearLines();
+        return super.checkLines();
     }
 
     @Override
