@@ -14,8 +14,8 @@ public class SettingScreen extends JFrame implements ActionListener {
     private JRadioButton smallButton, mediumButton, largeButton;
     private JButton checkButton;
     private static final double SMALL_SIZE = 1;
-    private static final double MEDIUM_SIZE = 1.5;
-    private static final double LARGE_SIZE = 2.3;
+    private static final double MEDIUM_SIZE = 1.6;
+    private static final double LARGE_SIZE = 2.4;
 
     private static final String SETTINGS_FILE = "settings.properties";
     private static final String SCREEN_RATIO_KEY = "ScreenSize";
