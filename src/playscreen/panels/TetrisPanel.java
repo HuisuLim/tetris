@@ -56,7 +56,7 @@ public class TetrisPanel extends JPanel{
     }
 
 
-    protected void createNewShape() {
+    public void createNewShape() {
 
         currBlock = nextBlock;
         nextBlock = generator.getRandomStandardBlock();
@@ -87,7 +87,7 @@ public class TetrisPanel extends JPanel{
         return canMoveTo(currentRow, currentCol, currBlock.getRotatedShape());
     }
 
-    protected void mergeShapeToBoard() {
+    public void mergeShapeToBoard() {
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
@@ -99,8 +99,9 @@ public class TetrisPanel extends JPanel{
         score +=100;
     }
 
-    protected void checkAndClearLines() {
-        for (int row = BOARD_HEIGHT - 1; row >= 0; ) {
+    public boolean checkLines() {
+        boolean doClear = false;
+        for (int row = BOARD_HEIGHT - 1; row >= 0; row--) {
             boolean isLineComplete = true;
             for (int col = 0; col < BOARD_WIDTH; col++) {
                 if (board[row][col] == 0) {
@@ -109,18 +110,42 @@ public class TetrisPanel extends JPanel{
                 }
             }
 
-            // 완성된 라인이 있으면 제거하고 위쪽 라인들을 아래로 이동
+            // 완성된 라인이 있으면 제거할 곳에 8을 넣음. ColorTable에서 검은색을 담당. 예전부분 : 제거하고 위쪽 라인들을 아래로 이동
             if (isLineComplete) {
+                doClear = true;
                 lineRemoveCount++;
                 score+= 1000;
-                for (int r = row; r > 0; r--) {
-                    for (int col = 0; col < BOARD_WIDTH; col++) {
-                        board[r][col] = board[r - 1][col];
-                    }
+                for (int col = 0; col < BOARD_WIDTH; col++) {
+                    board[row][col] = 8;
                 }
-            } else {
-                row--; // 완성된 라인이 없으면 다음 라인 확인
+//                for (int r = row; r > 0; r--) {
+//                    for (int col = 0; col < BOARD_WIDTH; col++) {
+//                        board[r][col] = board[r - 1][col];
+//                    }
+//                }
             }
+            for(int r = 0; r < BOARD_HEIGHT; r++) {
+                for(int c = 0; c < BOARD_WIDTH; c++) {
+                    System.out.print(board[r][c]);
+                }
+                System.out.println();
+            }
+        }
+        return doClear;
+    }
+
+    public void clearLines() {
+        for (int row = BOARD_HEIGHT - 1; row >=0;) {
+            if (board[row][0] != 8) {
+                row--;
+                continue;
+            }
+            for (int r = row; r > 0; r--) {
+                for (int col = 0; col < BOARD_WIDTH; col++) {
+                    board[r][col] = board[r - 1][col];
+                }
+            }
+
         }
     }
 
@@ -138,16 +163,13 @@ public class TetrisPanel extends JPanel{
             repaint();
         }
     }
-    public void goDown() {
+    public boolean goDown() {
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
+            repaint();
+            return true;
         }
-        else {
-            mergeShapeToBoard();
-            checkAndClearLines();
-            createNewShape();
-        }
-        repaint();
+        return false;
     }
     public void rotate90() {
         if(canRotate()){
@@ -170,10 +192,11 @@ public class TetrisPanel extends JPanel{
 
         super.paint(offScreenGraphics); // JFrame의 기본 페인트 메커니즘을 사용하여 구성요소를 그림
 
-        // 게임 보드 및 현재 도형을 그리는 부분
+        // 게임 보드 그리는 부분
         for (int row = 0; row < BOARD_HEIGHT; row++) {
             for (int col = 0; col < BOARD_WIDTH; col++) {
                 // 직접 색상 계산 로직을 넣지 않고 색상 인덱스를 전달
+                if(board[row][col] == 8) System.out.println(8);
                 drawSquare(offScreenGraphics, col, row, board[row][col]);
             }
         }
