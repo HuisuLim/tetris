@@ -112,6 +112,7 @@ public class PlayFrame extends JFrame {
 
 
     public void updateGame(boolean doDown) {
+        gamePanel.setScoreMultiplier(TimerDelay.calScoreMultiplier(difficulty, gamePanel.getScore()));
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
             scorePanel.updateScore(gamePanel.getScore());
