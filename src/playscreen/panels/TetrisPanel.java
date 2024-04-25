@@ -34,6 +34,7 @@ public class TetrisPanel extends JPanel{
 
     //게임정보
     protected int score = 0;
+    protected double scoreMultiplier = 1;
     protected boolean isGameOver = false;
     protected int lineRemoveCount = 0;
 
@@ -96,7 +97,7 @@ public class TetrisPanel extends JPanel{
                 }
             }
         }
-        score +=100;
+        score += (int) (100 * scoreMultiplier);
     }
 
     public boolean checkLines() {
@@ -114,7 +115,7 @@ public class TetrisPanel extends JPanel{
             if (isLineComplete) {
                 doClear = true;
                 lineRemoveCount++;
-                score+= 1000;
+                score+= (int) (1000 * scoreMultiplier);
                 for (int col = 0; col < BOARD_WIDTH; col++) {
                     board[row][col] = 8;
                 }
@@ -155,6 +156,8 @@ public class TetrisPanel extends JPanel{
     public boolean goDown() {
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
+            score += (int) (5*scoreMultiplier);
+            repaint();
             return true;
         }
         return false;
@@ -164,6 +167,10 @@ public class TetrisPanel extends JPanel{
             currBlock.rotate90();
             repaint();
         }
+    }
+
+    public void setScoreMultiplier(double d) {
+        scoreMultiplier = d;
     }
 
 

@@ -7,23 +7,20 @@ public class ItemTetrisPanel extends TetrisPanel{
     protected boolean weightBlockCanMove;
     @Override
     public void createNewShape() {
-        score +=100;
-        if(lineRemoveCount/10 >= itemGenerateCount) {
+        if(lineRemoveCount/10 > itemGenerateCount) {
             itemGenerateCount++;
-            currBlock = generator.getRandomItemBlock();
-            if (currBlock.getBlockNum() == 11) weightBlockCanMove = true;
-        }
-        else {
             currBlock = nextBlock;
-            nextBlock = generator.getRandomStandardBlock();
+            nextBlock = generator.getRandomItemBlock();
+            if (nextBlock.getBlockNum() == 11) weightBlockCanMove = true;
+            int[] temp = currBlock.getStartPos();
+            currentRow = temp[0];
+            currentCol = temp[1];
+            if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
+                isGameOver = true;
+                System.out.println("게임종료");
+            }
         }
-        int[] temp = currBlock.getStartPos();
-        currentRow = temp[0];
-        currentCol = temp[1];
-        if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
-            isGameOver = true;
-            System.out.println("게임종료");
-        }
+        else super.createNewShape();
     }
 
     @Override
@@ -43,8 +40,6 @@ public class ItemTetrisPanel extends TetrisPanel{
                     board[targetRow + row][targetCol+ col] = 0;
                     weightBlockCanMove = false;
                 }
-
-
             }
         }
         return true;
@@ -62,8 +57,8 @@ public class ItemTetrisPanel extends TetrisPanel{
             int[] itemIndex = findIndex(board, currBlock.getBlockNum());
             switch (currBlock.getBlockNum()) {
                 case 12 -> {
-                    for (int row = itemIndex[0] - 2; row < itemIndex[0] + 2; row++) {
-                        for (int col = itemIndex[1] - 2; col < itemIndex[1] + 2; col++) {
+                    for (int row = itemIndex[0] - 2; row <= itemIndex[0] + 2; row++) {
+                        for (int col = itemIndex[1] - 2; col <= itemIndex[1] + 2; col++) {
                             if (row < 0 || row >= BOARD_HEIGHT) continue;
                             if (col < 0 || col >= BOARD_WIDTH) continue;
                             board[row][col] = 0;
@@ -96,6 +91,7 @@ public class ItemTetrisPanel extends TetrisPanel{
                     }
                 }
             };
+            score+= (int) (1000 * scoreMultiplier);
         }
         return super.checkLines();
     }
