@@ -117,12 +117,16 @@ public class PlayFrame extends JFrame {
             scorePanel.updateScore(gamePanel.getScore());
             String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
 
-// 이름이 비어있으면 "unknown"으로 설정
-            if (name == null || name.isEmpty()) {
-                name = "unknown";
-            }
+            // 사용자가 "OK" 버튼을 클릭했을 때와 "Cancel" 버튼을 클릭했을 때를 구분하여 처리
+            if (name != null) {
+                // 사용자가 이름을 입력하고 "OK" 버튼을 클릭한 경우
+                if (name.isEmpty()) {
+                    name = "unknown"; // 이름이 비어있으면 "unknown"으로 설정
+                }
                 // 테이블에 이름과 현재 점수, 난이도, 모드 추가
                 new ScoreInput(name, gamePanel.getScore(), difficulty, gameMode).setVisible(true);
+            }
+            // 사용자가 "Cancel" 버튼을 클릭한 경우 아무 동작도 수행하지 않음
 
             return;
         }
