@@ -42,7 +42,14 @@ public class ScoreInput extends JFrame {
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // 셀 내용을 가운데 정렬로 설정
 
         // JTable 생성 및 각 컬럼 너비 설정
-        scoreboard = new JTable(model);
+        scoreboard = new JTable(model) {
+            @Override
+            public void changeSelection(int rowIndex, int columnIndex, boolean toggle, boolean extend) {
+                // 행 선택을 비활성화하여 위아래로 이동할 수 없게 만듭니다.
+                super.changeSelection(getSelectedRow(), columnIndex, toggle, extend);
+            }
+        };
+        
         scoreboard.getColumnModel().getColumn(0).setPreferredWidth(10);
         scoreboard.getColumnModel().getColumn(1).setPreferredWidth(150);
         scoreboard.getColumnModel().getColumn(2).setPreferredWidth(50);
