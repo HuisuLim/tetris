@@ -34,6 +34,8 @@ public class PlayFrame extends JFrame {
         setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        setResizable(false); // 창 크기 변경 불가능 설정 추가
+
         this.addKeyListener(listener);
         initUI();
         createTimer();
