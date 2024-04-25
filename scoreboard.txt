@@ -1,5 +1,7 @@
 ㅎㅎㅎㅎㅎㅎ,17000,normal,normalMode
 asd,4526,normal,normalMode
+unknown,3089,hard,normalMode
+asdada,1780,normal,normalMode
 1231312,1733,normal,normalMode
 ㅁㄴㅇ,1717,normal,normalMode
 yyy],1500,normal,normalMode
@@ -11,3 +13,4 @@ kk,1200,normal,normalMode
 ㄹㅎㄹㅎㄹ,1100,normal,normalMode
 ㅏㅣㅏ,1100,normal,normalMode
 lk,900,normal,normalMode
+unknown,1569,normal,normalMode

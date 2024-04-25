@@ -17,12 +17,12 @@ public class TimerDelay {
         return (int)delay;
     }
 
-    public static double calScoreMultiplier(String difficulty, int score) {
-        return 1.0 + (1000.0 - (double)calDelay(difficulty, score)) / 200.0;
+    public static double calScoreMultiplier(int score) {
+        return 1.0 + (1000.0 - (double)calDelay("normal", score)) / 200.0;
     }
 
     public static void main(String[] args) {
-        System.out.println(calScoreMultiplier("normal", 100000));
+        System.out.println(calScoreMultiplier(1000));
     }
 }
 
