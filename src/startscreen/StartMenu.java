@@ -42,8 +42,11 @@ public class StartMenu extends JFrame {
         setSize((int)(500*screenRatio), (int)(400*screenRatio));
         setTitle("테트리스 게임");
         setVisible(true);
+        setResizable(false); // 창 크기 변경 불가능 설정 추가
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 중앙에 표시
+    
+        
 
         // 패널 생성
         JPanel panel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 수동으로 위치 및 크기 지정
@@ -279,6 +282,19 @@ public class StartMenu extends JFrame {
                 }
             });
         }
+    }
+    public static void main(String[] args) {
+        // 시스템 기본 모양과 느낌으로 설정
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            StartMenu menu = new StartMenu();
+            menu.setVisible(true);
+        });
     }
 
 }
