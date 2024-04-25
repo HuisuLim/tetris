@@ -7,7 +7,7 @@ public class ItemTetrisPanel extends TetrisPanel{
     protected boolean weightBlockCanMove;
     @Override
     public void createNewShape() {
-        if(lineRemoveCount/10 > itemGenerateCount) {
+        if(lineRemoveCount/2 > itemGenerateCount) {
             itemGenerateCount++;
             currBlock = nextBlock;
             nextBlock = generator.getRandomItemBlock();
