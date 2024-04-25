@@ -117,12 +117,13 @@ public class PlayFrame extends JFrame {
             scorePanel.updateScore(gamePanel.getScore());
             String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
 
-            if (name != null && !name.isEmpty()) {
-                // 게임의 난이도와 모드를 설정합니다.
-
+// 이름이 비어있으면 "unknown"으로 설정
+            if (name == null || name.isEmpty()) {
+                name = "unknown";
+            }
                 // 테이블에 이름과 현재 점수, 난이도, 모드 추가
                 new ScoreInput(name, gamePanel.getScore(), difficulty, gameMode).setVisible(true);
-            }
+
             return;
         }
         //테트리스 goDown했을때 움직여지지 않는다면
