@@ -17,7 +17,7 @@ public class ScoreInput extends JFrame {
     private String currentMode;
 
     public ScoreInput(String name, int score, String difficulty, String mode) {
-        setTitle("Scoreboard");
+        setTitle("Scoreboard | 메뉴로 돌아가려면 esc를 눌러주세요");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 300);
         setLocationRelativeTo(null);
@@ -86,6 +86,7 @@ public class ScoreInput extends JFrame {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    new StartMenu().setVisible(true);
                     dispose(); // 현재 창을 닫음
                 }
                 return false;

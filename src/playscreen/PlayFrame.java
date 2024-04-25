@@ -21,6 +21,7 @@ public class PlayFrame extends JFrame {
     public NextBlockPanel nextBlockPanel;
     public PausePanel pausePanel;
     public ItemShowPanel itemShowPanel;
+    public NameInputPanel nameInputPanel;
     public Timer timer;
     private boolean isGameOver = false;
     private boolean isPaused = false;
@@ -113,23 +114,14 @@ public class PlayFrame extends JFrame {
 
 
     public void updateGame(boolean doDown) {
-        gamePanel.setScoreMultiplier(TimerDelay.calScoreMultiplier(difficulty, gamePanel.getScore()));
+        gamePanel.setScoreMultiplier(TimerDelay.calScoreMultiplier(gamePanel.getScore()));
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
-            scorePanel.updateScore(gamePanel.getScore());
-            String name = JOptionPane.showInputDialog(this, "이름을 입력하세요:");
-
-            // 사용자가 "OK" 버튼을 클릭했을 때와 "Cancel" 버튼을 클릭했을 때를 구분하여 처리
-            if (name != null) {
-                // 사용자가 이름을 입력하고 "OK" 버튼을 클릭한 경우
-                if (name.isEmpty()) {
-                    name = "unknown"; // 이름이 비어있으면 "unknown"으로 설정
-                }
-                // 테이블에 이름과 현재 점수, 난이도, 모드 추가
-                new ScoreInput(name, gamePanel.getScore(), difficulty, gameMode).setVisible(true);
-            }
-            // 사용자가 "Cancel" 버튼을 클릭한 경우 아무 동작도 수행하지 않음
-
+            nameInputPanel = new NameInputPanel(this, screenSize);
+            nameInputPanel.setLocation((getWidth() - nameInputPanel.getWidth()) / 2, (getHeight() - nameInputPanel.getHeight()) / 2); // 위치 중앙으로 설정
+            nameInputPanel.setVisible(true); // 초기에는 보이지 않게 설정
+            getLayeredPane().add(nameInputPanel, JLayeredPane.POPUP_LAYER);
+            nameInputPanel.input.requestFocus();
             return;
         }
         //테트리스 goDown했을때 움직여지지 않는다면
