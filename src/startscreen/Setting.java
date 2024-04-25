@@ -16,6 +16,8 @@ public class Setting extends JFrame {
         setLocationRelativeTo(null); // 화면 중앙에 표시
         setLayout(null); // Layout Manager를 사용하지 않음
 
+        setResizable(false); // 창 크기 변경 불가능 설정 추가
+
         // 버튼 너비 및 높이 설정
         int buttonWidth = (int)(100 * screenRatio);
         int buttonHeight = (int)(25 * screenRatio);
