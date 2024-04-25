@@ -1,7 +1,9 @@
+eee,40419,normal,itemMode
 ㅎㅎㅎㅎㅎㅎ,17000,normal,normalMode
 asd,4526,normal,normalMode
 unknown,3089,hard,normalMode
 asdada,1780,normal,normalMode
+fff,1758,normal,itemMode
 1231312,1733,normal,normalMode
 ㅁㄴㅇ,1717,normal,normalMode
 yyy],1500,normal,normalMode

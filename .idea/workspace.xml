@@ -13,7 +13,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemTetrisPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/NextBlockPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/NextBlockPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +106,7 @@
     &quot;애플리케이션.delayCalTest.executor&quot;: &quot;Run&quot;
   }
 }</component>
-  <component name="RunManager" selected="애플리케이션.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tetris" />
@@ -166,20 +166,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="애플리케이션.Main" />
-        <item itemvalue="애플리케이션.TimerDelay" />
-        <item itemvalue="애플리케이션.delayCalTest" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -201,6 +187,7 @@
       <workItem from="1712746939720" duration="4000" />
       <workItem from="1712797116473" duration="5362000" />
       <workItem from="1712823899144" duration="810000" />
+      <workItem from="1714050852217" duration="3446000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
