@@ -1,6 +1,7 @@
 package playscreen.panels;
 
 import playscreen.PlayFrame;
+import settings.LoadData;
 import startscreen.ScoreInput;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 
 public class NameInputPanel extends JPanel {
     private PlayFrame parentFrame;
+    LoadData data = new LoadData();
     public JTextField input;
 
     public NameInputPanel(PlayFrame parentFrame, double screenSize) {
@@ -29,7 +31,8 @@ public class NameInputPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String name = input.getText();
                 if (name.isEmpty()) name = "unknown";
-                new ScoreInput(name, parentFrame.gamePanel.getScore(), parentFrame.gamePanel.difficulty, parentFrame.gamePanel.gameMode).setVisible(true);
+                System.out.println(parentFrame.gamePanel.difficulty);
+                new ScoreInput(name, parentFrame.gamePanel.getScore(), data.loadDifficulty(), data.loadGameMode()).setVisible(true);
                 parentFrame.dispose();
             }
         });
