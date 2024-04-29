@@ -86,8 +86,10 @@ public class ScoreInput extends JFrame {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    System.out.println("??");
                     new StartMenu().setVisible(true);
                     dispose(); // 현재 창을 닫음
+                    KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
                 }
                 return false;
             }
