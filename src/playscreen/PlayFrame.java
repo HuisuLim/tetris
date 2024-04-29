@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
 public class PlayFrame extends JFrame {
     private LoadData data = new LoadData();
-    private String gameMode = data.loadGameMode();
+    private String gameMode = "normalMode";
     private String difficulty = data.loadDifficulty(); // 난이도 로드
     private double screenSize = data.loadScreenSize();
     public TetrisPanel gamePanel;
@@ -30,7 +30,8 @@ public class PlayFrame extends JFrame {
     private TetrisKeyListener listener = new TetrisKeyListener(this);
 
 
-    public PlayFrame() {
+    public PlayFrame(String mode) {
+        gameMode = mode;
         setTitle("Play Frame");
         setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -117,7 +118,7 @@ public class PlayFrame extends JFrame {
         gamePanel.setScoreMultiplier(TimerDelay.calScoreMultiplier(gamePanel.getScore()));
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
-            nameInputPanel = new NameInputPanel(this, screenSize);
+            nameInputPanel = new NameInputPanel(this, screenSize, gameMode);
             nameInputPanel.setLocation((getWidth() - nameInputPanel.getWidth()) / 2, (getHeight() - nameInputPanel.getHeight()) / 2); // 위치 중앙으로 설정
             nameInputPanel.setVisible(true); // 초기에는 보이지 않게 설정
             getLayeredPane().add(nameInputPanel, JLayeredPane.POPUP_LAYER);
@@ -181,7 +182,7 @@ public class PlayFrame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PlayFrame().setVisible(true);
+                new PlayFrame("normalMode").setVisible(true);
             }
         });
     }

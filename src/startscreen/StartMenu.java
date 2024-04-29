@@ -15,7 +15,7 @@ public class StartMenu extends JFrame {
     public static double screenRatio = 1.6; //화면 비율 조절
     public static boolean isColorblindness = false; //색맹모드
     public static String keySetting="ArrowKeys";//키설정
-    public static String gameMode="normalMode";
+
     public static String difficulty="normal";
     public static LoadData loadData = new LoadData();
     public static void setScreenRatio(){
@@ -23,9 +23,6 @@ public class StartMenu extends JFrame {
     }
     public static void setColorBlindness(){
         isColorblindness = loadData.loadColorBlindMode();
-    }
-    public static void setGameMode(){
-        gameMode = loadData.loadGameMode();
     }
     public static void setDifficutly(){
         difficulty = loadData.loadDifficulty();
@@ -37,7 +34,6 @@ public class StartMenu extends JFrame {
         setScreenRatio();//화면 비율 조절
         setColorBlindness();
         setControlKey();
-        setGameMode();
         setDifficutly();
 
         setSize((int)(500*screenRatio), (int)(400*screenRatio));
@@ -64,10 +60,20 @@ public class StartMenu extends JFrame {
         Font font = new Font("Arial", Font.PLAIN, fontSize);
         variableLabel.setFont(font);
 
+        String showScreenRatio;
+        if (screenRatio == 1){
+            showScreenRatio = "small";
+        }
+        else if(screenRatio == 1.6){
+            showScreenRatio = "medium";
+        }
+        else{
+            showScreenRatio = "large";
+        }
+
         String htmlText = "<html>" +
-                "<tr><td><strong>화면 비율:</strong></td><td>" + screenRatio + "</td></tr>" +
+                "<tr><td><strong>화면 비율:</strong></td><td>" + showScreenRatio + "</td></tr>" +
                 "<tr><td><strong>색맹 모드:</strong></td><td>" + isColorblindness + "</td></tr>" +
-                "<tr><td><strong>게임 모드:</strong></td><td>" + gameMode + "</td></tr>" +
                 "<tr><td><strong>난이도:</strong></td><td>" + difficulty + "</td></tr>" +
                 "<tr><td><strong>키 설정:</strong></td><td>" + keySetting + "</td></tr>" +
                 "</table>";
@@ -122,19 +128,25 @@ public class StartMenu extends JFrame {
 
 
         // 버튼 생성
-        JButton startButton = new JButton("게임 시작");
+        JButton startButton = new JButton("일반모드");
+        JButton startItemButton = new JButton("아이템모드");
         JButton settingsButton = new JButton("설정");
         JButton exitButton = new JButton("게임 종료");
         JButton scoreButton = new JButton("스코어보드");
 
         configureButton(startButton);
+        configureButton(startItemButton);
         configureButton(settingsButton);
         configureButton(exitButton);
         configureButton(scoreButton);
 
+
         // 패널에 버튼 추가 및 위치 설정
         panel.add(startButton);
-        startButton.setBounds((int)(200*screenRatio), (int)(225*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
+        startButton.setBounds((int)(200*screenRatio), (int)(190*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
+
+        panel.add(startItemButton);
+        startItemButton.setBounds((int)(200*screenRatio), (int)(225*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
 
         panel.add(settingsButton);
         settingsButton.setBounds((int)(200*screenRatio), (int)(260*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
@@ -152,7 +164,16 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame();
+                nextFrame = new PlayFrame("normalMode");
+                nextFrame.setVisible(true);
+                setVisible(false); // 현재 화면 숨기기
+            }
+        });
+
+        startItemButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+                nextFrame = new PlayFrame("itemMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -189,7 +210,7 @@ public class StartMenu extends JFrame {
 
 
         // 방향키 및 엔터키 처리를 위한 설정
-        setupDirectionalFocusTraversal(startButton, settingsButton, exitButton, scoreButton);
+        setupDirectionalFocusTraversal(startButton, startItemButton ,settingsButton, exitButton, scoreButton);
     }
     private void configureButton(JButton button) {
         Color defaultColor = new Color(230, 230, 230); // 기본 배경색을 밝은 GRAY로 설정

@@ -40,11 +40,15 @@ public class NextBlockPanel extends JPanel {
         int startY = (int)(1 * 20 * screenSize);
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[i].length; j++) {
+                if(shape[i][j] == 1){
+                    startX = (int)(2 * 20 * screenSize);
+                    startY = 0;
+                }
+            }
+        }
+        for (int i = 0; i < shape.length; i++) {
+            for (int j = 0; j < shape[i].length; j++) {
                 if (shape[i][j] != 0) {
-                    if(shape[i][j] == 1){
-                        startX = (int)(2 * 20 * screenSize);
-                        startY = 0;
-                    }
                     if (shape[i][j] < 10) {
                         int color = colorTable[shape[i][j] % 10];
                         g.setColor(new Color(color)); // 속이 빨간색인 사각형
@@ -60,7 +64,7 @@ public class NextBlockPanel extends JPanel {
                         switch (shape[i][j]) {
                             case 11 -> {
                                 startX = (int)(3 * 20 * screenSize);
-                                startY = (int)((-1)*10*screenSize);
+                                startY = (int)((-1.5)*10*screenSize);
                                 g.setColor(Color.white);
                                 g.fillRect(startX + j  * SQUARE_SIZE, startY + i * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                                 g.setColor(color);
@@ -76,7 +80,6 @@ public class NextBlockPanel extends JPanel {
                                 g.setColor(Color.black);
                                 // 화살표의 몸통을 그립니다. (가운데 부분)
                                 g.fillRect(startX + j*SQUARE_SIZE + SQUARE_SIZE / 4, startY + i * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE / 2, SQUARE_SIZE / 2);
-
                                 // 위쪽 화살표 머리의 좌표 배열
                                 int[] xPointsLeft = {
                                         startX + j  * SQUARE_SIZE,
@@ -213,6 +216,8 @@ public class NextBlockPanel extends JPanel {
                                 g.fillPolygon(xPointsDown, yPointsDown, 3);
                             }
                             case 16 -> {
+                                startX = (int)(4.5 * 20 * screenSize);
+                                startY = (int)((2)*10*screenSize);
                                 g.setColor(Color.BLACK);
                                 g.fillRect(startX + j * SQUARE_SIZE, startY + i * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                                 g.setColor(color);

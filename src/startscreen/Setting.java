@@ -104,20 +104,9 @@ public class Setting extends JFrame {
             }
         });
 
-        JButton itemModeButton = new JButton("아이템 모드 ON/OFF");
-        itemModeButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio), buttonWidth, buttonHeight);
-        itemModeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // SettingGameMode 인스턴스를 생성하고 보이게 하는 코드 추가
-                StartMenu.setGameMode();
-                SettingGameMode gameModeSetting = new SettingGameMode();
-                gameModeSetting.setVisible(true);
-            }
-        });
-
         // 난이도 설정 버튼 생성 및 설정
         JButton difficultyButton = new JButton("난이도 설정");
-        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(235 * screenRatio), buttonWidth, buttonHeight);
+        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio), buttonWidth, buttonHeight);
 
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
@@ -134,18 +123,15 @@ public class Setting extends JFrame {
         add(button3);
         add(button4);
         add(button5);
-        add(itemModeButton);
         add(difficultyButton);
 
         // 포커스 이동 가능하도록 설정
-        itemModeButton.setFocusable(true);
         difficultyButton.setFocusable(true);
 
         // 방향키에 의한 포커스 이동 설정에 새 버튼 추가
-        setupDirectionalFocusTraversal(backButton, button1, button2, button3, button4, button5, itemModeButton, difficultyButton);
+        setupDirectionalFocusTraversal(backButton, button1, button2, button3, button4, button5, difficultyButton);
 
         // 버튼의 배경색과 인터랙션에 따른 색상 변경 설정
-        configureButton(itemModeButton);
         configureButton(difficultyButton);
 
         // 포커스 이동 가능하도록 설정
@@ -163,12 +149,10 @@ public class Setting extends JFrame {
         setupKeyBindings(button3);
         setupKeyBindings(button4);
         setupKeyBindings(button5);
-        setupKeyBindings(itemModeButton); // 아이템 모드 버튼에 대한 키 바인딩 설정
         setupKeyBindings(difficultyButton); // 난이도 버튼에 대한 키 바인딩 설정
 
         // 방향키에 의한 포커스 이동 설정
-        setupDirectionalFocusTraversal(backButton, button1, button2, button3, button4, button5, itemModeButton, difficultyButton);
-
+        setupDirectionalFocusTraversal(backButton, button1, button2, button3, button4, button5, difficultyButton);
         // 버튼의 배경색과 인터랙션에 따른 색상 변경 설정
         configureButton(backButton);
         configureButton(button1);
@@ -176,7 +160,6 @@ public class Setting extends JFrame {
         configureButton(button3);
         configureButton(button4);
         configureButton(button5);
-        configureButton(itemModeButton);
         configureButton(difficultyButton);
 
     }
