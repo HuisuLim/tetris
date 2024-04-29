@@ -1,3 +1,4 @@
+
 package startscreen;
 
 import settings.*;
@@ -15,16 +16,14 @@ public class Setting extends JFrame {
         setSize((int)(500 * screenRatio), (int)(400 * screenRatio));
         setLocationRelativeTo(null); // 화면 중앙에 표시
         setLayout(null); // Layout Manager를 사용하지 않음
-
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
-        // 버튼 너비 및 높이 설정
-        int buttonWidth = (int)(100 * screenRatio);
-        int buttonHeight = (int)(25 * screenRatio);
-
-        // 화면 크기
+        //버튼 너비,높이,간격 설정
+        int buttonWidth = (int)(150 * screenRatio);
+        int buttonHeight = (int)(30 * screenRatio);
         int frameWidth = getWidth();
         int frameHeight = getHeight();
+        int verticalSpacing = (int)(20 * screenRatio); // 버튼 간의 세로 간격을 40px의 비율로 조정
 
         // 뒤로가기 버튼 생성 및 설정
         backButton = new JButton("뒤로가기");
@@ -40,7 +39,7 @@ public class Setting extends JFrame {
 
         // 버튼 생성 및 설정
         JButton button1 = new JButton("조작키 설정");
-        button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio), buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
+        button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio) + 0 * verticalSpacing, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingKey setting = new SettingKey();
@@ -50,7 +49,7 @@ public class Setting extends JFrame {
         });
 
         JButton button2 = new JButton("색맹 모드");
-        button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio), buttonWidth, buttonHeight);
+        button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio)+ 1 * verticalSpacing, buttonWidth, buttonHeight);
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingColorBlindness setting = new SettingColorBlindness();
@@ -60,7 +59,7 @@ public class Setting extends JFrame {
         });
 
         JButton button3 = new JButton("설정 초기화");
-        button3.setBounds((frameWidth - buttonWidth) / 2, (int)(95 * screenRatio), buttonWidth, buttonHeight);
+        button3.setBounds((frameWidth - buttonWidth) / 2, (int)(95 * screenRatio)+ 2 * verticalSpacing, buttonWidth, buttonHeight);
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingReset settingReset = new SettingReset();
@@ -78,7 +77,7 @@ public class Setting extends JFrame {
         });
 
         JButton button4 = new JButton("화면 크기 조절");
-        button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio), buttonWidth, buttonHeight);
+        button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio)+ 3 * verticalSpacing, buttonWidth, buttonHeight);
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingScreen setting = new SettingScreen();
@@ -96,7 +95,7 @@ public class Setting extends JFrame {
         });
 
         JButton button5 = new JButton("스코어보드 초기화");
-        button5.setBounds((frameWidth - buttonWidth) / 2, (int)(165 * screenRatio), buttonWidth, buttonHeight);
+        button5.setBounds((frameWidth - buttonWidth) / 2, (int)(165 * screenRatio)+ 4 * verticalSpacing, buttonWidth, buttonHeight);
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 새로운 ScoreboardReset 화면을 여는 로직
@@ -106,7 +105,7 @@ public class Setting extends JFrame {
 
         // 난이도 설정 버튼 생성 및 설정
         JButton difficultyButton = new JButton("난이도 설정");
-        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio), buttonWidth, buttonHeight);
+        difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio)+ 5 * verticalSpacing, buttonWidth, buttonHeight);
 
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {

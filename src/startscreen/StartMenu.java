@@ -42,8 +42,8 @@ public class StartMenu extends JFrame {
         setResizable(false); // 창 크기 변경 불가능 설정 추가
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 중앙에 표시
-    
-        
+
+
 
         // 패널 생성
         JPanel panel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 수동으로 위치 및 크기 지정
@@ -116,16 +116,16 @@ public class StartMenu extends JFrame {
                     "  </tr>\n" +
                     "</table>\n</html>");
         }
-        variableLabel.setBounds((int)(350*screenRatio), (int)(150*screenRatio), (int)(130*screenRatio), (int)(200*screenRatio));
+        variableLabel.setBounds((int)(350*screenRatio), (int)(130*screenRatio), (int)(130*screenRatio), (int)(200*screenRatio));
 
         // 라벨에 테두리 추가
         variableLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
         // 내용을 가운데 정렬
         variableLabel.setHorizontalAlignment(SwingConstants.CENTER);
         variableLabel.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(variableLabel);
         add(panel);
-
 
         // 버튼 생성
         JButton startButton = new JButton("일반모드");
@@ -140,23 +140,21 @@ public class StartMenu extends JFrame {
         configureButton(exitButton);
         configureButton(scoreButton);
 
-
-        // 패널에 버튼 추가 및 위치 설정
+        //버튼 위치 설정
         panel.add(startButton);
-        startButton.setBounds((int)(200*screenRatio), (int)(190*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
+        startButton.setBounds((int)(200*screenRatio), (int)(170*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(startItemButton);
-        startItemButton.setBounds((int)(200*screenRatio), (int)(225*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio)); // 버튼 위치 및 크기 지정 (x, y, width, height)
+        startItemButton.setBounds((int)(200*screenRatio), (int)(205*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(settingsButton);
-        settingsButton.setBounds((int)(200*screenRatio), (int)(260*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
+        settingsButton.setBounds((int)(200*screenRatio), (int)(240*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(exitButton);
-        exitButton.setBounds((int)(200*screenRatio), (int)(295*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
+        exitButton.setBounds((int)(200*screenRatio), (int)(275*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         panel.add(scoreButton);
-        scoreButton.setBounds((int)(200*screenRatio), (int)(330*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
-
+        scoreButton.setBounds((int)(200*screenRatio), (int)(310*screenRatio), (int)(100*screenRatio), (int)(25*screenRatio));
 
         // 프레임에 패널 추가
         add(panel);
@@ -194,7 +192,7 @@ public class StartMenu extends JFrame {
 
                 nextFrame = new ShowScoreboard();
                 nextFrame.setVisible(true);
-               // setVisible(false);
+                // setVisible(false);
 
             }
         });
