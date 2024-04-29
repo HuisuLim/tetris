@@ -15,7 +15,7 @@ public class TetrisPanel extends JPanel{
     //load properties
     protected final LoadData data = new LoadData();
     protected final double screenSize = data.loadScreenSize();
-    protected String gameMode = data.loadGameMode();
+
     protected String difficulty;
     protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
 

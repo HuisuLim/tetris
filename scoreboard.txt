@@ -1,0 +1,3 @@
+test,1860,normal,normalMode
+itest,1716,normal,itemMode
+ㅓㅓㅓㅓ,1679,normal,itemMode

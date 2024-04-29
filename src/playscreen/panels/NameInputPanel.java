@@ -11,11 +11,13 @@ import java.awt.event.ActionListener;
 
 public class NameInputPanel extends JPanel {
     private PlayFrame parentFrame;
+    private String gameMode = "normalMode";
     LoadData data = new LoadData();
     public JTextField input;
 
-    public NameInputPanel(PlayFrame parentFrame, double screenSize) {
+    public NameInputPanel(PlayFrame parentFrame, double screenSize, String mode) {
         this.parentFrame = parentFrame;
+        gameMode = mode;
         setSize((int) (100 * screenSize), (int) (50 * screenSize));
         setLayout(new GridLayout(3, 1));
         setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
@@ -32,15 +34,15 @@ public class NameInputPanel extends JPanel {
                 String name = input.getText();
                 if (name.isEmpty()) name = "unknown";
                 System.out.println(parentFrame.gamePanel.difficulty);
-                new ScoreInput(name, parentFrame.gamePanel.getScore(), data.loadDifficulty(), data.loadGameMode()).setVisible(true);
+                new ScoreInput(name, parentFrame.gamePanel.getScore(), data.loadDifficulty(), gameMode).setVisible(true);
                 parentFrame.dispose();
             }
         });
     }
 
     public static void main(String[] args) {
-        PlayFrame a = new PlayFrame();
-        a.add(new NameInputPanel(a, 1));
+        PlayFrame a = new PlayFrame("normalMode");
+        a.add(new NameInputPanel(a, 1, "normalMode"));
 
     }
 }
