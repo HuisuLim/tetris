@@ -49,14 +49,10 @@ public class ScoreInput extends JFrame {
                 super.changeSelection(getSelectedRow(), columnIndex, toggle, extend);
             }
         };
-        
-        scoreboard.getColumnModel().getColumn(0).setPreferredWidth(10);
-        scoreboard.getColumnModel().getColumn(1).setPreferredWidth(150);
-        scoreboard.getColumnModel().getColumn(2).setPreferredWidth(50);
-        scoreboard.getColumnModel().getColumn(3).setPreferredWidth(80);
-        scoreboard.getColumnModel().getColumn(4).setPreferredWidth(80);
 
-        for (int i = 0; i < model.getColumnCount(); i++) {
+        int[] columnWidths = {10, 150, 50, 80, 80};
+        for (int i = 0; i < columnWidths.length; i++) {
+            scoreboard.getColumnModel().getColumn(i).setPreferredWidth(columnWidths[i]);
             scoreboard.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
@@ -86,7 +82,6 @@ public class ScoreInput extends JFrame {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    System.out.println("??");
                     new StartMenu().setVisible(true);
                     dispose(); // 현재 창을 닫음
                     KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
@@ -126,11 +121,7 @@ public class ScoreInput extends JFrame {
 
     // 데이터를 테이블에 추가하는 메서드
     private void addData(String name, int score, String difficulty, String mode) {
-        int rank = 1; // 테이블 데이터 없을 때는 1등으로 들어감
-        // 테이블의 마지막 행의 순위를 가져와서 그보다 1 높은 순위를 계산
-        if (model.getRowCount() > 0) {
-            rank = (int) model.getValueAt(model.getRowCount() - 1, 0) + 1;
-        }
+        int rank = model.getRowCount() + 1;
         // 테이블에 새로운 행 추가
         model.addRow(new Object[]{rank, name, score, difficulty, mode});
     }
