@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.io.*;
 
 public class ShowScoreboard extends JFrame {
+    // 스코어보드를 보여주는 프레임 생성자
     public ShowScoreboard() {
         setTitle("Scoreboard");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -22,7 +23,7 @@ public class ShowScoreboard extends JFrame {
             model.addColumn(columnName);
         }
 
-        readScoreboard(model, "scoreboard.txt");
+        ScoreboardManager.readScoreboard(model, "scoreboard.txt");
         applyCenterAlignment(scoreboardTable);
 
         JScrollPane scrollPane = new JScrollPane(scoreboardTable);
@@ -33,34 +34,7 @@ public class ShowScoreboard extends JFrame {
         setVisible(true);
     }
 
-    public static void readScoreboard(DefaultTableModel model, String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    String name = parts[0].trim();
-                    int score = Integer.parseInt(parts[1].trim());
-                    String difficulty = parts[2].trim();
-                    String mode = parts[3].trim();
-                    addData(model, name, score, difficulty, mode);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void addData(DefaultTableModel model, String name, int score, String difficulty, String mode) {
-        int rank = 1;
-        if (model.getRowCount() > 0) {
-            rank = (int) model.getValueAt(model.getRowCount() - 1, 0) + 1;
-        }
-
-        Object[] rowData = {rank, name, score, difficulty, mode};
-        model.addRow(rowData);
-    }
-
+    // 테이블 내용을 가운데 정렬하는 메서드
     public static void applyCenterAlignment(JTable table) {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -70,6 +44,7 @@ public class ShowScoreboard extends JFrame {
         }
     }
 
+    // ESC 키를 눌렀을 때 프레임을 숨기는 이벤트를 추가하는 메서드
     public static void addKeyListenerToHideScoreboard(JFrame frame) {
         frame.setFocusable(true);
         frame.requestFocusInWindow();
@@ -88,15 +63,4 @@ public class ShowScoreboard extends JFrame {
             public void keyReleased(KeyEvent e) {}
         });
     }
-
-    public static class ClearScoreboard {
-        public static void clear(String filePath) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                writer.write("");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 }

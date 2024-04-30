@@ -61,14 +61,12 @@ public class ScoreInput extends JFrame {
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
 
-        // 파일로부터 데이터를 읽어와 스코어보드에 추가
-        addDataFromFile("scoreboard.txt");
+// 파일에서 스코어보드 데이터 읽기
+        ScoreboardManager.readScoreboard(model, "scoreboard.txt");
 
-        // 현재 플레이어의 정보를 추가
-        addDataDescending(name, score, difficulty, mode);
-
-        // 스코어보드를 파일에 저장
-        saveDataToFile("scoreboard.txt");
+        // 새 데이터를 스코어보드에 추가하고 파일에 저장
+        ScoreboardManager.addDataDescending(name, score, difficulty, mode, model);
+        ScoreboardManager.saveDataToFile(model, "scoreboard.txt");
 
         // 이름과 점수를 파란색으로 강조
         highlightNameAndScore(name, score);
@@ -119,47 +117,6 @@ public class ScoreInput extends JFrame {
         }
     }
 
-    // 데이터를 테이블에 추가하는 메서드
-    private void addData(String name, int score, String difficulty, String mode) {
-        int rank = model.getRowCount() + 1;
-        // 테이블에 새로운 행 추가
-        model.addRow(new Object[]{rank, name, score, difficulty, mode});
-    }
-
-    // 파일로부터 데이터를 읽어와 테이블에 추가하는 메서드
-    private void addDataFromFile(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    String name = parts[0].trim();
-                    int score = Integer.parseInt(parts[1].trim());
-                    String difficulty = parts[2].trim();
-                    String mode = parts[3].trim();
-                    addData(name, score, difficulty, mode);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // 테이블의 데이터를 파일에 저장하는 메서드
-    private void saveDataToFile(String filePath) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (int i = 0; i < model.getRowCount(); i++) {
-                String name = (String) model.getValueAt(i, 1);
-                int score = (int) model.getValueAt(i, 2);
-                String difficulty = (String) model.getValueAt(i, 3);
-                String mode = (String) model.getValueAt(i, 4);
-                writer.write(name + "," + score + "," + difficulty + "," + mode);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     // 이름과 점수를 파란색으로 강조하는 메서드
     private void highlightNameAndScore(String name, int score) {
@@ -184,43 +141,6 @@ public class ScoreInput extends JFrame {
                 scoreboard.setRowSelectionInterval(i, i);
                 break;
             }
-        }
-    }
-
-    // 새로운 데이터를 삽입할 위치를 찾고, 내림차순으로 유지하면서 테이블에 추가하는 메서드
-    private void addDataDescending(String name, int score, String difficulty, String mode) {
-        boolean playerFound = false;
-        int row = 0;
-
-        // 기존 데이터와 새로운 데이터를 비교하여 적절한 위치를 찾습니다.
-        while (row < model.getRowCount() && score <= (int) model.getValueAt(row, 2)) {
-            if (name.equals((String) model.getValueAt(row, 1))) {
-                // 같은 이름을 가진 플레이어의 기록을 찾았을 경우
-                playerFound = true;
-                break;
-            }
-            row++;
-        }
-
-        // 같은 이름을 가진 플레이어의 기록이 없는 경우 새로운 행을 추가합니다.
-        if (!playerFound) {
-            // 새로운 데이터의 랭킹을 설정합니다.
-            while (row < model.getRowCount() && score <= (int) model.getValueAt(row, 2)) {
-                row++;
-            }
-            // 테이블에 새로운 행을 추가합니다.
-            model.insertRow(row, new Object[]{row + 1, name, score, difficulty, mode});
-
-            // 새로운 데이터의 랭킹을 설정합니다.
-            for (int i = row; i < model.getRowCount(); i++) {
-                model.setValueAt(i + 1, i, 0); // 랭킹 열 업데이트
-            }
-        } else {
-            // 같은 이름을 가진 플레이어의 기록이 있는 경우, 새로운 행으로 추가합니다.
-            model.addRow(new Object[]{row + 1, name, score, difficulty, mode});
-
-            // 테이블의 마지막 행으로 추가되므로 해당 행의 랭킹을 업데이트합니다.
-            model.setValueAt(model.getRowCount(), model.getRowCount() - 1, 0);
         }
     }
 
