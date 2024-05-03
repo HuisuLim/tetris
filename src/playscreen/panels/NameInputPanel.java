@@ -18,12 +18,15 @@ public class NameInputPanel extends JPanel {
     public NameInputPanel(PlayFrame parentFrame, double screenSize, String mode) {
         this.parentFrame = parentFrame;
         gameMode = mode;
-        setSize((int) (100 * screenSize), (int) (50 * screenSize));
+        setSize((int) (200 * screenSize), (int) (100 * screenSize));
         setLayout(new GridLayout(3, 1));
         setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
         JLabel label = new JLabel("이름을 입력하세요");
+        label.setFont(new Font("Serif", Font.BOLD, (int)(15 * screenSize)));
         input = new JTextField(20);
+        input.setFont(new Font("Serif", Font.BOLD, (int)(15 * screenSize)));
         JLabel descriptionLabel = new JLabel("입력후 enter를 눌러주세요");
+        descriptionLabel.setFont(new Font("Serif", Font.BOLD, (int)(15 * screenSize)));
         add(label);
         add(input);
         add(descriptionLabel);
