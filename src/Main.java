@@ -8,6 +8,7 @@ public class Main {
             public void run() {
                 StartMenu menu = new StartMenu();
                 menu.setVisible(true);
+                //fff
             }
         });
     }
