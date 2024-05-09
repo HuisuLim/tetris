@@ -1,15 +1,12 @@
 package playscreen.utils;
 
 import playscreen.PlayFrame;
-import settings.LoadData;
 import startscreen.StartMenu;
-
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class TetrisKeyListener implements KeyListener {
-    private PlayFrame tetris;
+    private final PlayFrame tetris;
     private final int upKey;
     private final int rightKey;
     private final int downKey;
@@ -66,7 +63,7 @@ public class TetrisKeyListener implements KeyListener {
     private void handlePauseState(int keyCode) {
         //옵션이 위에서부터 인덱스가 0 1 2기때문에 반대.
         if (keyCode == upKey) {
-            tetris.pausePanel.upPoint();;
+            tetris.pausePanel.upPoint();
         }
         else if (keyCode == downKey) {
             tetris.pausePanel.downPoint();
