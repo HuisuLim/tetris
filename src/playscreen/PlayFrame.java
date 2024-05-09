@@ -118,7 +118,7 @@ public class PlayFrame extends JFrame {
         gamePanel.setScoreMultiplier(TimerDelay.calScoreMultiplier(gamePanel.getScore()));
         isGameOver = gamePanel.getIsGameOver();
         if (isGameOver) {
-            nameInputPanel = new NameInputPanel(this, screenSize, gameMode);
+            nameInputPanel = new NameInputPanel(this, screenSize, gamePanel.getScore(), gameMode, difficulty);
             nameInputPanel.setLocation((getWidth() - nameInputPanel.getWidth()) / 2, (getHeight() - nameInputPanel.getHeight()) / 2); // 위치 중앙으로 설정
             nameInputPanel.setVisible(true); // 초기에는 보이지 않게 설정
             getLayeredPane().add(nameInputPanel, JLayeredPane.POPUP_LAYER);
