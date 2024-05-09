@@ -78,6 +78,8 @@ public class LoadData {
         keys[1] = getRightKey();
         keys[2] = getDownKey();
         keys[3] = getLeftKey();
+
+        return keys;
     }
 
     public String loadGameMode() {
