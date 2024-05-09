@@ -10,15 +10,19 @@ import java.awt.event.KeyListener;
 
 public class TetrisKeyListener implements KeyListener {
     private PlayFrame tetris;
-    private LoadData key = new LoadData();
-    private final int leftKey = key.getLeftKey();
-    private final int rightKey = key.getRightKey();
-    private final int upKey = key.getUpKey();
-    private final int downKey = key.getDownKey();
+    private final int upKey;
+    private final int rightKey;
+    private final int downKey;
+    private final int leftKey;
+
     private boolean canPushSpaceBar = true;
 
-    public TetrisKeyListener(PlayFrame tetris) {
+    public TetrisKeyListener(PlayFrame tetris, int[] keys) {
         this.tetris = tetris;
+        upKey = keys[0];
+        rightKey = keys[1];
+        downKey = keys[2];
+        leftKey = keys[3];
     }
 
 

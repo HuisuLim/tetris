@@ -16,6 +16,7 @@ public class PlayFrame extends JFrame {
     private String gameMode = "normalMode";
     private String difficulty = data.loadDifficulty(); // 난이도 로드
     private double screenSize = data.loadScreenSize();
+    private int[] keys = data.loadKeys();
     public TetrisPanel gamePanel;
     public ScorePanel scorePanel;
     public NextBlockPanel nextBlockPanel;
@@ -27,7 +28,7 @@ public class PlayFrame extends JFrame {
     private boolean isPaused = false;
     private boolean isCleaningTime = false;
 
-    private TetrisKeyListener listener = new TetrisKeyListener(this);
+    private TetrisKeyListener listener = new TetrisKeyListener(this, keys);
 
 
     public PlayFrame(String mode) {
