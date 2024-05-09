@@ -14,8 +14,7 @@ public class TetrisKeyListener implements KeyListener {
     private final int rightKey;
     private final int downKey;
     private final int leftKey;
-
-    private boolean canPushSpaceBar = true;
+    private final int downToEndKey;
 
     public TetrisKeyListener(PlayFrame tetris, int[] keys) {
         this.tetris = tetris;
@@ -23,6 +22,7 @@ public class TetrisKeyListener implements KeyListener {
         rightKey = keys[1];
         downKey = keys[2];
         leftKey = keys[3];
+        downToEndKey = keys[4];
     }
 
 
@@ -32,18 +32,17 @@ public class TetrisKeyListener implements KeyListener {
         int keyCode = e.getKeyCode();
 
         //상태에 따른 키입력 처리
-        if (tetris.getIsPause()) {
+        if (tetris.getIsPause()) { //pause상태일때
             handlePauseState(keyCode);
-        } else if (tetris.getIsCleaningTime()) {
-            // 청소 시간 동안 키 입력을 무시
-        } else if (tetris.getIsGameOver()) {
+        } else if (tetris.getIsCleaningTime()) { //블럭이 merge될때 잠시 대기.
+        } else if (tetris.getIsGameOver()) { //게임오버됐을때
             handleGameOverState(keyCode);
-        } else {
+        } else { //게임중일때
             handleGameState(keyCode);
         }
     }
 
-    private void handleGameState(int keyCode) {
+    private void handleGameState(int keyCode) { //게임중일때 키입력 처리
         if (keyCode == KeyEvent.VK_ESCAPE) {
             tetris.toggleIsPause();
         } else if (keyCode == leftKey) {
@@ -52,13 +51,11 @@ public class TetrisKeyListener implements KeyListener {
             tetris.gamePanel.goRight();
         } else if (keyCode == upKey) {
             tetris.gamePanel.rotate90();
-        } else if (keyCode == KeyEvent.VK_SPACE) {
-            canPushSpaceBar = false;
+        } else if (keyCode == downToEndKey) {
             while (tetris.gamePanel.goDown()) { // 블록을 가장 아래로 이동
                 if(tetris.gamePanel.getIsGameOver()) break;
             }
             tetris.updateGame(true);
-            canPushSpaceBar = true;
         } else if (keyCode == downKey) {
             tetris.updateGame(tetris.gamePanel.goDown());
             tetris.timer.stop();
