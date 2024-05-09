@@ -7,16 +7,14 @@ import java.awt.Font;
 import java.awt.BorderLayout;
 
 public class ScorePanel extends JPanel {
-    private double screenSize;
     private int score;
-    private JLabel scoreLabel;
+    private final JLabel scoreLabel;
 
     // Constructor
     public ScorePanel(double screenSize, int score) {
-        this.screenSize = screenSize;
         this.score = score;
-
         this.setLayout(new BorderLayout());
+        
         scoreLabel = new JLabel(String.valueOf(score), SwingConstants.CENTER);
         scoreLabel.setFont(new Font("Serif", Font.BOLD, (int)(20 * screenSize)));
         this.add(scoreLabel, BorderLayout.CENTER);

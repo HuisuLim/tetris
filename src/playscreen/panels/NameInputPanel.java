@@ -1,13 +1,10 @@
 package playscreen.panels;
 
 import playscreen.PlayFrame;
-import settings.LoadData;
 import startscreen.ScoreInput;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class NameInputPanel extends JPanel {
     public JTextField input;

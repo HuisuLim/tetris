@@ -4,23 +4,17 @@ import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
-import settings.LoadData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
-
-    //load properties
-    protected final LoadData data = new LoadData();
-    protected final double screenSize = data.loadScreenSize();
-
-    protected String difficulty;
-    protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
+    protected double screenSize;
+    protected int[] colorTable;
 
     //보드 초기설정    게임보드의 가장 왼쪽 위가 board[0][0]
-    protected final int SQUARE_SIZE = (int)(20 * screenSize);
+    protected int SQUARE_SIZE;
     protected static final int BOARD_WIDTH = 10; // 게임 보드의 가로 칸 수
     protected static final int BOARD_HEIGHT = 20; // 게임 보드의 세로 칸 수
     protected final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 게임 보드를 표현하는 2차원 배열
@@ -34,7 +28,7 @@ public class TetrisPanel extends JPanel{
 
     //게임정보
     protected int score = 0;
-    protected double scoreMultiplier = 1;
+    protected double scoreMultiplier = 1; //점수획득 계수
     protected boolean isGameOver = false;
     protected int lineRemoveCount = 0;
 
@@ -48,7 +42,11 @@ public class TetrisPanel extends JPanel{
         return nextBlock.getShape();
     }
 
-    public TetrisPanel() {
+    public TetrisPanel(double screenSize, boolean colorMode) {
+        this.screenSize = screenSize;
+        this.SQUARE_SIZE = (int)(20 * screenSize);
+        this.colorTable = ColorTable.getTable(colorMode);
+
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         currBlock = null;
         nextBlock = generator.getRandomStandardBlock();
@@ -58,21 +56,23 @@ public class TetrisPanel extends JPanel{
 
 
     public void createNewShape() {
-
+        //다음블럭을 현재블럭으로 옮기고 다음블럭을 생성.
         currBlock = nextBlock;
         nextBlock = generator.getRandomStandardBlock();
 
+        //현재블럭의 시작위치를 잡아줌.
         int[] temp = currBlock.getStartPos();
         currentRow = temp[0];
         currentCol = temp[1];
+
+        //블럭을 생성할 수 없을때 게임종료.
         if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
             currBlock = new BlankBlock();
             isGameOver = true;
-            System.out.println("게임종료");
         }
     }
 
-    protected boolean canMoveTo(int targetRow, int targetCol, int[][] shape) {
+    protected boolean canMoveTo(int targetRow, int targetCol, int[][] shape) { //블럭이 원하는 위치에 원하는 형태로 존재할 수 있는지 체크.
         for(int row = 0; row < shape.length; row++) {
             for(int col = 0; col < shape.length; col++) {
                 if (shape[row][col] == 0) continue;
@@ -84,11 +84,11 @@ public class TetrisPanel extends JPanel{
         return true;
     }
 
-    protected boolean canRotate() {
+    protected boolean canRotate() { //블럭이 회전한 형태가 현재 위치에 존재할 수 이는지 체크.
         return canMoveTo(currentRow, currentCol, currBlock.getRotatedShape());
     }
 
-    public void mergeShapeToBoard() {
+    public void mergeShapeToBoard() { // 블럭을 보드에 병합하는 메서드.
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
@@ -100,7 +100,7 @@ public class TetrisPanel extends JPanel{
         score += (int) (100 * scoreMultiplier);
     }
 
-    public boolean checkLines() {
+    public boolean checkLines() { //지워질 수 있는 라인이 있는지 체크하고 지워질 수 있으면 그 라인을 전부 8로설정.
         boolean doClear = false;
         for (int row = BOARD_HEIGHT - 1; row >= 0; row--) {
             boolean isLineComplete = true;
@@ -124,18 +124,15 @@ public class TetrisPanel extends JPanel{
         return doClear;
     }
 
-    public void clearLines() {
+    public void clearLines() { //8로 구성되어있는 라인을 제거.
         for (int row = BOARD_HEIGHT - 1; row >=0;) {
             if (board[row][0] != 8) {
                 row--;
                 continue;
             }
             for (int r = row; r > 0; r--) {
-                for (int col = 0; col < BOARD_WIDTH; col++) {
-                    board[r][col] = board[r - 1][col];
-                }
+                System.arraycopy(board[r - 1], 0, board[r], 0, BOARD_WIDTH);
             }
-
         }
     }
 

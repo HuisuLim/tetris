@@ -4,49 +4,52 @@ import playscreen.panels.*;
 import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
 import settings.LoadData;
-import startscreen.ScoreInput;
-
 import javax.swing.*;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PlayFrame extends JFrame {
-    private LoadData data = new LoadData();
-    private String gameMode = "normalMode";
-    private String difficulty = data.loadDifficulty(); // 난이도 로드
-    private double screenSize = data.loadScreenSize();
-    private int[] keys = data.loadKeys();
+
+    //data load
+    private final LoadData data = new LoadData();
+    private final String gameMode = data.loadGameMode();
+    private final boolean colorMode = data.loadColorBlindMode();
+    private final String difficulty = data.loadDifficulty(); // 난이도 로드
+    private final double screenSize = data.loadScreenSize();
+
+    //panel load
     public TetrisPanel gamePanel;
     public ScorePanel scorePanel;
     public NextBlockPanel nextBlockPanel;
     public PausePanel pausePanel;
     public ItemShowPanel itemShowPanel;
     public NameInputPanel nameInputPanel;
+
     public Timer timer;
+
+    //상태 변수들.
     private boolean isGameOver = false;
     private boolean isPaused = false;
     private boolean isCleaningTime = false;
 
-    private TetrisKeyListener listener = new TetrisKeyListener(this, keys);
 
 
-    public PlayFrame(String mode) {
-        gameMode = mode;
+
+    public PlayFrame() {
         setTitle("Play Frame");
         setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
-        this.addKeyListener(listener);
+        int[] keys = data.loadKeys();
+        this.addKeyListener(new TetrisKeyListener(this, keys));
         initUI();
         createTimer();
         timer.start();
 
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+        pack();//화면자동설정.
+        setLocationRelativeTo(null); //화면 중앙에 위치.
+        setVisible(true); //창 보이게.
 
     }
 
@@ -54,10 +57,10 @@ public class PlayFrame extends JFrame {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
         if (gameMode.equals("itemMode")) {
-            gamePanel = new ItemTetrisPanel();
+            gamePanel = new ItemTetrisPanel(screenSize, colorMode);
         }
         else {
-            gamePanel = new TetrisPanel();
+            gamePanel = new TetrisPanel(screenSize, colorMode);
         }
         add(gamePanel);
 
@@ -70,7 +73,7 @@ public class PlayFrame extends JFrame {
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
-        nextBlockPanel = new NextBlockPanel(gamePanel.getNextBlock());
+        nextBlockPanel = new NextBlockPanel(screenSize, colorMode);
         rightPanel.add(nextBlockPanel);
 
         // 나머지 1 개의 패널은 비워둡니다.
@@ -84,7 +87,7 @@ public class PlayFrame extends JFrame {
         }
         //rightPanel.add(new JPanel());
         add(rightPanel);
-        pausePanel = new PausePanel(this, (int)(screenSize)); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel((int)(screenSize)); // PausePanel 인스턴스 생성
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
 
@@ -92,19 +95,16 @@ public class PlayFrame extends JFrame {
     }
 
     private void createTimer() {
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (isGameOver) {
-                    timer.stop();
-                } else {
-                    updateGame(gamePanel.goDown());
-                    repaint();
+        ActionListener actionListener = e -> {
+            if (isGameOver) {
+                timer.stop();
+            } else {
+                updateGame(gamePanel.goDown());
+                repaint();
 
-                    // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
-                    int delay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
-                    timer.setDelay(delay);
-                }
+                // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
+                int delay = TimerDelay.calDelay(difficulty, gamePanel.getScore());
+                timer.setDelay(delay);
             }
         };
 
@@ -133,13 +133,11 @@ public class PlayFrame extends JFrame {
                 isCleaningTime = true;
                 timer.stop();
                 gamePanel.repaint();
-                Timer clearTimer = new Timer(700, new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        gamePanel.clearLines();
-                        gamePanel.repaint();
-                        isCleaningTime = false;
-                        timer.start();
-                    }
+                Timer clearTimer = new Timer(700, e -> {
+                    gamePanel.clearLines();
+                    gamePanel.repaint();
+                    isCleaningTime = false;
+                    timer.start();
                 });
                 clearTimer.setRepeats(false); // 타이머가 한 번만 실행되도록 설정
                 clearTimer.start(); // 타이머 시작
@@ -176,15 +174,6 @@ public class PlayFrame extends JFrame {
     }
 
 
-
-
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new PlayFrame("normalMode").setVisible(true);
-            }
-        });
     }
 }
