@@ -72,6 +72,14 @@ public class LoadData {
         }
     }
 
+    public int[] loadKeys() {
+        int[] keys = new int[4];
+        keys[0] = getUpKey();
+        keys[1] = getRightKey();
+        keys[2] = getDownKey();
+        keys[3] = getLeftKey();
+    }
+
     public String loadGameMode() {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
