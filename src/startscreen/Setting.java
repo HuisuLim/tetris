@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Setting extends JFrame {
-    private double screenRatio = StartMenu.screenRatio; //화면 비율 조절
+    private double screenRatio = StartMenuModel.screenRatio; //화면 비율 조절
     private JButton backButton = new JButton();
 
     public Setting() {
@@ -28,11 +28,12 @@ public class Setting extends JFrame {
         // 뒤로가기 버튼 생성 및 설정
         backButton = new JButton("뒤로가기");
         backButton.setBounds((int)(5 * screenRatio), (int)(5 * screenRatio), buttonWidth, buttonHeight); // 화면 상단 왼쪽에 배치
+        // `Setting` 클래스에서 뒤로가기 버튼 이벤트 처리
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setVisible(false); // 현재 창 숨기기
-                dispose(); // 현재 창 자원 해제
-                new StartMenu().setVisible(true); // StartMenu 인스턴스 생성 및 보이기
+                setVisible(false);
+                dispose();
+                StartMenuView.getInstance().setVisible(true); // 기존 인스턴스를 재사용
             }
         });
         add(backButton); // 뒤로가기 버튼을 프레임에 추가
@@ -43,7 +44,7 @@ public class Setting extends JFrame {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingKey setting = new SettingKey();
-                StartMenu.setControlKey();
+                StartMenuModel.setControlKey();
                 setting.setVisible(true);
             }
         });
@@ -53,7 +54,7 @@ public class Setting extends JFrame {
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SettingColorBlindness setting = new SettingColorBlindness();
-                StartMenu.setColorBlindness();
+                StartMenuModel.setColorBlindness();
                 setting.setVisible(true);
             }
         });
@@ -66,7 +67,7 @@ public class Setting extends JFrame {
                 settingReset.setVisible(true);
                 settingReset.addWindowListener(new WindowAdapter() {
                     public void windowClosed(WindowEvent e) {
-                        StartMenu.setScreenRatio();
+                        StartMenuModel.setScreenRatio();
                         // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
                         // 새로운 비율로 설정 창 새로고침
                         dispose();
@@ -84,7 +85,7 @@ public class Setting extends JFrame {
                 setting.setVisible(true);
                 setting.addWindowListener(new WindowAdapter() {
                     public void windowClosed(WindowEvent e) {
-                        StartMenu.setScreenRatio();
+                        StartMenuModel.setScreenRatio();
                         // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
                         // 새로운 비율로 설정 창 새로고침
                         dispose();
@@ -110,7 +111,7 @@ public class Setting extends JFrame {
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                StartMenu.setDifficutly();
+                StartMenuModel.setDifficutly();
                 SettingDifficulty settingDifficulty = new SettingDifficulty();
                 settingDifficulty.setVisible(true);
             }
@@ -243,4 +244,3 @@ public class Setting extends JFrame {
 
 
 }
-
