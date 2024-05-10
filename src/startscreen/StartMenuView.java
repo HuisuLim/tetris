@@ -111,22 +111,27 @@ public class StartMenuView extends JFrame {
         // 버튼 생성
         JButton startButton = new JButton("일반모드");
         JButton startItemButton = new JButton("아이템모드");
+        JButton battleButton = new JButton("대전모드");
         JButton settingsButton = new JButton("설정");
         JButton exitButton = new JButton("게임 종료");
         JButton scoreButton = new JButton("스코어보드");
 
         configureButton(startButton);
         configureButton(startItemButton);
+        configureButton(battleButton);
         configureButton(settingsButton);
         configureButton(exitButton);
         configureButton(scoreButton);
 
         //버튼 위치 설정
         panel.add(startButton);
-        startButton.setBounds((int) (200 * screenRatio), (int) (170 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
+        startButton.setBounds((int) (200 * screenRatio), (int) (135 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
 
         panel.add(startItemButton);
-        startItemButton.setBounds((int) (200 * screenRatio), (int) (205 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
+        startItemButton.setBounds((int) (200 * screenRatio), (int) (170 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
+
+        panel.add(battleButton);
+        battleButton.setBounds((int) (200 * screenRatio), (int) (205 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
 
         panel.add(settingsButton);
         settingsButton.setBounds((int) (200 * screenRatio), (int) (240 * screenRatio), (int) (100 * screenRatio), (int) (25 * screenRatio));
@@ -153,6 +158,15 @@ public class StartMenuView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
                 nextFrame = new PlayFrame("itemMode");
+                nextFrame.setVisible(true);
+                setVisible(false); // 현재 화면 숨기기
+            }
+        });
+
+        // 대전모드 버튼 이벤트 처리
+        battleButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                nextFrame = new BattleMode(); // BattleMode 클래스의 인스턴스 생성
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -188,7 +202,7 @@ public class StartMenuView extends JFrame {
 
 
         // 방향키 및 엔터키 처리를 위한 설정
-        setupDirectionalFocusTraversal(startButton, startItemButton, settingsButton, exitButton, scoreButton);
+        setupDirectionalFocusTraversal(startButton, startItemButton, battleButton,settingsButton, exitButton, scoreButton);
     }
 
 
