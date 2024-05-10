@@ -2,7 +2,7 @@ package playscreen.panels;
 
 import playscreen.PlayFrame;
 import settings.LoadData;
-import startscreen.ScoreInput;
+import startscreen.ScoreboardController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +37,7 @@ public class NameInputPanel extends JPanel {
                 String name = input.getText();
                 if (name.isEmpty()) name = "unknown";
                 System.out.println(parentFrame.gamePanel.difficulty);
-                new ScoreInput(name, parentFrame.gamePanel.getScore(), data.loadDifficulty(), gameMode).setVisible(true);
+                new ScoreboardController(name, parentFrame.gamePanel.getScore(), data.loadDifficulty(), gameMode).setVisible(true);
                 parentFrame.dispose();
             }
         });

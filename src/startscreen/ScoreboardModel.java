@@ -3,7 +3,7 @@ package startscreen;
 import javax.swing.table.DefaultTableModel;
 import java.io.*;
 
-public class ScoreboardManager {
+public class ScoreboardModel {
 
     // 파일에서 스코어보드 데이터를 읽어와 테이블 모델에 채우는 메서드
     public static void readScoreboard(DefaultTableModel model, String filePath) {
@@ -38,41 +38,34 @@ public class ScoreboardManager {
     }
 
     // 새로운 데이터를 삽입할 위치를 찾고, 내림차순으로 유지하면서 테이블에 추가하는 메서드
+
     public static void addDataDescending(String name, int score, String difficulty, String mode, DefaultTableModel model) {
-        boolean playerFound = false;
-        int row = 0;
+        int rank = 1; // Initialize rank to 1
 
-        // 기존 데이터와 새로운 데이터를 비교하여 적절한 위치를 찾습니다.
-        while (row < model.getRowCount() && score <= (int) model.getValueAt(row, 2)) {
-            if (name.equals((String) model.getValueAt(row, 1))) {
-                // 같은 이름을 가진 플레이어의 기록을 찾았을 경우
-                playerFound = true;
-                break;
+        // Check if the model already contains data
+        if (model.getRowCount() > 0) {
+            // Loop through the existing data to find the correct rank for the new data
+            for (int i = 0; i < model.getRowCount(); i++) {
+                int rowScore = (int) model.getValueAt(i, 2); // Get the score from the current row
+                if (score > rowScore) {
+                    rank = i + 1; // Update the rank if the new score is higher than the current row's score
+                    break; // Exit the loop since we found the correct rank
+                } else if (score == rowScore) {
+                    // If scores are equal, compare names alphabetically to determine rank
+                    String rowName = (String) model.getValueAt(i, 1); // Get the name from the current row
+                    if (name.compareToIgnoreCase(rowName) <= 0) {
+                        rank = i + 1; // Update the rank if the new name comes before or is equal to the current row's name
+                        break; // Exit the loop since we found the correct rank
+                    }
+                }
+                rank = i + 2; // Increment rank if the new score is not higher or equal to the current row's score
             }
-            row++;
         }
 
-        // 같은 이름을 가진 플레이어의 기록이 없는 경우 새로운 행을 추가합니다.
-        if (!playerFound) {
-            // 새로운 데이터의 랭킹을 설정합니다.
-            while (row < model.getRowCount() && score <= (int) model.getValueAt(row, 2)) {
-                row++;
-            }
-            // 테이블에 새로운 행을 추가합니다.
-            model.insertRow(row, new Object[]{row + 1, name, score, difficulty, mode});
-
-            // 새로운 데이터의 랭킹을 설정합니다.
-            for (int i = row; i < model.getRowCount(); i++) {
-                model.setValueAt(i + 1, i, 0); // 랭킹 열 업데이트
-            }
-        } else {
-            // 같은 이름을 가진 플레이어의 기록이 있는 경우, 새로운 행으로 추가합니다.
-            model.addRow(new Object[]{row + 1, name, score, difficulty, mode});
-
-            // 테이블의 마지막 행으로 추가되므로 해당 행의 랭킹을 업데이트합니다.
-            model.setValueAt(model.getRowCount(), model.getRowCount() - 1, 0);
-        }
+        // Add the new data to the model at the determined rank
+        model.insertRow(rank - 1, new Object[]{rank, name, score, difficulty, mode});
     }
+
     // 테이블 모델의 데이터를 파일로 저장하는 메서드
     public static void saveDataToFile(DefaultTableModel model, String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
@@ -81,11 +74,13 @@ public class ScoreboardManager {
                 int score = (int) model.getValueAt(i, 2);
                 String difficulty = (String) model.getValueAt(i, 3);
                 String mode = (String) model.getValueAt(i, 4);
-                writer.write(name + "," + score + "," + difficulty + "," + mode);
-                writer.newLine();
+                writer.write(name + "," + score + "," + difficulty + "," + mode + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 }

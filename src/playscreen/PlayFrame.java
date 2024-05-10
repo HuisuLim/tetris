@@ -4,7 +4,6 @@ import playscreen.panels.*;
 import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
 import settings.LoadData;
-import startscreen.ScoreInput;
 
 import javax.swing.*;
 import java.awt.GridLayout;
