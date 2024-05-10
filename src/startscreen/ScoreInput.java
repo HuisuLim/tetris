@@ -61,7 +61,7 @@ public class ScoreInput extends JFrame {
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
 
-// 파일에서 스코어보드 데이터 읽기
+        // 파일에서 스코어보드 데이터 읽기
         ScoreboardManager.readScoreboard(model, "scoreboard.txt");
 
         // 새 데이터를 스코어보드에 추가하고 파일에 저장
@@ -80,7 +80,7 @@ public class ScoreInput extends JFrame {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    StartMenuView.getInstance().setVisible(true);
+                    new StartMenuView().setVisible(true);
                     dispose(); // 현재 창을 닫음
                     KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
                 }
