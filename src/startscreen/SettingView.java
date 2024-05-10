@@ -1,4 +1,3 @@
-
 package startscreen;
 
 import settings.*;
@@ -33,7 +32,7 @@ public class Setting extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 dispose();
-                StartMenuView.getInstance().setVisible(true); // 기존 인스턴스를 재사용
+                new StartMenuView().setVisible(true); // 기존 인스턴스를 재사용
             }
         });
         add(backButton); // 뒤로가기 버튼을 프레임에 추가
@@ -111,7 +110,7 @@ public class Setting extends JFrame {
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                StartMenuModel.setDifficutly();
+                StartMenuModel.setDifficulty();
                 SettingDifficulty settingDifficulty = new SettingDifficulty();
                 settingDifficulty.setVisible(true);
             }
