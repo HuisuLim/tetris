@@ -1,7 +1,10 @@
-package startscreen;
+package uni_test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import startscreen.ScoreboardController;
+
 import javax.swing.table.DefaultTableModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,14 +26,14 @@ public class ScoreboardControllerTest {
     public void testChangeDifficulty() {
         // 난이도를 변경하고 올바르게 업데이트되었는지 확인합니다.
         scoreboardController.changeDifficulty("Hard");
-        assertEquals("Hard", scoreboardController.getCurrentDifficulty());
+        Assertions.assertEquals("Hard", scoreboardController.getCurrentDifficulty());
     }
 
     @Test
     public void testChangeMode() {
         // 모드를 변경하고 올바르게 업데이트되었는지 확인합니다.
         scoreboardController.changeMode("normalMode");
-        assertEquals("normalMode", scoreboardController.getCurrentMode());
+        Assertions.assertEquals("normalMode", scoreboardController.getCurrentMode());
     }
 
     @Test

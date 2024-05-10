@@ -1,7 +1,11 @@
-package startscreen;
+package uni_test;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import startscreen.ScoreboardModel;
+
 import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,12 +38,12 @@ public class ScoreboardModelTest {
         ScoreboardModel.addData(model, "NewPlayer", 150, "Hard", "normalMode");
 
         // 모델에 행이 추가되었는지 확인
-        assertEquals(1, model.getRowCount());
+        Assertions.assertEquals(1, model.getRowCount());
         // 추가된 행의 데이터가 예상대로 추가되었는지 확인
-        assertEquals("NewPlayer", model.getValueAt(0, 1));
-        assertEquals(150, model.getValueAt(0, 2));
-        assertEquals("Hard", model.getValueAt(0, 3));
-        assertEquals("normalMode", model.getValueAt(0, 4));
+        Assertions.assertEquals("NewPlayer", model.getValueAt(0, 1));
+        Assertions.assertEquals(150, model.getValueAt(0, 2));
+        Assertions.assertEquals("Hard", model.getValueAt(0, 3));
+        Assertions.assertEquals("normalMode", model.getValueAt(0, 4));
     }
 
 
@@ -53,13 +57,13 @@ public class ScoreboardModelTest {
         ScoreboardModel.addDataDescending("NewPlayer", 175, "Easy", "normalMode", model);
 
         // 모델에 행이 추가되었는지 확인
-        assertEquals(3, model.getRowCount());
+        Assertions.assertEquals(3, model.getRowCount());
         // 추가된 행의 데이터가 예상대로 추가되었는지 확인
-        assertEquals(1, model.getValueAt(0, 0)); // rank가 예상대로 업데이트되었는지 확인
-        assertEquals("NewPlayer", model.getValueAt(0, 1));
-        assertEquals(175, model.getValueAt(0, 2));
-        assertEquals("Easy", model.getValueAt(0, 3));
-        assertEquals("normalMode", model.getValueAt(0, 4));
+        Assertions.assertEquals(1, model.getValueAt(0, 0)); // rank가 예상대로 업데이트되었는지 확인
+        Assertions.assertEquals("NewPlayer", model.getValueAt(0, 1));
+        Assertions.assertEquals(175, model.getValueAt(0, 2));
+        Assertions.assertEquals("Easy", model.getValueAt(0, 3));
+        Assertions.assertEquals("normalMode", model.getValueAt(0, 4));
     }
 
     @Test
@@ -71,12 +75,12 @@ public class ScoreboardModelTest {
         ScoreboardModel.readScoreboard(model, filePath);
 
         // 모델에 기대되는 행이 추가되었는지 확인
-        assertEquals(2, model.getRowCount());
+        Assertions.assertEquals(2, model.getRowCount());
         // 추가된 행의 데이터가 예상대로 추가되었는지 확인
-        assertEquals("Player1", model.getValueAt(0, 1));
-        assertEquals(100, model.getValueAt(0, 2));
-        assertEquals("Easy", model.getValueAt(0, 3));
-        assertEquals("itemMode", model.getValueAt(0, 4));
+        Assertions.assertEquals("Player1", model.getValueAt(0, 1));
+        Assertions.assertEquals(100, model.getValueAt(0, 2));
+        Assertions.assertEquals("Easy", model.getValueAt(0, 3));
+        Assertions.assertEquals("itemMode", model.getValueAt(0, 4));
     }
     @Test
     void testSaveDataToFile() {
@@ -92,7 +96,7 @@ public class ScoreboardModelTest {
 
         // 파일이 생성되었는지 확인
         File file = new File(filePath);
-        assertTrue(file.exists());
+        Assert.assertTrue(file.exists());
 
         // 파일의 내용이 모델의 데이터와 일치하는지 확인
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -100,10 +104,10 @@ public class ScoreboardModelTest {
             int row = 0;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                assertEquals(model.getValueAt(row, 1), parts[0].trim());
-                assertEquals(model.getValueAt(row, 2), Integer.parseInt(parts[1].trim()));
-                assertEquals(model.getValueAt(row, 3), parts[2].trim());
-                assertEquals(model.getValueAt(row, 4), parts[3].trim());
+                Assertions.assertEquals(model.getValueAt(row, 1), parts[0].trim());
+                Assertions.assertEquals(model.getValueAt(row, 2), Integer.parseInt(parts[1].trim()));
+                Assertions.assertEquals(model.getValueAt(row, 3), parts[2].trim());
+                Assertions.assertEquals(model.getValueAt(row, 4), parts[3].trim());
                 row++;
             }
         } catch (IOException e) {
