@@ -1,7 +1,0 @@
-test,1860,normal,normalMode
-sssssssssssss,1834,normal,normalMode
-itest,1716,normal,itemMode
-unknown,1702,normal,normalMode
-jhgj,1701,normal,normalMode
-ㅓㅓㅓㅓ,1679,normal,itemMode
-ssssssssss,1591,normal,normalMode

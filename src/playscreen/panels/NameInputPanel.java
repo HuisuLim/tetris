@@ -1,7 +1,6 @@
 package playscreen.panels;
 
 import playscreen.PlayFrame;
-import startscreen.ScoreInput;
 
 import javax.swing.*;
 import java.awt.*;
