@@ -1,7 +1,8 @@
 
 package startscreen;
-/*
+
 import settings.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -44,9 +45,7 @@ public class Setting extends JFrame {
         button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio) + 0 * verticalSpacing, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SettingKey setting = new SettingKey();
-                StartMenu.setControlKey();
-                setting.setVisible(true);
+                settingView view = settingMain.launchSettingScreen("Key");
             }
         });
 
@@ -54,9 +53,7 @@ public class Setting extends JFrame {
         button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio)+ 1 * verticalSpacing, buttonWidth, buttonHeight);
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SettingColorBlindness setting = new SettingColorBlindness();
-                StartMenu.setColorBlindness();
-                setting.setVisible(true);
+                settingView view = settingMain.launchSettingScreen("colorBlindness");
             }
         });
 
@@ -64,9 +61,8 @@ public class Setting extends JFrame {
         button3.setBounds((frameWidth - buttonWidth) / 2, (int)(95 * screenRatio)+ 2 * verticalSpacing, buttonWidth, buttonHeight);
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SettingReset settingReset = new SettingReset();
-                settingReset.setVisible(true);
-                settingReset.addWindowListener(new WindowAdapter() {
+                settingView view = settingMain.launchSettingScreen("Reset");
+                view.addWindowListener(new WindowAdapter() {
                     public void windowClosed(WindowEvent e) {
                         StartMenu.setScreenRatio();
                         // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
@@ -82,9 +78,9 @@ public class Setting extends JFrame {
         button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio)+ 3 * verticalSpacing, buttonWidth, buttonHeight);
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SettingScreen setting = new SettingScreen();
-                setting.setVisible(true);
-                setting.addWindowListener(new WindowAdapter() {
+                settingView view = settingMain.launchSettingScreen("screenSize");
+                view.addWindowListener(new WindowAdapter() {
+                    @Override
                     public void windowClosed(WindowEvent e) {
                         StartMenu.setScreenRatio();
                         // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
@@ -112,9 +108,7 @@ public class Setting extends JFrame {
         // 난이도 설정 버튼에 액션 리스너
         difficultyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                StartMenu.setDifficutly();
-                SettingDifficulty settingDifficulty = new SettingDifficulty();
-                settingDifficulty.setVisible(true);
+                settingView view = settingMain.launchSettingScreen("Difficulty");
             }
         });
 
@@ -242,9 +236,20 @@ public class Setting extends JFrame {
             });
         }
     }
+    public static void main(String[] args) {
+        // 시스템 기본 모양과 느낌으로 설정
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            Setting menu = new Setting();
+            menu.setVisible(true);
+        });
+    }
 
 
 }
 
-
- */

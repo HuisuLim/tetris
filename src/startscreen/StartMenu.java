@@ -179,7 +179,7 @@ public class StartMenu extends JFrame {
         settingsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new SettingTest();
+                nextFrame = new Setting();
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
