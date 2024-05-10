@@ -1,24 +1,25 @@
 package playscreen.utils;
 
 import playscreen.PlayFrame;
-import settings.LoadData;
 import startscreen.StartMenu;
-
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class TetrisKeyListener implements KeyListener {
-    private PlayFrame tetris;
-    private LoadData key = new LoadData();
-    private final int leftKey = key.getLeftKey();
-    private final int rightKey = key.getRightKey();
-    private final int upKey = key.getUpKey();
-    private final int downKey = key.getDownKey();
-    private boolean canPushSpaceBar = true;
+    private final PlayFrame tetris;
+    private final int upKey;
+    private final int rightKey;
+    private final int downKey;
+    private final int leftKey;
+    private final int downToEndKey;
 
-    public TetrisKeyListener(PlayFrame tetris) {
+    public TetrisKeyListener(PlayFrame tetris, int[] keys) {
         this.tetris = tetris;
+        upKey = keys[0];
+        rightKey = keys[1];
+        downKey = keys[2];
+        leftKey = keys[3];
+        downToEndKey = keys[4];
     }
 
 
@@ -28,18 +29,17 @@ public class TetrisKeyListener implements KeyListener {
         int keyCode = e.getKeyCode();
 
         //상태에 따른 키입력 처리
-        if (tetris.getIsPause()) {
+        if (tetris.getIsPause()) { //pause상태일때
             handlePauseState(keyCode);
-        } else if (tetris.getIsCleaningTime()) {
-            // 청소 시간 동안 키 입력을 무시
-        } else if (tetris.getIsGameOver()) {
+        } else if (tetris.getIsCleaningTime()) { //블럭이 merge될때 잠시 대기.
+        } else if (tetris.getIsGameOver()) { //게임오버됐을때
             handleGameOverState(keyCode);
-        } else {
+        } else { //게임중일때
             handleGameState(keyCode);
         }
     }
 
-    private void handleGameState(int keyCode) {
+    private void handleGameState(int keyCode) { //게임중일때 키입력 처리
         if (keyCode == KeyEvent.VK_ESCAPE) {
             tetris.toggleIsPause();
         } else if (keyCode == leftKey) {
@@ -48,13 +48,11 @@ public class TetrisKeyListener implements KeyListener {
             tetris.gamePanel.goRight();
         } else if (keyCode == upKey) {
             tetris.gamePanel.rotate90();
-        } else if (keyCode == KeyEvent.VK_SPACE) {
-            canPushSpaceBar = false;
+        } else if (keyCode == downToEndKey) {
             while (tetris.gamePanel.goDown()) { // 블록을 가장 아래로 이동
                 if(tetris.gamePanel.getIsGameOver()) break;
             }
             tetris.updateGame(true);
-            canPushSpaceBar = true;
         } else if (keyCode == downKey) {
             tetris.updateGame(tetris.gamePanel.goDown());
             tetris.timer.stop();
@@ -65,7 +63,7 @@ public class TetrisKeyListener implements KeyListener {
     private void handlePauseState(int keyCode) {
         //옵션이 위에서부터 인덱스가 0 1 2기때문에 반대.
         if (keyCode == upKey) {
-            tetris.pausePanel.upPoint();;
+            tetris.pausePanel.upPoint();
         }
         else if (keyCode == downKey) {
             tetris.pausePanel.downPoint();

@@ -6,20 +6,15 @@ import java.awt.*;
 
 public class PausePanel extends JPanel {
     private int currPoint = 0; // 현재 포인터 위치 (0: RESUME, 1: EXIT)
-    private JLabel resumeLabel;
-    private JLabel menuLabel;
-    private JLabel exitLabel;
-    private JFrame parentFrame; // 현재 창의 참조
+    private final JLabel resumeLabel;
+    private final JLabel menuLabel;
+    private final JLabel exitLabel;
 
-    public PausePanel(JFrame parentFrame, int screenSize) {
-        this.parentFrame = parentFrame;
+    public PausePanel(int screenSize) {
         setFocusable(true);
-        //setPreferredSize(new Dimension(150 * screenSize, 100 * screenSize));
         setSize(150 * screenSize, 100 * screenSize);
         setBackground(Color.BLACK);
         setLayout(new GridLayout(3, 1));
-
-
 
 
         // PAUSE 라벨 추가

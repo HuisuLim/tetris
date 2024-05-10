@@ -160,7 +160,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("normalMode");
+                nextFrame = new PlayFrame();
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -169,7 +169,7 @@ public class StartMenu extends JFrame {
         startItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("itemMode");
+                nextFrame = new PlayFrame();
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }

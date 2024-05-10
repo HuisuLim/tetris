@@ -5,6 +5,11 @@ import java.awt.*;
 public class ItemTetrisPanel extends TetrisPanel{
     protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
+
+    public ItemTetrisPanel(double screenSize, boolean colorMode) {
+        super(screenSize, colorMode);
+    }
+
     @Override
     public void createNewShape() {
         if(lineRemoveCount/10 > itemGenerateCount) {
@@ -90,7 +95,7 @@ public class ItemTetrisPanel extends TetrisPanel{
                         }
                     }
                 }
-            };
+            }
             score+= (int) (1000 * scoreMultiplier);
         }
         return super.checkLines();

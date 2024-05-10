@@ -1,7 +1,6 @@
 package playscreen.panels;
 
 import playscreen.utils.ColorTable;
-import settings.LoadData;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -9,21 +8,14 @@ import java.awt.Color;
 
 public class NextBlockPanel extends JPanel {
     private int[][] shape;
-    int[] colorTable;
-    private double screenSize;
-    private boolean colorMode;
-
-    public void setProps() {
-        LoadData data = new LoadData();
-        this.screenSize = data.loadScreenSize();
-        this.colorMode = data.loadColorBlindMode();
-        this.colorTable = ColorTable.getTable(this.colorMode);
-    }
+    private final int[] colorTable;
+    private final double screenSize;
 
     // Constructor
-    public NextBlockPanel(int[][] shape) {
-        setProps();
-        this.shape = shape;
+    public NextBlockPanel(double screenSize, boolean colorMode) {
+        this.screenSize = screenSize;
+        this.colorTable = ColorTable.getTable(colorMode);
+        this.shape = new int[][] {{0}};
         this.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * this.screenSize), (int)(5 * 20 * this.screenSize)));
     }
 
@@ -38,11 +30,12 @@ public class NextBlockPanel extends JPanel {
         super.paintComponent(g);
         int startX = (int)(4 * 20 * screenSize);
         int startY = (int)(1 * 20 * screenSize);
-        for (int i = 0; i < shape.length; i++) {
-            for (int j = 0; j < shape[i].length; j++) {
-                if(shape[i][j] == 1){
-                    startX = (int)(2 * 20 * screenSize);
+        for (int[] ints : shape) {
+            for (int anInt : ints) {
+                if (anInt == 1) {
+                    startX = (int) (2 * 20 * screenSize);
                     startY = 0;
+                    break;
                 }
             }
         }
