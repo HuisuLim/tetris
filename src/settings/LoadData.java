@@ -72,22 +72,6 @@ public class LoadData {
         }
     }
 
-    public String loadGameMode() {
-        Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
-            properties.load(input);
-            String gameMode = properties.getProperty(GAME_MODE_KEY);
-            if (gameMode != null) {
-                return gameMode;
-            } else {
-                return "normalMode";
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return "normalMode";
-        }
-    }
-
     public int getLeftKey() {
         String movement = loadKeySettings();
         if (movement.equals("ArrowKeys")) {
