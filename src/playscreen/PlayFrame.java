@@ -79,8 +79,7 @@ public class PlayFrame extends JFrame {
             rightPanel.add(itemShowPanel);
         }
         else{
-            BlockMemoryPanel a = new BlockMemoryPanel();
-            rightPanel.add(a);
+            rightPanel.add(new JPanel());
         }
         //rightPanel.add(new JPanel());
         add(rightPanel);
