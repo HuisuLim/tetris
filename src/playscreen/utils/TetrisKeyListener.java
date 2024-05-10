@@ -79,7 +79,7 @@ public class TetrisKeyListener implements KeyListener {
                     break;
                 case 1: // Go to StartMenu
                     tetris.dispose();
-                    StartMenuView.getInstance().setVisible(true);
+                    new StartMenuView().setVisible(true);
                     break;
                 case 2: // EXIT
                     System.exit(0); // 프로그램 종료
@@ -94,7 +94,7 @@ public class TetrisKeyListener implements KeyListener {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             // 게임 오버 상태에서 ESC를 누르면 StartMenu로 돌아감
             tetris.dispose();
-            StartMenuView.getInstance().setVisible(true);
+            new StartMenuView().setVisible(true);
         }
     }
 
