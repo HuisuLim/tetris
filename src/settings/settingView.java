@@ -52,7 +52,7 @@ public class settingView extends JFrame {
                 break;
 
             case "colorBlindness":
-                setTitle("Color Blindness Mode");
+                setTitle("ColorBlindness Setting");
                 label.setText("Color Mode: ");
                 Button1.setText("Normal");
                 Button2.setText("Color Blind");
@@ -99,6 +99,8 @@ public class settingView extends JFrame {
 
             default:
                 System.out.println("Unrecognized setting name: " + settingName);
+                setTitle("Invalid Setting");
+                label.setText("Invalid Setting");
                 break;
         }
 

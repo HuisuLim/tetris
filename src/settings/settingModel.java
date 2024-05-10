@@ -4,11 +4,15 @@ import java.io.*;
 import java.util.Properties;
 
 public class settingModel {
-    private static final String SETTINGS_FILE = "settings.properties";
+    public static String SETTINGS_FILE = "settings.properties";
     private static final String SCREEN_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";
     private static final String DIFFICULTY_KEY = "Difficulty";
+
+    public void setSettingsFile(String fileName){
+        SETTINGS_FILE = fileName;
+    }
 
 
     public String loadKeySettings() {
@@ -17,8 +21,7 @@ public class settingModel {
             properties.load(input);
             String controlKey = properties.getProperty(CONTROL_KEY);
             return controlKey;
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
             return "ArrowKeys";
         }
     }

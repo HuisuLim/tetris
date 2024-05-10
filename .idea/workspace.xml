@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3daec290-ed1f-4325-b189-72e3df9c9a7f" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/src/playscreen/panels/BlockMemoryPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/settings/settingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/settings/settingMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/settings/settingView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/startscreen/SettingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mockito_all.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mockito_junit_jupiter.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/settings/settingModelTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/settings/settingViewTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/settings/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/LoadData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/LoadData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/SettingColorBlindness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/SettingDifficulty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/SettingKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/SettingReset.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/SettingScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startscreen/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/Setting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startscreen/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/StartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/settingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tetris.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -67,19 +58,41 @@
     "Application.StartMenu.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "Application.settingMain.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.SettingModelTest.executor": "Run",
+    "JUnit.settingViewTest.executor": "Coverage",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "v3.settingRefactoring",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/limhuisu/Desktop/tetrisrefac/test/settings",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/settings" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="settings" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="startscreen" />
     </key>
@@ -105,7 +118,7 @@
       <workItem from="1714357721530" duration="196000" />
       <workItem from="1714370161476" duration="8043000" />
       <workItem from="1715165674525" duration="8489000" />
-      <workItem from="1715229927408" duration="6208000" />
+      <workItem from="1715229927408" duration="11886000" />
     </task>
     <task id="LOCAL-00001" summary="itemMode 세팅 삭제, 메인화면에서 아이템모드 실행 가능하게 만들어둠">
       <option name="closed" value="true" />
@@ -131,7 +144,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715165786376</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="setting refactoring">
+      <option name="closed" value="true" />
+      <created>1715303097028</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715303097028</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test">
+      <option name="closed" value="true" />
+      <created>1715303237768</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715303237768</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,13 +179,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="itemMode 세팅 삭제, 메인화면에서 아이템모드 실행 가능하게 만들어둠" />
+    <MESSAGE value="setting refactoring" />
     <MESSAGE value="test" />
     <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetris$Main.ic" NAME="Main Coverage Results" MODIFIED="1714357866989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/tetrisrefac$settingViewTest.ic" NAME="settingViewTest Coverage Results" MODIFIED="1715305809248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>settings.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/tetris$PlayFrame.ic" NAME="PlayFrame Coverage Results" MODIFIED="1714357763671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>playscreen.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/tetrisrefac$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715306642780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>settings.*</FILTER>
     </SUITE>
   </component>
 </project>

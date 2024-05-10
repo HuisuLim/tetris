@@ -7,7 +7,8 @@ import java.util.Properties;
 
 
 
-// test
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// settingModel로 다 넘어감
 public class LoadData {
 
     private static final String SETTINGS_FILE = "settings.properties";
