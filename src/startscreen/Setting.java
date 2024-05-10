@@ -1,6 +1,6 @@
 
 package startscreen;
-
+/*
 import settings.*;
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +9,8 @@ import java.awt.event.*;
 public class Setting extends JFrame {
     private double screenRatio = StartMenu.screenRatio; //화면 비율 조절
     private JButton backButton = new JButton();
+
+    private int settingIndex = 0;
 
     public Setting() {
         setTitle("게임 설정");
@@ -244,3 +246,5 @@ public class Setting extends JFrame {
 
 }
 
+
+ */

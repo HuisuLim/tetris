@@ -7,7 +7,8 @@ import java.util.Properties;
 
 
 
-// test
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!삭제해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// settingModel로 다 넘어감
 public class LoadData {
 
     private static final String SETTINGS_FILE = "settings.properties";
@@ -69,22 +70,6 @@ public class LoadData {
         } catch (IOException ex) {
             ex.printStackTrace();
             return "normal";
-        }
-    }
-
-    public String loadGameMode() {
-        Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream(SETTINGS_FILE)) {
-            properties.load(input);
-            String gameMode = properties.getProperty(GAME_MODE_KEY);
-            if (gameMode != null) {
-                return gameMode;
-            } else {
-                return "normalMode";
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return "normalMode";
         }
     }
 
