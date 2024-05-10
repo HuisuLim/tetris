@@ -203,7 +203,7 @@ public class settingController implements ActionListener {
                     String difficulty = "normal";
                     model.saveSetting("ScreenSize", String.valueOf(screenRatioDefault));
                     model.saveSetting("ColorMode", String.valueOf(isColorBlindMode));
-                    model.saveSetting("MoveMent", keySetting);
+                    model.saveSetting("MOVEMENT", keySetting);
                     model.saveSetting("Difficulty", difficulty);
                     view.dispose(); // 설정 화면 종료
                 }

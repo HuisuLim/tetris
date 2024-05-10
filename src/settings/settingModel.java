@@ -1,7 +1,10 @@
 package settings;
+
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.Properties;
+
+
 
 public class settingModel {
     public static String SETTINGS_FILE = "settings.properties";
@@ -63,6 +66,18 @@ public class settingModel {
             return KeyEvent.VK_S;
         }
         return KeyEvent.VK_DOWN; // 기본적으로는 화살표 키를 반환하도록 설정
+    }
+
+    public int[] loadKeys() {
+        int[] keys = new int[5];
+
+        keys[0] = getUpKey();
+        keys[1] = getRightKey();
+        keys[2] = getDownKey();
+        keys[3] = getLeftKey();
+        keys[4] = KeyEvent.VK_SPACE;
+
+        return keys;
     }
 
 

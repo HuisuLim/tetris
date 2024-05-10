@@ -214,7 +214,7 @@ public class Setting extends JFrame {
     private void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
-            LoadData key = new LoadData();
+            settingModel key = new settingModel();
             buttons[i].addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {

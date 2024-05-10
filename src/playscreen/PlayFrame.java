@@ -3,7 +3,7 @@ package playscreen;
 import playscreen.panels.*;
 import playscreen.utils.TetrisKeyListener;
 import playscreen.utils.TimerDelay;
-import settings.LoadData;
+import settings.settingModel;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -11,8 +11,7 @@ import java.awt.event.ActionListener;
 public class PlayFrame extends JFrame {
 
     //data load
-    private final LoadData data = new LoadData();
-    private final String gameMode = data.loadGameMode();
+    private final settingModel data = new settingModel();
     private final boolean colorMode = data.loadColorBlindMode();
     private final String difficulty = data.loadDifficulty(); // 난이도 로드
     private final double screenSize = data.loadScreenSize();
@@ -32,10 +31,10 @@ public class PlayFrame extends JFrame {
     private boolean isPaused = false;
     private boolean isCleaningTime = false;
 
+    private String gameMode;
 
-
-
-    public PlayFrame() {
+    public PlayFrame(String gamemode) {
+        this.gameMode = gamemode;
         setTitle("Play Frame");
         setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
 import java.awt.Color;
-import settings.LoadData;
+import settings.settingModel;
 import playscreen.PlayFrame;
 
 
@@ -15,18 +15,18 @@ public class StartMenu extends JFrame {
     public static String keySetting="ArrowKeys";//키설정
 
     public static String difficulty="normal";
-    public static LoadData loadData = new LoadData();
+    public static settingModel settingModel = new settingModel();
     public static void setScreenRatio(){
-        screenRatio = loadData.loadScreenSize();
+        screenRatio = settingModel.loadScreenSize();
     }
     public static void setColorBlindness(){
-        isColorblindness = loadData.loadColorBlindMode();
+        isColorblindness = settingModel.loadColorBlindMode();
     }
     public static void setDifficutly(){
-        difficulty = loadData.loadDifficulty();
+        difficulty = settingModel.loadDifficulty();
     }
     public static void setControlKey(){
-        keySetting = loadData.loadKeySettings();
+        keySetting = settingModel.loadKeySettings();
     }
     public StartMenu() {
         setScreenRatio();//화면 비율 조절
@@ -160,7 +160,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame();
+                nextFrame = new PlayFrame("normalMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -169,7 +169,7 @@ public class StartMenu extends JFrame {
         startItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame();
+                nextFrame = new PlayFrame("itemMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -281,7 +281,7 @@ public class StartMenu extends JFrame {
     public void setupDirectionalFocusTraversal(JButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
             final int index = i;
-            LoadData key = new LoadData();
+            settingModel key = new settingModel();
             buttons[i].addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {

@@ -56,10 +56,10 @@ public class ScoreboardReset extends JFrame {
     }
 
     private void setupKeyBindings() {
-        LoadData loadData = new LoadData();
+        settingModel settingModel = new settingModel();
         // 사용자 설정 키 로드
-        int upKey = loadData.getUpKey();
-        int downKey = loadData.getDownKey();
+        int upKey = settingModel.getUpKey();
+        int downKey = settingModel.getDownKey();
 
         // 위로 이동 (W)
         noButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(upKey, 0), "focusUp");

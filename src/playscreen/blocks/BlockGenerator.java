@@ -2,7 +2,7 @@ package playscreen.blocks;
 
 import playscreen.blocks.item.*;
 import playscreen.blocks.standard.*;
-import settings.LoadData;
+import settings.settingModel;
 import java.util.Random;
 
 public class BlockGenerator {
@@ -10,7 +10,7 @@ public class BlockGenerator {
 
     private int[] itemWeights; // 각 블록 유형의 가중치를 저장할 배열
     private final Random random = new Random();
-    LoadData load = new LoadData();
+    settingModel load = new settingModel();
     String difficulty = load.loadDifficulty();
     private int maxWeight; // 최대 가중치
     private int maxItemWeight; // 최대 가중치

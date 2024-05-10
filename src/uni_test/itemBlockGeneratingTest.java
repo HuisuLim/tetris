@@ -2,7 +2,7 @@ package uni_test;
 
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
-import settings.LoadData;
+import settings.settingModel;
 
 import java.io.*;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class itemBlockGeneratingTest {
 
     public static void main(String[] args) {
         saveSettings(DIFFICULTY_KEY, "hard"); //여기서 난이도 변경 후 테스트
-        LoadData load = new LoadData();
+        settingModel load = new settingModel();
         String difficulty = load.loadDifficulty();
         System.out.println(difficulty + " mode");
         // 사용자가 원하는 횟수, 예를 들어 10000번을 입력하면 됩니다.

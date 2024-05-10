@@ -1,14 +1,14 @@
 package playscreen.panels;
 
 import playscreen.utils.ColorTable;
-import settings.LoadData;
+import settings.settingModel;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ItemShowPanel extends JPanel {
 
-        protected final LoadData data = new LoadData();
+        protected final settingModel data = new settingModel();
         private double screenSize = data.loadScreenSize();
         protected final int SQUARE_SIZE = (int)(10 * screenSize);
         protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
