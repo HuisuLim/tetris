@@ -14,7 +14,7 @@ public class BattlePlayFrame extends JFrame {
     private final double screenSize = data.loadScreenSize();
 
     //panel load
-    public BoardPanel[] gamePanels;
+    public TetrisPanel[] gamePanels;
     public ScorePanel[] scorePanels;
     public NextBlockPanel[] nextBlockPanels;
     public PausePanel[] pausePanels;

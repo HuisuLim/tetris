@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class BoardPanel extends JPanel{
+public class TetrisPanel extends JPanel{
     protected double screenSize;
     protected int[] colorTable;
 
@@ -30,12 +30,17 @@ public class BoardPanel extends JPanel{
     //게임정보
     protected int score = 0;
     protected double scoreMultiplier = 1; //점수획득 계수
-    protected boolean isGameOver = false;
     protected int lineRemoveCount = 0;
 
+    //상태 변수들
+    protected boolean isCleaningTime = false;
+    protected boolean isGameOver = false;
+
+    //상태변수들 getter, setter
     public boolean getIsGameOver() {
         return isGameOver;
     }
+
     public int getScore() {
         return score;
     }
@@ -43,7 +48,7 @@ public class BoardPanel extends JPanel{
         return nextBlock.getShape();
     }
 
-    public BoardPanel(double screenSize, boolean colorMode) {
+    public TetrisPanel(double screenSize, boolean colorMode) {
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
@@ -89,7 +94,7 @@ public class BoardPanel extends JPanel{
         return canMoveTo(currentRow, currentCol, currBlock.getRotatedShape());
     }
 
-    public void mergeShapeToBoard() { // 블럭을 보드에 병합하는 메서드.
+    protected void mergeShapeToBoard() { // 블럭을 보드에 병합하는 메서드.
         int[][] shape = currBlock.getShape();
         for (int row = 0; row < shape.length; row++) {
             for (int col = 0; col < shape.length; col++) {
@@ -102,7 +107,7 @@ public class BoardPanel extends JPanel{
         score += (int) (100 * scoreMultiplier);
     }
 
-    public boolean checkLines() { //지워질 수 있는 라인이 있는지 체크하고 지워질 수 있으면 그 라인을 전부 8로설정.
+    protected boolean checkLines() { //지워질 수 있는 라인이 있는지 체크하고 지워질 수 있으면 그 라인을 전부 8로설정.
         boolean doClear = false;
         for (int row = BOARD_HEIGHT - 1; row >= 0; row--) {
             boolean isLineComplete = true;
@@ -126,7 +131,7 @@ public class BoardPanel extends JPanel{
         return doClear;
     }
 
-    public void clearLines() { //8로 구성되어있는 라인을 제거.
+    protected void clearLines() { //8로 구성되어있는 라인을 제거.
         for (int row = BOARD_HEIGHT - 1; row >=0;) {
             if (board[row][0] != 8) {
                 row--;
@@ -141,28 +146,57 @@ public class BoardPanel extends JPanel{
 
     //테트리스 동작관련 메서드들
     public void goLeft() {
+        if(isCleaningTime || isGameOver) return;
         if(canMoveTo(currentRow, currentCol-1, currBlock.getShape())){
             currentCol--;
             repaint();
         }
     }
     public void goRight() {
+        if(isCleaningTime || isGameOver) return;
         if(canMoveTo(currentRow, currentCol+1, currBlock.getShape())){
             currentCol++;
             repaint();
         }
     }
-    public boolean goDown() {
+    public void goDown() {
+        if(isCleaningTime || isGameOver) return;
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
             scoreMultiplier = TimerDelay.calScoreMultiplier(score);
             score += (int) (5*scoreMultiplier);
             repaint();
-            return true;
         }
-        return false;
+        else {
+            mergeShapeToBoard();
+            if(checkLines()) {
+                isCleaningTime = true;
+                repaint();
+                Timer cleaningTimer = new Timer(700, e-> {
+                    clearLines();
+                    repaint();
+                    isCleaningTime = false;
+                    createNewShape();
+                });
+                cleaningTimer.setRepeats(false);
+                cleaningTimer.start();
+            }
+        }
+    }
+    public void goDownToEnd() {
+        if(isCleaningTime || isGameOver) return;
+        while(true) {
+            if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())) {
+                currentRow++;
+                scoreMultiplier = TimerDelay.calScoreMultiplier(score);
+                score += (int) (5*scoreMultiplier);
+            }
+            else break;
+        }
+        repaint();
     }
     public void rotate90() {
+        if(isCleaningTime || isGameOver) return;
         if(canRotate()){
             currBlock.rotate90();
             repaint();
