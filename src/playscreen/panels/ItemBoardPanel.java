@@ -2,11 +2,11 @@ package playscreen.panels;
 
 import java.awt.*;
 
-public class ItemTetrisPanel extends TetrisPanel{
+public class ItemBoardPanel extends BoardPanel {
     protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
 
-    public ItemTetrisPanel(double screenSize, boolean colorMode) {
+    public ItemBoardPanel(double screenSize, boolean colorMode) {
         super(screenSize, colorMode);
     }
 

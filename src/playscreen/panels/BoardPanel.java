@@ -4,12 +4,13 @@ import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
+import playscreen.utils.TimerDelay;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class TetrisPanel extends JPanel{
+public class BoardPanel extends JPanel{
     protected double screenSize;
     protected int[] colorTable;
 
@@ -42,7 +43,7 @@ public class TetrisPanel extends JPanel{
         return nextBlock.getShape();
     }
 
-    public TetrisPanel(double screenSize, boolean colorMode) {
+    public BoardPanel(double screenSize, boolean colorMode) {
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
@@ -97,6 +98,7 @@ public class TetrisPanel extends JPanel{
                 }
             }
         }
+        scoreMultiplier = TimerDelay.calScoreMultiplier(score);
         score += (int) (100 * scoreMultiplier);
     }
 
@@ -153,6 +155,7 @@ public class TetrisPanel extends JPanel{
     public boolean goDown() {
         if(canMoveTo(currentRow+1, currentCol, currBlock.getShape())){
             currentRow++;
+            scoreMultiplier = TimerDelay.calScoreMultiplier(score);
             score += (int) (5*scoreMultiplier);
             repaint();
             return true;
@@ -164,10 +167,6 @@ public class TetrisPanel extends JPanel{
             currBlock.rotate90();
             repaint();
         }
-    }
-
-    public void setScoreMultiplier(double d) {
-        scoreMultiplier = d;
     }
 
 
