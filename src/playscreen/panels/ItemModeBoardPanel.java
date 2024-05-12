@@ -2,11 +2,11 @@ package playscreen.panels;
 
 import java.awt.*;
 
-public class ItemBoardPanel extends BoardPanel {
+public class ItemModeBoardPanel extends BoardPanel {
     protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
 
-    public ItemBoardPanel(double screenSize, boolean colorMode) {
+    public ItemModeBoardPanel(double screenSize, boolean colorMode) {
         super(screenSize, colorMode);
     }
 

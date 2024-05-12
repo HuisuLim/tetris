@@ -42,7 +42,7 @@ public class PlayPanel extends JPanel {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
         if (gameMode.equals("itemMode")) {
-            gamePanel = new ItemBoardPanel(screenSize, colorMode);
+            gamePanel = new ItemModeBoardPanel(screenSize, colorMode);
         }
         else {
             gamePanel = new BoardPanel(screenSize, colorMode);
