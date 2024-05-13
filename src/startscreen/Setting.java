@@ -250,6 +250,19 @@ public class Setting extends JFrame {
         });
     }
 
+    
+    
 
+    public void setScreenRatio(int screenRatio) {
+        this.screenRatio = screenRatio;
+    }
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+
+    public double getScreenRatio() {
+        return screenRatio;
+    }
 }
 
