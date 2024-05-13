@@ -18,6 +18,7 @@ public class PlayPanel extends JPanel {
     public TetrisPanel tetrisPanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
+    private LineRemovePanel lineRemovePanel;
 
     public Timer timer;
 
@@ -66,7 +67,11 @@ public class PlayPanel extends JPanel {
             rightPanel.add(itemShowPanel);
         }
         else{
-            rightPanel.add(new JPanel());
+            //--------------------------공격 화면 테스트용------------------------
+            lineRemovePanel = new LineRemovePanel(screenSize, tetrisPanel);
+            rightPanel.add(lineRemovePanel);
+            //-----------------------------------------------------------------
+            //rightPanel.add(new JPanel());
         }
         add(rightPanel);
     }

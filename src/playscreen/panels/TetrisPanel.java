@@ -47,6 +47,27 @@ public class TetrisPanel extends JPanel{
     public int[][] getNextBlock(){
         return nextBlock.getShape();
     }
+    //--------대전모드용------------------------------------------------
+    public int[][] getBoard(){
+        return board;
+    }
+    public int getlineRemoveCount() {
+        return lineRemoveCount;
+    }
+    // 현재 블록의 행 위치를 반환하는 메서드
+    public int getCurrentRow() {
+        return currentRow;
+    }
+
+    // 현재 블록의 열 위치를 반환하는 메서드
+    public int getCurrentCol() {
+        return currentCol;
+    }
+
+    public int[][] getCurrBlock(){
+        return currBlock.getShape();
+    }
+    //---------------------------------------------------------------
 
     public TetrisPanel(double screenSize, boolean colorMode) {
         this.screenSize = screenSize;
