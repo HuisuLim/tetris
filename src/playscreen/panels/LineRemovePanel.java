@@ -24,7 +24,7 @@ public class LineRemovePanel extends JPanel {
     }
 
     // Method to update the attack board based on lines cleared from the Tetris panel
-    public void updateAttackBoard(int lineRemoveCount, int currentRow, int currentCol, int[][] shape, int[][] tetrisBoard) {
+    public void updateAttackBoard(int lineRemoveCount, int currentRow, int currentCol, int[][] shape, int[][] tetrisBoardCopy) {
         int linesCleared = lineRemoveCount - lineRemove;
         int freeRows = 0;
         for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {
@@ -47,12 +47,6 @@ public class LineRemovePanel extends JPanel {
         }
 
         if (linesCleared >= 2) {
-            // Create a new 2D array that copies tetrisBoard
-            int[][] tetrisBoardCopy = new int[tetrisBoard.length][];
-            for (int i = 0; i < tetrisBoard.length; i++) {
-                tetrisBoardCopy[i] = new int[tetrisBoard[i].length]; // Initialize the inner array
-                System.arraycopy(tetrisBoard[i], 0, tetrisBoardCopy[i], 0, tetrisBoard[i].length); // Copy each inner array
-            }
             for (int row = 0; row < ATTACK_BOARD_SIZE - linesCleared; row++) {
                 for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
                     attackBoard[row][col] = attackBoard[row + linesCleared][col];
@@ -80,6 +74,7 @@ public class LineRemovePanel extends JPanel {
             }
         }
         this.lineRemove = lineRemoveCount;
+        /*
 
         //-----------확인용-------------------------ß-------
         System.out.println("currnetRow: "+ currentRow);
@@ -101,8 +96,28 @@ public class LineRemovePanel extends JPanel {
             }
             System.out.println();
         }
+
+         */
+    }
+    //---------------------나중에 가져다 쓸때 사용할거-------------------------------------------------------
+    private void clearAttackBoard() {
+        for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {
+            boolean isRowEmpty = true;
+            for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
+                attackBoard[row][col] = 0;
+            }
+        }
+    }
+    public int[][] copyAttackBoard(){
+        int[][] attackBoardCopy = new int[attackBoard.length][];
+        for (int i = 0; i < attackBoard.length; i++) {
+            attackBoardCopy[i] = new int[attackBoard[i].length]; // Initialize the inner array
+            System.arraycopy(attackBoard[i], 0, attackBoardCopy[i], 0, attackBoard[i].length); // Copy each inner array
+        }
+        return attackBoardCopy;
     }
 
+    //--------------------------------------------------------------------------------------------------
 
     @Override
     public void paint(Graphics g) {
@@ -144,11 +159,11 @@ public class LineRemovePanel extends JPanel {
         else{
             g.setColor(Color.black);
         }
-        int defaultx = SQUARE_SIZE*5;
-        g.fillRect(defaultx+x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
+        int defaultX = SQUARE_SIZE*5;
+        g.fillRect(defaultX+x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
 
         g.setColor(Color.BLACK); // 테두리 색상 설정
-        g.drawRect(defaultx+x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 테두리 그리기
+        g.drawRect(defaultX+x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 테두리 그리기
     }
 
 

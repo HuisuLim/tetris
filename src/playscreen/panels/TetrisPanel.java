@@ -48,8 +48,13 @@ public class TetrisPanel extends JPanel{
         return nextBlock.getShape();
     }
     //--------대전모드용------------------------------------------------
-    public int[][] getBoard(){
-        return board;
+    public int[][] getBoardCopy(){
+        int[][] tetrisBoardCopy = new int[board.length][];
+        for (int i = 0; i < board.length; i++) {
+            tetrisBoardCopy[i] = new int[board[i].length]; // Initialize the inner array
+            System.arraycopy(board[i], 0, tetrisBoardCopy[i], 0, board[i].length); // Copy each inner array
+        }
+        return tetrisBoardCopy;
     }
     public int getlineRemoveCount() {
         return lineRemoveCount;
