@@ -11,6 +11,7 @@ public class settingView extends JFrame {
 
     public settingView(String settingName) {
         this.settingName = settingName;
+
         setSize(400, 100);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);

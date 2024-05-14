@@ -19,7 +19,6 @@ class settingModelTest {
         model = new settingModel();
         model.setSettingsFile("test/settings/settings.properties");
         model.saveSetting("MOVEMENT","ArrowKeys");
-        model.saveSetting("DIFFICULTY", "hard");
         model.saveSetting("ScreenSize", "1.6");
         model.saveSetting("ColorMode", "false");
         model.saveSetting("Difficulty", "normal");

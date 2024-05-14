@@ -7,6 +7,16 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 public class settingController implements ActionListener {
+    KeyAdapter keyAdapter = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == model.getLeftKey() || keyCode == model.getRightKey()) {
+                switchRadioButton(keyCode, model, view.checkButton, view.Button1, view.Button2, view.Button3);
+            }
+        }
+    };
     private settingModel model;
     private settingView view;
 
@@ -22,7 +32,7 @@ public class settingController implements ActionListener {
         setupKeyBindings();
     }
 
-    private void setInitialSelection() {
+    public void setInitialSelection() {
 
         String settingName = view.getSettingName();
         switch (settingName) {
@@ -91,20 +101,11 @@ public class settingController implements ActionListener {
         }
     }
 
-    private void setupKeyBindings() {
+    public void setupKeyBindings() {
         // Set up key bindings for the panel
         view.panel.setFocusable(true);
         view.panel.requestFocusInWindow();
-        view.panel.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int keyCode = e.getKeyCode();
-
-                if (keyCode == model.getLeftKey() || keyCode == model.getRightKey()) {
-                    switchRadioButton(keyCode, model, view.checkButton, view.Button1, view.Button2, view.Button3);
-                }
-            }
-        });
+        view.panel.addKeyListener(keyAdapter);
 
         // Binding for the "check" button
         view.checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
@@ -161,9 +162,9 @@ public class settingController implements ActionListener {
                     } else if (view.Button3.isSelected()) {
                         screenRatio = 2.4;
                     }
+                    model.saveSetting("ScreenSize", String.valueOf(screenRatio));
+                    view.dispose(); // Close the settings view
                 }
-                model.saveSetting("ScreenSize", String.valueOf(screenRatio));
-                view.dispose(); // Close the settings view
                 break;
 
             case "ColorMode":

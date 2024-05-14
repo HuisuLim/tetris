@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="LineRemovePanel 추후 사용될 메서드 추가 및 tetrisPanel에서 getBoardCopy메서드 수정">
-      <change afterPath="$PROJECT_DIR$/test/settings/settingControllerTest.java" afterDir="false" />
+    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="살짝 리펙토링">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settingMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/startscreen/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/startscreen/Setting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings/settingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settingControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/settings/settingModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settingModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings/settingViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settingViewTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/startscreen/ScoreboardModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/startscreen/ScoreboardModelTest.java" afterDir="false" />
     </list>
@@ -49,14 +48,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.ScoreboardReset.executor": "Run",
     "Application.Setting.executor": "Run",
     "Application.StartMenu.executor": "Run",
     "Application.settingMain.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.SettingModelTest.executor": "Run",
     "JUnit.SettingModelTest.testLoadKeySettings.executor": "Run",
-    "JUnit.settingControllerTest.executor": "Coverage",
-    "JUnit.settingModelTest.executor": "Coverage",
+    "JUnit.settingControllerTest.executor": "Run",
+    "JUnit.settingControllerTest.testKeyBindingsSetup.executor": "Run",
+    "JUnit.settingModelTest.executor": "Run",
     "JUnit.settingViewTest.executor": "Run",
     "JUnit.settings in tetris.executor": "Coverage",
     "Repository.Attach.Annotations": "false",
@@ -120,6 +121,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="settingControllerTest.testKeyBindingsSetup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="settings.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="settings" />
+      <option name="MAIN_CLASS_NAME" value="settings.settingControllerTest" />
+      <option name="METHOD_NAME" value="testKeyBindingsSetup" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="settings in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
@@ -136,6 +153,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.settingControllerTest.testKeyBindingsSetup" />
         <item itemvalue="JUnit.settings in tetris" />
         <item itemvalue="JUnit.SettingModelTest.testLoadKeySettings" />
       </list>
@@ -151,7 +169,7 @@
       <updated>1715312020155</updated>
       <workItem from="1715312022163" duration="572000" />
       <workItem from="1715590629240" duration="200000" />
-      <workItem from="1715590923896" duration="9547000" />
+      <workItem from="1715590923896" duration="15597000" />
     </task>
     <task id="LOCAL-00001" summary="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가.">
       <option name="closed" value="true" />
@@ -169,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715591666719</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="살짝 리펙토링">
+      <option name="closed" value="true" />
+      <created>1715655574072</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715655574072</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +215,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가." />
     <MESSAGE value="LineRemovePanel 추후 사용될 메서드 추가 및 tetrisPanel에서 getBoardCopy메서드 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="LineRemovePanel 추후 사용될 메서드 추가 및 tetrisPanel에서 getBoardCopy메서드 수정" />
+    <MESSAGE value="살짝 리펙토링" />
+    <option name="LAST_COMMIT_MESSAGE" value="살짝 리펙토링" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -201,7 +228,7 @@
     <SUITE FILE_PATH="coverage/tetrisFinalMain$settings_in_tetris.ic" NAME="settings in tetris Coverage Results" MODIFIED="1715650341299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/tetrisFinalMain$settingControllerTest.ic" NAME="settingControllerTest Coverage Results" MODIFIED="1715655449347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/tetrisFinalMain$settingControllerTest.ic" NAME="settingControllerTest Coverage Results" MODIFIED="1715664983653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
   </component>
