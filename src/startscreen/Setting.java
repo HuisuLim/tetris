@@ -45,7 +45,7 @@ public class Setting extends JFrame {
         button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio) + 0 * verticalSpacing, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("Key");
+                settingView view = settingMain.launchSettingScreen("MOVEMENT");
             }
         });
 
@@ -53,7 +53,7 @@ public class Setting extends JFrame {
         button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio)+ 1 * verticalSpacing, buttonWidth, buttonHeight);
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("colorBlindness");
+                settingView view = settingMain.launchSettingScreen("ColorMode");
             }
         });
 
@@ -78,7 +78,7 @@ public class Setting extends JFrame {
         button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio)+ 3 * verticalSpacing, buttonWidth, buttonHeight);
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("screenSize");
+                settingView view = settingMain.launchSettingScreen("ScreenSize");
                 view.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {

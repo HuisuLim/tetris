@@ -23,9 +23,10 @@ public class settingController implements ActionListener {
     }
 
     private void setInitialSelection() {
+
         String settingName = view.getSettingName();
         switch (settingName) {
-            case "screenSize":
+            case "ScreenSize":
                 double screenSize = model.loadScreenSize();
                 if (screenSize == 1) {
                     view.Button1.setSelected(true);
@@ -38,7 +39,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "colorBlindness":
+            case "ColorMode":
                 boolean isColorBlind = model.loadColorBlindMode();
                 if (isColorBlind) {
                     view.Button2.setSelected(true);
@@ -47,7 +48,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "Key":
+            case "MOVEMENT":
                 String keySetting = model.loadKeySettings();
                 switch (keySetting) {
                     case "ArrowKeys":
@@ -150,7 +151,7 @@ public class settingController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String settingName = view.getSettingName();
         switch (settingName) {
-            case "screenSize":
+            case "ScreenSize":
                 double screenRatio = 1.6; // Default screen ratio
                 if (e.getSource() == view.checkButton) {
                     if (view.Button1.isSelected()) {
@@ -165,7 +166,7 @@ public class settingController implements ActionListener {
                 view.dispose(); // Close the settings view
                 break;
 
-            case "colorBlindness":
+            case "ColorMode":
                 if (e.getSource() == view.checkButton) {
                     boolean isColorBlindMode = view.Button2.isSelected();
                     model.saveSetting("ColorMode", String.valueOf(isColorBlindMode));
@@ -173,7 +174,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "Key":
+            case "MOVEMENT":
                 if (e.getSource() == view.checkButton) {
                     String movement = view.Button1.isSelected() ? "ArrowKeys" : "WASD";
                     model.saveSetting("MOVEMENT", movement);

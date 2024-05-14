@@ -34,7 +34,7 @@ public class settingView extends JFrame {
                 add(checkButton);
                 break;
 
-            case "screenSize":
+            case "ScreenSize":
                 setTitle("Screen Setting");
                 label.setText("Screen Size:");
                 Button1.setText("Small");
@@ -51,7 +51,7 @@ public class settingView extends JFrame {
                 add(checkButton, BorderLayout.SOUTH);
                 break;
 
-            case "colorBlindness":
+            case "ColorMode":
                 setTitle("ColorBlindness Setting");
                 label.setText("Color Mode: ");
                 Button1.setText("Normal");
@@ -82,7 +82,7 @@ public class settingView extends JFrame {
                 add(checkButton, BorderLayout.SOUTH);
                 break;
 
-            case "Key":
+            case "MOVEMENT":
                 setTitle("Key Setting");
                 label.setText("Key Control: ");
                 Button1.setText("Arrow Keys");

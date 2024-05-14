@@ -2,7 +2,7 @@ package settings;
 
 public class settingMain {
     public static void main(String[] args) {
-        launchSettingScreen("Reset");
+        launchSettingScreen("colorBlindness");
     }
     public static settingView launchSettingScreen(String settingName) {
         settingModel model = new settingModel();
