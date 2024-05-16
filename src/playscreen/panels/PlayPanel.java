@@ -1,5 +1,7 @@
 package playscreen.panels;
 
+import playscreen.PlayFrame;
+import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 import settings.settingModel;
 import javax.swing.*;
@@ -27,24 +29,24 @@ public class PlayPanel extends JPanel {
 
     private final String gameMode;
 
-    public PlayPanel(String gameMode) {
+    public PlayPanel(GameOverCallBack gameOverCallBack, String gameMode) {
         this.gameMode = gameMode;
         setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
-        initUI();
+        initUI(gameOverCallBack);
         createTimer();
         timer.start();
         setVisible(true); //창 보이게.
 
     }
 
-    private void initUI() {
+    private void initUI(GameOverCallBack gameOverCallBack) {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
         if (gameMode.equals("itemMode")) {
-            tetrisPanel = new ItemModeTetrisPanel(screenSize, colorMode);
+            tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, screenSize, colorMode);
         }
         else {
-            tetrisPanel = new TetrisPanel(screenSize, colorMode);
+            tetrisPanel = new TetrisPanel(gameOverCallBack, screenSize, colorMode);
         }
         add(tetrisPanel);
 
@@ -58,6 +60,7 @@ public class PlayPanel extends JPanel {
 
         // NextBlockPanel 추가
         nextBlockPanel = new NextBlockPanel(screenSize, colorMode);
+        nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
         rightPanel.add(nextBlockPanel);
 
         // 나머지 1 개의 패널은 비워둡니다.
@@ -94,16 +97,11 @@ public class PlayPanel extends JPanel {
         if (tetrisPanel.getIsGameOver()) {
             System.out.println("게임오버");
             timer.stop();
-//            nameInputPanel = new NameInputPanel(this, screenSize, gamePanel.getScore(), gameMode, difficulty);
-//            nameInputPanel.setLocation((getWidth() - nameInputPanel.getWidth()) / 2, (getHeight() - nameInputPanel.getHeight()) / 2); // 위치 중앙으로 설정
-//            nameInputPanel.setVisible(true); // 초기에는 보이지 않게 설정
-//            getLayeredPane().add(nameInputPanel, JLayeredPane.POPUP_LAYER);
-//            nameInputPanel.input.requestFocus();
-//            return;
         }
         tetrisPanel.goDown();
         scorePanel.updateScore(tetrisPanel.getScore());
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
+        repaint();
     }
 
     public boolean getIsPause() {
@@ -122,6 +120,23 @@ public class PlayPanel extends JPanel {
 
     public boolean getIsGameOver() {
         return tetrisPanel.getIsGameOver();
+    }
+
+    public void gameControl(int input) {
+        
+        if (input == -1) toggleIsPause();
+        else if (isPaused) return;
+        else if (input == 0) tetrisPanel.rotate90();
+        else if (input == 1) tetrisPanel.goRight();
+        else if (input == 2){
+            //타이머 재시작 안해주면 아래키누르는데 timer까지 적용되서 2칸씩 내려가는거방지
+            timer.stop();
+            timer.start();
+            tetrisPanel.goDown();
+        }
+        else if (input == 3) tetrisPanel.goLeft();
+        else if (input == 4) tetrisPanel.goDownToEnd();
+        scorePanel.updateScore(tetrisPanel.getScore());
     }
 
 

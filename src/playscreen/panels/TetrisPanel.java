@@ -1,9 +1,11 @@
 package playscreen.panels;
 
+import playscreen.PlayFrame;
 import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
+import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 
 import javax.swing.*;
@@ -11,6 +13,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
+    private GameOverCallBack gameOverCallBack;
     protected double screenSize;
     protected int[] colorTable;
 
@@ -74,7 +77,8 @@ public class TetrisPanel extends JPanel{
     }
     //---------------------------------------------------------------
 
-    public TetrisPanel(double screenSize, boolean colorMode) {
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+        this.gameOverCallBack = gameOverCallBack;
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
@@ -101,6 +105,7 @@ public class TetrisPanel extends JPanel{
         if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
             currBlock = new BlankBlock();
             isGameOver = true;
+            gameOverCallBack.onGameOver(score);
         }
     }
 
@@ -202,11 +207,12 @@ public class TetrisPanel extends JPanel{
                     clearLines();
                     repaint();
                     isCleaningTime = false;
-                    createNewShape();
+
                 });
                 cleaningTimer.setRepeats(false);
                 cleaningTimer.start();
             }
+            createNewShape();
         }
     }
     public void goDownToEnd() {

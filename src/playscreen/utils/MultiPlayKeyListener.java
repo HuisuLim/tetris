@@ -1,15 +1,14 @@
 package playscreen.utils;
 
-import playscreen.PlayFrame;
+import playscreen.MultiPlayFrame;
 import playscreen.panels.PlayPanel;
-import playscreen.panels.TetrisPanel;
 import startscreen.StartMenu;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class SinglePlayKeyListener  implements KeyListener {
-    private final PlayFrame playFrame;
+public class MultiPlayKeyListener  implements KeyListener {
+    private final MultiPlayFrame playFrame;
     private final PlayPanel playPanel;
     private final int upKey;
     private final int rightKey;
@@ -17,9 +16,9 @@ public class SinglePlayKeyListener  implements KeyListener {
     private final int leftKey;
     private final int downToEndKey;
 
-    public SinglePlayKeyListener(PlayFrame playFrame, int[] keys){
+    public MultiPlayKeyListener(MultiPlayFrame playFrame, int[] keys){
         this.playFrame = playFrame;
-        this.playPanel = playFrame.playPanel;
+        this.playPanel = playFrame.player1PlayPanel;
         upKey = keys[0];
         rightKey = keys[1];
         downKey = keys[2];
