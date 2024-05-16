@@ -1,6 +1,5 @@
 package playscreen.panels;
 
-import playscreen.PlayFrame;
 import playscreen.utils.GameOverCallBack;
 
 import java.awt.*;

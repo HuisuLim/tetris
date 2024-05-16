@@ -1,6 +1,6 @@
 package playscreen.panels;
 
-import playscreen.PlayFrame;
+import playscreen.SinglePlayFrame;
 import startscreen.ScoreboardController;
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.*;
 public class NameInputPanel extends JPanel {
     public JTextField input;
 
-    public NameInputPanel(PlayFrame parentFrame,double screenSize, int score, String gameMode, String difficulty) {
+    public NameInputPanel(SinglePlayFrame parentFrame, double screenSize, int score, String gameMode, String difficulty) {
         //Panel 기본설정
         setSize((int) (200 * screenSize), (int) (100 * screenSize));
         setLayout(new GridLayout(3, 1));

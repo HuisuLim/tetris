@@ -7,7 +7,7 @@ import java.awt.Color;
 
 import playscreen.MultiPlayFrame;
 import settings.settingModel;
-import playscreen.PlayFrame;
+import playscreen.SinglePlayFrame;
 
 
 public class StartMenu extends JFrame {
@@ -167,7 +167,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("normalMode");
+                nextFrame = new SinglePlayFrame("normalMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -176,7 +176,7 @@ public class StartMenu extends JFrame {
         startItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("itemMode");
+                nextFrame = new SinglePlayFrame("itemMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }

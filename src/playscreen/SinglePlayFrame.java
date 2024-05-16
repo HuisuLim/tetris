@@ -9,7 +9,7 @@ import settings.settingModel;
 
 import javax.swing.*;
 
-public class PlayFrame extends JFrame {
+public class SinglePlayFrame extends JFrame {
 
     private settingModel data = new settingModel();
     private double screenSize = data.loadScreenSize();
@@ -22,7 +22,7 @@ public class PlayFrame extends JFrame {
     private final SinglePlayKeyListener singlePlayKeyListener;
 
 
-    public PlayFrame(String gameMode) {
+    public SinglePlayFrame(String gameMode) {
         this.gameMode = gameMode;
         setTitle("Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

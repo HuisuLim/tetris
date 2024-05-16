@@ -1,6 +1,5 @@
 package playscreen.panels;
 
-import playscreen.PlayFrame;
 import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
