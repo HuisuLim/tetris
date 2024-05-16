@@ -4,9 +4,9 @@ import playscreen.blocks.Block;
 
 public class SBlock extends Block {
 
-    public SBlock() {
-        this(1);
-    }
+//    public SBlock() {
+//        this(1);
+//    }
     public SBlock(int colorNum) {
         super(colorNum);
     }

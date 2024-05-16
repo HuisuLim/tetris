@@ -13,6 +13,19 @@ public class settingModel {
     private static final String CONTROL_KEY = "MOVEMENT";
     private static final String DIFFICULTY_KEY = "Difficulty";
 
+
+    //data들 가지고있는 클래스 -찬영
+    public final double screenSize;
+    public final boolean colorBlindMode;
+    public final String difficulty;
+    public final int[] keys;
+    public settingModel() {
+        screenSize = loadScreenSize();
+        colorBlindMode = loadColorBlindMode();
+        difficulty = loadDifficulty();
+        keys = loadKeys();
+    }
+
     public void setSettingsFile(String fileName){
         SETTINGS_FILE = fileName;
     }

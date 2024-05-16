@@ -4,17 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="살짝 리펙토링">
-      <change afterPath="$PROJECT_DIR$/src/playscreen/utils/GameOverCallBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/playscreen/utils/MultiPlayKeyListener.java" afterDir="false" />
+    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="PlayFrame -&gt; SinglePlayFrame">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/BattlePlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/BattlePlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/PlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemModeTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemModeTetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/AllClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/AllClearBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/BoxClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/BoxClearBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/ColClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/ColClearBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/CrossClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/CrossClearBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/ItemBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/ItemBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/RowClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/RowClearBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/WeightBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/WeightBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/IBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/JBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/LBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/OBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/SBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/TBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/ZBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playscreen/panels/PlayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/PlayPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/utils/SinglePlayKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/utils/SinglePlayKeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +216,47 @@
       <option name="project" value="LOCAL" />
       <updated>1715655574072</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="MultiPlay용 클래스들 생성, playPanel 관련 리팩토링 완료">
+      <option name="closed" value="true" />
+      <created>1715879287762</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715879287762</updated>
+    </task>
+    <task id="LOCAL-00005" summary="대전모드 일부완성">
+      <option name="closed" value="true" />
+      <created>1715884480810</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715884480810</updated>
+    </task>
+    <task id="LOCAL-00006" summary="키리스너 리팩토링">
+      <option name="closed" value="true" />
+      <created>1715886102045</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715886102045</updated>
+    </task>
+    <task id="LOCAL-00007" summary="TetrisKeyListener.java 삭제">
+      <option name="closed" value="true" />
+      <created>1715886157158</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715886157158</updated>
+    </task>
+    <task id="LOCAL-00008" summary="PlayFrame -&gt; SinglePlayFrame">
+      <option name="closed" value="true" />
+      <created>1715886233082</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715886233082</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +277,12 @@
     <MESSAGE value="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가." />
     <MESSAGE value="LineRemovePanel 추후 사용될 메서드 추가 및 tetrisPanel에서 getBoardCopy메서드 수정" />
     <MESSAGE value="살짝 리펙토링" />
-    <option name="LAST_COMMIT_MESSAGE" value="살짝 리펙토링" />
+    <MESSAGE value="MultiPlay용 클래스들 생성, playPanel 관련 리팩토링 완료" />
+    <MESSAGE value="대전모드 일부완성" />
+    <MESSAGE value="키리스너 리팩토링" />
+    <MESSAGE value="TetrisKeyListener.java 삭제" />
+    <MESSAGE value="PlayFrame -&gt; SinglePlayFrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="PlayFrame -&gt; SinglePlayFrame" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

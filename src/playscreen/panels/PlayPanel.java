@@ -10,10 +10,7 @@ import java.awt.event.ActionListener;
 public class PlayPanel extends JPanel {
 
     //data load
-    private final settingModel data = new settingModel();
-    private final boolean colorMode = data.loadColorBlindMode();
-    private final String difficulty = data.loadDifficulty(); // 난이도 로드
-    private final double screenSize = data.loadScreenSize();
+    private final settingModel data;
 
     //panel load
     public TetrisPanel tetrisPanel;
@@ -28,9 +25,10 @@ public class PlayPanel extends JPanel {
 
     private final String gameMode;
 
-    public PlayPanel(GameOverCallBack gameOverCallBack, String gameMode) {
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode) {
+        this.data = data;
         this.gameMode = gameMode;
-        setSize((int)(screenSize * 20 * 20),(int)(screenSize * 20 * 20));
+        setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
         initUI(gameOverCallBack);
         createTimer();
         timer.start();
@@ -42,35 +40,35 @@ public class PlayPanel extends JPanel {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
         if (gameMode.equals("itemMode")) {
-            tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, screenSize, colorMode);
+            tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
         }
         else {
-            tetrisPanel = new TetrisPanel(gameOverCallBack, screenSize, colorMode);
+            tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
         }
         add(tetrisPanel);
 
         // 오른쪽 패널 (세로로 3등분)
         JPanel rightPanel = new JPanel(new GridLayout(3, 1));
-        rightPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * screenSize), (int)(20 * 20 * screenSize)));
+        rightPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * data.screenSize), (int)(20 * 20 * data.screenSize)));
 
         // ScorePanel 추가
-        scorePanel = new ScorePanel(screenSize, 0);
+        scorePanel = new ScorePanel(data.screenSize, 0);
         rightPanel.add(scorePanel);
 
         // NextBlockPanel 추가
-        nextBlockPanel = new NextBlockPanel(screenSize, colorMode);
+        nextBlockPanel = new NextBlockPanel(data.screenSize, data.colorBlindMode);
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
         rightPanel.add(nextBlockPanel);
 
         // 나머지 1 개의 패널은 비워둡니다.
         if (gameMode.equals("itemMode")) {
-            ItemShowPanel itemShowPanel = new ItemShowPanel();
-            itemShowPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * screenSize), (int)(6 * 20 * screenSize)));
+            ItemShowPanel itemShowPanel = new ItemShowPanel(data);
+            itemShowPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
             rightPanel.add(itemShowPanel);
         }
         else{
             //--------------------------공격 화면 테스트용------------------------
-            lineRemovePanel = new LineRemovePanel(screenSize, tetrisPanel);
+            lineRemovePanel = new LineRemovePanel(data.screenSize, tetrisPanel);
             rightPanel.add(lineRemovePanel);
             //-----------------------------------------------------------------
             //rightPanel.add(new JPanel());
@@ -82,12 +80,12 @@ public class PlayPanel extends JPanel {
         ActionListener actionListener = e -> {
             updateGame();
                 // 난이도와 점수에 따른 타이머 지연 시간을 동적으로 조정
-                int delay = TimerDelay.calDelay(difficulty, tetrisPanel.getScore());
+                int delay = TimerDelay.calDelay(data.difficulty, tetrisPanel.getScore());
                 timer.setDelay(delay);
 
         };
         // 타이머 생성: 초기 지연 시간은 난이도에 따라 조정됨
-        int initialDelay = TimerDelay.calDelay(difficulty, tetrisPanel.getScore());
+        int initialDelay = TimerDelay.calDelay(data.difficulty, tetrisPanel.getScore());
         timer = new Timer(initialDelay, actionListener);
     }
 
@@ -103,10 +101,6 @@ public class PlayPanel extends JPanel {
         repaint();
     }
 
-    public boolean getIsPause() {
-        return isPaused;
-    }
-
     public void toggleIsPause() {
         isPaused = !isPaused;
         if (isPaused) {
@@ -115,10 +109,6 @@ public class PlayPanel extends JPanel {
         else {
             timer.start();
         }
-    }
-
-    public boolean getIsGameOver() {
-        return tetrisPanel.getIsGameOver();
     }
 
     public void gameControl(int input) {
@@ -136,14 +126,5 @@ public class PlayPanel extends JPanel {
         else if (input == 3) tetrisPanel.goLeft();
         else if (input == 4) tetrisPanel.goDownToEnd();
         scorePanel.updateScore(tetrisPanel.getScore());
-    }
-
-
-
-
-    public static void main(String[] args) {
-
-        JFrame frame = new JFrame();
-
     }
 }

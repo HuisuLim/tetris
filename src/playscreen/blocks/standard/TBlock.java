@@ -4,9 +4,9 @@ import playscreen.blocks.Block;
 
 public class TBlock extends Block {
 
-    public TBlock() {
-        this(1);
-    }
+//    public TBlock() {
+//        this(1);
+//    }
     public TBlock(int colorNum) {
         super(colorNum);
     }

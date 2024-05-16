@@ -8,18 +8,20 @@ import java.awt.*;
 
 public class ItemShowPanel extends JPanel {
 
-        protected final settingModel data = new settingModel();
-        private double screenSize = data.loadScreenSize();
-        protected final int SQUARE_SIZE = (int)(10 * screenSize);
-        protected int[] colorTable = ColorTable.getTable(data.loadColorBlindMode());
-        public ItemShowPanel() {
-            this.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * screenSize), (int)(7 * 20 * screenSize)));
+        protected settingModel data;
+        protected final int SQUARE_SIZE;
+        protected final int[] colorTable;
+        public ItemShowPanel(settingModel data) {
+            this.data = data;
+            SQUARE_SIZE = (int)(10 * data.screenSize);
+            colorTable = ColorTable.getTable(data.colorBlindMode);
+            this.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * data.screenSize), (int)(7 * 20 * data.screenSize)));
         }
 
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.setFont(new Font("Arial", Font.PLAIN, (int)(screenSize*6)));
+            g.setFont(new Font("Arial", Font.PLAIN, (int)(data.screenSize*6)));
             // 테스트를 위해 blockNum 값들을 다양하게 설정하여 drawSquare 메서드 호출
             drawSquare(g, 2, 1, 11);
             drawSquare(g, 3, 1, 11);
@@ -218,7 +220,7 @@ public class ItemShowPanel extends JPanel {
 
             public void run() {
                 JFrame frame = new JFrame("Tetris Game Example");
-                ItemShowPanel panel = new ItemShowPanel();
+                ItemShowPanel panel = new ItemShowPanel(new settingModel());
 
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.add(panel);

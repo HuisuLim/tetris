@@ -1,7 +1,6 @@
 package playscreen;
 
 
-import playscreen.panels.NameInputPanel;
 import playscreen.panels.PausePanel;
 import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
@@ -14,35 +13,29 @@ import java.awt.event.KeyEvent;
 
 public class MultiPlayFrame extends JFrame {
 
-    private settingModel data = new settingModel();
-    private double screenSize = data.loadScreenSize();
-    private String difficulty = data.loadDifficulty();
-    private String gameMode;
     public PlayPanel player1PlayPanel;
     public PlayPanel player2PlayPanel;
     public PausePanel pausePanel;
-    public NameInputPanel nameInputPanel;
     private boolean isPaused = false;
-    private final MultiPlayKeyListener multiPlayKeyListener;
 
 
     public MultiPlayFrame(String gameMode) {
-        this.gameMode = gameMode;
         setTitle("Battle Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize((int)(screenSize * 20 * 20 * 2),(int)(screenSize * 20 * 20));
+        settingModel data = new settingModel();
+        setSize((int)(data.screenSize * 20 * 20 * 2),(int)(data.screenSize * 20 * 20));
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
 
         //playPanel 추가
-        player1PlayPanel = new PlayPanel(this::gameOver, gameMode);
-        player2PlayPanel = new PlayPanel(this::gameOver, gameMode);
+        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode);
+        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode);
         add(player1PlayPanel);
         add(player2PlayPanel);
 
         //pausePanel 추가
-        pausePanel = new PausePanel((int)(screenSize * 1.5)); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel((int)(data.screenSize * 1.5)); // PausePanel 인스턴스 생성
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
         getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
@@ -50,7 +43,7 @@ public class MultiPlayFrame extends JFrame {
         //KeyListener 추가
         int[] player1Keys = {KeyEvent.VK_W,KeyEvent.VK_D,KeyEvent.VK_S,KeyEvent.VK_A,KeyEvent.VK_SPACE};
         int[] player2Keys = {KeyEvent.VK_UP,KeyEvent.VK_RIGHT,KeyEvent.VK_DOWN,KeyEvent.VK_LEFT,KeyEvent.VK_ENTER};
-        multiPlayKeyListener = new MultiPlayKeyListener(this, player1Keys, player2Keys);
+        MultiPlayKeyListener multiPlayKeyListener = new MultiPlayKeyListener(this, player1Keys, player2Keys);
         addKeyListener(multiPlayKeyListener);
 
         pack();//화면자동설정.

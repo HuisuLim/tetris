@@ -7,12 +7,11 @@ import java.util.Random;
 
 public class ItemBlock extends Block {
 
-    public ItemBlock() {
-        this(1);
-    }
+//    public ItemBlock() {
+//        this(1);
+//    }
     public ItemBlock(int blockNum) {
         super(blockNum);
-
     }
 
     @Override

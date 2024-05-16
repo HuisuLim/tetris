@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
-    private GameOverCallBack gameOverCallBack;
+    private final GameOverCallBack gameOverCallBack;
     protected double screenSize;
     protected int[] colorTable;
 
