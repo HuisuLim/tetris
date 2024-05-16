@@ -10,6 +10,7 @@ import startscreen.StartMenu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class MultiPlayFrame extends JFrame {
 
@@ -41,13 +42,15 @@ public class MultiPlayFrame extends JFrame {
         add(player2PlayPanel);
 
         //pausePanel 추가
-        pausePanel = new PausePanel((int)(screenSize)); // PausePanel 인스턴스 생성
+        pausePanel = new PausePanel((int)(screenSize * 1.5)); // PausePanel 인스턴스 생성
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
         getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
 
         //KeyListener 추가
-        multiPlayKeyListener = new MultiPlayKeyListener(this, data.loadKeys());
+        int[] player1Keys = {KeyEvent.VK_W,KeyEvent.VK_D,KeyEvent.VK_S,KeyEvent.VK_A,KeyEvent.VK_SPACE};
+        int[] player2Keys = {KeyEvent.VK_UP,KeyEvent.VK_RIGHT,KeyEvent.VK_DOWN,KeyEvent.VK_LEFT,KeyEvent.VK_ENTER};
+        multiPlayKeyListener = new MultiPlayKeyListener(this, player1Keys, player2Keys);
         addKeyListener(multiPlayKeyListener);
 
         pack();//화면자동설정.

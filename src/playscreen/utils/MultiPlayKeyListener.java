@@ -6,56 +6,75 @@ import startscreen.StartMenu;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 
 public class MultiPlayKeyListener  implements KeyListener {
     private final MultiPlayFrame playFrame;
-    private final PlayPanel playPanel;
-    private final int upKey;
-    private final int rightKey;
-    private final int downKey;
-    private final int leftKey;
-    private final int downToEndKey;
+    private final PlayPanel player1PlayPanel;
+    private final PlayPanel player2PlayPanel;
 
-    public MultiPlayKeyListener(MultiPlayFrame playFrame, int[] keys){
+    private int[] player1Keys;
+    private int[] player2Keys;
+
+    public MultiPlayKeyListener(MultiPlayFrame playFrame, int[] player1Keys, int[] player2Keys){
         this.playFrame = playFrame;
-        this.playPanel = playFrame.player1PlayPanel;
-        upKey = keys[0];
-        rightKey = keys[1];
-        downKey = keys[2];
-        leftKey = keys[3];
-        downToEndKey = keys[4];
+        this.player1PlayPanel = playFrame.player1PlayPanel;
+        this.player2PlayPanel = playFrame.player2PlayPanel;
+
+        this.player1Keys = player1Keys;
+        this.player2Keys = player2Keys;
 
     }
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if(playFrame.getIsPause()) {
+
+
+        if(keyCode == KeyEvent.VK_ESCAPE) {
+            playFrame.toggleIsPause();
+        }
+        else if(playFrame.getIsPause()) {
             handlePauseState(keyCode);
         }
-        else {
-            handleGameState(keyCode);
+        else if(contains(player1Keys, keyCode)) {
+            handle1PKeys(keyCode);
+        }
+        else if(contains(player2Keys, keyCode)) {
+            handle2PKeys(keyCode);
         }
         playFrame.repaint();
-        playPanel.repaint();
+        player1PlayPanel.repaint();
+        player2PlayPanel.repaint();
     }
 
-    private void handleGameState(int keyCode) { //게임중일때 키입력 처리
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-            playFrame.toggleIsPause();
-            System.out.println(playFrame.getIsPause());
-        } else if (keyCode == upKey) {
-            playPanel.gameControl(0);
-        } else if (keyCode == rightKey) {
-            playPanel.gameControl(1);
-        } else if (keyCode == downKey) {
-            playPanel.gameControl(2);
-        } else if (keyCode == leftKey) {
-            playPanel.gameControl(3);
-        } else if (keyCode == downToEndKey) {
-            playPanel.gameControl(4);
+    private void handle1PKeys(int keyCode) {
+        if (keyCode == player1Keys[0]) {
+            player1PlayPanel.gameControl(0);
+        } else if (keyCode == player1Keys[1]) {
+            player1PlayPanel.gameControl(1);
+        } else if (keyCode == player1Keys[2]) {
+            player1PlayPanel.gameControl(2);
+        } else if (keyCode == player1Keys[3]) {
+            player1PlayPanel.gameControl(3);
+        } else if (keyCode == player1Keys[4]) {
+            player1PlayPanel.gameControl(4);
         }
     }
+    private void handle2PKeys(int keyCode) {
+        if (keyCode == player2Keys[0]) {
+            player2PlayPanel.gameControl(0);
+        } else if (keyCode == player2Keys[1]) {
+            player2PlayPanel.gameControl(1);
+        } else if (keyCode == player2Keys[2]) {
+            player2PlayPanel.gameControl(2);
+        } else if (keyCode == player2Keys[3]) {
+            player2PlayPanel.gameControl(3);
+        } else if (keyCode == player2Keys[4]) {
+            player2PlayPanel.gameControl(4);
+        }
+    }
+
 
     private void handlePauseState(int keyCode) {
         if(keyCode == KeyEvent.VK_ESCAPE) {
@@ -64,10 +83,10 @@ public class MultiPlayKeyListener  implements KeyListener {
         }
 
         //옵션이 위에서부터 인덱스가 0 1 2기때문에 반대.
-        if (keyCode == upKey) {
+        if (keyCode == player1Keys[0] || keyCode == player2Keys[0]) {
             playFrame.pausePanel.upPoint();
         }
-        else if (keyCode == downKey) {
+        else if (keyCode == player1Keys[2] || keyCode == player2Keys[2]) {
             playFrame.pausePanel.downPoint();
         }
 
@@ -85,8 +104,6 @@ public class MultiPlayKeyListener  implements KeyListener {
                     System.exit(0); // 프로그램 종료
                     break;
             }
-        } else if (keyCode == KeyEvent.VK_ESCAPE) {
-            playFrame.toggleIsPause();
         }
     }
 
@@ -100,5 +117,9 @@ public class MultiPlayKeyListener  implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public static boolean contains(int[] arr, int target) {
+        return Arrays.stream(arr).anyMatch(num -> num == target);
     }
 }

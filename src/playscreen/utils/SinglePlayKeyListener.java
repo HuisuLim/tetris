@@ -2,7 +2,6 @@ package playscreen.utils;
 
 import playscreen.PlayFrame;
 import playscreen.panels.PlayPanel;
-import playscreen.panels.TetrisPanel;
 import startscreen.StartMenu;
 
 import java.awt.event.KeyEvent;
@@ -31,7 +30,10 @@ public class SinglePlayKeyListener  implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if(playFrame.getIsPause()) {
+        if(keyCode == KeyEvent.VK_ESCAPE) {
+            playFrame.toggleIsPause();
+        }
+        else if(playFrame.getIsPause()) {
             handlePauseState(keyCode);
         }
         else {
@@ -42,10 +44,7 @@ public class SinglePlayKeyListener  implements KeyListener {
     }
 
     private void handleGameState(int keyCode) { //게임중일때 키입력 처리
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-            playFrame.toggleIsPause();
-            System.out.println(playFrame.getIsPause());
-        } else if (keyCode == upKey) {
+        if (keyCode == upKey) {
             playPanel.gameControl(0);
         } else if (keyCode == rightKey) {
             playPanel.gameControl(1);
@@ -59,10 +58,6 @@ public class SinglePlayKeyListener  implements KeyListener {
     }
 
     private void handlePauseState(int keyCode) {
-        if(keyCode == KeyEvent.VK_ESCAPE) {
-            playFrame.toggleIsPause();
-            System.out.println(playFrame.getIsPause());
-        }
 
         //옵션이 위에서부터 인덱스가 0 1 2기때문에 반대.
         if (keyCode == upKey) {
