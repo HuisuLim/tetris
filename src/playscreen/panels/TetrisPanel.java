@@ -4,6 +4,7 @@ import playscreen.blocks.BlankBlock;
 import playscreen.utils.ColorTable;
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
+import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
+    private final GameOverCallBack gameOverCallBack;
     protected double screenSize;
     protected int[] colorTable;
 
@@ -47,8 +49,35 @@ public class TetrisPanel extends JPanel{
     public int[][] getNextBlock(){
         return nextBlock.getShape();
     }
+    //--------대전모드용------------------------------------------------
+    public int[][] getBoardCopy(){
+        int[][] tetrisBoardCopy = new int[board.length][];
+        for (int i = 0; i < board.length; i++) {
+            tetrisBoardCopy[i] = new int[board[i].length]; // Initialize the inner array
+            System.arraycopy(board[i], 0, tetrisBoardCopy[i], 0, board[i].length); // Copy each inner array
+        }
+        return tetrisBoardCopy;
+    }
+    public int getlineRemoveCount() {
+        return lineRemoveCount;
+    }
+    // 현재 블록의 행 위치를 반환하는 메서드
+    public int getCurrentRow() {
+        return currentRow;
+    }
 
-    public TetrisPanel(double screenSize, boolean colorMode) {
+    // 현재 블록의 열 위치를 반환하는 메서드
+    public int getCurrentCol() {
+        return currentCol;
+    }
+
+    public int[][] getCurrBlock(){
+        return currBlock.getShape();
+    }
+    //---------------------------------------------------------------
+
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+        this.gameOverCallBack = gameOverCallBack;
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
@@ -75,6 +104,7 @@ public class TetrisPanel extends JPanel{
         if(!canMoveTo(currentRow, currentCol, currBlock.getShape())){
             currBlock = new BlankBlock();
             isGameOver = true;
+            gameOverCallBack.onGameOver(score);
         }
     }
 
@@ -176,11 +206,12 @@ public class TetrisPanel extends JPanel{
                     clearLines();
                     repaint();
                     isCleaningTime = false;
-                    createNewShape();
+
                 });
                 cleaningTimer.setRepeats(false);
                 cleaningTimer.start();
             }
+            createNewShape();
         }
     }
     public void goDownToEnd() {

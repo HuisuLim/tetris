@@ -1,13 +1,15 @@
 package playscreen.panels;
 
+import playscreen.utils.GameOverCallBack;
+
 import java.awt.*;
 
 public class ItemModeTetrisPanel extends TetrisPanel {
-    protected int itemGenerateCount = 0;
+    protected int itemGenerateCount = -100;
     protected boolean weightBlockCanMove;
 
-    public ItemModeTetrisPanel(double screenSize, boolean colorMode) {
-        super(screenSize, colorMode);
+    public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+        super(gameOverCallBack, screenSize, colorMode);
     }
 
     @Override

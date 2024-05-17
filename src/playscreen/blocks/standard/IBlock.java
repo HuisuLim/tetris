@@ -4,9 +4,9 @@ import playscreen.blocks.Block;
 
 public class IBlock extends Block {
 
-    public IBlock() {
-        this(1);
-    }
+//    public IBlock() {
+//        this(1);
+//    }
     public IBlock(int colorNum) {
         super(colorNum);
         super.startPos[0] = -2;

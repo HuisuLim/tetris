@@ -7,6 +7,16 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 public class settingController implements ActionListener {
+    KeyAdapter keyAdapter = new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == model.getLeftKey() || keyCode == model.getRightKey()) {
+                switchRadioButton(keyCode, model, view.checkButton, view.Button1, view.Button2, view.Button3);
+            }
+        }
+    };
     private settingModel model;
     private settingView view;
 
@@ -22,10 +32,11 @@ public class settingController implements ActionListener {
         setupKeyBindings();
     }
 
-    private void setInitialSelection() {
+    public void setInitialSelection() {
+
         String settingName = view.getSettingName();
         switch (settingName) {
-            case "screenSize":
+            case "ScreenSize":
                 double screenSize = model.loadScreenSize();
                 if (screenSize == 1) {
                     view.Button1.setSelected(true);
@@ -38,7 +49,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "colorBlindness":
+            case "ColorMode":
                 boolean isColorBlind = model.loadColorBlindMode();
                 if (isColorBlind) {
                     view.Button2.setSelected(true);
@@ -47,7 +58,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "Key":
+            case "MOVEMENT":
                 String keySetting = model.loadKeySettings();
                 switch (keySetting) {
                     case "ArrowKeys":
@@ -90,20 +101,11 @@ public class settingController implements ActionListener {
         }
     }
 
-    private void setupKeyBindings() {
+    public void setupKeyBindings() {
         // Set up key bindings for the panel
         view.panel.setFocusable(true);
         view.panel.requestFocusInWindow();
-        view.panel.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int keyCode = e.getKeyCode();
-
-                if (keyCode == model.getLeftKey() || keyCode == model.getRightKey()) {
-                    switchRadioButton(keyCode, model, view.checkButton, view.Button1, view.Button2, view.Button3);
-                }
-            }
-        });
+        view.panel.addKeyListener(keyAdapter);
 
         // Binding for the "check" button
         view.checkButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "checkPressed");
@@ -150,7 +152,7 @@ public class settingController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String settingName = view.getSettingName();
         switch (settingName) {
-            case "screenSize":
+            case "ScreenSize":
                 double screenRatio = 1.6; // Default screen ratio
                 if (e.getSource() == view.checkButton) {
                     if (view.Button1.isSelected()) {
@@ -160,12 +162,12 @@ public class settingController implements ActionListener {
                     } else if (view.Button3.isSelected()) {
                         screenRatio = 2.4;
                     }
+                    model.saveSetting("ScreenSize", String.valueOf(screenRatio));
+                    view.dispose(); // Close the settings view
                 }
-                model.saveSetting("ScreenSize", String.valueOf(screenRatio));
-                view.dispose(); // Close the settings view
                 break;
 
-            case "colorBlindness":
+            case "ColorMode":
                 if (e.getSource() == view.checkButton) {
                     boolean isColorBlindMode = view.Button2.isSelected();
                     model.saveSetting("ColorMode", String.valueOf(isColorBlindMode));
@@ -173,7 +175,7 @@ public class settingController implements ActionListener {
                 }
                 break;
 
-            case "Key":
+            case "MOVEMENT":
                 if (e.getSource() == view.checkButton) {
                     String movement = view.Button1.isSelected() ? "ArrowKeys" : "WASD";
                     model.saveSetting("MOVEMENT", movement);

@@ -3,9 +3,9 @@ package playscreen.blocks.item;
 import playscreen.blocks.Block;
 
 public class WeightBlock extends Block {
-    public WeightBlock() {
-        this(1);
-    }
+//    public WeightBlock() {
+//        this(1);
+//    }
     public WeightBlock(int blockNum) {
         super(blockNum);
     }

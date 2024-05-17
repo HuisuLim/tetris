@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
 import java.awt.Color;
+
+import playscreen.MultiPlayFrame;
 import settings.settingModel;
-import playscreen.PlayFrame;
+import playscreen.SinglePlayFrame;
 
 
 public class StartMenu extends JFrame {
@@ -165,7 +167,7 @@ public class StartMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("normalMode");
+                nextFrame = new SinglePlayFrame("normalMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -174,7 +176,7 @@ public class StartMenu extends JFrame {
         startItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new PlayFrame("itemMode");
+                nextFrame = new SinglePlayFrame("itemMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -183,7 +185,7 @@ public class StartMenu extends JFrame {
         // 대전모드 버튼 이벤트 처리
         battleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                nextFrame = new BattleMode(); // BattleMode 클래스의 인스턴스 생성
+                nextFrame = new MultiPlayFrame("Normal"); // MultiPlayFrame 클래스의 인스턴스 생성
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }

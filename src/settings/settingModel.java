@@ -13,6 +13,19 @@ public class settingModel {
     private static final String CONTROL_KEY = "MOVEMENT";
     private static final String DIFFICULTY_KEY = "Difficulty";
 
+
+    //data들 가지고있는 클래스 -찬영
+    public double screenSize;
+    public boolean colorBlindMode;
+    public String difficulty;
+    public final int[] keys;
+    public settingModel() {
+        screenSize = loadScreenSize();
+        colorBlindMode = loadColorBlindMode();
+        difficulty = loadDifficulty();
+        keys = loadKeys();
+    }
+
     public void setSettingsFile(String fileName){
         SETTINGS_FILE = fileName;
     }
@@ -86,7 +99,7 @@ public class settingModel {
         try (InputStream inputStream = new FileInputStream(SETTINGS_FILE)) {
             properties.load(inputStream);
             return Double.parseDouble(properties.getProperty(SCREEN_SIZE_KEY, "1.6")); // 기본값은 중간 크기
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return 1.6; // 파일 읽기 실패시 기본값 반환
         }
@@ -97,7 +110,7 @@ public class settingModel {
             properties.load(input);
             String mode = properties.getProperty(COLOR_MODE_KEY);
             return Boolean.parseBoolean(mode);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             // 기본값인 일반 모드를 반환하거나 적절한 기본값을 선택합니다.
             return false;
@@ -113,7 +126,7 @@ public class settingModel {
             } else {
                 return "normal";
             }
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return "normal";
         }
@@ -123,13 +136,13 @@ public class settingModel {
         Properties properties = new Properties();
         try (InputStream inputStream = new FileInputStream(SETTINGS_FILE)) {
             properties.load(inputStream);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         properties.setProperty(key, value);
         try (OutputStream outputStream = new FileOutputStream(SETTINGS_FILE)) {
             properties.store(outputStream, null);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

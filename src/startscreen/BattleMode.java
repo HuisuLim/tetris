@@ -1,6 +1,5 @@
 package startscreen;
 
-import playscreen.PlayFrame;
 import settings.settingModel;
 
 import javax.swing.*;

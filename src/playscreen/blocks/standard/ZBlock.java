@@ -4,9 +4,9 @@ import playscreen.blocks.Block;
 
 public class ZBlock extends Block {
 
-    public ZBlock() {
-        this(1);
-    }
+//    public ZBlock() {
+//        this(1);
+//    }
     public ZBlock(int colorNum) {
         super(colorNum);
     }

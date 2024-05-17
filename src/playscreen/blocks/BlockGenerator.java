@@ -12,8 +12,8 @@ public class BlockGenerator {
     private final Random random = new Random();
     settingModel load = new settingModel();
     String difficulty = load.loadDifficulty();
-    private int maxWeight; // 최대 가중치
-    private int maxItemWeight; // 최대 가중치
+    private final int maxWeight; // 최대 가중치
+    private final int maxItemWeight; // 최대 가중치
 
     public BlockGenerator() {
         setDifficulty();
@@ -25,14 +25,12 @@ public class BlockGenerator {
 
     private void setDifficulty() {
         // 기본 가중치 설정 (I, J, L, O, S, T, Z 블록)
-        this.weights = new int[]{10, 0, 0, 0, 0, 0, 0};
+        this.weights = new int[]{10, 10, 10, 10, 10, 10, 10};
         // 난이도에 따라 I형 블록의 가중치 조정
-        if (difficulty.equals("easy")) {
-            this.weights[0] = 12; // 쉬운 난이도에서는 I형 블록이 더 자주 등장
-        } else if (difficulty.equals("normal")) {
-            this.weights[0] = 10; // 중간 난이도
-        } else if (difficulty.equals("hard")){
-            this.weights[0] = 8; // 어려운 난이도에서는 덜 자주 등장
+        switch (difficulty) {
+            case "easy" -> this.weights[0] = 12; // 쉬운 난이도에서는 I형 블록이 더 자주 등장
+            case "normal" -> this.weights[0] = 10; // 중간 난이도
+            case "hard" -> this.weights[0] = 8; // 어려운 난이도에서는 덜 자주 등장
         }
     }
 
