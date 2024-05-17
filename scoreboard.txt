@@ -1,2 +1,2 @@
-dasdasdda,3344,normal,normalMode
-jlkjkll,1720,normal,normalMode
+Player1,100,Easy,itemMode
+Player2,150,Hard,normalMode

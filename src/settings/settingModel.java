@@ -15,9 +15,9 @@ public class settingModel {
 
 
     //data들 가지고있는 클래스 -찬영
-    public final double screenSize;
-    public final boolean colorBlindMode;
-    public final String difficulty;
+    public double screenSize;
+    public boolean colorBlindMode;
+    public String difficulty;
     public final int[] keys;
     public settingModel() {
         screenSize = loadScreenSize();

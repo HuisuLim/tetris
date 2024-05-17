@@ -43,4 +43,8 @@ public class NameInputPanel extends JPanel {
     public static void main(String[] args) {
 
     }
+
+    public int getScore() {
+        return 0;
+    }
 }

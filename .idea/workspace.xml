@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="PlayFrame -&gt; SinglePlayFrame">
+      <change afterPath="$PROJECT_DIR$/test/playscreen/MultiPlayFrameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/playscreen/SinglePlayFrameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/AllClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/AllClearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/BoxClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/BoxClearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/ColClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/ColClearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/CrossClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/CrossClearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/ItemBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/ItemBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/RowClearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/RowClearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/item/WeightBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/item/WeightBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/IBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/IBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/JBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/JBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/LBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/LBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/OBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/OBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/SBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/SBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/TBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/TBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/standard/ZBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/standard/ZBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemModeTetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemModeTetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/NameInputPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/NameInputPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/playscreen/panels/PlayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/PlayPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tetris.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -58,44 +47,49 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ScoreboardReset.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Setting.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StartMenu.executor&quot;: &quot;Run&quot;,
-    &quot;Application.settingMain.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.SettingModelTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SettingModelTest.testLoadKeySettings.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.settingControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.settingControllerTest.testKeyBindingsSetup.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.settingModelTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.settingViewTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.settings in tetris.executor&quot;: &quot;Coverage&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/limhuisu/Desktop/tetrisFinalMain/test/settings&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.ScoreboardReset.executor": "Run",
+    "Application.Setting.executor": "Run",
+    "Application.StartMenu.executor": "Run",
+    "Application.settingMain.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.MultiPlayFrameTest.executor": "Coverage",
+    "JUnit.SettingModelTest.executor": "Run",
+    "JUnit.SettingModelTest.testLoadKeySettings.executor": "Run",
+    "JUnit.SinglePlayFrameTest.executor": "Coverage",
+    "JUnit.settingControllerTest.executor": "Run",
+    "JUnit.settingControllerTest.testKeyBindingsSetup.executor": "Run",
+    "JUnit.settingModelTest.executor": "Run",
+    "JUnit.settingViewTest.executor": "Run",
+    "JUnit.settings in tetris.executor": "Coverage",
+    "JUnit.tetris의 playscreen.executor": "Run",
+    "JUnit.tetris의 전부.executor": "Coverage",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/limhuisu/Desktop/tetrisFinalMain/test/settings",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.Main.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/settings" />
@@ -104,13 +98,14 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="playscreen" />
       <recent name="settings" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="playscreen.panels" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.Main">
+  <component name="RunManager" selected="JUnit.MultiPlayFrameTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tetris" />
@@ -118,47 +113,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SettingModelTest.testLoadKeySettings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MultiPlayFrameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="settings.*" />
+          <option name="PATTERN" value="playscreen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="settings" />
-      <option name="MAIN_CLASS_NAME" value="settings.SettingModelTest" />
-      <option name="METHOD_NAME" value="testLoadKeySettings" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="playscreen" />
+      <option name="MAIN_CLASS_NAME" value="playscreen.MultiPlayFrameTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="settingControllerTest.testKeyBindingsSetup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SinglePlayFrameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="settings.*" />
+          <option name="PATTERN" value="playscreen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="settings" />
-      <option name="MAIN_CLASS_NAME" value="settings.settingControllerTest" />
-      <option name="METHOD_NAME" value="testKeyBindingsSetup" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="playscreen" />
+      <option name="MAIN_CLASS_NAME" value="playscreen.SinglePlayFrameTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="settings in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="tetris의 playscreen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="settings.*" />
+          <option name="PATTERN" value="playscreen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="settings" />
+      <option name="PACKAGE_NAME" value="playscreen" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tetris의 전부" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tetris" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,19 +167,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MultiPlayFrameTest" />
+        <item itemvalue="JUnit.SinglePlayFrameTest" />
         <item itemvalue="애플리케이션.Main" />
-        <item itemvalue="JUnit.settingControllerTest.testKeyBindingsSetup" />
-        <item itemvalue="JUnit.settings in tetris" />
-        <item itemvalue="JUnit.SettingModelTest.testLoadKeySettings" />
+        <item itemvalue="JUnit.tetris의 playscreen" />
+        <item itemvalue="JUnit.tetris의 전부" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -191,6 +186,7 @@
       <workItem from="1715312022163" duration="572000" />
       <workItem from="1715590629240" duration="200000" />
       <workItem from="1715590923896" duration="15597000" />
+      <workItem from="1715910970999" duration="2993000" />
     </task>
     <task id="LOCAL-00001" summary="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가.">
       <option name="closed" value="true" />
@@ -285,9 +281,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="PlayFrame -&gt; SinglePlayFrame" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tetris$SinglePlayFrameTest.ic" NAME="SinglePlayFrameTest 커버리지 결과" MODIFIED="1715913079423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>playscreen.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/tetris$tetris_playscreen.ic" NAME="tetris의 playscreen 커버리지 결과" MODIFIED="1715912186264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>playscreen.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/tetris$MultiPlayFrameTest.ic" NAME="MultiPlayFrameTest 커버리지 결과" MODIFIED="1715913703568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>playscreen.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/tetris$tetris_.ic" NAME="tetris의 전부 커버리지 결과" MODIFIED="1715911956291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/tetrisFinalMain$settingModelTest.ic" NAME="settingModelTest Coverage Results" MODIFIED="1715650271150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>

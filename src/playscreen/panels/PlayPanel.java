@@ -126,5 +126,6 @@ public class PlayPanel extends JPanel {
         else if (input == 3) tetrisPanel.goLeft();
         else if (input == 4) tetrisPanel.goDownToEnd();
         scorePanel.updateScore(tetrisPanel.getScore());
+        nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
     }
 }

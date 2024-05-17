@@ -5,7 +5,7 @@ import playscreen.utils.GameOverCallBack;
 import java.awt.*;
 
 public class ItemModeTetrisPanel extends TetrisPanel {
-    protected int itemGenerateCount = 0;
+    protected int itemGenerateCount = -100;
     protected boolean weightBlockCanMove;
 
     public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
