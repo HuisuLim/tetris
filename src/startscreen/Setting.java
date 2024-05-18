@@ -96,8 +96,7 @@ public class Setting extends JFrame {
         button5.setBounds((frameWidth - buttonWidth) / 2, (int)(165 * screenRatio)+ 4 * verticalSpacing, buttonWidth, buttonHeight);
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 새로운 ScoreboardReset 화면을 여는 로직
-                new ScoreboardReset().setVisible(true);
+                settingView view = settingMain.launchSettingScreen("ScoreBoardReset");
             }
         });
 

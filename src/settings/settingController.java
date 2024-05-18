@@ -1,10 +1,10 @@
 package settings;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+
+import static javax.swing.SwingUtilities.getRootPane;
 
 public class settingController implements ActionListener {
     KeyAdapter keyAdapter = new KeyAdapter() {
@@ -36,6 +36,10 @@ public class settingController implements ActionListener {
 
         String settingName = view.getSettingName();
         switch (settingName) {
+            case "Reset":
+                break;
+            case "ScoreBoardReset":
+                break;
             case "ScreenSize":
                 double screenSize = model.loadScreenSize();
                 if (screenSize == 1) {
@@ -148,6 +152,10 @@ public class settingController implements ActionListener {
     }
 
 
+
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String settingName = view.getSettingName();
@@ -209,7 +217,11 @@ public class settingController implements ActionListener {
                     model.saveSetting("Difficulty", difficulty);
                     view.dispose(); // 설정 화면 종료
                 }
-
+                break;
+            case "ScoreBoardReset":
+                model.clearScoreboard();
+                view.dispose();
+                break;
             default:
                 // Optionally handle unrecognized setting names
                 System.out.println("Unrecognized setting: " + settingName);

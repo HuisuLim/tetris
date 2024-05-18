@@ -1,3 +1,4 @@
+/*
 package settings;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+//삭제해도 될듯
 
 public class ScoreboardReset extends JFrame {
 
@@ -127,4 +129,6 @@ public class ScoreboardReset extends JFrame {
         SwingUtilities.invokeLater(() -> new ScoreboardReset().setVisible(true));
     }
 }
+
+ */
 

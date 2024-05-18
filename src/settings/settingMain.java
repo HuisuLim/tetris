@@ -1,8 +1,9 @@
 package settings;
 
 public class settingMain {
+    //ScreenSize ScoreBoardReset
     public static void main(String[] args) {
-        launchSettingScreen("Reset");
+        launchSettingScreen("ScoreBoardReset");
     }
     public static settingView launchSettingScreen(String settingName) {
         settingModel model = new settingModel();

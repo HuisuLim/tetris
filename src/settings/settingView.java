@@ -25,6 +25,7 @@ public class settingView extends JFrame {
         Button2 = new JRadioButton();
         Button3 = new JRadioButton();
 
+
         ButtonGroup buttonGroup = new ButtonGroup();
 
         switch (settingName) {
@@ -34,7 +35,13 @@ public class settingView extends JFrame {
                 checkButton = new JButton("Reset");
                 add(checkButton);
                 break;
-
+            case "ScoreBoardReset":
+                setTitle("스코어보드 초기화");
+                label.setText("스코어보드를 초기화 하겠습니까?");
+                add(panel);
+                checkButton = new JButton("Yes");
+                add(checkButton, BorderLayout.SOUTH);
+                break;
             case "ScreenSize":
                 setTitle("Screen Setting");
                 label.setText("Screen Size:");
