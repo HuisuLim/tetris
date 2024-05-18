@@ -70,6 +70,7 @@ public class PlayPanel extends JPanel {
             //--------------------------공격 화면 테스트용------------------------
             lineRemovePanel = new LineRemovePanel(data.screenSize, tetrisPanel);
             rightPanel.add(lineRemovePanel);
+            tetrisPanel.setLineRemovePanel(lineRemovePanel);
             //-----------------------------------------------------------------
             //rightPanel.add(new JPanel());
         }
@@ -98,6 +99,7 @@ public class PlayPanel extends JPanel {
         tetrisPanel.goDown();
         scorePanel.updateScore(tetrisPanel.getScore());
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
+        lineRemovePanel.repaint();
         repaint();
     }
 

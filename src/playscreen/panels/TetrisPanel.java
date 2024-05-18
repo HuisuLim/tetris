@@ -50,6 +50,10 @@ public class TetrisPanel extends JPanel{
         return nextBlock.getShape();
     }
     //--------대전모드용------------------------------------------------
+    private LineRemovePanel lineRemovePanel;
+    public void setLineRemovePanel(LineRemovePanel lineRemovePanel) {
+        this.lineRemovePanel = lineRemovePanel;
+    }
     public int[][] getBoardCopy(){
         int[][] tetrisBoardCopy = new int[board.length][];
         for (int i = 0; i < board.length; i++) {
@@ -74,6 +78,7 @@ public class TetrisPanel extends JPanel{
     public int[][] getCurrBlock(){
         return currBlock.getShape();
     }
+
     //---------------------------------------------------------------
 
     public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
@@ -81,6 +86,7 @@ public class TetrisPanel extends JPanel{
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
+        lineRemovePanel = new LineRemovePanel(screenSize, this);
 
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         currBlock = null;
@@ -200,6 +206,10 @@ public class TetrisPanel extends JPanel{
         else {
             mergeShapeToBoard();
             if(checkLines()) {
+                if (lineRemovePanel != null) {
+                    lineRemovePanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
+                }
+                //lineRemovePanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
                 isCleaningTime = true;
                 repaint();
                 Timer cleaningTimer = new Timer(700, e-> {

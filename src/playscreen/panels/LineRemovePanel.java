@@ -41,12 +41,14 @@ public class LineRemovePanel extends JPanel {
                 break; // Stop counting if a filled row is encountered
             }
         }
-
-        if (linesCleared > freeRows) {
-            linesCleared = freeRows;
+        if(freeRows == 0){
+            return;
         }
 
         if (linesCleared >= 2) {
+            if (linesCleared > freeRows) {
+                linesCleared = freeRows;
+            }
             for (int row = 0; row < ATTACK_BOARD_SIZE - linesCleared; row++) {
                 for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
                     attackBoard[row][col] = attackBoard[row + linesCleared][col];
@@ -71,10 +73,13 @@ public class LineRemovePanel extends JPanel {
                         break;
                     }
                 }
+                if(index > 9){
+                    break;
+                }
             }
         }
         this.lineRemove = lineRemoveCount;
-        /*
+
 
         //-----------확인용-------------------------ß-------
         System.out.println("currnetRow: "+ currentRow);
@@ -97,7 +102,7 @@ public class LineRemovePanel extends JPanel {
             System.out.println();
         }
 
-         */
+
     }
     //---------------------나중에 가져다 쓸때 사용할거-------------------------------------------------------
     private void clearAttackBoard() {
