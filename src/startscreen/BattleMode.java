@@ -1,5 +1,6 @@
 package startscreen;
 
+import playscreen.MultiPlayFrame;
 import settings.settingModel;
 
 import javax.swing.*;
@@ -44,7 +45,7 @@ public class BattleMode extends JFrame {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new BattlePlayFrame(); //BattlePlayFrame으로 창전환
+                nextFrame = new MultiPlayFrame("Normal"); //MultiPlayFrame("Normal")로 창전환
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -55,7 +56,7 @@ public class BattleMode extends JFrame {
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new BattlePlayFrame();
+                nextFrame = new MultiPlayFrame("itemMode");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
@@ -66,7 +67,7 @@ public class BattleMode extends JFrame {
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new BattlePlayFrame();
+                nextFrame = new MultiPlayFrame("Normal");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
