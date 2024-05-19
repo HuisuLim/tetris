@@ -4,7 +4,7 @@ import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 import settings.settingModel;
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class PlayPanel extends JPanel {
@@ -18,7 +18,6 @@ public class PlayPanel extends JPanel {
     private NextBlockPanel nextBlockPanel;
     private LineRemovePanel lineInputPanel;
     private LineRemovePanel lineOutputPanel;
-    private LineRemovePanel lineRemovePanel;
 
     public Timer timer;
 
@@ -26,9 +25,11 @@ public class PlayPanel extends JPanel {
     private boolean isPaused = false;
 
     private final String gameMode;
+    private String game;
 
-    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode) {
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, String game) {
         this.data = data;
+        this.game = game;
         this.gameMode = gameMode;
         setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
         initUI(gameOverCallBack);
@@ -38,9 +39,10 @@ public class PlayPanel extends JPanel {
 
     }
 
-    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel, String game) {
         this.data = data;
         this.gameMode = gameMode;
+        this.game = game;
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
         setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
@@ -54,17 +56,25 @@ public class PlayPanel extends JPanel {
     private void initUI(GameOverCallBack gameOverCallBack) {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        if (gameMode.equals("itemMode")) {
-            tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
-        }
-        else {
-            tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
+        if (game.equals("multi")){
+            if (gameMode.equals("itemMode")) {
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game ,lineInputPanel, lineOutputPanel);
+            }
+            else{
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game, lineInputPanel, lineOutputPanel);
+            }
+        } else if (game.equals("single")) {
+            if (gameMode.equals("itemMode")) {
+                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game);
+            } else {
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game);
+            }
         }
         add(tetrisPanel);
 
         // 오른쪽 패널 (세로로 3등분)
         JPanel rightPanel = new JPanel(new GridLayout(3, 1));
-        rightPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * data.screenSize), (int)(20 * 20 * data.screenSize)));
+        rightPanel.setPreferredSize(new Dimension((int)(10 * 20 * data.screenSize), (int)(20 * 20 * data.screenSize)));
 
         // ScorePanel 추가
         scorePanel = new ScorePanel(data.screenSize, 0);
@@ -78,16 +88,18 @@ public class PlayPanel extends JPanel {
         // 나머지 1 개의 패널은 비워둡니다.
         if (gameMode.equals("itemMode")) {
             ItemShowPanel itemShowPanel = new ItemShowPanel(data);
-            itemShowPanel.setPreferredSize(new java.awt.Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
+            itemShowPanel.setPreferredSize(new Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
             rightPanel.add(itemShowPanel);
         }
-        else{
+        else if(game.equals("multi")){
             //--------------------------공격 화면 테스트용------------------------
-            lineRemovePanel = new LineRemovePanel(data.screenSize);
-            rightPanel.add(lineRemovePanel);
-            tetrisPanel.setLineRemovePanel(lineRemovePanel);
+            rightPanel.add(lineInputPanel);
+            tetrisPanel.setLineRemovePanel(lineInputPanel,lineOutputPanel);
             //-----------------------------------------------------------------
             //rightPanel.add(new JPanel());
+        }
+        else{
+            rightPanel.add(new JPanel());
         }
         add(rightPanel);
     }
@@ -114,7 +126,9 @@ public class PlayPanel extends JPanel {
         tetrisPanel.goDown();
         scorePanel.updateScore(tetrisPanel.getScore());
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
-        lineRemovePanel.repaint();
+        if(game.equals("multi")) {
+            lineInputPanel.repaint();
+        }
         repaint();
     }
 

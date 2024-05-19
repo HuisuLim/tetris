@@ -20,10 +20,7 @@ public class LineRemovePanel extends JPanel {
         this.attackBoard = new int[ATTACK_BOARD_SIZE][ATTACK_BOARD_SIZE]; // Initialize the attack board
         setSize(ATTACK_BOARD_SIZE * SQUARE_SIZE, ATTACK_BOARD_SIZE * SQUARE_SIZE);
     }
-
-    // Method to update the attack board based on lines cleared from the Tetris panel
-    public void updateAttackBoard(int lineRemoveCount, int currentRow, int currentCol, int[][] shape, int[][] tetrisBoardCopy) {
-        int linesCleared = lineRemoveCount - lineRemove;
+    public int getFreeRows() {
         int freeRows = 0;
         for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {
             boolean isRowEmpty = true;
@@ -39,6 +36,13 @@ public class LineRemovePanel extends JPanel {
                 break; // Stop counting if a filled row is encountered
             }
         }
+        return freeRows;
+    }
+
+    // Method to update the attack board based on lines cleared from the Tetris panel
+    public void updateAttackBoard(int lineRemoveCount, int currentRow, int currentCol, int[][] shape, int[][] tetrisBoardCopy) {
+        int linesCleared = lineRemoveCount - lineRemove;
+        int freeRows = getFreeRows();
         if(freeRows == 0){
             return;
         }
@@ -78,7 +82,7 @@ public class LineRemovePanel extends JPanel {
         }
         this.lineRemove = lineRemoveCount;
 
-
+/*
         //-----------확인용-------------------------ß-------
         System.out.println("currnetRow: "+ currentRow);
         System.out.println("currentCol: "+currentCol);
@@ -101,9 +105,11 @@ public class LineRemovePanel extends JPanel {
         }
 
 
+ */
+
     }
     //---------------------나중에 가져다 쓸때 사용할거-------------------------------------------------------
-    private void clearAttackBoard() {
+    public void clearAttackBoard() {
         for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {
             boolean isRowEmpty = true;
             for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
@@ -111,13 +117,24 @@ public class LineRemovePanel extends JPanel {
             }
         }
     }
-    public int[][] copyAttackBoard(){
-        int[][] attackBoardCopy = new int[attackBoard.length][];
-        for (int i = 0; i < attackBoard.length; i++) {
-            attackBoardCopy[i] = new int[attackBoard[i].length]; // Initialize the inner array
-            System.arraycopy(attackBoard[i], 0, attackBoardCopy[i], 0, attackBoard[i].length); // Copy each inner array
+    public int[][] copyAttackBoard() {
+        if(attackBoard!=null) {
+            int[][] attackBoardCopy = new int[attackBoard.length][];
+            for (int i = 0; i < attackBoard.length; i++) {
+                attackBoardCopy[i] = new int[attackBoard[i].length]; // 내부 배열 초기화
+                for (int j = 0; j < attackBoard[i].length; j++) {
+                    if (attackBoard[i][j] == 8) {
+                        attackBoardCopy[i][j] = 20; // 8을 20으로 변환하여 복사
+                    } else {
+                        attackBoardCopy[i][j] = attackBoard[i][j]; // 다른 값들은 그대로 복사
+                    }
+                }
+            }
+            return attackBoardCopy;
         }
-        return attackBoardCopy;
+        else{
+            return null;
+        }
     }
 
     //--------------------------------------------------------------------------------------------------

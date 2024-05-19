@@ -27,7 +27,7 @@ public class SinglePlayFrame extends JFrame {
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
         //playPanel 추가
-        playPanel = new PlayPanel(this::gameOver, data, gameMode);
+        playPanel = new PlayPanel(this::gameOver, data, gameMode, "single");
         add(playPanel);
         
         //pausePanel 추가

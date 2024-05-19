@@ -20,20 +20,23 @@ public class MultiPlayFrame extends JFrame {
     public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
+    public String game = "battleMode";
 
 
     public MultiPlayFrame(String gameMode) {
         setTitle("Battle Play Frame");
+        game = "battleMode";
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         settingModel data = new settingModel();
         setSize((int)(data.screenSize * 20 * 20 * 2),(int)(data.screenSize * 20 * 20));
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
-
+        lineRemovePanel1Pto2P = new LineRemovePanel(data.screenSize);
+        lineRemovePanel2Pto1P = new LineRemovePanel(data.screenSize);
         //playPanel 추가
-        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel1Pto2P, lineRemovePanel2Pto1P);
-        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel2Pto1P, lineRemovePanel1Pto2P);
+        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel1Pto2P, lineRemovePanel2Pto1P, "multi");
+        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel2Pto1P, lineRemovePanel1Pto2P, "multi");
         add(player1PlayPanel);
         add(player2PlayPanel);
 
@@ -71,7 +74,5 @@ public class MultiPlayFrame extends JFrame {
         StartMenu menu = new StartMenu();
         menu.setVisible(true);
     }
-
-
 
 }

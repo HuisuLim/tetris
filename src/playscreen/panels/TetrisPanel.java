@@ -7,6 +7,7 @@ import playscreen.blocks.BlockGenerator;
 import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -50,11 +51,12 @@ public class TetrisPanel extends JPanel{
         return nextBlock.getShape();
     }
     //--------대전모드용------------------------------------------------
-    private LineRemovePanel lineRemovePanel;
     private LineRemovePanel lineInputPanel;
     private LineRemovePanel lineOutputPanel;
-    public void setLineRemovePanel(LineRemovePanel lineRemovePanel) {
-        this.lineRemovePanel = lineRemovePanel;
+    public String game;
+    public void setLineRemovePanel(LineRemovePanel lineRemovePanel, LineRemovePanel lineRemovePanel2) {
+        this.lineInputPanel = lineRemovePanel;
+        this.lineOutputPanel = lineRemovePanel2;
     }
     public int[][] getBoardCopy(){
         int[][] tetrisBoardCopy = new int[board.length][];
@@ -81,19 +83,19 @@ public class TetrisPanel extends JPanel{
         return currBlock.getShape();
     }
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
-        this(gameOverCallBack, screenSize, colorMode);
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, String game, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        this(gameOverCallBack, screenSize, colorMode, game);
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
     }
     //---------------------------------------------------------------
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, String game) {
         this.gameOverCallBack = gameOverCallBack;
         this.screenSize = screenSize;
+        this.game = game;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
-        lineRemovePanel = new LineRemovePanel(screenSize);
 
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         currBlock = null;
@@ -101,7 +103,24 @@ public class TetrisPanel extends JPanel{
         createNewShape(); // 새 도형 생성
         repaint();
     }
+    int index = 0;
+    public void attackByAnother(){
+        if(lineOutputPanel!=null) {
+            int injectRows = 10-lineOutputPanel.getFreeRows();
+            int[][] attackBoard = lineOutputPanel.copyAttackBoard();
+            for (int row = 0; row < BOARD_HEIGHT - injectRows; row++) {
+                for (int col = 0; col < BOARD_WIDTH; col++) {
+                    board[row][col] = board[row + injectRows][col];
+                }
+            }
+            for(int row = 0; row < injectRows; row ++){
+                for(int col = 0; col < BOARD_WIDTH; col++){
+                    board[BOARD_HEIGHT-1-row][col] = attackBoard[9-row][col];
+                }
+            }
+        }
 
+    }
 
 
 
@@ -214,11 +233,14 @@ public class TetrisPanel extends JPanel{
         }
         else {
             mergeShapeToBoard();
+            if(game.equals("multi")) {
+                attackByAnother();
+                lineOutputPanel.clearAttackBoard();
+            }
             if(checkLines()) {
-                if (lineRemovePanel != null) {
-                    lineRemovePanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
+                if (lineInputPanel != null && game.equals("multi")) {
+                    lineInputPanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
                 }
-                //lineRemovePanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
                 isCleaningTime = true;
                 repaint();
                 Timer cleaningTimer = new Timer(700, e-> {
@@ -294,8 +316,15 @@ public class TetrisPanel extends JPanel{
     }
     protected void drawSquare(Graphics g, int x, int y, int blockNum) {
         // 색상 테이블에서 색상 코드를 가져옴
-        int colorCode = colorTable[blockNum];
-        Color color = new Color(colorCode);
+        Color color;
+        if(blockNum == 20){
+            color = Color.gray;
+        }
+        else{
+            int colorCode = colorTable[blockNum];
+            color = new Color(colorCode);
+        }
+
         g.setColor(color);
         g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 사각형 채우기
 
