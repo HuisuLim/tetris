@@ -16,6 +16,8 @@ public class PlayPanel extends JPanel {
     public TetrisPanel tetrisPanel;
     private ScorePanel scorePanel;
     private NextBlockPanel nextBlockPanel;
+    private LineRemovePanel lineInputPanel;
+    private LineRemovePanel lineOutputPanel;
     private LineRemovePanel lineRemovePanel;
 
     public Timer timer;
@@ -28,6 +30,19 @@ public class PlayPanel extends JPanel {
     public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode) {
         this.data = data;
         this.gameMode = gameMode;
+        setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
+        initUI(gameOverCallBack);
+        createTimer();
+        timer.start();
+        setVisible(true); //창 보이게.
+
+    }
+
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        this.data = data;
+        this.gameMode = gameMode;
+        this.lineInputPanel = lineInputPanel;
+        this.lineOutputPanel = lineOutputPanel;
         setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
         initUI(gameOverCallBack);
         createTimer();
@@ -68,7 +83,7 @@ public class PlayPanel extends JPanel {
         }
         else{
             //--------------------------공격 화면 테스트용------------------------
-            lineRemovePanel = new LineRemovePanel(data.screenSize, tetrisPanel);
+            lineRemovePanel = new LineRemovePanel(data.screenSize);
             rightPanel.add(lineRemovePanel);
             tetrisPanel.setLineRemovePanel(lineRemovePanel);
             //-----------------------------------------------------------------

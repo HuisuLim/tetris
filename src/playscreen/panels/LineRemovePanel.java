@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 public class LineRemovePanel extends JPanel {
     private static final int ATTACK_BOARD_SIZE = 10; // 10x10 board for the attack panel
-    private final TetrisPanel tetrisPanel; // Reference to the Tetris game panel
     private int[][] attackBoard; // Board for the attack panel
     private int lineRemove = 0;
 
@@ -14,10 +13,9 @@ public class LineRemovePanel extends JPanel {
     private int SQUARE_SIZE = 20;
 
 
-    public LineRemovePanel(double screenSize, TetrisPanel tetrispanel) {
+    public LineRemovePanel(double screenSize) {
         this.setLayout(new BorderLayout());
         this.screenSize = screenSize;
-        this.tetrisPanel = tetrispanel;
         this.SQUARE_SIZE = (int)(10 * screenSize);
         this.attackBoard = new int[ATTACK_BOARD_SIZE][ATTACK_BOARD_SIZE]; // Initialize the attack board
         setSize(ATTACK_BOARD_SIZE * SQUARE_SIZE, ATTACK_BOARD_SIZE * SQUARE_SIZE);

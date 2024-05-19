@@ -51,6 +51,8 @@ public class TetrisPanel extends JPanel{
     }
     //--------대전모드용------------------------------------------------
     private LineRemovePanel lineRemovePanel;
+    private LineRemovePanel lineInputPanel;
+    private LineRemovePanel lineOutputPanel;
     public void setLineRemovePanel(LineRemovePanel lineRemovePanel) {
         this.lineRemovePanel = lineRemovePanel;
     }
@@ -79,6 +81,11 @@ public class TetrisPanel extends JPanel{
         return currBlock.getShape();
     }
 
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        this(gameOverCallBack, screenSize, colorMode);
+        this.lineInputPanel = lineInputPanel;
+        this.lineOutputPanel = lineOutputPanel;
+    }
     //---------------------------------------------------------------
 
     public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
@@ -86,7 +93,7 @@ public class TetrisPanel extends JPanel{
         this.screenSize = screenSize;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
-        lineRemovePanel = new LineRemovePanel(screenSize, this);
+        lineRemovePanel = new LineRemovePanel(screenSize);
 
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         currBlock = null;
@@ -94,6 +101,8 @@ public class TetrisPanel extends JPanel{
         createNewShape(); // 새 도형 생성
         repaint();
     }
+
+
 
 
     public void createNewShape() {

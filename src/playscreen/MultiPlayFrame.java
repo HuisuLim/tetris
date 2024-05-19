@@ -1,6 +1,7 @@
 package playscreen;
 
 
+import playscreen.panels.LineRemovePanel;
 import playscreen.panels.PausePanel;
 import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
@@ -15,6 +16,8 @@ public class MultiPlayFrame extends JFrame {
 
     public PlayPanel player1PlayPanel;
     public PlayPanel player2PlayPanel;
+    public LineRemovePanel lineRemovePanel1Pto2P;
+    public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
 
@@ -29,8 +32,8 @@ public class MultiPlayFrame extends JFrame {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
 
         //playPanel 추가
-        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode);
-        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode);
+        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel1Pto2P, lineRemovePanel2Pto1P);
+        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel2Pto1P, lineRemovePanel1Pto2P);
         add(player1PlayPanel);
         add(player2PlayPanel);
 
