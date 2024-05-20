@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="setting 테스트 코드 작성">
+    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/MainFrameWithPopup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/SettingItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/SettingsWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/TetrisProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/TextFieldExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/MultiPlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/SinglePlayFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/LineRemovePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/LineRemovePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/NameInputPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/NameInputPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/TetrisPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/utils/ColorTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/utils/ColorTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/utils/SinglePlayKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/utils/SinglePlayKeyListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +23,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/playscreen/panels/PlayPanel.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,50 +48,44 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.ScoreboardReset.executor": "Run",
-    "Application.Setting.executor": "Run",
-    "Application.StartMenu.executor": "Run",
-    "Application.settingMain.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.All in tetris.executor": "Coverage",
-    "JUnit.SettingModelTest.executor": "Run",
-    "JUnit.SettingModelTest.testLoadKeySettings.executor": "Run",
-    "JUnit.SinglePlayFrameTest.executor": "Coverage",
-    "JUnit.playscreen in tetris.executor": "Coverage",
-    "JUnit.settingControllerTest.executor": "Coverage",
-    "JUnit.settingControllerTest.testActionPerformedWithScreenSize.executor": "Coverage",
-    "JUnit.settingControllerTest.testKeyBindingsSetup.executor": "Run",
-    "JUnit.settingControllerTest.testScreenSizeSetting.executor": "Coverage",
-    "JUnit.settingMainTest.executor": "Coverage",
-    "JUnit.settingModelTest.executor": "Coverage",
-    "JUnit.settingViewTest.executor": "Run",
-    "JUnit.settings in tetris.executor": "Coverage",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/limhuisu/Desktop/tetris/test/settings",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ScoreboardReset.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Setting.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StartMenu.executor&quot;: &quot;Run&quot;,
+    &quot;Application.settingMain.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.SettingModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SettingModelTest.testLoadKeySettings.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.settingControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.settingControllerTest.testKeyBindingsSetup.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.settingModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.settingViewTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.settings in tetris.executor&quot;: &quot;Coverage&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/limhuisu/Desktop/tetrisFinalMain/test/settings&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/settings" />
@@ -102,30 +100,31 @@
       <recent name="playscreen.panels" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="All in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.settingControllerTest.testKeyBindingsSetup">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tetris" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="playscreen in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SettingModelTest.testLoadKeySettings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="playscreen.*" />
+          <option name="PATTERN" value="settings.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="playscreen" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="settings" />
+      <option name="MAIN_CLASS_NAME" value="settings.SettingModelTest" />
+      <option name="METHOD_NAME" value="testLoadKeySettings" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="settingControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="settingControllerTest.testKeyBindingsSetup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
         <pattern>
@@ -135,22 +134,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="settings" />
       <option name="MAIN_CLASS_NAME" value="settings.settingControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="settingControllerTest.testScreenSizeSetting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="settings.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="settings" />
-      <option name="MAIN_CLASS_NAME" value="settings.settingControllerTest" />
-      <option name="METHOD_NAME" value="testScreenSizeSetting" />
+      <option name="METHOD_NAME" value="testKeyBindingsSetup" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,13 +156,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in tetris" />
-        <item itemvalue="JUnit.playscreen in tetris" />
+        <item itemvalue="JUnit.settingControllerTest.testKeyBindingsSetup" />
         <item itemvalue="JUnit.settings in tetris" />
-        <item itemvalue="JUnit.settingControllerTest" />
-        <item itemvalue="JUnit.settingControllerTest.testScreenSizeSetting" />
+        <item itemvalue="JUnit.SettingModelTest.testLoadKeySettings" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -192,8 +181,6 @@
       <workItem from="1715590629240" duration="200000" />
       <workItem from="1715590923896" duration="15597000" />
       <workItem from="1716110581313" duration="8805000" />
-      <workItem from="1716173375955" duration="7908000" />
-      <workItem from="1716201778262" duration="948000" />
     </task>
     <task id="LOCAL-00001" summary="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가.">
       <option name="closed" value="true" />
@@ -267,15 +254,7 @@
       <option name="project" value="LOCAL" />
       <updated>1715888515931</updated>
     </task>
-    <task id="LOCAL-00010" summary="setting 테스트 코드 작성">
-      <option name="closed" value="true" />
-      <created>1716193263388</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1716193263388</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,11 +281,10 @@
     <MESSAGE value="TetrisKeyListener.java 삭제" />
     <MESSAGE value="PlayFrame -&gt; SinglePlayFrame" />
     <MESSAGE value="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서" />
-    <MESSAGE value="setting 테스트 코드 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting 테스트 코드 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/tetris$settingMainTest.ic" NAME="settingMainTest Coverage Results" MODIFIED="1716193158640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/tetrisFinalMain$settingModelTest.ic" NAME="settingModelTest Coverage Results" MODIFIED="1715650271150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -316,32 +294,6 @@
       <FILTER>settings.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/tetrisFinalMain$settingControllerTest.ic" NAME="settingControllerTest Coverage Results" MODIFIED="1715664983653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$settingControllerTest.ic" NAME="settingControllerTest Coverage Results" MODIFIED="1716192887012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$settingControllerTest_testScreenSizeSetting.ic" NAME="settingControllerTest.testScreenSizeSetting Coverage Results" MODIFIED="1716188700396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$playscreen_in_tetris.ic" NAME="playscreen in tetris Coverage Results" MODIFIED="1716193293340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>playscreen.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$settingControllerTest_testActionPerformedWithScreenSize.ic" NAME="settingControllerTest.testActionPerformedWithScreenSize Coverage Results" MODIFIED="1716187006373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$Main.ic" NAME="Main Coverage Results" MODIFIED="1716202345824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/tetris$settingModelTest.ic" NAME="settingModelTest Coverage Results" MODIFIED="1716191665852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>settings.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$SinglePlayFrameTest.ic" NAME="SinglePlayFrameTest Coverage Results" MODIFIED="1716202145056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>playscreen.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/tetris$All_in_tetris.ic" NAME="All in tetris Coverage Results" MODIFIED="1716202187465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/tetris$settings_in_tetris.ic" NAME="settings in tetris Coverage Results" MODIFIED="1716193191867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
   </component>

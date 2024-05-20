@@ -7,7 +7,6 @@ import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
 import settings.settingModel;
 import startscreen.BattleDisplayWinner;
-import startscreen.StartMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,16 +20,18 @@ public class MultiPlayFrame extends JFrame {
     public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
-    private String gameMode;
-
+    private int timeLimit;
 
     public MultiPlayFrame(String gameMode) {
-        this.gameMode = gameMode;
         if(gameMode.equals("timeLimit")) {
-            Timer timer = new Timer(10000, e-> {
-                gameOver(1);
+            timeLimit = 300;
+            Timer timer = new Timer(1000, e-> {
+                timeLimit--;
+                if(timeLimit<=0) {
+                    gameOver(0);
+                }
             });
-            timer.setRepeats(false);
+            timer.setRepeats(true);
             timer.start();
         }
         setTitle("Battle Play Frame");
@@ -52,7 +53,7 @@ public class MultiPlayFrame extends JFrame {
         pausePanel = new PausePanel((int)(data.screenSize * 1.5)); // PausePanel 인스턴스 생성
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
-        getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
+        getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane 에 PausePanel 추가
 
         //KeyListener 추가
         int[] player1Keys = {KeyEvent.VK_W,KeyEvent.VK_D,KeyEvent.VK_S,KeyEvent.VK_A,KeyEvent.VK_SPACE};

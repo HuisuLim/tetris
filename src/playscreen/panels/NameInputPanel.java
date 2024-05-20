@@ -25,12 +25,12 @@ public class NameInputPanel extends JPanel {
         input.setFont(new Font("Serif", Font.BOLD, (int)(15 * screenSize)));
         add(input);
 
-        //enter키 입력 안내하는 label 생성
-        JLabel descriptionLabel = new JLabel("입력후 enter를 눌러주세요");
+        //enter 입력 안내하는 label 생성
+        JLabel descriptionLabel = new JLabel("입력후 enter 눌러주세요");
         descriptionLabel.setFont(new Font("Serif", Font.BOLD, (int)(15 * screenSize)));
         add(descriptionLabel);
 
-        //enter키 입력했을때 동작. 스코어보드 창 생성하고 게임 창 닫기.
+        //enter 입력했을때 동작. 스코어보드 창 생성하고 게임 창 닫기.
         input.addActionListener(e -> {
             String name = input.getText();
             if (name.isEmpty()) name = "unknown";

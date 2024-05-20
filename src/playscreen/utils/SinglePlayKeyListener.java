@@ -11,7 +11,7 @@ public class SinglePlayKeyListener  implements KeyListener {
     private final SinglePlayFrame singlePlayFrame;
     private final PlayPanel playPanel;
     private final int[] keys;
-    //keys 0 : upkey, 1 : rightkey, 2 : downkey, 3 : leftkey, 4 : space/enter
+    //keys 0 : up key, 1 : right key, 2 : down key, 3 : left key, 4 : space/enter
     //위부터 시계방향순서.
 
     public SinglePlayKeyListener(SinglePlayFrame singlePlayFrame, int[] keys){

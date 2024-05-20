@@ -7,7 +7,6 @@ import playscreen.blocks.BlockGenerator;
 import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
 
-import javax.sound.sampled.Line;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -103,7 +102,6 @@ public class TetrisPanel extends JPanel{
         createNewShape(); // 새 도형 생성
         repaint();
     }
-    int index = 0;
     public void attackByAnother(){
         if(lineOutputPanel!=null) {
             int injectRows = 10-lineOutputPanel.getFreeRows();

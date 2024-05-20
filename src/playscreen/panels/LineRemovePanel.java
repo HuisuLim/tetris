@@ -84,7 +84,7 @@ public class LineRemovePanel extends JPanel {
 
 /*
         //-----------확인용-------------------------ß-------
-        System.out.println("currnetRow: "+ currentRow);
+        System.out.println("currentRow: "+ currentRow);
         System.out.println("currentCol: "+currentCol);
         System.out.println("lineRemoveCount: "+lineRemoveCount);
         System.out.println("블록 shape");
@@ -149,7 +149,7 @@ public class LineRemovePanel extends JPanel {
         offScreenGraphics.setColor(Color.black);
         offScreenGraphics.fillRect(0, 0, getWidth(), getHeight());
 
-        super.paint(offScreenGraphics); // JFrame의 기본 페인트 메커니즘을 사용하여 구성요소를 그림
+        super.paint(offScreenGraphics); // JFrame 기본 페인트 메커니즘을 사용하여 구성요소를 그림
 
         // 게임 보드 그리는 부분
         for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {

@@ -13,5 +13,5 @@ public class ColorTable {
         else {
             return colorHex[0];
         }
-    };
+    }
 }

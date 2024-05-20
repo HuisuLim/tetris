@@ -34,7 +34,7 @@ public class SinglePlayFrame extends JFrame {
         pausePanel = new PausePanel((int)(data.screenSize)); // PausePanel 인스턴스 생성
         pausePanel.setLocation((getWidth() - pausePanel.getWidth()) / 2, (getHeight() - pausePanel.getHeight()) / 2); // 위치 중앙으로 설정
         pausePanel.setVisible(false); // 초기에는 보이지 않게 설정
-        getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane에 PausePanel 추가
+        getLayeredPane().add(pausePanel, JLayeredPane.POPUP_LAYER); // JLayeredPane 에 PausePanel 추가
         
         //KeyListener 추가
         SinglePlayKeyListener singlePlayKeyListener = new SinglePlayKeyListener(this, data.loadKeys());

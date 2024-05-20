@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class ItemShowPanel extends JPanel {
 
-        protected settingModel data;
-        protected final int SQUARE_SIZE;
+        private final settingModel data;
+        private final int SQUARE_SIZE;
         protected final int[] colorTable;
         public ItemShowPanel(settingModel data) {
             this.data = data;
@@ -39,17 +39,14 @@ public class ItemShowPanel extends JPanel {
 
         protected void drawSquare(Graphics g, int x, int y, int blockNum) {
             if(blockNum == 11 && x ==2 && y ==1){
-                g.drawString("destory under weight block", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE);
+                g.drawString("destroy under weight block", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE);
             }
             if (blockNum > 10) {
                 int colorCode = colorTable[blockNum % 10];
                 Color color = new Color(colorCode);
                 g.setColor(color);
                 switch (blockNum) {
-                    case 11 -> {
-
-                        g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
-                    }
+                    case 11 -> g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
                     case 12 -> {
                         g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                         g.setColor(Color.black);
@@ -202,7 +199,7 @@ public class ItemShowPanel extends JPanel {
                         // 아래쪽 화살표 머리를 그립니다.
                         g.fillPolygon(xPointsDown, yPointsDown, 3);
 
-                        g.drawString("cross line destory", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("cross line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
                     }
                     case 16 -> {
                         g.setColor(Color.black);
@@ -216,18 +213,15 @@ public class ItemShowPanel extends JPanel {
             }
         }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Tetris Game Example");
+            ItemShowPanel panel = new ItemShowPanel(new settingModel());
 
-            public void run() {
-                JFrame frame = new JFrame("Tetris Game Example");
-                ItemShowPanel panel = new ItemShowPanel(new settingModel());
-
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.add(panel);
-                frame.pack(); // 컴포넌트에 맞게 프레임 크기 조절
-                frame.setLocationRelativeTo(null); // 화면 가운데에 프레임 위치
-                frame.setVisible(true); // 프레임을 보이게 설정
-            }
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.add(panel);
+            frame.pack(); // 컴포넌트에 맞게 프레임 크기 조절
+            frame.setLocationRelativeTo(null); // 화면 가운데에 프레임 위치
+            frame.setVisible(true); // 프레임을 보이게 설정
         });
     }
 
