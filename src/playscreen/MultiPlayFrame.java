@@ -6,6 +6,7 @@ import playscreen.panels.PausePanel;
 import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
 import settings.settingModel;
+import startscreen.BattleDisplayWinner;
 import startscreen.StartMenu;
 
 import javax.swing.*;
@@ -20,12 +21,10 @@ public class MultiPlayFrame extends JFrame {
     public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
-    public String game = "battleMode";
 
 
     public MultiPlayFrame(String gameMode) {
         setTitle("Battle Play Frame");
-        game = "battleMode";
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         settingModel data = new settingModel();
         setSize((int)(data.screenSize * 20 * 20 * 2),(int)(data.screenSize * 20 * 20));
@@ -69,10 +68,13 @@ public class MultiPlayFrame extends JFrame {
     }
 
     public void gameOver(int score) {
-
+        boolean player1 = player1PlayPanel.getIsGameOver();
+        boolean player2 = player2PlayPanel.getIsGameOver();
+        if(player1) BattleDisplayWinner.displayWinner(0,1);
+        else if(player2) BattleDisplayWinner.displayWinner(1,0);
+        else BattleDisplayWinner.displayWinner(0,0);
         dispose();
-        StartMenu menu = new StartMenu();
-        menu.setVisible(true);
+        //BattleDisplayWinner.displayWinner(player1PlayPanel.getScore(), player2PlayPanel.getScore());
     }
 
 }

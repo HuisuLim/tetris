@@ -85,17 +85,17 @@ public class PlayPanel extends JPanel {
         rightPanel.add(nextBlockPanel);
 
         // 나머지 1 개의 패널은 비워둡니다.
-        if (gameMode.equals("itemMode")) {
-            ItemShowPanel itemShowPanel = new ItemShowPanel(data);
-            itemShowPanel.setPreferredSize(new Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
-            rightPanel.add(itemShowPanel);
-        }
-        else if(isMultiPlay){
+        if (isMultiPlay) {
             //--------------------------공격 화면 테스트용------------------------
             rightPanel.add(lineOutputPanel);
             tetrisPanel.setLineRemovePanel(lineInputPanel,lineOutputPanel);
             //-----------------------------------------------------------------
             //rightPanel.add(new JPanel());
+        }
+        else if(gameMode.equals("itemMode")){
+            ItemShowPanel itemShowPanel = new ItemShowPanel(data);
+            itemShowPanel.setPreferredSize(new Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
+            rightPanel.add(itemShowPanel);
         }
         else{
             rightPanel.add(new JPanel());
@@ -157,5 +157,13 @@ public class PlayPanel extends JPanel {
         else if (input == 4) tetrisPanel.goDownToEnd();
         scorePanel.updateScore(tetrisPanel.getScore());
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
+    }
+
+    public int getScore() {
+        return tetrisPanel.getScore();
+    }
+
+    public boolean getIsGameOver() {
+        return tetrisPanel.getIsGameOver();
     }
 }
