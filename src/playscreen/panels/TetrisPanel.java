@@ -53,7 +53,7 @@ public class TetrisPanel extends JPanel{
     //--------대전모드용------------------------------------------------
     private LineRemovePanel lineInputPanel;
     private LineRemovePanel lineOutputPanel;
-    public String game;
+    private boolean isMultiPlay = false;
     public void setLineRemovePanel(LineRemovePanel lineRemovePanel, LineRemovePanel lineRemovePanel2) {
         this.lineInputPanel = lineRemovePanel;
         this.lineOutputPanel = lineRemovePanel2;
@@ -83,17 +83,17 @@ public class TetrisPanel extends JPanel{
         return currBlock.getShape();
     }
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, String game, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
-        this(gameOverCallBack, screenSize, colorMode, game);
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        this(gameOverCallBack, screenSize, colorMode);
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
+        this.isMultiPlay = true;
     }
     //---------------------------------------------------------------
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, String game) {
+    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
         this.gameOverCallBack = gameOverCallBack;
         this.screenSize = screenSize;
-        this.game = game;
         this.SQUARE_SIZE = (int)(20 * screenSize);
         this.colorTable = ColorTable.getTable(colorMode);
 
@@ -233,12 +233,12 @@ public class TetrisPanel extends JPanel{
         }
         else {
             mergeShapeToBoard();
-            if(game.equals("multi")) {
+            if(isMultiPlay) {
                 attackByAnother();
                 lineOutputPanel.clearAttackBoard();
             }
             if(checkLines()) {
-                if (lineInputPanel != null && game.equals("multi")) {
+                if (lineInputPanel != null && isMultiPlay) {
                     lineInputPanel.updateAttackBoard(getlineRemoveCount(), getCurrentRow(), getCurrentCol(), getCurrBlock(), getBoardCopy());
                 }
                 isCleaningTime = true;

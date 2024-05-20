@@ -8,8 +8,8 @@ public class ItemModeTetrisPanel extends TetrisPanel {
     protected int itemGenerateCount = -100;
     protected boolean weightBlockCanMove;
 
-    public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, String game) {
-        super(gameOverCallBack, screenSize, colorMode, game);
+    public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+        super(gameOverCallBack, screenSize, colorMode);
     }
 
     @Override

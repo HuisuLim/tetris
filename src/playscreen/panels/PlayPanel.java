@@ -23,13 +23,12 @@ public class PlayPanel extends JPanel {
 
     //상태 변수들.
     private boolean isPaused = false;
+    private boolean isMultiPlay = false;
 
     private final String gameMode;
-    private String game;
 
-    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, String game) {
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode) {
         this.data = data;
-        this.game = game;
         this.gameMode = gameMode;
         setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
         initUI(gameOverCallBack);
@@ -39,10 +38,10 @@ public class PlayPanel extends JPanel {
 
     }
 
-    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel, String game) {
+    public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        isMultiPlay = true;
         this.data = data;
         this.gameMode = gameMode;
-        this.game = game;
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
         setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
@@ -56,18 +55,18 @@ public class PlayPanel extends JPanel {
     private void initUI(GameOverCallBack gameOverCallBack) {
         setLayout(new GridLayout(1, 2)); // 프레임을 가로로 2등분
         // 왼쪽 패널 : 테트리스 패널
-        if (game.equals("multi")){
+        if (isMultiPlay){
             if (gameMode.equals("itemMode")) {
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game ,lineInputPanel, lineOutputPanel);
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, lineInputPanel, lineOutputPanel);
             }
             else{
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game, lineInputPanel, lineOutputPanel);
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, lineInputPanel, lineOutputPanel);
             }
-        } else if (game.equals("single")) {
+        } else{
             if (gameMode.equals("itemMode")) {
-                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game);
+                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
             } else {
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, game);
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
             }
         }
         add(tetrisPanel);
@@ -91,9 +90,9 @@ public class PlayPanel extends JPanel {
             itemShowPanel.setPreferredSize(new Dimension((int)(10 * 20 * data.screenSize), (int)(6 * 20 * data.screenSize)));
             rightPanel.add(itemShowPanel);
         }
-        else if(game.equals("multi")){
+        else if(isMultiPlay){
             //--------------------------공격 화면 테스트용------------------------
-            rightPanel.add(lineInputPanel);
+            rightPanel.add(lineOutputPanel);
             tetrisPanel.setLineRemovePanel(lineInputPanel,lineOutputPanel);
             //-----------------------------------------------------------------
             //rightPanel.add(new JPanel());
@@ -126,7 +125,7 @@ public class PlayPanel extends JPanel {
         tetrisPanel.goDown();
         scorePanel.updateScore(tetrisPanel.getScore());
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
-        if(game.equals("multi")) {
+        if(isMultiPlay) {
             lineInputPanel.repaint();
         }
         repaint();
