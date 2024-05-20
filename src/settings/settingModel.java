@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class settingModel {
     public static String SETTINGS_FILE = "settings.properties";
-    private static String SCOREBOARD_FILE = "scoreboard.txt";
+    public static String SCOREBOARD_FILE = "scoreboard.txt";
     private static final String SCREEN_SIZE_KEY = "ScreenSize";
     private static final String COLOR_MODE_KEY = "ColorMode";
     private static final String CONTROL_KEY = "MOVEMENT";
@@ -31,7 +31,9 @@ public class settingModel {
     public void setSettingsFile(String fileName){
         SETTINGS_FILE = fileName;
     }
-
+    public void setScoreboardFile(String fileName){
+        SCOREBOARD_FILE = fileName;
+    }
 
     public String loadKeySettings() {
         Properties properties = new Properties();
@@ -137,9 +139,13 @@ public class settingModel {
         File file = new File(SCOREBOARD_FILE);
         try {
             new FileWriter(file, false).close();
-            JOptionPane.showMessageDialog(null, "스코어보드가 초기화되었습니다.", "완료", JOptionPane.INFORMATION_MESSAGE);
+            if(SCOREBOARD_FILE.equals("scoreboard.txt") ) {
+                JOptionPane.showMessageDialog(null, "스코어보드가 초기화되었습니다.", "완료", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (IOException ioException) {
-            JOptionPane.showMessageDialog(null, "스코어보드 초기화 실패.", "오류", JOptionPane.ERROR_MESSAGE);
+            if(SCOREBOARD_FILE.equals("scoreboard.txt")) {
+                JOptionPane.showMessageDialog(null, "스코어보드 초기화 실패.", "오류", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

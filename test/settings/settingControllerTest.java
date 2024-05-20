@@ -1,27 +1,22 @@
 package settings;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 class settingControllerTest {
     private settingController controller;
     private settingModel model;
     private settingView view;
-    private JButton mockButton;
+
     private void buttonCheck(int x, int buttonNum, settingView viewTest){
         if(buttonNum == 4) {
             switch (x) {
@@ -108,7 +103,7 @@ class settingControllerTest {
         // Note: Checking view.dispose() effects would need mock or spying unless it changes state checked here
         // For this, we might prefer using a tool like Mockito to spy on `view` methods.
     }
-
+/*
     @Test
     void testActionPerformedWithScreenSize() {
         view = new settingView("ScreenSize");
@@ -122,19 +117,106 @@ class settingControllerTest {
         // Assuming a method exists to check if the view was disposed or not
     }
 
+ */
+
     @Test
-    void testInitialSelectionWithDefaultSettings() {
-        // Assuming default is 1.6 for screen size
+    void testSetInitialSelection() {
+        view = new settingView("Reset");
+        controller = new settingController(model, view);
+        view = new settingView("ScoreBoardReset");
+        controller = new settingController(model, view);
         String[] ScreenSize = {"100" ,"1", "1.6", "2.4"};
         String[] ColorMode = {"default", "false", "true"};
         String[] MOVEMENT = {"default", "ArrowKeys", "WASD"};
         String[] Difficulty = {"default", "easy", "normal", "hard"};
+
         check(ScreenSize, "ScreenSize");
         check(ColorMode, "ColorMode");
         check(MOVEMENT, "MOVEMENT");
         check(Difficulty, "Difficulty");
     }
+    @Test
+    void testSettings() {
+        // Create a map of setting names and their expected values after actionPerformed
+        double[] ScreenSize = {1.0, 1.6, 2.4};
+        Map<String, String[]> testCases = new HashMap<>();
+        //testCases.put("ScreenSize", new String[]{"1.0", "1.6", "2.4"});
+        testCases.put("ColorMode", new String[]{"false", "true"});
+        testCases.put("MOVEMENT", new String[]{"ArrowKeys", "WASD"});
+        testCases.put("Difficulty", new String[]{"easy", "normal", "hard"});
 
+        // Test ScreenSize setting
+        view = new settingView("ScreenSize");
+        controller = new settingController(model, view);
+        AbstractButton[] screenSizeButtons = {view.Button1, view.Button2, view.Button3};
+        for (int i = 0; i < ScreenSize.length; i++) {
+            screenSizeButtons[i].setSelected(true);
+            controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+            assertEquals(ScreenSize[i], model.loadScreenSize());
+        }
+
+        // Test ColorMode setting
+        view = new settingView("ColorMode");
+        controller = new settingController(model, view);
+        AbstractButton[] colorModeButtons = {view.Button1, view.Button2};
+        for (int i = 0; i < testCases.get("ColorMode").length; i++) {
+            colorModeButtons[i].setSelected(true);
+            controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+            assertEquals(Boolean.parseBoolean(testCases.get("ColorMode")[i]), model.loadColorBlindMode());
+        }
+
+        // Test MOVEMENT setting
+        view = new settingView("MOVEMENT");
+        controller = new settingController(model, view);
+        AbstractButton[] movementButtons = {view.Button1, view.Button2};
+        for (int i = 0; i < testCases.get("MOVEMENT").length; i++) {
+            movementButtons[i].setSelected(true);
+            controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+            assertEquals(testCases.get("MOVEMENT")[i], model.loadKeySettings());
+        }
+
+        // Test Difficulty setting
+        view = new settingView("Difficulty");
+        controller = new settingController(model, view);
+        AbstractButton[] difficultyButtons = {view.Button1, view.Button2, view.Button3};
+        for (int i = 0; i < testCases.get("Difficulty").length; i++) {
+            difficultyButtons[i].setSelected(true);
+            controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+            assertEquals(testCases.get("Difficulty")[i], model.loadDifficulty());
+        }
+
+        // Test Reset setting
+        view = new settingView("Reset");
+        controller = new settingController(model, view);
+        controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+        assertEquals(1.6, model.loadScreenSize());
+        assertEquals(false, model.loadColorBlindMode());
+        assertEquals("ArrowKeys", model.loadKeySettings());
+        assertEquals("normal", model.loadDifficulty());
+
+        // Test ScoreBoardReset setting
+        view = new settingView("ScoreBoardReset");
+        controller = new settingController(model, view);
+        model.setScoreboardFile("test/settings/scoreBoard.txt");
+        writeToSettingsFile("test");
+        controller.actionPerformed(new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, null));
+        assertEquals(0, new File(settingModel.SCOREBOARD_FILE).length(), "Scoreboard file should be empty after clearing.");
+    }
+    public void writeToSettingsFile(String content) {
+        File file = new File(settingModel.SCOREBOARD_FILE);
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+    ActionEvent event = new ActionEvent(view.checkButton, ActionEvent.ACTION_PERFORMED, "ScreenSize");
+        controller.actionPerformed(event);
+
+        assertEquals(1.0, model.loadScreenSize());
+     */
 
 
 }
