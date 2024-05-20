@@ -32,6 +32,7 @@ public class BattleDisplayWinner {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     // If Escape key is pressed, close the frame
                     frame.dispose();
+                    new StartMenu().setVisible(true);
                 }
             }
         });

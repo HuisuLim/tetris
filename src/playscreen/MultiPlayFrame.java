@@ -21,9 +21,18 @@ public class MultiPlayFrame extends JFrame {
     public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
+    private String gameMode;
 
 
     public MultiPlayFrame(String gameMode) {
+        this.gameMode = gameMode;
+        if(gameMode.equals("timeLimit")) {
+            Timer timer = new Timer(10000, e-> {
+                gameOver(1);
+            });
+            timer.setRepeats(false);
+            timer.start();
+        }
         setTitle("Battle Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         settingModel data = new settingModel();
@@ -72,7 +81,7 @@ public class MultiPlayFrame extends JFrame {
         boolean player2 = player2PlayPanel.getIsGameOver();
         if(player1) BattleDisplayWinner.displayWinner(0,1);
         else if(player2) BattleDisplayWinner.displayWinner(1,0);
-        else BattleDisplayWinner.displayWinner(0,0);
+        else BattleDisplayWinner.displayWinner(player1PlayPanel.getScore(), player2PlayPanel.getScore());
         dispose();
         //BattleDisplayWinner.displayWinner(player1PlayPanel.getScore(), player2PlayPanel.getScore());
     }

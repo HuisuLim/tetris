@@ -67,7 +67,7 @@ public class BattleMode extends JFrame {
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new MultiPlayFrame("Normal");
+                nextFrame = new MultiPlayFrame("timeLimit");
                 nextFrame.setVisible(true);
                 setVisible(false); // 현재 화면 숨기기
             }
