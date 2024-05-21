@@ -21,6 +21,7 @@ public class StartMenuTest {
 
     @Test
     public void testDefaultSettings() {
+
         assertEquals(1.6, StartMenu.screenRatio, 0.01);
         assertFalse(StartMenu.isColorblindness);
         assertEquals("ArrowKeys", StartMenu.keySetting);

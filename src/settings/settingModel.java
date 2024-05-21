@@ -193,6 +193,7 @@ public class settingModel {
     public final int[] keys;
 
     public settingModel() {
+        setDefaultSetting();
         screenSize = loadScreenSize();
         colorBlindMode = loadColorBlindMode();
         difficulty = loadDifficulty();
@@ -204,6 +205,29 @@ public class settingModel {
     }
     public void setScoreboardFile(String fileName){
         SCOREBOARD_FILE = fileName;
+    }
+
+    public void setDefaultSetting() {
+        Properties properties = new Properties();
+        File file = new File(SETTINGS_FILE);
+        if (!file.exists() || file.length() == 0) {
+            try {
+                if (!file.exists()) {
+                    if (!file.createNewFile()) {
+                        throw new IOException("Failed to create new settings file.");
+                    }
+                }
+                try (OutputStream output = new FileOutputStream(SETTINGS_FILE)) {
+                    properties.setProperty(SCREEN_SIZE_KEY, "1.6");
+                    properties.setProperty(COLOR_MODE_KEY, "false");
+                    properties.setProperty(CONTROL_KEY, "ArrowKeys");
+                    properties.setProperty(DIFFICULTY_KEY, "normal");
+                    properties.store(output, null);
+                }
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "Failed to create or write default settings", e);
+            }
+        }
     }
 
     public String loadKeySettings() {
