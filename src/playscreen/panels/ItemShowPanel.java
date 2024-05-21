@@ -45,13 +45,16 @@ public class ItemShowPanel extends JPanel {
                 int colorCode = colorTable[blockNum % 10];
                 Color color = new Color(colorCode);
                 g.setColor(color);
+                final int y1 = y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3;
+                final int x1 = x * SQUARE_SIZE + SQUARE_SIZE * 3 / 4;
+                final int y2 = y * SQUARE_SIZE + SQUARE_SIZE * 3 / 4;
                 switch (blockNum) {
                     case 11 -> g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
                     case 12 -> {
                         g.fillRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
                         g.setColor(Color.black);
                         g.fillRect(x * SQUARE_SIZE + SQUARE_SIZE / 4, y * SQUARE_SIZE + SQUARE_SIZE / 4, SQUARE_SIZE / 2, SQUARE_SIZE / 2);
-                        g.drawString("block shape destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("block shape destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y1);
                     }
                     case 13 -> {
 
@@ -75,8 +78,8 @@ public class ItemShowPanel extends JPanel {
                         // 아래쪽 화살표 머리의 좌표 배열
                         int[] xPointsRight = {
                                 x * SQUARE_SIZE + SQUARE_SIZE ,
-                                x * SQUARE_SIZE + SQUARE_SIZE*3/4,
-                                x * SQUARE_SIZE + SQUARE_SIZE*3/4
+                                x1,
+                                x1
                         };
                         int[] yPointsRight = {
                                 y * SQUARE_SIZE + SQUARE_SIZE / 2,
@@ -89,7 +92,7 @@ public class ItemShowPanel extends JPanel {
 
                         // 아래쪽 화살표 머리를 그립니다.
                         g.fillPolygon(xPointsRight, yPointsRight, 3);
-                        g.drawString("horizontal line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("horizontal line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y1);
                     }
                     case 14 -> {
 
@@ -118,8 +121,8 @@ public class ItemShowPanel extends JPanel {
                         };
                         int[] yPointsDown = {
                                 y * SQUARE_SIZE + SQUARE_SIZE ,
-                                y * SQUARE_SIZE + SQUARE_SIZE*3/4,
-                                y * SQUARE_SIZE + SQUARE_SIZE*3/4
+                                y2,
+                                y2
                         };
 
                         // 위쪽 화살표 머리를 그립니다.
@@ -127,7 +130,7 @@ public class ItemShowPanel extends JPanel {
 
                         // 아래쪽 화살표 머리를 그립니다.
                         g.fillPolygon(xPointsDown, yPointsDown, 3);
-                        g.drawString("vertical line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("vertical line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y1);
                     }
                     case 15 -> {
 
@@ -144,20 +147,21 @@ public class ItemShowPanel extends JPanel {
                         };
                         int[] yPointsLeft = {
                                 y* SQUARE_SIZE + SQUARE_SIZE / 2,
-                                y * SQUARE_SIZE + SQUARE_SIZE /4,
-                                y * SQUARE_SIZE + SQUARE_SIZE *3/4
+                                y * SQUARE_SIZE + SQUARE_SIZE / 4,
+                                y2
                         };
 
                         // 아래쪽 화살표 머리의 좌표 배열
+                        int x2 = x * SQUARE_SIZE + SQUARE_SIZE * 7 / 8;
                         int[] xPointsRight = {
                                 x * SQUARE_SIZE + SQUARE_SIZE ,
-                                x * SQUARE_SIZE + SQUARE_SIZE*7/8,
-                                x * SQUARE_SIZE + SQUARE_SIZE*7/8
+                                x2,
+                                x2
                         };
                         int[] yPointsRight = {
                                 y* SQUARE_SIZE + SQUARE_SIZE / 2,
                                 y * SQUARE_SIZE + SQUARE_SIZE /4,
-                                y * SQUARE_SIZE + SQUARE_SIZE *3/4
+                                y2
                         };
 
                         // 위쪽 화살표 머리를 그립니다.
@@ -173,7 +177,7 @@ public class ItemShowPanel extends JPanel {
                         int[] xPointsUp = {
                                 x * SQUARE_SIZE + SQUARE_SIZE / 2,
                                 x * SQUARE_SIZE + SQUARE_SIZE /4,
-                                x * SQUARE_SIZE + SQUARE_SIZE *3 /4
+                                x1
                         };
                         int[] yPointsUp = {
                                 y * SQUARE_SIZE,
@@ -185,12 +189,13 @@ public class ItemShowPanel extends JPanel {
                         int[] xPointsDown = {
                                 x * SQUARE_SIZE + SQUARE_SIZE / 2,
                                 x * SQUARE_SIZE + SQUARE_SIZE /4,
-                                x * SQUARE_SIZE + SQUARE_SIZE *3/4
+                                x1
                         };
+                        int y3 = y * SQUARE_SIZE + SQUARE_SIZE * 7 / 8;
                         int[] yPointsDown = {
                                 y * SQUARE_SIZE + SQUARE_SIZE ,
-                                y * SQUARE_SIZE + SQUARE_SIZE*7/8,
-                                y * SQUARE_SIZE + SQUARE_SIZE*7/8
+                                y3,
+                                y3
                         };
 
                         // 위쪽 화살표 머리를 그립니다.
@@ -199,7 +204,7 @@ public class ItemShowPanel extends JPanel {
                         // 아래쪽 화살표 머리를 그립니다.
                         g.fillPolygon(xPointsDown, yPointsDown, 3);
 
-                        g.drawString("cross line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("cross line destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y1);
                     }
                     case 16 -> {
                         g.setColor(Color.black);
@@ -207,7 +212,7 @@ public class ItemShowPanel extends JPanel {
                         g.setColor(color);
                         g.fillOval(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE); // 원 채우기
                         g.setColor(Color.black);
-                        g.drawString("all block destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y * SQUARE_SIZE + SQUARE_SIZE / 4 * 3);
+                        g.drawString("all block destroy", x * SQUARE_SIZE + SQUARE_SIZE*4, y1);
                     }
                 }
             }

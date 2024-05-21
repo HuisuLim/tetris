@@ -1,10 +1,7 @@
 package settings;
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import static javax.swing.SwingUtilities.getRootPane;
 
 public class settingController implements ActionListener {
     KeyAdapter keyAdapter = new KeyAdapter() {
@@ -13,12 +10,12 @@ public class settingController implements ActionListener {
             int keyCode = e.getKeyCode();
 
             if (keyCode == model.getLeftKey() || keyCode == model.getRightKey()) {
-                switchRadioButton(keyCode, model, view.checkButton, view.Button1, view.Button2, view.Button3);
+                switchRadioButton(keyCode, model, view.Button1, view.Button2, view.Button3);
             }
         }
     };
-    private settingModel model;
-    private settingView view;
+    private final settingModel model;
+    private final settingView view;
 
     public settingController(settingModel model, settingView view) {
         this.model = model;
@@ -37,7 +34,6 @@ public class settingController implements ActionListener {
         String settingName = view.getSettingName();
         switch (settingName) {
             case "Reset":
-                break;
             case "ScoreBoardReset":
                 break;
             case "ScreenSize":
@@ -131,8 +127,8 @@ public class settingController implements ActionListener {
     }
 
 
-    private void switchRadioButton(int keyCode, settingModel model, JButton checkButton, JRadioButton... radioButtons) {
-        int index = 0;
+    private void switchRadioButton(int keyCode, settingModel model, JRadioButton... radioButtons) {
+        int index;
         if (view.Button1.isSelected()) {
             index = 0;
         } else if (view.Button2.isSelected()) {
@@ -161,8 +157,8 @@ public class settingController implements ActionListener {
         String settingName = view.getSettingName();
         switch (settingName) {
             case "ScreenSize":
-                double screenRatio = 1.6; // Default screen ratio
                 if (e.getSource() == view.checkButton) {
+                    double screenRatio = 0;
                     if (view.Button1.isSelected()) {
                         screenRatio = 1;
                     } else if (view.Button2.isSelected()) {

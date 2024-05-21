@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class settingView extends JFrame {
-    private String settingName;
+    private final String settingName;
     JRadioButton Button1, Button2, Button3;
     JButton checkButton;
     JPanel panel;
