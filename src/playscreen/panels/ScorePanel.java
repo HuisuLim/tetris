@@ -8,11 +8,13 @@ import java.awt.BorderLayout;
 
 public class ScorePanel extends JPanel {
     private int score;
+    private final double screenSize;
     private final JLabel scoreLabel;
 
     // Constructor
     public ScorePanel(double screenSize, int score) {
         this.score = score;
+        this.screenSize = screenSize;
         this.setLayout(new BorderLayout());
         
         scoreLabel = new JLabel(String.valueOf(score), SwingConstants.CENTER);
@@ -26,5 +28,12 @@ public class ScorePanel extends JPanel {
     public void updateScore(int newScore) {
         this.score = newScore;
         scoreLabel.setText(String.valueOf(newScore));
+    }
+
+    public void updateScore(int newScore, int timeLimit) {
+        this.score = newScore;
+        scoreLabel.setFont(new Font("Serif", Font.BOLD, (int)(10 * screenSize)));
+        String temp = "Score : " + score + "\n | Time : " + timeLimit;
+        scoreLabel.setText(temp);
     }
 }

@@ -6,6 +6,7 @@ import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
 import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
+import settings.settingModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.image.BufferedImage;
 
 public class TetrisPanel extends JPanel{
     private final GameOverCallBack gameOverCallBack;
-    protected double screenSize;
+    public final settingModel data;
     protected int[] colorTable;
 
     //보드 초기설정    게임보드의 가장 왼쪽 위가 board[0][0]
@@ -82,19 +83,19 @@ public class TetrisPanel extends JPanel{
         return currBlock.getShape();
     }
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
-        this(gameOverCallBack, screenSize, colorMode);
+    public TetrisPanel(GameOverCallBack gameOverCallBack, settingModel data , LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
+        this(gameOverCallBack, data);
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
         this.isMultiPlay = true;
     }
     //---------------------------------------------------------------
 
-    public TetrisPanel(GameOverCallBack gameOverCallBack, double screenSize, boolean colorMode) {
+    public TetrisPanel(GameOverCallBack gameOverCallBack, settingModel data) {
         this.gameOverCallBack = gameOverCallBack;
-        this.screenSize = screenSize;
-        this.SQUARE_SIZE = (int)(20 * screenSize);
-        this.colorTable = ColorTable.getTable(colorMode);
+        this.data = data;
+        this.SQUARE_SIZE = (int)(20 * data.screenSize);
+        this.colorTable = ColorTable.getTable(data.colorBlindMode);
 
         setSize(BOARD_WIDTH * SQUARE_SIZE, BOARD_HEIGHT * SQUARE_SIZE); // 창 크기 설정
         currBlock = null;

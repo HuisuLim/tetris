@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 public class PlayPanel extends JPanel {
 
     //data load
-    private final settingModel data;
+    public final settingModel data;
+    private int limitTime = -1;
 
     //panel load
     public TetrisPanel tetrisPanel;
@@ -24,6 +25,7 @@ public class PlayPanel extends JPanel {
     //상태 변수들.
     private boolean isPaused = false;
     private boolean isMultiPlay = false;
+    private GameOverCallBack gameOverCallBack;
 
     private final String gameMode;
 
@@ -39,12 +41,24 @@ public class PlayPanel extends JPanel {
     }
 
     public PlayPanel(GameOverCallBack gameOverCallBack,settingModel data, String gameMode, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
-        isMultiPlay = true;
         this.data = data;
         this.gameMode = gameMode;
+        setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
+        isMultiPlay = true;
+        if(gameMode.equals("timeLimit")) {
+            this.limitTime = 300;
+            this.gameOverCallBack = gameOverCallBack;
+            Timer limitTimer = new Timer(1000, e-> {
+                limitTime--;
+                if(limitTime<=0) {
+                    gameOverCallBack.onGameOver(0);
+                }
+            });
+            limitTimer.setRepeats(true);
+            limitTimer.start();
+        }
         this.lineInputPanel = lineInputPanel;
         this.lineOutputPanel = lineOutputPanel;
-        setSize((int)(data.screenSize * 20 * 20),(int)(data.screenSize * 20 * 20));
         initUI(gameOverCallBack);
         createTimer();
         timer.start();
@@ -57,16 +71,16 @@ public class PlayPanel extends JPanel {
         // 왼쪽 패널 : 테트리스 패널
         if (isMultiPlay){
             if (gameMode.equals("itemMode")) {
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, lineInputPanel, lineOutputPanel);
+                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data, lineInputPanel, lineOutputPanel);
             }
             else{
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode, lineInputPanel, lineOutputPanel);
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data, lineInputPanel, lineOutputPanel);
             }
         } else{
             if (gameMode.equals("itemMode")) {
-                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
+                tetrisPanel = new ItemModeTetrisPanel(gameOverCallBack, data);
             } else {
-                tetrisPanel = new TetrisPanel(gameOverCallBack, data.screenSize, data.colorBlindMode);
+                tetrisPanel = new TetrisPanel(gameOverCallBack, data);
             }
         }
         add(tetrisPanel);
@@ -118,12 +132,12 @@ public class PlayPanel extends JPanel {
 
 
     public void updateGame() {
-        if (tetrisPanel.getIsGameOver()) {
-            System.out.println("게임오버");
-            timer.stop();
-        }
         tetrisPanel.goDown();
-        scorePanel.updateScore(tetrisPanel.getScore());
+        if(limitTime > 0) {
+            scorePanel.updateScore(tetrisPanel.getScore(), limitTime);
+        } else if (limitTime == -1) {
+            scorePanel.updateScore(tetrisPanel.getScore());
+        }
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
         if(isMultiPlay) {
             lineInputPanel.repaint();
@@ -148,14 +162,18 @@ public class PlayPanel extends JPanel {
         else if (input == 0) tetrisPanel.rotate90();
         else if (input == 1) tetrisPanel.goRight();
         else if (input == 2){
-            //타이머 재시작 안해주면 아래키누르는데 timer까지 적용되서 2칸씩 내려가는거방지
+            //타이머 재시작 안해주면 아래키누르는데 timer 까지 적용되서 2칸씩 내려가는거방지
             timer.stop();
             timer.start();
             tetrisPanel.goDown();
         }
         else if (input == 3) tetrisPanel.goLeft();
         else if (input == 4) tetrisPanel.goDownToEnd();
-        scorePanel.updateScore(tetrisPanel.getScore());
+        if(limitTime > 0) {
+            scorePanel.updateScore(tetrisPanel.getScore(), limitTime);
+        } else if (limitTime == -1) {
+            scorePanel.updateScore(tetrisPanel.getScore());
+        }
         nextBlockPanel.updateBlock(tetrisPanel.getNextBlock());
     }
 

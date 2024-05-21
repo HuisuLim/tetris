@@ -20,7 +20,7 @@ public class MultiPlayFrame extends JFrame {
     public LineRemovePanel lineRemovePanel2Pto1P;
     public PausePanel pausePanel;
     private boolean isPaused = false;
-    private int timeLimit;
+    private int timeLimit = -1;
 
     public MultiPlayFrame(String gameMode) {
         if(gameMode.equals("timeLimit")) {
@@ -33,6 +33,7 @@ public class MultiPlayFrame extends JFrame {
             });
             timer.setRepeats(true);
             timer.start();
+
         }
         setTitle("Battle Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
