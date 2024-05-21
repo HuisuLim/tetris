@@ -25,7 +25,7 @@ public class BlockGenerator {
 
     private void setDifficulty() {
         // 기본 가중치 설정 (I, J, L, O, S, T, Z 블록)
-        this.weights = new int[]{10, 0, 0, 0, 0, 0, 0};
+        this.weights = new int[]{10, 10, 10, 10, 10, 10, 10};
         // 난이도에 따라 I형 블록의 가중치 조정
         switch (difficulty) {
             case "easy" -> this.weights[0] = 12; // 쉬운 난이도에서는 I형 블록이 더 자주 등장

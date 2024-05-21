@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서">
+    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="만든거 오류 최대한 줄임">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/settings.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/ItemShowPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/LineRemovePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/LineRemovePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/blocks/BlockGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playscreen/panels/NextBlockPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/playscreen/panels/NextBlockPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +94,7 @@
       <recent name="playscreen.panels" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tetris" />
@@ -155,6 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.settingControllerTest.testKeyBindingsSetup" />
         <item itemvalue="JUnit.settings in tetris" />
         <item itemvalue="JUnit.SettingModelTest.testLoadKeySettings" />
@@ -173,7 +169,7 @@
       <workItem from="1715590629240" duration="200000" />
       <workItem from="1715590923896" duration="15597000" />
       <workItem from="1716110581313" duration="8805000" />
-      <workItem from="1716268545506" duration="2720000" />
+      <workItem from="1716268545506" duration="3035000" />
     </task>
     <task id="LOCAL-00001" summary="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가.">
       <option name="closed" value="true" />
@@ -247,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715888515931</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="만든거 오류 최대한 줄임">
+      <option name="closed" value="true" />
+      <created>1716271298261</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716271298261</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +278,8 @@
     <MESSAGE value="TetrisKeyListener.java 삭제" />
     <MESSAGE value="PlayFrame -&gt; SinglePlayFrame" />
     <MESSAGE value="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서" />
-    <option name="LAST_COMMIT_MESSAGE" value="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서" />
+    <MESSAGE value="만든거 오류 최대한 줄임" />
+    <option name="LAST_COMMIT_MESSAGE" value="만든거 오류 최대한 줄임" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
