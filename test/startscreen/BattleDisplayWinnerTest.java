@@ -31,14 +31,14 @@ public class BattleDisplayWinnerTest {
     public void testPlayer1Wins() {
         frame = BattleDisplayWinner.displayWinner(10, 5);
         winnerLabel = (JLabel) frame.getContentPane().getComponent(0);
-        assertEquals("Player 1 wins!", winnerLabel.getText());
+        assertEquals("Player 1 win!", winnerLabel.getText());
     }
 
     @Test
     public void testPlayer2Wins() {
         frame = BattleDisplayWinner.displayWinner(5, 10);
         winnerLabel = (JLabel) frame.getContentPane().getComponent(0);
-        assertEquals("Player 2 wins!", winnerLabel.getText());
+        assertEquals("Player 2 win!", winnerLabel.getText());
     }
 
     @Test

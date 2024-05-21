@@ -1,1 +1,2 @@
- dd,456963,normal,itemMode
+Player1,100,Easy,itemMode
+Player2,150,Hard,normalMode

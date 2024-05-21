@@ -11,9 +11,9 @@ public class BattleDisplayWinner {
         if (player1Score > player2Score) {
             winnerMessage = "Player 1 win!";
         } else if (player2Score > player1Score) {
-            winnerMessage = "Player 2 win! ";
+            winnerMessage = "Player 2 win!";
         } else {
-            winnerMessage = "It's a tie! ";
+            winnerMessage = "It's a tie!";
         }
 
         // Create and set up the frame
