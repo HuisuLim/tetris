@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="공백문자 수정">
+    <list default="true" id="85d42c4f-b8c0-4fb7-8f25-c84ac9a1c733" name="Changes" comment="settings.properties 파일이 없거나 비어있는 경우 기본값 생성 로직 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings/settingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings/settingModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/settings/settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings/settings.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/startscreen/StartMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/startscreen/StartMenuTest.java" afterDir="false" />
     </list>
@@ -54,6 +53,7 @@
     "JUnit.All in tetris.executor": "Coverage",
     "JUnit.SettingModelTest.executor": "Run",
     "JUnit.SettingModelTest.testLoadKeySettings.executor": "Run",
+    "JUnit.StartMenuTest.executor": "Run",
     "JUnit.settingControllerTest.executor": "Run",
     "JUnit.settingControllerTest.testKeyBindingsSetup.executor": "Run",
     "JUnit.settingModelTest.executor": "Run",
@@ -97,7 +97,7 @@
       <recent name="playscreen.panels" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in tetris">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tetris" />
@@ -109,6 +109,21 @@
       <module name="tetris" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartMenuTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tetris" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="startscreen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="startscreen" />
+      <option name="MAIN_CLASS_NAME" value="startscreen.StartMenuTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,20 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="settings in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tetris" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="settings.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="settings" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="startscreen in tetris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tetris" />
       <extension name="coverage">
@@ -159,11 +160,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in tetris" />
+        <item itemvalue="JUnit.StartMenuTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.startscreen in tetris" />
         <item itemvalue="JUnit.settingControllerTest.testKeyBindingsSetup" />
-        <item itemvalue="JUnit.settings in tetris" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +181,7 @@
       <workItem from="1715590923896" duration="15597000" />
       <workItem from="1716110581313" duration="8805000" />
       <workItem from="1716268545506" duration="3035000" />
-      <workItem from="1716273651697" duration="1506000" />
+      <workItem from="1716273651697" duration="2399000" />
     </task>
     <task id="LOCAL-00001" summary="LineRemovePanel 추가 및 이를 위한 TetrisPanel.java 메서드 추가.">
       <option name="closed" value="true" />
@@ -270,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716274125953</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="settings.properties 파일이 없거나 비어있는 경우 기본값 생성 로직 추가">
+      <option name="closed" value="true" />
+      <created>1716293906785</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716293906785</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +308,8 @@
     <MESSAGE value="settingModel 클래스 생성자 생성. &#10;한번에 load하고 data들 사용할때 data.screenSize 이런식으로 사용&#10;이에맞게 Single/Multi PlayFrame과 종속된 클래스들 전부수정. data란 이름의 settingModel 인스턴스를 생성자 파라미터에 추가해서 data 받아옴.&#10;&#10;play 관련 클래스들 리팩토링. 안쓰는부분 제거(코드 커버리지 위해), 안바뀌는것들 final처리 등등.&#10;Block 클래스들 안쓰는부분(기본 생성자)주석처리. 코드 커버리지 위해서" />
     <MESSAGE value="만든거 오류 최대한 줄임" />
     <MESSAGE value="공백문자 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="공백문자 수정" />
+    <MESSAGE value="settings.properties 파일이 없거나 비어있는 경우 기본값 생성 로직 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings.properties 파일이 없거나 비어있는 경우 기본값 생성 로직 추가" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetrisFinalMain$SettingModelTest.ic" NAME="SettingModelTest Coverage Results" MODIFIED="1715592530140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -314,6 +324,6 @@
     <SUITE FILE_PATH="coverage/tetrisFinalMain$settingControllerTest.ic" NAME="settingControllerTest Coverage Results" MODIFIED="1715664983653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>settings.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/tetrisdfdfd$All_in_tetris.ic" NAME="All in tetris Coverage Results" MODIFIED="1716274152256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/tetrisdfdfd$All_in_tetris.ic" NAME="All in tetris Coverage Results" MODIFIED="1716294689515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
