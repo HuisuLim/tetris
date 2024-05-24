@@ -6,7 +6,7 @@ import settings.settingModel;
 import java.awt.*;
 
 public class ItemModeTetrisPanel extends TetrisPanel {
-    protected int itemGenerateCount = -100;
+    protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
 
     public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, settingModel data) {
