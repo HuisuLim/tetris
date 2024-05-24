@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 
 public class ScoreboardController extends JFrame {
     private DefaultTableModel model;
-    private JTable scoreboard;
+    private final JTable scoreboard;
 
     private String currentDifficulty;
     private String currentMode;

@@ -4,17 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import javax.swing.table.DefaultTableModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class ScoreboardControllerTest {
 
     private ScoreboardController scoreboardController;
-    private DefaultTableModel model;
 
     @BeforeEach
     public void setUp() {
         // 테스트를 위해 ScoreboardController와 DefaultTableModel을 초기화합니다.
-        model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         scoreboardController = new ScoreboardController("TestPlayer", 100, "Easy", "itemMode");
         scoreboardController.setModel(model);
     }
