@@ -6,7 +6,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 public class ScoreboardView extends JFrame {
     // 스코어보드를 보여주는 프레임 생성자
     public ScoreboardView() {

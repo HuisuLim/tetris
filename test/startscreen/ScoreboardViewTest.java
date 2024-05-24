@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,7 +55,6 @@ public class ScoreboardViewTest {
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) table.getColumn("Column2").getCellRenderer();
         assertEquals(SwingConstants.CENTER, renderer2.getHorizontalAlignment());
     }
-
 
     @Test
     void testAddKeyListenerToHideScoreboard() {

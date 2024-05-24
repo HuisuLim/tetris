@@ -1,8 +1,8 @@
-
 package startscreen;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
@@ -11,13 +11,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ScoreboardModelTest {
+
     private DefaultTableModel model;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() throws Exception {
         // 테스트 전에 새로운 DefaultTableModel 인스턴스를 생성
         model = new DefaultTableModel();
         // 모델에 컬럼 추가
@@ -27,11 +28,14 @@ public class ScoreboardModelTest {
         model.addColumn("Difficulty");
         model.addColumn("Mode");
     }
-
-
+    @After
+    public void tearDown() {
+        // 테스트 후에 필요한 정리 작업
+        model = null;
+    }
 
     @Test
-    void testAddData() {
+    public void testAddData() {
         // ScoreboardModel.addData() 호출
         ScoreboardModel.addData(model, "NewPlayer", 150, "Hard", "normalMode");
 
@@ -44,9 +48,8 @@ public class ScoreboardModelTest {
         assertEquals("normalMode", model.getValueAt(0, 4));
     }
 
-
     @Test
-    void testAddDataDescending() {
+    public void testAddDataDescending() {
         // 테스트를 위한 더미 데이터 추가
         model.addRow(new Object[]{1, "Player1", 100, "Easy", "itemMode"});
         model.addRow(new Object[]{2, "Player2", 150, "Hard", "normalMode"});
@@ -65,7 +68,7 @@ public class ScoreboardModelTest {
     }
 
     @Test
-    void testReadScoreboard() {
+    public void testReadScoreboard() {
         // 테스트할 파일 경로
         String filePath = "scoreboard.txt";
 
@@ -80,8 +83,9 @@ public class ScoreboardModelTest {
         assertEquals("Easy", model.getValueAt(0, 3));
         assertEquals("itemMode", model.getValueAt(0, 4));
     }
+
     @Test
-    void testSaveDataToFile() {
+    public void testSaveDataToFile() {
         // 임시 파일 경로
         String filePath = "scoreboard.txt";
 
@@ -112,7 +116,4 @@ public class ScoreboardModelTest {
             e.printStackTrace();
         }
     }
-
-
-
 }

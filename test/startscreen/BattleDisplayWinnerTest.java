@@ -20,7 +20,7 @@ public class BattleDisplayWinnerTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         // 각 테스트 메소드가 실행된 후 호출됩니다.
         if (frame != null) {
             frame.dispose();

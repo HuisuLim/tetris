@@ -3,13 +3,12 @@ package startscreen;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import playscreen.MultiPlayFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 public class BattleModeTest {
 
