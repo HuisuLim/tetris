@@ -114,9 +114,13 @@ public class ItemModeTetrisPanel extends TetrisPanel {
 
     @Override
     protected void drawSquare(Graphics g, int x, int y, int blockNum) {
-        super.drawSquare(g, x, y, blockNum % 10);
-
-        if (blockNum > 10) {
+        if(blockNum != 20){
+            super.drawSquare(g, x, y, blockNum % 10);
+        }
+        else{
+            super.drawSquare(g, x, y, blockNum);
+        }
+        if (blockNum > 10 && blockNum <20) {
             int colorCode = colorTable[blockNum % 10];
             Color color = new Color(colorCode);
             g.setColor(color);
