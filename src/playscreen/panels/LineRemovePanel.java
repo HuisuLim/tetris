@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
 
 public class LineRemovePanel extends JPanel {
     private static final int ATTACK_BOARD_SIZE = 10; // 10x10 board for the attack panel
-    private int[][] attackBoard; // Board for the attack panel
+    private final int[][] attackBoard; // Board for the attack panel
     private int lineRemove = 0;
 
     protected double screenSize;
-    private int SQUARE_SIZE = 20;
+    private final int SQUARE_SIZE;
 
 
     public LineRemovePanel(double screenSize) {
@@ -52,9 +52,13 @@ public class LineRemovePanel extends JPanel {
                 linesCleared = freeRows;
             }
             for (int row = 0; row < ATTACK_BOARD_SIZE - linesCleared; row++) {
+                /*
                 for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
                     attackBoard[row][col] = attackBoard[row + linesCleared][col];
                 }
+
+                 */
+                System.arraycopy(attackBoard[row + linesCleared], 0, attackBoard[row], 0, ATTACK_BOARD_SIZE);
             }
 
             int index = 10-linesCleared;
@@ -67,18 +71,31 @@ public class LineRemovePanel extends JPanel {
                 }
                 //System.out.println(" ");
             }
-            for (int row = 0; row < tetrisBoardCopy.length; row++) {
-                for (int col = 0; col < tetrisBoardCopy[row].length; col++) {
-                    if(tetrisBoardCopy[row][col] == 8){
-                        System.arraycopy(tetrisBoardCopy[row], 0, attackBoard[index], 0, tetrisBoardCopy[row].length);
+            for (int[] row : tetrisBoardCopy) {
+                for (int i : row) {
+                    if (i == 8) {
+                        System.arraycopy(row, 0, attackBoard[index], 0, row.length);
                         index++;
                         break;
                     }
                 }
-                if(index > 9){
+                if (index > 9) {
                     break;
                 }
             }
+            /*
+            for (int col = 0; col < tetrisBoardCopy[row].length; col++) {
+                if(tetrisBoardCopy[row][col] == 8){
+                    System.arraycopy(tetrisBoardCopy[row], 0, attackBoard[index], 0, tetrisBoardCopy[row].length);
+                    index++;
+                    break;
+                }
+            }
+            if(index > 9){
+                break;
+            }
+             */
+
         }
         this.lineRemove = lineRemoveCount;
 
@@ -111,7 +128,6 @@ public class LineRemovePanel extends JPanel {
     //---------------------나중에 가져다 쓸때 사용할거-------------------------------------------------------
     public void clearAttackBoard() {
         for (int row = 0; row < ATTACK_BOARD_SIZE; row++) {
-            boolean isRowEmpty = true;
             for (int col = 0; col < ATTACK_BOARD_SIZE; col++) {
                 attackBoard[row][col] = 0;
             }

@@ -6,14 +6,14 @@ import java.awt.event.*;
 
 public class BattleDisplayWinner {
     // 두 플레이어의 점수를 받아서 승자를 표시하는 메소드
-    public static void displayWinner(int player1Score, int player2Score) {
+    public static JFrame displayWinner(int player1Score, int player2Score) {
         String winnerMessage;
         if (player1Score > player2Score) {
             winnerMessage = "Player 1 win!";
         } else if (player2Score > player1Score) {
-            winnerMessage = "Player 2 win! ";
+            winnerMessage = "Player 2 win!";
         } else {
-            winnerMessage = "It's a tie! ";
+            winnerMessage = "It's a tie!";
         }
 
         // Create and set up the frame
@@ -43,8 +43,9 @@ public class BattleDisplayWinner {
         frame.setVisible(true);
         // Request focus on the frame to ensure key events are captured
         frame.requestFocus();
+
+        return frame;
     }
 
 }
-
 
