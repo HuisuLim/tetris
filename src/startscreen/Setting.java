@@ -11,8 +11,6 @@ public class Setting extends JFrame {
     private double screenRatio = StartMenu.screenRatio; //화면 비율 조절
     private JButton backButton = new JButton();
 
-    private int settingIndex = 0;
-
     public Setting() {
         setTitle("게임 설정");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,79 +23,66 @@ public class Setting extends JFrame {
         int buttonWidth = (int)(150 * screenRatio);
         int buttonHeight = (int)(30 * screenRatio);
         int frameWidth = getWidth();
-        int frameHeight = getHeight();
         int verticalSpacing = (int)(20 * screenRatio); // 버튼 간의 세로 간격을 40px의 비율로 조정
 
         // 뒤로가기 버튼 생성 및 설정
         backButton = new JButton("뒤로가기");
         backButton.setBounds((int)(5 * screenRatio), (int)(5 * screenRatio), buttonWidth, buttonHeight); // 화면 상단 왼쪽에 배치
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false); // 현재 창 숨기기
-                dispose(); // 현재 창 자원 해제
-                new StartMenu().setVisible(true); // StartMenu 인스턴스 생성 및 보이기
-            }
+        backButton.addActionListener(e -> {
+            setVisible(false); // 현재 창 숨기기
+            dispose(); // 현재 창 자원 해제
+            new StartMenu().setVisible(true); // StartMenu 인스턴스 생성 및 보이기
         });
         add(backButton); // 뒤로가기 버튼을 프레임에 추가
 
         // 버튼 생성 및 설정
         JButton button1 = new JButton("조작키 설정");
         button1.setBounds((frameWidth - buttonWidth) / 2, (int)(25 * screenRatio) + 0 * verticalSpacing, buttonWidth, buttonHeight); // 화면 가운데를 기준으로 행 정렬
-        button1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("MOVEMENT");
-            }
+        button1.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("MOVEMENT");
         });
 
         JButton button2 = new JButton("색맹 모드");
         button2.setBounds((frameWidth - buttonWidth) / 2, (int)(60 * screenRatio)+ 1 * verticalSpacing, buttonWidth, buttonHeight);
-        button2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("ColorMode");
-            }
+        button2.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("ColorMode");
         });
 
         JButton button3 = new JButton("설정 초기화");
         button3.setBounds((frameWidth - buttonWidth) / 2, (int)(95 * screenRatio)+ 2 * verticalSpacing, buttonWidth, buttonHeight);
-        button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("Reset");
-                view.addWindowListener(new WindowAdapter() {
-                    public void windowClosed(WindowEvent e) {
-                        StartMenu.setScreenRatio();
-                        // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
-                        // 새로운 비율로 설정 창 새로고침
-                        dispose();
-                        new Setting().setVisible(true);
-                    }
-                });
-            }
+        button3.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("Reset");
+            view.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    StartMenu.setScreenRatio();
+                    // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
+                    // 새로운 비율로 설정 창 새로고침
+                    dispose();
+                    new Setting().setVisible(true);
+                }
+            });
         });
 
         JButton button4 = new JButton("화면 크기 조절");
         button4.setBounds((frameWidth - buttonWidth) / 2, (int)(130 * screenRatio)+ 3 * verticalSpacing, buttonWidth, buttonHeight);
-        button4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("ScreenSize");
-                view.addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosed(WindowEvent e) {
-                        StartMenu.setScreenRatio();
-                        // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
-                        // 새로운 비율로 설정 창 새로고침
-                        dispose();
-                        new Setting().setVisible(true);
-                    }
-                });
-            }
+        button4.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("ScreenSize");
+            view.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    StartMenu.setScreenRatio();
+                    // SettingScreen이 닫힐 때 설정된 새로운 비율을 가져와 적용
+                    // 새로운 비율로 설정 창 새로고침
+                    dispose();
+                    new Setting().setVisible(true);
+                }
+            });
         });
 
         JButton button5 = new JButton("스코어보드 초기화");
         button5.setBounds((frameWidth - buttonWidth) / 2, (int)(165 * screenRatio)+ 4 * verticalSpacing, buttonWidth, buttonHeight);
-        button5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("ScoreBoardReset");
-            }
+        button5.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("ScoreBoardReset");
         });
 
         // 난이도 설정 버튼 생성 및 설정
@@ -105,10 +90,8 @@ public class Setting extends JFrame {
         difficultyButton.setBounds((frameWidth - buttonWidth) / 2, (int)(200 * screenRatio)+ 5 * verticalSpacing, buttonWidth, buttonHeight);
 
         // 난이도 설정 버튼에 액션 리스너
-        difficultyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                settingView view = settingMain.launchSettingScreen("Difficulty");
-            }
+        difficultyButton.addActionListener(e -> {
+            settingView view = settingMain.launchSettingScreen("Difficulty");
         });
 
         // 버튼을 프레임에 추가
