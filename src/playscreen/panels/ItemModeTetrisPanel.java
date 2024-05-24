@@ -8,12 +8,17 @@ import java.awt.*;
 public class ItemModeTetrisPanel extends TetrisPanel {
     protected int itemGenerateCount = 0;
     protected boolean weightBlockCanMove;
+     LineRemovePanel lineInputPanel;
+     LineRemovePanel lineOutputPanel;
 
     public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, settingModel data) {
         super(gameOverCallBack, data);
     }
     public ItemModeTetrisPanel(GameOverCallBack gameOverCallBack, settingModel data, LineRemovePanel lineInputPanel, LineRemovePanel lineOutputPanel) {
         super(gameOverCallBack, data);
+        this.lineInputPanel = lineInputPanel;
+        this.lineOutputPanel = lineOutputPanel;
+        this.isMultiPlay = true;
     }
 
     @Override

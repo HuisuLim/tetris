@@ -53,7 +53,7 @@ public class TetrisPanel extends JPanel{
     //--------대전모드용------------------------------------------------
     private LineRemovePanel lineInputPanel;
     private LineRemovePanel lineOutputPanel;
-    private boolean isMultiPlay = false;
+    public boolean isMultiPlay = false;
     public void setLineRemovePanel(LineRemovePanel lineRemovePanel, LineRemovePanel lineRemovePanel2) {
         this.lineInputPanel = lineRemovePanel;
         this.lineOutputPanel = lineRemovePanel2;
