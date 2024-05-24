@@ -5,7 +5,6 @@ import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
 import java.awt.Color;
 
-import playscreen.MultiPlayFrame;
 import settings.settingModel;
 import playscreen.SinglePlayFrame;
 
@@ -164,59 +163,47 @@ public class StartMenu extends JFrame {
         // 프레임에 패널 추가
         add(panel);
         // 게임 시작 버튼 이벤트 처리
-        startButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new SinglePlayFrame("normalMode");
-                nextFrame.setVisible(true);
-                setVisible(false); // 현재 화면 숨기기
-            }
+        startButton.addActionListener(e -> {
+            // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+            nextFrame = new SinglePlayFrame("normalMode");
+            nextFrame.setVisible(true);
+            setVisible(false); // 현재 화면 숨기기
         });
 
-        startItemButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new SinglePlayFrame("itemMode");
-                nextFrame.setVisible(true);
-                setVisible(false); // 현재 화면 숨기기
-            }
+        startItemButton.addActionListener(e -> {
+            // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+            nextFrame = new SinglePlayFrame("itemMode");
+            nextFrame.setVisible(true);
+            setVisible(false); // 현재 화면 숨기기
         });
 
         // 대전모드 버튼 이벤트 처리
-        battleButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                nextFrame = new BattleMode(); // MultiPlayFrame 클래스의 인스턴스 생성
-                nextFrame.setVisible(true);
-                setVisible(false); // 현재 화면 숨기기
-            }
+        battleButton.addActionListener(e -> {
+            nextFrame = new BattleMode(); // MultiPlayFrame 클래스의 인스턴스 생성
+            nextFrame.setVisible(true);
+            setVisible(false); // 현재 화면 숨기기
         });
 
         // 설정 버튼 이벤트 처리
-        settingsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
-                nextFrame = new Setting();
-                nextFrame.setVisible(true);
-                setVisible(false); // 현재 화면 숨기기
-            }
+        settingsButton.addActionListener(e -> {
+            // 다음 화면으로 넘어가기 위해 새로운 JFrame 생성
+            nextFrame = new Setting();
+            nextFrame.setVisible(true);
+            setVisible(false); // 현재 화면 숨기기
         });
         // 스코어보드 버튼 이벤트 처리
-        scoreButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        scoreButton.addActionListener(e -> {
 
-                nextFrame = new ScoreboardView();
-                nextFrame.setVisible(true);
-                // setVisible(false);
+            nextFrame = new ScoreboardView();
+            nextFrame.setVisible(true);
+            // setVisible(false);
 
-            }
         });
 
         // 게임 종료 버튼 이벤트 처리
-        exitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 프로그램 종료
-                System.exit(0);
-            }
+        exitButton.addActionListener(e -> {
+            // 프로그램 종료
+            System.exit(0);
         });
 
 
