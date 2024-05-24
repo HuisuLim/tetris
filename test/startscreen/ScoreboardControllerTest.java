@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import javax.swing.table.DefaultTableModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class ScoreboardControllerTest {
 
     private ScoreboardController scoreboardController;

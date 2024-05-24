@@ -12,7 +12,6 @@ public class StartMenuTest {
 
     private StartMenu startMenu;
     private static final String TEST_SETTINGS_FILE = "test/settings/settings.properties";
-    private settingModel model;
 
 
     @BeforeEach
@@ -21,7 +20,7 @@ public class StartMenuTest {
         if (file.exists()) {
             file.delete();
         }
-        model = new settingModel();
+        settingModel model = new settingModel();
         model.setSettingsFile(TEST_SETTINGS_FILE);
         try {
             SwingUtilities.invokeAndWait(() -> startMenu = new StartMenu());

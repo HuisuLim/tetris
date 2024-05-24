@@ -28,7 +28,6 @@ public class ScoreboardModelTest {
         model.addColumn("Difficulty");
         model.addColumn("Mode");
     }
-
     @After
     public void tearDown() {
         // 테스트 후에 필요한 정리 작업

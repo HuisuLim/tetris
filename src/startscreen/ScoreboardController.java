@@ -123,7 +123,6 @@ public class ScoreboardController extends JFrame {
         return currentMode;
     }
 
-
     public JTable getScoreboard() {
         return scoreboard;
     }

@@ -56,7 +56,6 @@ public class ScoreboardViewTest {
         assertEquals(SwingConstants.CENTER, renderer2.getHorizontalAlignment());
     }
 
-
     @Test
     void testAddKeyListenerToHideScoreboard() {
         // JFrame 생성
