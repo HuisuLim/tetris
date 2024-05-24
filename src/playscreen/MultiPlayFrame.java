@@ -38,6 +38,7 @@ public class MultiPlayFrame extends JFrame {
         setTitle("Battle Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         settingModel data = new settingModel();
+        data.screenSize = data.screenSize * 0.8;
         setSize((int)(data.screenSize * 20 * 20 * 2),(int)(data.screenSize * 20 * 20));
         setResizable(false); // 창 크기 변경 불가능 설정 추가
 
