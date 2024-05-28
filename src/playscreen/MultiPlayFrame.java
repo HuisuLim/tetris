@@ -18,17 +18,20 @@ public class MultiPlayFrame extends JFrame {
     public PlayPanel player2PlayPanel;
     public LineRemovePanel lineRemovePanel1Pto2P;
     public LineRemovePanel lineRemovePanel2Pto1P;
+    private final MultiPlayKeyListener multiPlayKeyListener;
     public PausePanel pausePanel;
     private boolean isPaused = false;
     private int timeLimit = -1;
+    private Timer timer;
 
     public MultiPlayFrame(String gameMode) {
         if(gameMode.equals("timeLimit")) {
-            timeLimit = 300;
-            Timer timer = new Timer(1000, e-> {
+            timeLimit = 3;
+            timer = new Timer(1000, e-> {
                 timeLimit--;
-                if(timeLimit<=0) {
+                if(timeLimit==0) {
                     gameOver(0);
+                    timer.stop();
                 }
             });
             timer.setRepeats(true);
@@ -60,7 +63,7 @@ public class MultiPlayFrame extends JFrame {
         //KeyListener 추가
         int[] player1Keys = {KeyEvent.VK_W,KeyEvent.VK_D,KeyEvent.VK_S,KeyEvent.VK_A,KeyEvent.VK_SPACE};
         int[] player2Keys = {KeyEvent.VK_UP,KeyEvent.VK_RIGHT,KeyEvent.VK_DOWN,KeyEvent.VK_LEFT,KeyEvent.VK_ENTER};
-        MultiPlayKeyListener multiPlayKeyListener = new MultiPlayKeyListener(this, player1Keys, player2Keys);
+        multiPlayKeyListener = new MultiPlayKeyListener(this, player1Keys, player2Keys);
         addKeyListener(multiPlayKeyListener);
 
         pack();//화면자동설정.
@@ -85,6 +88,12 @@ public class MultiPlayFrame extends JFrame {
         if(player1) BattleDisplayWinner.displayWinner(0,1);
         else if(player2) BattleDisplayWinner.displayWinner(1,0);
         else BattleDisplayWinner.displayWinner(player1PlayPanel.getScore(), player2PlayPanel.getScore());
+
+        //자원해제.
+        player1PlayPanel.toggleIsPause();
+        player2PlayPanel.toggleIsPause();
+        removeKeyListener(multiPlayKeyListener);
+
         dispose();
         //BattleDisplayWinner.displayWinner(player1PlayPanel.getScore(), player2PlayPanel.getScore());
     }
