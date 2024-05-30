@@ -49,8 +49,8 @@ public class MultiPlayFrame extends JFrame {
         lineRemovePanel1Pto2P = new LineRemovePanel(data.screenSize);
         lineRemovePanel2Pto1P = new LineRemovePanel(data.screenSize);
         //playPanel 추가
-        player1PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel1Pto2P, lineRemovePanel2Pto1P);
-        player2PlayPanel = new PlayPanel(this::gameOver, data, gameMode, lineRemovePanel2Pto1P, lineRemovePanel1Pto2P);
+        player1PlayPanel = new PlayPanel(this, this::gameOver, data, gameMode, lineRemovePanel1Pto2P, lineRemovePanel2Pto1P);
+        player2PlayPanel = new PlayPanel(this, this::gameOver, data, gameMode, lineRemovePanel2Pto1P, lineRemovePanel1Pto2P);
         add(player1PlayPanel);
         add(player2PlayPanel);
 
@@ -80,6 +80,10 @@ public class MultiPlayFrame extends JFrame {
     }
     public boolean getIsPause() {
         return isPaused;
+    }
+
+    public int getTimeLimit() {
+        return timeLimit;
     }
 
     public void gameOver(int score) {
