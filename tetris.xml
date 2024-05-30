@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\rlaan\OneDrive\바탕 화면\tetris-main (2)\out\artifacts\tetris_main__2__jar\tetris-main (2).jar</jar>
+  <outfile>C:\Users\rlaan\OneDrive\바탕 화면\tetris-main (2)\out\artifacts\tetris_main__2__jar\tetris.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\rlaan\Downloads\tetrisgame_tetri_6955.ico</icon>
+  <jre>
+    <path>openjdk-22</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
