@@ -1,4 +1,4 @@
-package settings;
+package settingscreen;
 
 import java.awt.event.*;
 import javax.swing.*;

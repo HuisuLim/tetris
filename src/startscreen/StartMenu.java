@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.awt.Font; // 폰트 설정을 위해 추가
 import java.awt.Color;
 
-import settings.settingModel;
+import scoreboard.ScoreboardView;
+import settingscreen.settingModel;
 import playscreen.SinglePlayFrame;
 
 

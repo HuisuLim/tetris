@@ -5,7 +5,7 @@ import playscreen.panels.NameInputPanel;
 import playscreen.panels.PausePanel;
 import playscreen.panels.PlayPanel;
 import playscreen.utils.SinglePlayKeyListener;
-import settings.settingModel;
+import settingscreen.settingModel;
 
 import javax.swing.*;
 

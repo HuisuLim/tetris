@@ -2,6 +2,8 @@ package startscreen;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scoreboard.ScoreboardController;
+
 import javax.swing.table.DefaultTableModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

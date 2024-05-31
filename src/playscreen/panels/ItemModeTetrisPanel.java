@@ -1,7 +1,7 @@
 package playscreen.panels;
 
 import playscreen.utils.GameOverCallBack;
-import settings.settingModel;
+import settingscreen.settingModel;
 
 import java.awt.*;
 

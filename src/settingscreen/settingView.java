@@ -1,4 +1,4 @@
-package settings;
+package settingscreen;
 
 import javax.swing.*;
 import java.awt.*;

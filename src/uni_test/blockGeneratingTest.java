@@ -2,7 +2,7 @@ package uni_test;
 
 import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
-import settings.settingModel;
+import settingscreen.settingModel;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Properties;

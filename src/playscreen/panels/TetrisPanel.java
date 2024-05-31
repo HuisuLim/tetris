@@ -6,7 +6,7 @@ import playscreen.blocks.Block;
 import playscreen.blocks.BlockGenerator;
 import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
-import settings.settingModel;
+import settingscreen.settingModel;
 
 import javax.swing.*;
 import java.awt.*;

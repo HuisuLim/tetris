@@ -3,6 +3,7 @@ package startscreen;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import scoreboard.ScoreboardModel;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;

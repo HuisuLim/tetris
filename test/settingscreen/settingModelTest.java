@@ -1,15 +1,11 @@
-package settings;
+package settingscreen;
 
 import static org.junit.jupiter.api.Assertions.*;
 //import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;

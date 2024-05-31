@@ -1,4 +1,4 @@
-package settings;
+package settingscreen;
 
 public class settingMain {
     //ScreenSize ScoreBoardReset

@@ -2,7 +2,7 @@ package playscreen.blocks;
 
 import playscreen.blocks.item.*;
 import playscreen.blocks.standard.*;
-import settings.settingModel;
+import settingscreen.settingModel;
 import java.util.Random;
 
 public class BlockGenerator {

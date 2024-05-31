@@ -1,6 +1,8 @@
 package startscreen;
 
 import org.junit.jupiter.api.Test;
+import scoreboard.ScoreboardView;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;

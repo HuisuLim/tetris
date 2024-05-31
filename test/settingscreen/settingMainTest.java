@@ -1,4 +1,4 @@
-package settings;
+package settingscreen;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package startscreen;
 
 import playscreen.MultiPlayFrame;
-import settings.settingModel;
+import settingscreen.settingModel;
 
 import javax.swing.*;
 import java.awt.*;

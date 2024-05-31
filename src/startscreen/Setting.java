@@ -1,7 +1,7 @@
 
 package startscreen;
 
-import settings.*;
+import settingscreen.*;
 
 import javax.swing.*;
 import java.awt.*;

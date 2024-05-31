@@ -5,8 +5,8 @@ import playscreen.panels.LineRemovePanel;
 import playscreen.panels.PausePanel;
 import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
-import settings.settingModel;
-import startscreen.BattleDisplayWinner;
+import settingscreen.settingModel;
+import playscreen.panels.BattleDisplayWinner;
 
 import javax.swing.*;
 import java.awt.*;

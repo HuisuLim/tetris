@@ -2,14 +2,10 @@ package playscreen;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import playscreen.MultiPlayFrame;
-import playscreen.panels.PausePanel;
-import playscreen.panels.PlayPanel;
 import playscreen.utils.MultiPlayKeyListener;
-import settings.settingModel;
+import settingscreen.settingModel;
 import startscreen.StartMenu;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -2,7 +2,7 @@ package playscreen.panels;
 
 import playscreen.utils.GameOverCallBack;
 import playscreen.utils.TimerDelay;
-import settings.settingModel;
+import settingscreen.settingModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

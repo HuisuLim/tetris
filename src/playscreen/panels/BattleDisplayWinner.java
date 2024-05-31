@@ -1,4 +1,6 @@
-package startscreen;
+package playscreen.panels;
+
+import startscreen.StartMenu;
 
 import javax.swing.*;
 import java.awt.*;

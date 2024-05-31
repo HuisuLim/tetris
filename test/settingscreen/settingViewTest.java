@@ -1,10 +1,9 @@
-package settings;
+package settingscreen;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 

@@ -1,7 +1,7 @@
 package playscreen.panels;
 
 import playscreen.utils.ColorTable;
-import settings.settingModel;
+import settingscreen.settingModel;
 
 import javax.swing.*;
 import java.awt.*;

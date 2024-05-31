@@ -1,4 +1,4 @@
-package startscreen;
+package scoreboard;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

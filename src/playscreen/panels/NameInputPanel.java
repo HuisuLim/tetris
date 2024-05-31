@@ -1,7 +1,7 @@
 package playscreen.panels;
 
 import playscreen.SinglePlayFrame;
-import startscreen.ScoreboardController;
+import scoreboard.ScoreboardController;
 
 import javax.swing.*;
 import java.awt.*;
