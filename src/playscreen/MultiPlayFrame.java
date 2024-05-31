@@ -25,19 +25,7 @@ public class MultiPlayFrame extends JFrame {
     private Timer timer;
 
     public MultiPlayFrame(String gameMode) {
-        if(gameMode.equals("timeLimit")) {
-            timeLimit = 3;
-            timer = new Timer(1000, e-> {
-                timeLimit--;
-                if(timeLimit==0) {
-                    gameOver(0);
-                    timer.stop();
-                }
-            });
-            timer.setRepeats(true);
-            timer.start();
 
-        }
         setTitle("Battle Play Frame");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         settingModel data = new settingModel();
