@@ -1,8 +1,10 @@
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/814b6ef9-460e-4181-b828-f21ac4353641/02d4d32c-ca63-438d-9e70-a686ec45cba5.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/c45069e7-1b6a-4fe9-aa25-035a1f28bfbb)
+
 
 전체 아이템
 
-![line.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/031aac89-6b0f-4084-b3b1-0d23b1f694c0/line.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/b20c2c69-33a0-457e-b1a5-f7a8331de96c)
+
 
 줄 삭제 아이템
 
@@ -11,7 +13,8 @@
 - 아이템이 포함된 블럭이 바닥이나 다른 블럭에 닿으면 해당 아이템 위치를 기준으로 가로 또는 세로 줄이 삭제됩니다.
 - 해당 아이템이 사용되면 1000*점수배율 만큼 점수를 얻습니다.
 
-![3x3.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/e558c330-22cb-45d8-b85d-780ff01cf068/3x3.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/f8ca8321-0434-47da-83a9-bb30797b03ad)
+
 
 5*5 삭제 아이템 
 
@@ -19,7 +22,8 @@
 - 아이템이 포함된 블럭이 바닥이나 다른 블럭에 닿으면 해당 아이템 위치를 기준으로 5*5 정사각형 범위만큼 블럭을 삭제합니다.
 - 해당 아이템이 사용되면 1000*점수배율 만큼 점수를 얻습니다.
 
-![cros.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/64424715-47f3-4f0b-8b33-788b7a282f28/cros.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/7662c448-5558-42a2-9b12-e99d05c6d212)
+
 
 십자가 줄 삭제 아이템
 
@@ -28,7 +32,8 @@
 - 아이템이 포함된 블럭이 바닥이나 다른 블럭에 닿으면 해당 아이템 위치를 기준으로 가로,세로 줄을 삭제합니다.
 - 해당 아이템이 사용되면 1000*점수배율 만큼 점수를 얻습니다.
 
-![all.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/a1429a54-2d60-4271-a988-b06287e202c7/all.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/24395e80-23b2-42e9-be2c-c373748d98ba)
+
 
 전부 삭제 아이템 - 블록에 닿기만 하면 전체 보드 리셋
 
@@ -36,7 +41,8 @@
 - 해당 아이템이 바닥이나 다른 블럭에 닿으면 모든 블럭을 삭제합니다.
 - 해당 아이템이 사용되면 1000*점수배율 만큼 점수를 얻습니다.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/9b9974c1-d854-483f-97a2-829c48363285/d86aab95-3f74-47ae-8dca-56fc3ebacbf0/Untitled.png)
+![image](https://github.com/HuisuLim/tetris/assets/86083157/623588e8-4a6f-404e-9655-4a1267cbf2ac)
+
 
 무게추 아이템
 
